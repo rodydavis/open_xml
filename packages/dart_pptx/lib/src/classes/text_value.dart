@@ -13,25 +13,33 @@ class TextItem {
   bool get isStylized => isBold || isItalic || isUnderline || isStrikeThrough;
 
   TextItem(
-    this.value, {
-    this.isBold = false,
-    this.isItalic = false,
-    this.isUnderline = false,
-    this.isStrikeThrough = false,
-  });
+      this.value, {
+        this.isBold = false,
+        this.isItalic = false,
+        this.isUnderline = false,
+        this.isStrikeThrough = false,
+      });
 
   Map<String, dynamic> toJson() => _$TextItemToJson(this);
+
+  @override
+  String toString() => value;
 }
 
 @JsonSerializable(createFactory: false)
 class TextValueLine {
   final List<TextItem> values;
+  final String alignment;
 
   TextValueLine({
     required this.values,
+    this.alignment = 'l',
   });
 
   Map<String, dynamic> toJson() => _$TextValueLineToJson(this);
+
+  @override
+  String toString() => values.map((e) => e.toString()).join('');
 }
 
 @JsonSerializable(createFactory: false)
@@ -43,12 +51,13 @@ class TextValue {
   });
 
   factory TextValue.uniform(
-    String? value, {
-    bool isBold = false,
-    bool isItalic = false,
-    bool isUnderline = false,
-    bool isStrikeThrough = false,
-  }) {
+      String? value, {
+        bool isBold = false,
+        bool isItalic = false,
+        bool isUnderline = false,
+        bool isStrikeThrough = false,
+        String alignment = 'l',
+      }) {
     return TextValue(
       lines: [
         if (value != null)
@@ -62,6 +71,7 @@ class TextValue {
                 isStrikeThrough: isStrikeThrough,
               ),
             ],
+            alignment: alignment,
           ),
       ],
     );
@@ -78,6 +88,9 @@ class TextValue {
   }
 
   Map<String, dynamic> toJson() => _$TextValueToJson(this);
+
+  @override
+  String toString() => lines.map((e) => e.toString()).join('\n');
 }
 
 final multiLineTemplate = Template(
@@ -93,7 +106,7 @@ final singleLineTemplate = Template(
 const _multiLine = r'''
 {{#lines}}
 <a:p>
-  <a:pPr/>
+  <a:pPr algn="{{alignment}}"/>
   {{>text-line}}
 </a:p>
 {{/lines}}

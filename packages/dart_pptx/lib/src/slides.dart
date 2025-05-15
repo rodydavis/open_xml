@@ -16,6 +16,9 @@ import 'slides/title_and_photo.dart';
 import 'slides/title_bullets_and_photo.dart';
 import 'slides/title_only.dart';
 import 'slides/title.dart';
+import 'slides/title_content_and_images.dart';
+import 'slides/title_content_image_caption.dart';
+import 'slides/title_content_two_image_caption.dart';
 
 export 'slides/agenda.dart';
 export 'slides/big_fact.dart';
@@ -32,6 +35,9 @@ export 'slides/title_and_photo.dart';
 export 'slides/title_bullets_and_photo.dart';
 export 'slides/title_only.dart';
 export 'slides/title.dart';
+export 'slides/title_content_and_images.dart';
+export 'slides/title_content_image_caption.dart';
+export 'slides/title_content_two_image_caption.dart';
 
 extension SlideTemplates on PowerPoint {
   Slide addTitleSlide({
@@ -173,5 +179,119 @@ extension SlideTemplates on PowerPoint {
     return addSlide(
       SlideBlank(),
     );
+  }
+
+  Slide addTitleContentAndImagesSlide({
+    TextValue? title,
+    TextValue? content,
+    ImageReference? image1,
+    ImageReference? image2,
+    TextValue? caption1,
+    TextValue? caption2,
+    bool? contentRight,
+    String notes ='',
+
+  }) {
+    if (caption1 != null &&
+        caption1.lines
+            .map((e) => e.values.map(((e) => e.value)).join(' '))
+            .join('')
+            .length >
+            100) {
+      print('Caption 1 cant be longer then 100 chars: ${caption1.toString()}');
+      throw Exception('Caption 1 cant be longer then 100 chars');
+    }
+
+    if (caption2 != null &&
+        caption2.lines
+            .map((e) => e.values.map(((e) => e.value)).join(' '))
+            .join('')
+            .length >
+            100) {
+      print('Caption 2 cant be longer then 100 chars: ${caption2.toString()}');
+      throw Exception('Caption 2 cant be longer then 100 chars');
+    }
+
+    return addSlide(SlideTitleContentAndImages(
+        title: title,
+        content: content,
+        image1: image1,
+        image2: image2,
+        caption1: caption1,
+        caption2: caption2,
+        contentRight: contentRight,
+        speakerNotes: TextValue.uniform(notes)
+
+    ));
+  }
+
+  Slide addTitleContentAndOneImageSlide({
+    TextValue? title,
+    TextValue? content,
+    ImageReference? image,
+    TextValue? caption,
+    bool? contentRight,
+    String notes ='',
+
+  }) {
+    if (caption != null &&
+        caption.lines
+            .map((e) => e.values.map(((e) => e.value)).join(' '))
+            .join('')
+            .length >
+            100) {
+      print('Caption cant be longer then 100 chars: ${caption.toString()}');
+      throw Exception('Caption cant be longer then 100 chars');
+    }
+    return addSlide(SlideTitleContentOneImageCaption(
+        title: title,
+        content: content,
+        image: image,
+        caption: caption,
+        contentRight: contentRight,
+        speakerNotes: TextValue.uniform(notes)
+    ));
+  }
+
+  Slide addTitleContentTwoImageCaptionSlide({
+    TextValue? title,
+    TextValue? content,
+    ImageReference? image1,
+    ImageReference? image2,
+    TextValue? caption1,
+    TextValue? caption2,
+    bool? contentDown,
+    String notes ='',
+  }) {
+    if (caption1 != null &&
+        caption1.lines
+            .map((e) => e.values.map(((e) => e.value)).join(' '))
+            .join('')
+            .length >
+            100) {
+      print('Caption 1 cant be longer then 100 chars: ${caption1.toString()}');
+      throw Exception('Caption 1 cant be longer then 100 chars');
+    }
+
+    if (caption2 != null &&
+        caption2.lines
+            .map((e) => e.values.map(((e) => e.value)).join(' '))
+            .join('')
+            .length >
+            100) {
+      print('Caption 2 cant be longer then 100 chars: ${caption2.toString()}');
+      throw Exception('Caption 2 cant be longer then 100 chars');
+    }
+
+    return addSlide(SlideTitleContentTwoImageCaption(
+        title: title,
+        content: content,
+        image1: image1,
+        image2: image2,
+        caption1: caption1,
+        caption2: caption2,
+        contentDown: contentDown,
+        speakerNotes: TextValue.uniform(notes)
+    ));
   }
 }
