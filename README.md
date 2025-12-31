@@ -1,250 +1,149 @@
-# Flutter PPTX
+# open_xml
 
-A Flutter package for creating PowerPoint presentations.
+A Dart package for generating and parsing Office Open XML documents (.docx, .xlsx, .pptx).
 
-| Package | Pub |
-|---------|-----|
-| [dart_pptx](/packages/dart_pptx) | [![pub package](https://img.shields.io/pub/v/dart_pptx.svg)](https://pub.dev/packages/dart_pptx) |
-| [flutter_pptx](/packages/flutter_pptx) | [![pub package](https://img.shields.io/pub/v/flutter_pptx.svg)](https://pub.dev/packages/flutter_pptx) |
+## Features
 
-## Example
+- **Word Processing (.docx)**
+  - Create documents, add paragraphs, and styled text (bold, italic, color, size).
+  - Parse existing documents to extract text and structure.
+
+- **Spreadsheet (.xlsx)**
+  - Create workbooks, sheets, rows, and cells.
+  - Support for formulas and shared strings.
+  - Parse existing spreadsheets to read data.
+
+- **Presentation (.pptx)**
+  - Create presentations, add slides with titles and body text.
+  - Support for full-screen background images.
+  - Parse existing presentations.
+
+## Getting Started
+
+Add `open_xml` to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  open_xml: ^1.0.0
+```
+
+## Usage
+
+### Word (.docx)
+
+Create a Word document with styled text:
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:flutter_pptx/flutter_pptx.dart';
+import 'package:open_xml/open_xml.dart';
 
-import 'dart:typed_data';
+Future<void> main() async {
+  final doc = await WordDocument.create();
 
-import 'package:share_plus/share_plus.dart';
-
-Future<void> downloadFile(String name, Uint8List bytes) async {
-  Share.shareXFiles(
-    [
-      XFile.fromData(
-        bytes,
-        name: 'presentation.pptx',
-        mimeType:
-            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-        lastModified: DateTime.now(),
-        length: bytes.length,
-      )
-    ],
-    text: 'Presentation',
+  doc.addParagraph(
+    Paragraph()
+      ..addRun(Run(text: 'Hello, '))
+      ..addRun(Run(text: 'World!', bold: true, color: 'FF0000')),
   );
+
+  await doc.save('example.docx');
 }
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData.light(useMaterial3: true).copyWith(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-        ),
-      ),
-      home: const MyHomePage(title: 'Presentation Example'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  Future<FlutterPowerPoint> createPresentation() async {
-    final pres = FlutterPowerPoint();
-
-    pres.addTitleSlide(
-      title: 'Slide one'.toTextValue(),
-    );
-
-    pres.addTitleAndPhotoSlide(
-      title: 'Slide two'.toTextValue(),
-      image: ImageReference(
-        path: 'assets/images/sample_gif.gif',
-        name: 'Sample Gif',
-      ),
-    );
-
-    pres.addTitleAndPhotoAltSlide(
-      title: 'Slide three'.toTextValue(),
-      image: ImageReference(
-        path: 'assets/images/sample_jpg.jpg',
-        name: 'Sample Jpg',
-      ),
-    );
-
-    pres
-        .addTitleAndBulletsSlide(
-          title: 'Slide three'.toTextValue(),
-          bullets: [
-            'Bullet 1',
-            'Bullet 2',
-            'Bullet 3',
-            'Bullet 4',
-          ].map((e) => e.toTextValue()).toList(),
-        )
-        .speakerNotes = TextValue.uniform('This is a note!');
-
-    pres
-        .addBulletsSlide(
-          bullets: [
-            'Bullet 1',
-            'Bullet 2',
-            'Bullet 3',
-            'Bullet 4',
-          ].map((e) => e.toTextValue()).toList(),
-        )
-        .speakerNotes = TextValue.singleLine([
-      TextItem('This '),
-      TextItem('is ', isBold: true),
-      TextItem('a ', isUnderline: true),
-      TextItem('note!'),
-    ]);
-
-    pres.addTitleBulletsAndPhotoSlide(
-      title: 'Slide five'.toTextValue(),
-      image: ImageReference(
-        path: 'assets/images/sample_jpg.jpg',
-        name: 'Sample Jpg',
-      ),
-      bullets: [
-        'Bullet 1',
-        'Bullet 2',
-        'Bullet 3',
-        'Bullet 4',
-      ].map((e) => e.toTextValue()).toList(),
-    );
-
-    pres
-        .addSectionSlide(
-          section: 'Section 1'.toTextValue(),
-        )
-        .speakerNotes = TextValue.multiLine([
-      TextValueLine(values: [
-        TextItem('This '),
-        TextItem('is ', isBold: true),
-        TextItem('a ', isUnderline: true),
-        TextItem('note 1!'),
-      ]),
-      TextValueLine(values: [
-        TextItem('This '),
-        TextItem('is ', isBold: true),
-        TextItem('a ', isUnderline: true),
-        TextItem('note 2!'),
-      ]),
-    ]);
-
-    pres.addTitleOnlySlide(
-      title: 'Title 1'.toTextValue(),
-      subtitle: 'Subtitle 1'.toTextValue(),
-    );
-
-    pres.addAgendaSlide(
-      title: 'Title 1'.toTextValue(),
-      subtitle: 'Subtitle 1'.toTextValue(),
-      topics: 'Topics 1'.toTextValue(),
-    );
-
-    pres.addStatementSlide(
-      statement: 'Statement 1'.toTextValue(),
-    );
-
-    pres.addBigFactSlide(
-      fact: 'Title 1'.toTextLine(),
-      information: 'Fact 1'.toTextValue(),
-    );
-
-    pres.addQuoteSlide(
-      quote: 'Quote 1'.toTextLine(),
-      attribution: 'Attribution 1'.toTextValue(),
-    );
-
-    pres.addPhoto3UpSlide(
-      image1: ImageReference(
-        path: 'assets/images/sample_gif.gif',
-        name: 'Sample Gif',
-      ),
-      image2: ImageReference(
-        path: 'assets/images/sample_jpg.jpg',
-        name: 'Sample Jpg',
-      ),
-      image3: ImageReference(
-        path: 'assets/images/sample_png.png',
-        name: 'Sample Png',
-      ),
-    );
-
-    pres.addPhotoSlide(
-      image: ImageReference(
-        path: 'assets/images/sample_gif.gif',
-        name: 'Sample Gif',
-      ),
-    );
-
-    pres.addBlankSlide();
-
-    pres.addBlankSlide().background.color = '000000';
-
-    pres.addBlankSlide().background.image = ImageReference(
-      path: 'assets/images/sample_gif.gif',
-      name: 'Sample Gif',
-    );
-
-    await pres.addWidgetSlide(
-      (size) => Center(
-        child: Container(
-          padding: const EdgeInsets.all(30.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.blueAccent, width: 5.0),
-            color: Colors.redAccent,
-          ),
-          child: const Text("This is an invisible widget"),
-        ),
-      ),
-    );
-
-    pres.showSlideNumbers = true;
-
-    return pres;
-  }
-
-  Future<void> downloadPresentation(FlutterPowerPoint pres) async {
-    final bytes = await pres.save();
-    if (bytes == null) return;
-    downloadFile('presentation.pptx', bytes);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            final pres = await createPresentation();
-            await downloadPresentation(pres);
-          },
-          child: const Text('Download Presentation'),
-        ),
-      ),
-    );
-  }
-}
-
 ```
+
+### Excel (.xlsx)
+
+Create a Spreadsheet with data and formulas:
+
+```dart
+import 'package:open_xml/open_xml.dart';
+
+Future<void> main() async {
+  final workbook = await Workbook.create();
+  final sheet = workbook.addSheet('Sales');
+
+  // Add Data
+  sheet.addRow()
+    ..addCell('Item')
+    ..addCell('Price');
+  
+  sheet.addRow()
+    ..addCell('Apple')
+    ..addCell(1.50);
+
+  sheet.addRow()
+    ..addCell('Total')
+    ..addCell('', formula: 'SUM(B2:B2)');
+
+  await workbook.save('example.xlsx');
+}
+```
+
+### PowerPoint (.pptx)
+
+Create a Presentation with slides:
+
+```dart
+import 'package:open_xml/open_xml.dart';
+
+Future<void> main() async {
+  final pres = await Presentation.create();
+
+  final slide = pres.addSlide();
+  slide.addTitle('Hello OpenXML');
+  slide.addText('This is a dynamically generated slide.');
+
+  await pres.save('example.pptx');
+}
+```
+
+### PowerPoint Generation from Template
+    
+Generate type-safe Dart bindings from a `.pptx` template file to easily create slides with specific layouts.
+
+**1. Create a binding generator script:**
+
+Run the generator tool provided in the package:
+
+```bash
+dart run open_xml:pptx_type_generator --input templates/mytemplate.pptx --output lib/my_bindings.dart --class-name MyPresentation
+```
+
+**2. Use the generated bindings:**
+
+```dart
+import 'package:open_xml/open_xml.dart';
+import 'package:file/local.dart';
+import 'lib/my_bindings.dart'; // Import generated bindings
+
+void main() async {
+  final fs = LocalFileSystem();
+  final template = fs.file('templates/mytemplate.pptx');
+  final pres = await Presentation.open(template);
+  
+  // Use the generated extension
+  final myPres = MyPresentation(pres);
+
+  // Add a slide using a layout from the template
+  // The method arguments match the placeholders in the slide layout!
+  myPres.addTitleSlide(
+    title: 'Hello Generator'.toTextRun(),
+    subTitle: 'Type-safe slides'.toTextRun(),
+  );
+
+  await pres.save(fs.file('output.pptx'));
+}
+```
+
+## Advanced Examples
+
+Check the `examples/` directory for more advanced use cases:
+
+- **Markdown to Docx**: `examples/docx/docx_markdown_example.dart` (uses `package:markdown`)
+- **JSON to Excel**: `examples/xlsx/xlsx_json_example.dart`
+- **SQLite to Excel**: `examples/xlsx/xlsx_sqlite_example.dart` (uses `package:sqlite3`)
+- **Images in PowerPoint**: `examples/pptx/pptx_images_example.dart`
+
+> **Note**: To run these examples, you must execute them from the `examples/` directory context as they have their own dependencies.
+>
+> ```bash
+> ./examples/run_all.sh
+> ```

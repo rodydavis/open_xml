@@ -1,0 +1,13 @@
+name: open_xml_examples
+description: Examples for the open_xml package.
+publish_to: 'none'
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  open_xml:
+    path: ../
+  sqlite3: ^2.0.0
+  markdown: ^7.1.1
+  path: ^1.9.1
+  file: ^7.0.1

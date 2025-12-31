@@ -2,14 +2,10 @@ version: 2
 enable-beta-ecosystems: true
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/example"
+    directory: "/examples/pubspec.yaml"
     schedule:
       interval: "daily"
   - package-ecosystem: "github-actions"
-    directory: "/packages/dart_pptx/pubspec.yaml"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "github-actions"
-    directory: "/packages/flutter_pptx/pubspec.yaml"
+    directory: "/open_xml/pubspec.yaml"
     schedule:
       interval: "daily"
