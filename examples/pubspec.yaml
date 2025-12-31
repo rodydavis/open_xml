@@ -11,3 +11,4 @@ dependencies:
   markdown: ^7.1.1
   path: ^1.9.1
   file: ^7.0.1
+  uuid: ^4.5.2

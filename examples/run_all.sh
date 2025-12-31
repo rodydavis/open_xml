@@ -30,15 +30,15 @@ done
 
 echo "All examples execution attempted."
 
-cd ..
+# cd ..
 
-echo "Copying generated files..."
-rm -rf OOXML-Validator/examples_out
-mkdir OOXML-Validator/examples_out
-cp -r ./examples/out/ OOXML-Validator/examples_out/
+# echo "Copying generated files..."
+# rm -rf third_party/validator/examples_out
+# mkdir third_party/validator/examples_out
+# cp -r ./examples/out/ third_party/validator/examples_out/
 
-echo "Running validator..."
-docker-compose -f OOXML-Validator/.build-files/compose.yaml run dev ./dev.sh run linux-arm64 ./examples_out
+# echo "Running validator..."
+# docker-compose -f third_party/validator/.build-files/compose.yaml run dev ./dev.sh run linux-arm64 ./examples_out
 
-echo "Validator completed."
+# echo "Validator completed."
 

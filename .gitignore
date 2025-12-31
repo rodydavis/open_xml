@@ -10,4 +10,4 @@ examples/out/
 out/
 build/
 tool/schemas/
-validator/third_party/examples_out/
+third_party/validator/examples_out/

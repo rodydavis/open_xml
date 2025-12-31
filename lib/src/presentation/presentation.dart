@@ -4,6 +4,7 @@ import 'package:logging/logging.dart';
 import 'package:open_xml/src/util/media_utils.dart'; // Add this
 
 import 'package:file/file.dart';
+
 import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/pml/pml_builder.g.dart';
 import 'package:xml/xml.dart';
@@ -224,6 +225,12 @@ class Presentation {
       }
     }
 
+    // Collect media paths for Content Types
+    final globalMediaPaths = <String>{};
+    for (final slide in _slides) {
+      globalMediaPaths.addAll(slide.getAllReferencedMediaPaths());
+    }
+
     // 1. [Content_Types].xml
     final contentTypes = await _package.createPart('[Content_Types].xml');
     final ctBuilder = XmlBuilder();
@@ -311,6 +318,40 @@ class Presentation {
             ctBuilder.attribute('ContentType', 'application/movie');
           },
         );
+        // Add extensions for any media files we just added that might not be default
+        final defaultExtensions = {
+          'png',
+          'jpeg',
+          'jpg',
+          'bmp',
+          'gif',
+          'tif',
+          'pdf',
+          'mov',
+          'xml',
+          'rels',
+        };
+        for (final path in globalMediaPaths) {
+          final ext = path.split('.').last.toLowerCase();
+          if (!defaultExtensions.contains(ext)) {
+            defaultExtensions.add(ext);
+            ctBuilder.element(
+              'Default',
+              nest: () {
+                ctBuilder.attribute('Extension', ext);
+                // Simple fallback content type mapping
+                String contentType = 'application/octet-stream';
+                if (ext == 'svg') {
+                  contentType = 'image/svg+xml';
+                } else if (ext == 'mp4') {
+                  contentType = 'video/mp4';
+                }
+
+                ctBuilder.attribute('ContentType', contentType);
+              },
+            );
+          }
+        }
 
         // Presentation
         ctBuilder.element(

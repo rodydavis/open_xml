@@ -436,8 +436,7 @@ class Slide {
     int? slideWidth,
     int? slideHeight,
     Map<String, ({int width, int height})>? imageDimensions,
-  }) {
-    b.element(
+  }) => b.element(
       'p:bg',
       nest: () {
         b.element(
@@ -610,7 +609,6 @@ class Slide {
         );
       },
     );
-  }
 
   void _buildLegacyShape(
     XmlBuilder b,
