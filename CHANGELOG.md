@@ -1,3 +1,5 @@
-## 0.2.0
+## 0.1.0
 
-- Initial version.
+- Add pptx parser and exporter
+- Add xlsx parser and exporter
+- Add docx parser and exporter
