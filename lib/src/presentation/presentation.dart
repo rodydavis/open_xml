@@ -27,6 +27,18 @@ class _CommentAuthor {
   );
 }
 
+enum PresentationAspectRatio {
+  standard_4_3(9144000, 6858000),
+  widescreen_16_9(12192000, 6858000),
+  widescreen_16_10(10972800, 6858000),
+  custom(0, 0);
+
+  final int width;
+  final int height;
+
+  const PresentationAspectRatio(this.width, this.height);
+}
+
 class Presentation {
   final OoxmlPackage _package;
   final List<Slide> _slides = [];
@@ -59,8 +71,27 @@ class Presentation {
     return pres;
   }
 
-  int? _slideWidth;
-  int? _slideHeight;
+  int _slideWidth = 9144000;
+  int _slideHeight = 6858000;
+
+  int get slideWidth => _slideWidth;
+  int get slideHeight => _slideHeight;
+
+  /// Sets the dimensions of the presentation slides in EMUs (English Metric Units).
+  /// 1 inch = 914400 EMUs.
+  /// 1 cm = 360000 EMUs.
+  void setDimensions(int width, int height) {
+    _slideWidth = width;
+    _slideHeight = height;
+  }
+
+  /// Sets the aspect ratio of the presentation.
+  /// Predefined ratios set standard dimensions.
+  void setAspectRatio(PresentationAspectRatio ratio) {
+    if (ratio == PresentationAspectRatio.custom) return;
+    _slideWidth = ratio.width;
+    _slideHeight = ratio.height;
+  }
 
   Future<void> _parse() async {
     // Read presentation.xml to find slides
@@ -73,8 +104,14 @@ class Presentation {
     if (sldSz != null) {
       final cx = sldSz.getAttribute('cx');
       final cy = sldSz.getAttribute('cy');
-      if (cx != null) _slideWidth = int.tryParse(cx);
-      if (cy != null) _slideHeight = int.tryParse(cy);
+      if (cx != null) {
+        final parsedCx = int.tryParse(cx);
+        if (parsedCx != null) _slideWidth = parsedCx;
+      }
+      if (cy != null) {
+        final parsedCy = int.tryParse(cy);
+        if (parsedCy != null) _slideHeight = parsedCy;
+      }
     }
 
     // Find slide ID list
@@ -934,8 +971,8 @@ class Presentation {
         pBuilder.element(
           'p:sldSz',
           nest: () {
-            pBuilder.attribute('cx', '${_slideWidth ?? 9144000}');
-            pBuilder.attribute('cy', '${_slideHeight ?? 6858000}');
+            pBuilder.attribute('cx', '$_slideWidth');
+            pBuilder.attribute('cy', '$_slideHeight');
           },
         );
         pBuilder.element(
@@ -1218,6 +1255,7 @@ class Presentation {
     }
 
     // 7. Slides
+    int globalRelIdCounter = 2; // Start after rId1 (layout), increment globally
     for (var i = 0; i < _slides.length; i++) {
       await Future.delayed(Duration.zero); // Yield to UI thread
       final slide = _slides[i];
@@ -1263,13 +1301,18 @@ class Presentation {
             },
           );
 
-          int relIdCounter = 2; // Start after rId1
+          // Fix for MacOS Preview: Use globally unique rIds for ALL content relationships (media, links, etc).
+          // preventing cache collisions.
+          // Layout uses rId1 (fixed). Everything else uses a monotonic global counter starting at 2.
+
+          // int relIdCounter = 2; // Removed local counter
+
           final referencedPaths = slide.getAllReferencedMediaPaths();
           for (final path in referencedPaths) {
             if (mediaMapping.containsKey(path)) {
-              final rId = 'rId$relIdCounter';
+              // Always generate a new unique global ID
+              final rId = 'rId${globalRelIdCounter++}';
               imageRelIds[path] = rId;
-              relIdCounter++;
 
               // Detect type (image vs video) roughly by extension
               // Use image relationship by default as we use p:pic to link.
@@ -1289,9 +1332,9 @@ class Presentation {
 
           final referencedLinks = slide.getAllReferencedHyperlinks();
           for (final link in referencedLinks) {
-            final rId = 'rId$relIdCounter';
+            final rId = 'rId$globalRelIdCounter';
             imageRelIds[link] = rId;
-            relIdCounter++;
+            globalRelIdCounter++;
 
             if (link.startsWith('#slide')) {
               // Internal slide link: #slide2 -> #257 (assuming slide1 is 256)
@@ -1331,7 +1374,7 @@ class Presentation {
             slideRelsXml.element(
               'Relationship',
               nest: () {
-                slideRelsXml.attribute('Id', 'rId$relIdCounter');
+                slideRelsXml.attribute('Id', 'rId$globalRelIdCounter');
                 slideRelsXml.attribute(
                   'Type',
                   'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide',
@@ -1342,14 +1385,14 @@ class Presentation {
                 );
               },
             );
-            relIdCounter++;
+            globalRelIdCounter++;
           }
 
           if (slide.comments.isNotEmpty) {
             slideRelsXml.element(
               'Relationship',
               nest: () {
-                slideRelsXml.attribute('Id', 'rId$relIdCounter');
+                slideRelsXml.attribute('Id', 'rId$globalRelIdCounter');
                 slideRelsXml.attribute(
                   'Type',
                   'http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments',
@@ -1360,7 +1403,7 @@ class Presentation {
                 );
               },
             );
-            relIdCounter++;
+            globalRelIdCounter++;
           }
         },
       );
@@ -1432,8 +1475,8 @@ class Presentation {
       slide.build(
         sBuilder,
         relIds: imageRelIds,
-        slideWidth: _slideWidth ?? 9144000,
-        slideHeight: _slideHeight ?? 6858000,
+        slideWidth: _slideWidth,
+        slideHeight: _slideHeight,
         imageDimensions: imageDimensions,
       );
       slidePart.write(sBuilder.buildDocument().toXmlString());
