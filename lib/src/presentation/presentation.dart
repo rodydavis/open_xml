@@ -1172,7 +1172,11 @@ class Presentation {
         );
 
         for (final path in referencedPaths) {
-          if (mediaData.containsKey(path)) continue;
+          _log.info('DEBUG: Processing media path: $path');
+          if (mediaData.containsKey(path)) {
+            _log.info('DEBUG: Path already in mediaData: $path');
+            continue;
+          }
 
           Uint8List bytes;
           String extension;
@@ -1207,16 +1211,25 @@ class Presentation {
             }
           } else {
             // Local file
+            _log.info('DEBUG: Reading local file: $path');
             final file = _package.fileSystem.file(path);
-            if (await file.exists()) {
-              bytes = await file.readAsBytes();
-              extension = path.contains('.') ? path.split('.').last : 'bin';
-              // Optional: verify with magic numbers
-              final detected = MediaUtils.detectExtension(bytes);
-              if (detected != 'bin') extension = detected;
-            } else {
-              print('Media file not found: $path');
-              continue;
+            try {
+              if (await file.exists()) {
+                bytes = await file.readAsBytes();
+                extension = path.contains('.') ? path.split('.').last : 'bin';
+                // Optional: verify with magic numbers
+                final detected = MediaUtils.detectExtension(bytes);
+                if (detected != 'bin') extension = detected;
+              } else {
+                _log.severe(
+                  'DEBUG: Media file not found (exists=false): $path',
+                );
+                print('Media file not found: $path');
+                continue;
+              }
+            } catch (e, st) {
+              _log.severe('DEBUG: Error reading local file: $path', e, st);
+              rethrow;
             }
           }
           mediaData[path] = (ext: extension, bytes: bytes);

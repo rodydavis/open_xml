@@ -45,7 +45,7 @@ class OoxmlPackage {
   /// Returns an [IOSink] that can be used to write the content.
   Future<IOSink> createPart(String path) async {
     final file = _fs.file(p.join(_tempDir.path, path));
-    if (!file.parent.existsSync()) {
+    if (!await file.parent.exists()) {
       await file.parent.create(recursive: true);
     }
     _parts.add(path);
@@ -56,7 +56,7 @@ class OoxmlPackage {
   /// Adds an existing file to the package.
   Future<void> addFile(String path, File source) async {
     final dest = _fs.file(p.join(_tempDir.path, path));
-    if (!dest.parent.existsSync()) {
+    if (!await dest.parent.exists()) {
       await dest.parent.create(recursive: true);
     }
     // We can't use source.copy(dest.path) if they are on different file systems.
