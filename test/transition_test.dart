@@ -21,8 +21,8 @@ void main() {
       );
       final xml = builder.buildDocument().toXmlString();
 
-      expect(xml, contains('<p:transition p:spd="fast">'));
-      expect(xml, contains('<p:push p:dir="r"/>'));
+      expect(xml, contains('<p:transition spd="fast">'));
+      expect(xml, contains('<p:push dir="r"/>'));
     });
 
     test('WipeTransition generates correct XML', () {
@@ -41,8 +41,8 @@ void main() {
       );
       final xml = builder.buildDocument().toXmlString();
 
-      expect(xml, contains('<p:transition p:spd="slow">'));
-      expect(xml, contains('<p:wipe p:dir="d"/>'));
+      expect(xml, contains('<p:transition spd="slow">'));
+      expect(xml, contains('<p:wipe dir="d"/>'));
     });
 
     test('FadeTransition generates correct XML', () {
@@ -59,7 +59,7 @@ void main() {
       final xml = builder.buildDocument().toXmlString();
 
       expect(xml, contains('<p:transition>'));
-      expect(xml, contains('<p:fade p:thruBlk="false"/>'));
+      expect(xml, contains('<p:fade thruBlk="false"/>'));
     });
 
     test('CoverTransition generates correct XML', () {
