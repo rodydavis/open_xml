@@ -2359,74 +2359,10 @@ class Presentation {
 
   Future<void> _writeAppProps() async {
     final app = await _package.createPart('docProps/app.xml');
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'Properties',
-      namespaces: {
-        'http://schemas.openxmlformats.org/officeDocument/2006/extended-properties':
-            '',
-        'http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes':
-            'vt',
-      },
-      nest: () {
-        builder.element('Template', nest: 'Office Theme');
-        builder.element('TotalTime', nest: '0');
-        builder.element('Pages', nest: '${_slides.length}');
-        builder.element('Words', nest: '0');
-        builder.element('Characters', nest: '0');
-        builder.element('Application', nest: 'Dart OpenXML');
-        builder.element('DocSecurity', nest: '0');
-        builder.element('ScaleCrop', nest: 'false');
-        builder.element(
-          'HeadingPairs',
-          nest: () {
-            builder.element(
-              'vt:vector',
-              nest: () {
-                builder.attribute('size', '2');
-                builder.attribute('baseType', 'variant');
-                builder.element(
-                  'vt:variant',
-                  nest: () {
-                    builder.element('vt:lpstr', nest: 'Slides');
-                  },
-                );
-                builder.element(
-                  'vt:variant',
-                  nest: () {
-                    builder.element('vt:i4', nest: '${_slides.length}');
-                  },
-                );
-              },
-            );
-          },
-        );
-        builder.element(
-          'TitlesOfParts',
-          nest: () {
-            builder.element(
-              'vt:vector',
-              nest: () {
-                builder.attribute('size', '${_slides.length}');
-                builder.attribute('baseType', 'lpstr');
-                for (var i = 1; i <= _slides.length; i++) {
-                  builder.element('vt:lpstr', nest: 'Slide $i');
-                }
-              },
-            );
-          },
-        );
-        builder.element('LinksUpToDate', nest: 'false');
-        builder.element('SharedDoc', nest: 'false');
-        builder.element('HyperlinksChanged', nest: 'false');
-        builder.element('AppVersion', nest: '1.0000');
-      },
-    );
-    app.write(builder.buildDocument().toXmlString());
+    // Minimal app.xml as requested by user to fix QuickLook
+    const xml =
+        '<?xml version="1.0" encoding="UTF-8"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"/>';
+    app.add(xml.codeUnits);
     await app.close();
   }
 
