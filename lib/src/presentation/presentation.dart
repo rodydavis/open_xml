@@ -1500,6 +1500,11 @@ class Presentation {
     _log.info('Presentation saved successfully');
   }
 
+  Future<void> close() async {
+    await _package.close();
+    _log.info('Presentation closed successfully');
+  }
+
   Future<void> _writeTheme() async {
     // Minimal theme implementation (copied/adapted from example)
     final theme = await _package.createPart('ppt/theme/theme1.xml');

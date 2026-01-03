@@ -22,6 +22,11 @@ class Workbook {
     return Workbook._(package);
   }
 
+  Future<void> close() async {
+    await _package.close();
+    _log.info('Workbook closed successfully');
+  }
+
   SharedStrings? _sharedStrings;
 
   /// Opens an existing Workbook.

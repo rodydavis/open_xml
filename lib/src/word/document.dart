@@ -27,6 +27,11 @@ class WordDocument {
     return WordDocument._(package);
   }
 
+  Future<void> close() async {
+    await _package.close();
+    _log.info('Document closed successfully');
+  }
+
   /// Opens an existing Word document.
   static Future<WordDocument> open(File file) async {
     final package = await OoxmlPackage.open(file);
