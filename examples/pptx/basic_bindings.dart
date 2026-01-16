@@ -7,27 +7,27 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets2,
   }) {
     final slide = presentation.addSlide(layout: 'Title');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
@@ -43,27 +43,27 @@ extension type BasicPresentation(Presentation presentation) {
       SlideImage(path: image.path, placeholderType: 'pic', placeholderIdx: 21),
     );
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 22,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
@@ -78,18 +78,18 @@ extension type BasicPresentation(Presentation presentation) {
       SlideImage(path: image.path, placeholderType: 'pic', placeholderIdx: 21),
     );
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
     return slide;
   }
@@ -100,41 +100,41 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets2,
   }) {
     final slide = presentation.addSlide(layout: 'Title &amp; Bullets');
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
 
   Slide addBulletsSlide({required List<TextRun> bullets}) {
     final slide = presentation.addSlide(layout: 'Bullets');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
     return slide;
   }
@@ -146,31 +146,31 @@ extension type BasicPresentation(Presentation presentation) {
     required TextRun title,
   }) {
     final slide = presentation.addSlide(layout: 'Title, Bullets &amp; Photo');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     slide.elements.add(
       SlideImage(path: image.path, placeholderType: 'pic', placeholderIdx: 22),
     );
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
     return slide;
   }
@@ -183,27 +183,27 @@ extension type BasicPresentation(Presentation presentation) {
     final slide = presentation.addSlide(
       layout: 'Title, Bullets &amp; Live Video Small',
     );
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
     return slide;
   }
@@ -216,36 +216,36 @@ extension type BasicPresentation(Presentation presentation) {
     final slide = presentation.addSlide(
       layout: 'Title, Bullets &amp; Live Video Large',
     );
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
     return slide;
   }
 
   Slide addSectionSlide({required TextRun title}) {
     final slide = presentation.addSlide(layout: 'Section');
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
     return slide;
   }
@@ -255,18 +255,18 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets,
   }) {
     final slide = presentation.addSlide(layout: 'Title Only');
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
     return slide;
   }
@@ -277,41 +277,41 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets2,
   }) {
     final slide = presentation.addSlide(layout: 'Agenda');
-    final titleBox_title = SlideTextBox(placeholderType: 'title');
-    titleBox_title.addRun(title);
-    slide.elements.add(titleBox_title);
+    final titleboxTitle = SlideTextBox(placeholderType: 'title');
+    titleboxTitle.addRun(title);
+    slide.elements.add(titleboxTitle);
 
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
 
   Slide addStatementSlide({required List<TextRun> bullets}) {
     final slide = presentation.addSlide(layout: 'Statement');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
     return slide;
   }
@@ -321,23 +321,23 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets2,
   }) {
     final slide = presentation.addSlide(layout: 'Big Fact');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
@@ -347,23 +347,23 @@ extension type BasicPresentation(Presentation presentation) {
     required List<TextRun> bullets2,
   }) {
     final slide = presentation.addSlide(layout: 'Quote');
-    final bodyBox_bullets = SlideTextBox(
+    final bodyboxBullets = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 21,
     );
     for (final val in bullets) {
-      bodyBox_bullets.addRun(val);
+      bodyboxBullets.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets);
+    slide.elements.add(bodyboxBullets);
 
-    final bodyBox_bullets2 = SlideTextBox(
+    final bodyboxBullets2 = SlideTextBox(
       placeholderType: 'body',
       placeholderIdx: 1,
     );
     for (final val in bullets2) {
-      bodyBox_bullets2.addRun(val);
+      bodyboxBullets2.addRun(val);
     }
-    slide.elements.add(bodyBox_bullets2);
+    slide.elements.add(bodyboxBullets2);
 
     return slide;
   }
