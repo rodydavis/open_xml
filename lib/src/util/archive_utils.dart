@@ -23,12 +23,10 @@ class ZipPackageWriter {
     int crc = 0;
 
     // For STORE method
-    final Crc32 crc32 = Crc32();
     await for (final chunk in file.openRead()) {
       uncompressedSize += chunk.length;
-      crc32.add(chunk);
+      crc = getCrc32(chunk, crc);
     }
-    crc = crc32.hash;
 
     const compressionMethod = 0; // STORE
     final compressedSize = uncompressedSize;
