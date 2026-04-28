@@ -62,11 +62,7 @@ extension P_CT_CornerDirectionTransition_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     P_ST_TransitionCornerDirectionType? dir,
   ) {
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-      );
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -118,11 +114,7 @@ extension P_CT_OrientationTransition_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, P_ST_Direction? dir) {
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-      );
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -152,11 +144,7 @@ extension P_CT_InOutTransition_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     P_ST_TransitionInOutDirectionType? dir,
   ) {
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-      );
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -216,16 +204,8 @@ extension P_CT_SplitTransition_Builder on _i1.XmlBuilder {
     P_ST_Direction? orient,
     P_ST_TransitionInOutDirectionType? dir,
   ) {
-    if (orient != null)
-      this.attribute(
-        'orient',
-        orient!.value,
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-      );
+    if (orient != null) this.attribute('orient', orient!.value);
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -279,11 +259,7 @@ extension P_CT_TransitionStartSoundAction_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? loop) {
-    if (loop != null)
-      this.attribute(
-        'loop',
-        loop == true ? 'true' : 'false',
-      );
+    if (loop != null) this.attribute('loop', loop == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -427,18 +403,9 @@ extension P_CT_TLIterateData_Builder on _i1.XmlBuilder {
     P_ST_IterateType? type,
     bool? backwards,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
     if (backwards != null)
-      this.attribute(
-        'backwards',
-        backwards == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('backwards', backwards == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -465,12 +432,7 @@ extension P_CT_TLSubShapeId_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? spid) {
-    if (spid != null)
-      this.attribute(
-        'spid',
-        spid,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (spid != null) this.attribute('spid', spid);
     children?.call(this);
   }
 }
@@ -527,18 +489,8 @@ extension P_CT_TLOleChartTargetElement_Builder on _i1.XmlBuilder {
     P_ST_TLChartSubelementType? type,
     int? lvl,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (lvl != null)
-      this.attribute(
-        'lvl',
-        lvl.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (lvl != null) this.attribute('lvl', lvl.toString());
     children?.call(this);
   }
 }
@@ -565,12 +517,7 @@ extension P_CT_TLShapeTargetElement_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? spid) {
-    if (spid != null)
-      this.attribute(
-        'spid',
-        spid,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (spid != null) this.attribute('spid', spid);
     children?.call(this);
   }
 }
@@ -622,12 +569,7 @@ extension P_CT_TLTriggerTimeNodeID_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -657,12 +599,7 @@ extension P_CT_TLTriggerRuntimeNode_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     P_ST_TLTriggerRuntimeNode? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -692,12 +629,7 @@ extension P_CT_TLTimeCondition_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     P_ST_TLTriggerEvent? evt,
   ) {
-    if (evt != null)
-      this.attribute(
-        'evt',
-        evt!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (evt != null) this.attribute('evt', evt!.value);
     children?.call(this);
   }
 }
@@ -847,108 +779,29 @@ extension P_CT_TLCommonTimeNodeData_Builder on _i1.XmlBuilder {
     P_ST_TLTimeNodeType? nodeType,
     bool? nodePh,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (presetID != null)
-      this.attribute(
-        'presetID',
-        presetID.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (presetClass != null)
-      this.attribute(
-        'presetClass',
-        presetClass!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (id != null) this.attribute('id', id);
+    if (presetID != null) this.attribute('presetID', presetID.toString());
+    if (presetClass != null) this.attribute('presetClass', presetClass!.value);
     if (presetSubtype != null)
-      this.attribute(
-        'presetSubtype',
-        presetSubtype.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('presetSubtype', presetSubtype.toString());
     if (autoRev != null)
-      this.attribute(
-        'autoRev',
-        autoRev == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (restart != null)
-      this.attribute(
-        'restart',
-        restart!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (fill != null)
-      this.attribute(
-        'fill',
-        fill!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('autoRev', autoRev == true ? 'true' : 'false');
+    if (restart != null) this.attribute('restart', restart!.value);
+    if (fill != null) this.attribute('fill', fill!.value);
     if (syncBehavior != null)
-      this.attribute(
-        'syncBehavior',
-        syncBehavior!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (tmFilter != null)
-      this.attribute(
-        'tmFilter',
-        tmFilter,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (evtFilter != null)
-      this.attribute(
-        'evtFilter',
-        evtFilter,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('syncBehavior', syncBehavior!.value);
+    if (tmFilter != null) this.attribute('tmFilter', tmFilter);
+    if (evtFilter != null) this.attribute('evtFilter', evtFilter);
     if (display != null)
-      this.attribute(
-        'display',
-        display == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (masterRel != null)
-      this.attribute(
-        'masterRel',
-        masterRel!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (bldLvl != null)
-      this.attribute(
-        'bldLvl',
-        bldLvl.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (grpId != null)
-      this.attribute(
-        'grpId',
-        grpId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('display', display == true ? 'true' : 'false');
+    if (masterRel != null) this.attribute('masterRel', masterRel!.value);
+    if (bldLvl != null) this.attribute('bldLvl', bldLvl.toString());
+    if (grpId != null) this.attribute('grpId', grpId.toString());
     if (afterEffect != null)
-      this.attribute(
-        'afterEffect',
-        afterEffect == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (nodeType != null)
-      this.attribute(
-        'nodeType',
-        nodeType!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('afterEffect', afterEffect == true ? 'true' : 'false');
+    if (nodeType != null) this.attribute('nodeType', nodeType!.value);
     if (nodePh != null)
-      this.attribute(
-        'nodePh',
-        nodePh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('nodePh', nodePh == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1008,23 +861,9 @@ extension P_CT_TLTimeNodeSequence_Builder on _i1.XmlBuilder {
     P_ST_TLNextActionType? nextAc,
   ) {
     if (concurrent != null)
-      this.attribute(
-        'concurrent',
-        concurrent == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (prevAc != null)
-      this.attribute(
-        'prevAc',
-        prevAc!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (nextAc != null)
-      this.attribute(
-        'nextAc',
-        nextAc!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('concurrent', concurrent == true ? 'true' : 'false');
+    if (prevAc != null) this.attribute('prevAc', prevAc!.value);
+    if (nextAc != null) this.attribute('nextAc', nextAc!.value);
     children?.call(this);
   }
 }
@@ -1138,54 +977,14 @@ extension P_CT_TLCommonBehaviorData_Builder on _i1.XmlBuilder {
     String? rctx,
     P_ST_TLBehaviorOverrideType? override,
   ) {
-    if (additive != null)
-      this.attribute(
-        'additive',
-        additive!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (accumulate != null)
-      this.attribute(
-        'accumulate',
-        accumulate!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (xfrmType != null)
-      this.attribute(
-        'xfrmType',
-        xfrmType!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (from != null)
-      this.attribute(
-        'from',
-        from,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (to != null)
-      this.attribute(
-        'to',
-        to,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (by != null)
-      this.attribute(
-        'by',
-        by,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (rctx != null)
-      this.attribute(
-        'rctx',
-        rctx,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (override != null)
-      this.attribute(
-        'override',
-        override!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (additive != null) this.attribute('additive', additive!.value);
+    if (accumulate != null) this.attribute('accumulate', accumulate!.value);
+    if (xfrmType != null) this.attribute('xfrmType', xfrmType!.value);
+    if (from != null) this.attribute('from', from);
+    if (to != null) this.attribute('to', to);
+    if (by != null) this.attribute('by', by);
+    if (rctx != null) this.attribute('rctx', rctx);
+    if (override != null) this.attribute('override', override!.value);
     children?.call(this);
   }
 }
@@ -1212,12 +1011,7 @@ extension P_CT_TLAnimVariantBooleanVal_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1244,12 +1038,7 @@ extension P_CT_TLAnimVariantIntegerVal_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -1276,12 +1065,7 @@ extension P_CT_TLAnimVariantFloatVal_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, double? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -1308,12 +1092,7 @@ extension P_CT_TLAnimVariantStringVal_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1365,12 +1144,7 @@ extension P_CT_TLTimeAnimateValue_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? fmla) {
-    if (fmla != null)
-      this.attribute(
-        'fmla',
-        fmla,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (fmla != null) this.attribute('fmla', fmla);
     children?.call(this);
   }
 }
@@ -1433,36 +1207,11 @@ extension P_CT_TLAnimateBehavior_Builder on _i1.XmlBuilder {
     P_ST_TLAnimateBehaviorCalcMode? calcmode,
     P_ST_TLAnimateBehaviorValueType? valueType,
   ) {
-    if (by != null)
-      this.attribute(
-        'by',
-        by,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (from != null)
-      this.attribute(
-        'from',
-        from,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (to != null)
-      this.attribute(
-        'to',
-        to,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (calcmode != null)
-      this.attribute(
-        'calcmode',
-        calcmode!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (valueType != null)
-      this.attribute(
-        'valueType',
-        valueType!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (by != null) this.attribute('by', by);
+    if (from != null) this.attribute('from', from);
+    if (to != null) this.attribute('to', to);
+    if (calcmode != null) this.attribute('calcmode', calcmode!.value);
+    if (valueType != null) this.attribute('valueType', valueType!.value);
     children?.call(this);
   }
 }
@@ -1514,12 +1263,7 @@ extension P_CT_TLByHslColorTransform_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? h) {
-    if (h != null)
-      this.attribute(
-        'h',
-        h,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (h != null) this.attribute('h', h);
     children?.call(this);
   }
 }
@@ -1576,18 +1320,8 @@ extension P_CT_TLAnimateColorBehavior_Builder on _i1.XmlBuilder {
     P_ST_TLAnimateColorSpace? clrSpc,
     P_ST_TLAnimateColorDirection? dir,
   ) {
-    if (clrSpc != null)
-      this.attribute(
-        'clrSpc',
-        clrSpc!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (clrSpc != null) this.attribute('clrSpc', clrSpc!.value);
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -1621,24 +1355,9 @@ extension P_CT_TLAnimateEffectBehavior_Builder on _i1.XmlBuilder {
     String? filter,
     String? prLst,
   ) {
-    if (transition != null)
-      this.attribute(
-        'transition',
-        transition!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (filter != null)
-      this.attribute(
-        'filter',
-        filter,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (prLst != null)
-      this.attribute(
-        'prLst',
-        prLst,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (transition != null) this.attribute('transition', transition!.value);
+    if (filter != null) this.attribute('filter', filter);
+    if (prLst != null) this.attribute('prLst', prLst);
     children?.call(this);
   }
 }
@@ -1701,36 +1420,12 @@ extension P_CT_TLAnimateMotionBehavior_Builder on _i1.XmlBuilder {
     String? rAng,
     String? ptsTypes,
   ) {
-    if (origin != null)
-      this.attribute(
-        'origin',
-        origin!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (path != null)
-      this.attribute(
-        'path',
-        path,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (origin != null) this.attribute('origin', origin!.value);
+    if (path != null) this.attribute('path', path);
     if (pathEditMode != null)
-      this.attribute(
-        'pathEditMode',
-        pathEditMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (rAng != null)
-      this.attribute(
-        'rAng',
-        rAng,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (ptsTypes != null)
-      this.attribute(
-        'ptsTypes',
-        ptsTypes,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('pathEditMode', pathEditMode!.value);
+    if (rAng != null) this.attribute('rAng', rAng);
+    if (ptsTypes != null) this.attribute('ptsTypes', ptsTypes);
     children?.call(this);
   }
 }
@@ -1764,24 +1459,9 @@ extension P_CT_TLAnimateRotationBehavior_Builder on _i1.XmlBuilder {
     String? from,
     String? to,
   ) {
-    if (by != null)
-      this.attribute(
-        'by',
-        by,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (from != null)
-      this.attribute(
-        'from',
-        from,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (to != null)
-      this.attribute(
-        'to',
-        to,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (by != null) this.attribute('by', by);
+    if (from != null) this.attribute('from', from);
+    if (to != null) this.attribute('to', to);
     children?.call(this);
   }
 }
@@ -1809,11 +1489,7 @@ extension P_CT_TLAnimateScaleBehavior_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? zoomContents) {
     if (zoomContents != null)
-      this.attribute(
-        'zoomContents',
-        zoomContents == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('zoomContents', zoomContents == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1845,18 +1521,8 @@ extension P_CT_TLCommandBehavior_Builder on _i1.XmlBuilder {
     P_ST_TLCommandType? type,
     String? cmd,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (cmd != null)
-      this.attribute(
-        'cmd',
-        cmd,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (cmd != null) this.attribute('cmd', cmd);
     children?.call(this);
   }
 }
@@ -1915,23 +1581,12 @@ extension P_CT_TLCommonMediaNodeData_Builder on _i1.XmlBuilder {
     int? numSld,
     bool? showWhenStopped,
   ) {
-    if (mute != null)
-      this.attribute(
-        'mute',
-        mute == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (numSld != null)
-      this.attribute(
-        'numSld',
-        numSld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (mute != null) this.attribute('mute', mute == true ? 'true' : 'false');
+    if (numSld != null) this.attribute('numSld', numSld.toString());
     if (showWhenStopped != null)
       this.attribute(
         'showWhenStopped',
         showWhenStopped == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     children?.call(this);
   }
@@ -1960,11 +1615,7 @@ extension P_CT_TLMediaNodeAudio_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? isNarration) {
     if (isNarration != null)
-      this.attribute(
-        'isNarration',
-        isNarration == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('isNarration', isNarration == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1992,11 +1643,7 @@ extension P_CT_TLMediaNodeVideo_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? fullScrn) {
     if (fullScrn != null)
-      this.attribute(
-        'fullScrn',
-        fullScrn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('fullScrn', fullScrn == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2023,12 +1670,7 @@ extension P_CT_TLTemplate_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? lvl) {
-    if (lvl != null)
-      this.attribute(
-        'lvl',
-        lvl.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (lvl != null) this.attribute('lvl', lvl.toString());
     children?.call(this);
   }
 }
@@ -2091,36 +1733,16 @@ extension P_CT_TLBuildParagraph_Builder on _i1.XmlBuilder {
     bool? autoUpdateAnimBg,
     bool? rev,
   ) {
-    if (build != null)
-      this.attribute(
-        'build',
-        build!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (bldLvl != null)
-      this.attribute(
-        'bldLvl',
-        bldLvl.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (build != null) this.attribute('build', build!.value);
+    if (bldLvl != null) this.attribute('bldLvl', bldLvl.toString());
     if (animBg != null)
-      this.attribute(
-        'animBg',
-        animBg == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('animBg', animBg == true ? 'true' : 'false');
     if (autoUpdateAnimBg != null)
       this.attribute(
         'autoUpdateAnimBg',
         autoUpdateAnimBg == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
-    if (rev != null)
-      this.attribute(
-        'rev',
-        rev == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (rev != null) this.attribute('rev', rev == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2150,12 +1772,7 @@ extension P_CT_TLBuildDiagram_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     P_ST_TLDiagramBuildType? bld,
   ) {
-    if (bld != null)
-      this.attribute(
-        'bld',
-        bld!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (bld != null) this.attribute('bld', bld!.value);
     children?.call(this);
   }
 }
@@ -2187,18 +1804,9 @@ extension P_CT_TLOleBuildChart_Builder on _i1.XmlBuilder {
     P_ST_TLOleChartBuildType? bld,
     bool? animBg,
   ) {
-    if (bld != null)
-      this.attribute(
-        'bld',
-        bld!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (bld != null) this.attribute('bld', bld!.value);
     if (animBg != null)
-      this.attribute(
-        'animBg',
-        animBg == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('animBg', animBg == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2330,18 +1938,8 @@ extension P_CT_IndexRange_Builder on _i1.XmlBuilder {
     String? st,
     String? end,
   ) {
-    if (st != null)
-      this.attribute(
-        'st',
-        st,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (end != null)
-      this.attribute(
-        'end',
-        end,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (st != null) this.attribute('st', st);
+    if (end != null) this.attribute('end', end);
     children?.call(this);
   }
 }
@@ -2351,6 +1949,7 @@ extension P_CT_SlideRelationshipListEntry_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2358,15 +1957,22 @@ extension P_CT_SlideRelationshipListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -2418,12 +2024,7 @@ extension P_CT_CustomShowId_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? id) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
     children?.call(this);
   }
 }
@@ -2433,6 +2034,7 @@ extension P_CT_CustomerData_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2440,15 +2042,22 @@ extension P_CT_CustomerData_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -2458,6 +2067,7 @@ extension P_CT_TagsData_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2465,15 +2075,22 @@ extension P_CT_TagsData_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -2525,12 +2142,7 @@ extension P_CT_Extension_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? uri) {
-    if (uri != null)
-      this.attribute(
-        'uri',
-        uri,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (uri != null) this.attribute('uri', uri);
     children?.call(this);
   }
 }
@@ -2582,12 +2194,7 @@ extension P_CT_ExtensionListModify_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? mod) {
-    if (mod != null)
-      this.attribute(
-        'mod',
-        mod == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (mod != null) this.attribute('mod', mod == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2625,36 +2232,11 @@ extension P_CT_CommentAuthor_Builder on _i1.XmlBuilder {
     int? lastIdx,
     int? clrIdx,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (initials != null)
-      this.attribute(
-        'initials',
-        initials,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (lastIdx != null)
-      this.attribute(
-        'lastIdx',
-        lastIdx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (clrIdx != null)
-      this.attribute(
-        'clrIdx',
-        clrIdx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (name != null) this.attribute('name', name);
+    if (initials != null) this.attribute('initials', initials);
+    if (lastIdx != null) this.attribute('lastIdx', lastIdx.toString());
+    if (clrIdx != null) this.attribute('clrIdx', clrIdx.toString());
     children?.call(this);
   }
 }
@@ -2713,24 +2295,9 @@ extension P_CT_Comment_Builder on _i1.XmlBuilder {
     String? dt,
     String? idx,
   ) {
-    if (authorId != null)
-      this.attribute(
-        'authorId',
-        authorId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (dt != null)
-      this.attribute(
-        'dt',
-        dt,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (authorId != null) this.attribute('authorId', authorId.toString());
+    if (dt != null) this.attribute('dt', dt);
+    if (idx != null) this.attribute('idx', idx);
     children?.call(this);
   }
 }
@@ -2786,11 +2353,7 @@ extension P_CT_OleObjectEmbed_Builder on _i1.XmlBuilder {
     P_ST_OleObjectFollowColorScheme? followColorScheme,
   ) {
     if (followColorScheme != null)
-      this.attribute(
-        'followColorScheme',
-        followColorScheme!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('followColorScheme', followColorScheme!.value);
     children?.call(this);
   }
 }
@@ -2821,7 +2384,6 @@ extension P_CT_OleObjectLink_Builder on _i1.XmlBuilder {
       this.attribute(
         'updateAutomatic',
         updateAutomatic == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     children?.call(this);
   }
@@ -2849,12 +2411,7 @@ extension P_CT_OleObject_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? progId) {
-    if (progId != null)
-      this.attribute(
-        'progId',
-        progId,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (progId != null) this.attribute('progId', progId);
     children?.call(this);
   }
 }
@@ -2915,6 +2472,7 @@ extension P_CT_SlideIdListEntry_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
     String? id,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2922,20 +2480,26 @@ extension P_CT_SlideIdListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, id);
+          _buildBody(children, id, r_id);
         },
       );
     } else {
-      _buildBody(children, id);
+      _buildBody(children, id, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? id) {
-    if (id != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? id,
+    String? r_id,
+  ) {
+    if (id != null) this.attribute('id', id);
+    if (r_id != null)
       this.attribute(
         'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -2972,6 +2536,7 @@ extension P_CT_SlideMasterIdListEntry_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
     String? id,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2979,20 +2544,26 @@ extension P_CT_SlideMasterIdListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, id);
+          _buildBody(children, id, r_id);
         },
       );
     } else {
-      _buildBody(children, id);
+      _buildBody(children, id, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? id) {
-    if (id != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? id,
+    String? r_id,
+  ) {
+    if (id != null) this.attribute('id', id);
+    if (r_id != null)
       this.attribute(
         'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -3028,6 +2599,7 @@ extension P_CT_NotesMasterIdListEntry_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3035,15 +2607,22 @@ extension P_CT_NotesMasterIdListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3078,6 +2657,7 @@ extension P_CT_HandoutMasterIdListEntry_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3085,15 +2665,22 @@ extension P_CT_HandoutMasterIdListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3128,6 +2715,7 @@ extension P_CT_EmbeddedFontDataId_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3135,15 +2723,22 @@ extension P_CT_EmbeddedFontDataId_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3203,6 +2798,7 @@ extension P_CT_SmartTags_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3210,15 +2806,22 @@ extension P_CT_SmartTags_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3246,18 +2849,8 @@ extension P_CT_CustomShow_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name, int? id) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (id != null) this.attribute('id', id.toString());
     children?.call(this);
   }
 }
@@ -3318,30 +2911,11 @@ extension P_CT_PhotoAlbum_Builder on _i1.XmlBuilder {
     P_ST_PhotoAlbumLayout? layout,
     P_ST_PhotoAlbumFrameShape? frame,
   ) {
-    if (bw != null)
-      this.attribute(
-        'bw',
-        bw == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (bw != null) this.attribute('bw', bw == true ? 'true' : 'false');
     if (showCaptions != null)
-      this.attribute(
-        'showCaptions',
-        showCaptions == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (layout != null)
-      this.attribute(
-        'layout',
-        layout!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (frame != null)
-      this.attribute(
-        'frame',
-        frame!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showCaptions', showCaptions == true ? 'true' : 'false');
+    if (layout != null) this.attribute('layout', layout!.value);
+    if (frame != null) this.attribute('frame', frame!.value);
     children?.call(this);
   }
 }
@@ -3375,24 +2949,9 @@ extension P_CT_SlideSize_Builder on _i1.XmlBuilder {
     String? cy,
     P_ST_SlideSizeType? type,
   ) {
-    if (cx != null)
-      this.attribute(
-        'cx',
-        cx,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (cy != null)
-      this.attribute(
-        'cy',
-        cy,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (cx != null) this.attribute('cx', cx);
+    if (cy != null) this.attribute('cy', cy);
+    if (type != null) this.attribute('type', type!.value);
     children?.call(this);
   }
 }
@@ -3426,24 +2985,9 @@ extension P_CT_Kinsoku_Builder on _i1.XmlBuilder {
     String? invalStChars,
     String? invalEndChars,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (invalStChars != null)
-      this.attribute(
-        'invalStChars',
-        invalStChars,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (invalEndChars != null)
-      this.attribute(
-        'invalEndChars',
-        invalEndChars,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (invalStChars != null) this.attribute('invalStChars', invalStChars);
+    if (invalEndChars != null) this.attribute('invalEndChars', invalEndChars);
     children?.call(this);
   }
 }
@@ -3539,102 +3083,29 @@ extension P_CT_ModifyVerifier_Builder on _i1.XmlBuilder {
     int? cryptProviderTypeExt,
     String? cryptProviderTypeExtSource,
   ) {
-    if (algorithmName != null)
-      this.attribute(
-        'algorithmName',
-        algorithmName,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (hashValue != null)
-      this.attribute(
-        'hashValue',
-        hashValue,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (saltValue != null)
-      this.attribute(
-        'saltValue',
-        saltValue,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (spinValue != null)
-      this.attribute(
-        'spinValue',
-        spinValue.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (algorithmName != null) this.attribute('algorithmName', algorithmName);
+    if (hashValue != null) this.attribute('hashValue', hashValue);
+    if (saltValue != null) this.attribute('saltValue', saltValue);
+    if (spinValue != null) this.attribute('spinValue', spinValue.toString());
     if (cryptProviderType != null)
-      this.attribute(
-        'cryptProviderType',
-        cryptProviderType!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptProviderType', cryptProviderType!.value);
     if (cryptAlgorithmClass != null)
-      this.attribute(
-        'cryptAlgorithmClass',
-        cryptAlgorithmClass!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptAlgorithmClass', cryptAlgorithmClass!.value);
     if (cryptAlgorithmType != null)
-      this.attribute(
-        'cryptAlgorithmType',
-        cryptAlgorithmType!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptAlgorithmType', cryptAlgorithmType!.value);
     if (cryptAlgorithmSid != null)
-      this.attribute(
-        'cryptAlgorithmSid',
-        cryptAlgorithmSid.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (spinCount != null)
-      this.attribute(
-        'spinCount',
-        spinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (saltData != null)
-      this.attribute(
-        'saltData',
-        saltData,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (hashData != null)
-      this.attribute(
-        'hashData',
-        hashData,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (cryptProvider != null)
-      this.attribute(
-        'cryptProvider',
-        cryptProvider,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (algIdExt != null)
-      this.attribute(
-        'algIdExt',
-        algIdExt.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptAlgorithmSid', cryptAlgorithmSid.toString());
+    if (spinCount != null) this.attribute('spinCount', spinCount.toString());
+    if (saltData != null) this.attribute('saltData', saltData);
+    if (hashData != null) this.attribute('hashData', hashData);
+    if (cryptProvider != null) this.attribute('cryptProvider', cryptProvider);
+    if (algIdExt != null) this.attribute('algIdExt', algIdExt.toString());
     if (algIdExtSource != null)
-      this.attribute(
-        'algIdExtSource',
-        algIdExtSource,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('algIdExtSource', algIdExtSource);
     if (cryptProviderTypeExt != null)
-      this.attribute(
-        'cryptProviderTypeExt',
-        cryptProviderTypeExt.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptProviderTypeExt', cryptProviderTypeExt.toString());
     if (cryptProviderTypeExtSource != null)
-      this.attribute(
-        'cryptProviderTypeExtSource',
-        cryptProviderTypeExtSource,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('cryptProviderTypeExtSource', cryptProviderTypeExtSource);
     children?.call(this);
   }
 }
@@ -3711,71 +3182,43 @@ extension P_CT_Presentation_Builder on _i1.XmlBuilder {
     ST_ConformanceClass? conformance,
   ) {
     if (firstSlideNum != null)
-      this.attribute(
-        'firstSlideNum',
-        firstSlideNum.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('firstSlideNum', firstSlideNum.toString());
     if (showSpecialPlsOnTitleSld != null)
       this.attribute(
         'showSpecialPlsOnTitleSld',
         showSpecialPlsOnTitleSld == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
-    if (rtl != null)
-      this.attribute(
-        'rtl',
-        rtl == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (rtl != null) this.attribute('rtl', rtl == true ? 'true' : 'false');
     if (removePersonalInfoOnSave != null)
       this.attribute(
         'removePersonalInfoOnSave',
         removePersonalInfoOnSave == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (compatMode != null)
-      this.attribute(
-        'compatMode',
-        compatMode == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('compatMode', compatMode == true ? 'true' : 'false');
     if (strictFirstAndLastChars != null)
       this.attribute(
         'strictFirstAndLastChars',
         strictFirstAndLastChars == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (embedTrueTypeFonts != null)
       this.attribute(
         'embedTrueTypeFonts',
         embedTrueTypeFonts == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (saveSubsetFonts != null)
       this.attribute(
         'saveSubsetFonts',
         saveSubsetFonts == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (autoCompressPictures != null)
       this.attribute(
         'autoCompressPictures',
         autoCompressPictures == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (bookmarkIdSeed != null)
-      this.attribute(
-        'bookmarkIdSeed',
-        bookmarkIdSeed,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (conformance != null)
-      this.attribute(
-        'conformance',
-        conformance!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('bookmarkIdSeed', bookmarkIdSeed);
+    if (conformance != null) this.attribute('conformance', conformance!.value);
     children?.call(this);
   }
 }
@@ -3788,6 +3231,7 @@ extension P_CT_HtmlPublishProperties_Builder on _i1.XmlBuilder {
     bool? showSpeakerNotes,
     String? target,
     String? title,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3795,11 +3239,11 @@ extension P_CT_HtmlPublishProperties_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, showSpeakerNotes, target, title);
+          _buildBody(children, showSpeakerNotes, target, title, r_id);
         },
       );
     } else {
-      _buildBody(children, showSpeakerNotes, target, title);
+      _buildBody(children, showSpeakerNotes, target, title, r_id);
     }
   }
 
@@ -3808,24 +3252,21 @@ extension P_CT_HtmlPublishProperties_Builder on _i1.XmlBuilder {
     bool? showSpeakerNotes,
     String? target,
     String? title,
+    String? r_id,
   ) {
     if (showSpeakerNotes != null)
       this.attribute(
         'showSpeakerNotes',
         showSpeakerNotes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
-    if (target != null)
+    if (target != null) this.attribute('target', target);
+    if (title != null) this.attribute('title', title);
+    if (r_id != null)
       this.attribute(
-        'target',
-        target,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (title != null)
-      this.attribute(
-        'title',
-        title,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -3895,59 +3336,29 @@ extension P_CT_WebProperties_Builder on _i1.XmlBuilder {
     P_ST_WebColorType? clr,
   ) {
     if (showAnimation != null)
-      this.attribute(
-        'showAnimation',
-        showAnimation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showAnimation', showAnimation == true ? 'true' : 'false');
     if (resizeGraphics != null)
       this.attribute(
         'resizeGraphics',
         resizeGraphics == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (allowPng != null)
-      this.attribute(
-        'allowPng',
-        allowPng == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('allowPng', allowPng == true ? 'true' : 'false');
     if (relyOnVml != null)
-      this.attribute(
-        'relyOnVml',
-        relyOnVml == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('relyOnVml', relyOnVml == true ? 'true' : 'false');
     if (organizeInFolders != null)
       this.attribute(
         'organizeInFolders',
         organizeInFolders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (useLongFilenames != null)
       this.attribute(
         'useLongFilenames',
         useLongFilenames == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
-    if (imgSz != null)
-      this.attribute(
-        'imgSz',
-        imgSz!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (encoding != null)
-      this.attribute(
-        'encoding',
-        encoding,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (clr != null)
-      this.attribute(
-        'clr',
-        clr!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (imgSz != null) this.attribute('imgSz', imgSz!.value);
+    if (encoding != null) this.attribute('encoding', encoding);
+    if (clr != null) this.attribute('clr', clr!.value);
     children?.call(this);
   }
 }
@@ -3999,36 +3410,17 @@ extension P_CT_PrintProperties_Builder on _i1.XmlBuilder {
     bool? scaleToFitPaper,
     bool? frameSlides,
   ) {
-    if (prnWhat != null)
-      this.attribute(
-        'prnWhat',
-        prnWhat!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (clrMode != null)
-      this.attribute(
-        'clrMode',
-        clrMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (prnWhat != null) this.attribute('prnWhat', prnWhat!.value);
+    if (clrMode != null) this.attribute('clrMode', clrMode!.value);
     if (hiddenSlides != null)
-      this.attribute(
-        'hiddenSlides',
-        hiddenSlides == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('hiddenSlides', hiddenSlides == true ? 'true' : 'false');
     if (scaleToFitPaper != null)
       this.attribute(
         'scaleToFitPaper',
         scaleToFitPaper == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (frameSlides != null)
-      this.attribute(
-        'frameSlides',
-        frameSlides == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('frameSlides', frameSlides == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4056,11 +3448,7 @@ extension P_CT_ShowInfoBrowse_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? showScrollbar) {
     if (showScrollbar != null)
-      this.attribute(
-        'showScrollbar',
-        showScrollbar == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showScrollbar', showScrollbar == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4087,12 +3475,7 @@ extension P_CT_ShowInfoKiosk_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? restart) {
-    if (restart != null)
-      this.attribute(
-        'restart',
-        restart.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (restart != null) this.attribute('restart', restart.toString());
     children?.call(this);
   }
 }
@@ -4128,30 +3511,13 @@ extension P_CT_ShowProperties_Builder on _i1.XmlBuilder {
     bool? showAnimation,
     bool? useTimings,
   ) {
-    if (loop != null)
-      this.attribute(
-        'loop',
-        loop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (loop != null) this.attribute('loop', loop == true ? 'true' : 'false');
     if (showNarration != null)
-      this.attribute(
-        'showNarration',
-        showNarration == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showNarration', showNarration == true ? 'true' : 'false');
     if (showAnimation != null)
-      this.attribute(
-        'showAnimation',
-        showAnimation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showAnimation', showAnimation == true ? 'true' : 'false');
     if (useTimings != null)
-      this.attribute(
-        'useTimings',
-        useTimings == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('useTimings', useTimings == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4213,29 +3579,10 @@ extension P_CT_HeaderFooter_Builder on _i1.XmlBuilder {
     bool? dt,
   ) {
     if (sldNum != null)
-      this.attribute(
-        'sldNum',
-        sldNum == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (hdr != null)
-      this.attribute(
-        'hdr',
-        hdr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (ftr != null)
-      this.attribute(
-        'ftr',
-        ftr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (dt != null)
-      this.attribute(
-        'dt',
-        dt == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('sldNum', sldNum == true ? 'true' : 'false');
+    if (hdr != null) this.attribute('hdr', hdr == true ? 'true' : 'false');
+    if (ftr != null) this.attribute('ftr', ftr == true ? 'true' : 'false');
+    if (dt != null) this.attribute('dt', dt == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4273,35 +3620,14 @@ extension P_CT_Placeholder_Builder on _i1.XmlBuilder {
     int? idx,
     bool? hasCustomPrompt,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (orient != null)
-      this.attribute(
-        'orient',
-        orient!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (sz != null)
-      this.attribute(
-        'sz',
-        sz!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (orient != null) this.attribute('orient', orient!.value);
+    if (sz != null) this.attribute('sz', sz!.value);
+    if (idx != null) this.attribute('idx', idx.toString());
     if (hasCustomPrompt != null)
       this.attribute(
         'hasCustomPrompt',
         hasCustomPrompt == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     children?.call(this);
   }
@@ -4335,17 +3661,9 @@ extension P_CT_ApplicationNonVisualDrawingProps_Builder on _i1.XmlBuilder {
     bool? userDrawn,
   ) {
     if (isPhoto != null)
-      this.attribute(
-        'isPhoto',
-        isPhoto == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('isPhoto', isPhoto == true ? 'true' : 'false');
     if (userDrawn != null)
-      this.attribute(
-        'userDrawn',
-        userDrawn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('userDrawn', userDrawn == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4398,11 +3716,7 @@ extension P_CT_Shape_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? useBgFill) {
     if (useBgFill != null)
-      this.attribute(
-        'useBgFill',
-        useBgFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('useBgFill', useBgFill == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4557,12 +3871,7 @@ extension P_CT_GraphicalObjectFrame_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_BlackWhiteMode? bwMode,
   ) {
-    if (bwMode != null)
-      this.attribute(
-        'bwMode',
-        bwMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (bwMode != null) this.attribute('bwMode', bwMode!.value);
     children?.call(this);
   }
 }
@@ -4622,6 +3931,7 @@ extension P_CT_Rel_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -4629,15 +3939,22 @@ extension P_CT_Rel_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -4665,11 +3982,7 @@ extension P_CT_BackgroundProperties_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? shadeToTitle) {
     if (shadeToTitle != null)
-      this.attribute(
-        'shadeToTitle',
-        shadeToTitle == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('shadeToTitle', shadeToTitle == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4699,12 +4012,7 @@ extension P_CT_Background_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_BlackWhiteMode? bwMode,
   ) {
-    if (bwMode != null)
-      this.attribute(
-        'bwMode',
-        bwMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (bwMode != null) this.attribute('bwMode', bwMode!.value);
     children?.call(this);
   }
 }
@@ -4731,12 +4039,7 @@ extension P_CT_CommonSlideData_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -4763,12 +4066,7 @@ extension P_CT_Slide_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? show_) {
-    if (show_ != null)
-      this.attribute(
-        'show',
-        show_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (show_ != null) this.attribute('show', show_ == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4804,30 +4102,12 @@ extension P_CT_SlideLayout_Builder on _i1.XmlBuilder {
     bool? preserve,
     bool? userDrawn,
   ) {
-    if (matchingName != null)
-      this.attribute(
-        'matchingName',
-        matchingName,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (matchingName != null) this.attribute('matchingName', matchingName);
+    if (type != null) this.attribute('type', type!.value);
     if (preserve != null)
-      this.attribute(
-        'preserve',
-        preserve == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('preserve', preserve == true ? 'true' : 'false');
     if (userDrawn != null)
-      this.attribute(
-        'userDrawn',
-        userDrawn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('userDrawn', userDrawn == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4863,6 +4143,7 @@ extension P_CT_SlideLayoutIdListEntry_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
     String? id,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -4870,20 +4151,26 @@ extension P_CT_SlideLayoutIdListEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, id);
+          _buildBody(children, id, r_id);
         },
       );
     } else {
-      _buildBody(children, id);
+      _buildBody(children, id, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? id) {
-    if (id != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? id,
+    String? r_id,
+  ) {
+    if (id != null) this.attribute('id', id);
+    if (r_id != null)
       this.attribute(
         'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -4937,11 +4224,7 @@ extension P_CT_SlideMaster_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? preserve) {
     if (preserve != null)
-      this.attribute(
-        'preserve',
-        preserve == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('preserve', preserve == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5060,24 +4343,11 @@ extension P_CT_SlideSyncProperties_Builder on _i1.XmlBuilder {
     String? serverSldModifiedTime,
     String? clientInsertedTime,
   ) {
-    if (serverSldId != null)
-      this.attribute(
-        'serverSldId',
-        serverSldId,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (serverSldId != null) this.attribute('serverSldId', serverSldId);
     if (serverSldModifiedTime != null)
-      this.attribute(
-        'serverSldModifiedTime',
-        serverSldModifiedTime,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('serverSldModifiedTime', serverSldModifiedTime);
     if (clientInsertedTime != null)
-      this.attribute(
-        'clientInsertedTime',
-        clientInsertedTime,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('clientInsertedTime', clientInsertedTime);
     children?.call(this);
   }
 }
@@ -5109,18 +4379,8 @@ extension P_CT_StringTag_Builder on _i1.XmlBuilder {
     String? name,
     String? val,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -5173,11 +4433,7 @@ extension P_CT_NormalViewPortion_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? autoAdjust) {
     if (autoAdjust != null)
-      this.attribute(
-        'autoAdjust',
-        autoAdjust == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('autoAdjust', autoAdjust == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5233,31 +4489,20 @@ extension P_CT_NormalViewProperties_Builder on _i1.XmlBuilder {
       this.attribute(
         'showOutlineIcons',
         showOutlineIcons == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (snapVertSplitter != null)
       this.attribute(
         'snapVertSplitter',
         snapVertSplitter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     if (vertBarState != null)
-      this.attribute(
-        'vertBarState',
-        vertBarState!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('vertBarState', vertBarState!.value);
     if (horzBarState != null)
-      this.attribute(
-        'horzBarState',
-        horzBarState!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('horzBarState', horzBarState!.value);
     if (preferSingleView != null)
       this.attribute(
         'preferSingleView',
         preferSingleView == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     children?.call(this);
   }
@@ -5286,11 +4531,7 @@ extension P_CT_CommonViewProperties_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? varScale) {
     if (varScale != null)
-      this.attribute(
-        'varScale',
-        varScale == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('varScale', varScale == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5325,6 +4566,7 @@ extension P_CT_OutlineViewSlideEntry_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/presentationml/2006/main',
+    String? r_id,
     bool? collapse,
     void Function(XmlBuilder)? children,
   }) {
@@ -5333,21 +4575,28 @@ extension P_CT_OutlineViewSlideEntry_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, collapse);
+          _buildBody(children, r_id, collapse);
         },
       );
     } else {
-      _buildBody(children, collapse);
+      _buildBody(children, r_id, collapse);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, bool? collapse) {
-    if (collapse != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_id,
+    bool? collapse,
+  ) {
+    if (r_id != null)
       this.attribute(
-        'collapse',
-        collapse == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
+    if (collapse != null)
+      this.attribute('collapse', collapse == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5428,7 +4677,6 @@ extension P_CT_SlideSorterViewProperties_Builder on _i1.XmlBuilder {
       this.attribute(
         'showFormatting',
         showFormatting == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
       );
     children?.call(this);
   }
@@ -5456,12 +4704,7 @@ extension P_CT_Guide_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, P_ST_Direction? orient) {
-    if (orient != null)
-      this.attribute(
-        'orient',
-        orient!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (orient != null) this.attribute('orient', orient!.value);
     children?.call(this);
   }
 }
@@ -5521,23 +4764,11 @@ extension P_CT_CommonSlideViewProperties_Builder on _i1.XmlBuilder {
     bool? showGuides,
   ) {
     if (snapToGrid != null)
-      this.attribute(
-        'snapToGrid',
-        snapToGrid == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('snapToGrid', snapToGrid == true ? 'true' : 'false');
     if (snapToObjects != null)
-      this.attribute(
-        'snapToObjects',
-        snapToObjects == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('snapToObjects', snapToObjects == true ? 'true' : 'false');
     if (showGuides != null)
-      this.attribute(
-        'showGuides',
-        showGuides == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showGuides', showGuides == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5619,18 +4850,9 @@ extension P_CT_ViewProperties_Builder on _i1.XmlBuilder {
     P_ST_ViewType? lastView,
     bool? showComments,
   ) {
-    if (lastView != null)
-      this.attribute(
-        'lastView',
-        lastView!.value,
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+    if (lastView != null) this.attribute('lastView', lastView!.value);
     if (showComments != null)
-      this.attribute(
-        'showComments',
-        showComments == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/presentationml/2006/main',
-      );
+      this.attribute('showComments', showComments == true ? 'true' : 'false');
     children?.call(this);
   }
 }

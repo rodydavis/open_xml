@@ -1,5 +1,6 @@
 import 'package:file/file.dart';
 import 'package:logging/logging.dart';
+import 'package:open_xml/src/validate/validate.dart';
 import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/sml/sml_builder.g.dart';
 import 'package:xml/xml.dart';
@@ -101,6 +102,11 @@ class Workbook {
       target = target.substring(1);
     }
     return target;
+  }
+
+  /// Validates the workbook based on the current internal state.
+  (bool, List<String>) validate() {
+    return validateDirectory(_package.directory);
   }
 
   /// Adds a worksheet to the workbook.
@@ -593,6 +599,15 @@ class Workbook {
     }
 
     await _package.save(outputFile);
+
+    final (isValid, messages) = validate();
+    if (!isValid) {
+      _log.warning('Validation failed:');
+      for (final msg in messages) {
+        _log.warning(msg);
+      }
+    }
+
     _log.info('Workbook saved successfully');
   }
 }

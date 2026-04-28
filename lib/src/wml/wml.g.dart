@@ -9,8 +9,20 @@ import 'package:open_xml/src/dml/dml.g.dart';
 import 'package:open_xml/src/opc/opc.g.dart';
 import 'package:open_xml/src/shared/shared.g.dart';
 
-extension type W_CT_Empty(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type W_CT_OnOff(_i1.XmlElement node) implements _i1.XmlElement {}
+extension type W_CT_Empty(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_OnOff(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_LongHexNumber(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -19,7 +31,21 @@ extension type W_CT_LongHexNumber(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Charset(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -34,7 +60,13 @@ extension type W_CT_Charset(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_DecimalNumber(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -43,7 +75,21 @@ extension type W_CT_DecimalNumber(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_UnsignedDecimalNumber(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -52,13 +98,45 @@ extension type W_CT_UnsignedDecimalNumber(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DecimalNumberOrPrecent(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TwipsMeasure(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_SignedTwipsMeasure(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_PixelsMeasure(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -67,10 +145,36 @@ extension type W_CT_PixelsMeasure(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
-extension type W_CT_HpsMeasure(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_HpsMeasure(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_SignedHpsMeasure(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_MacroName(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -78,7 +182,21 @@ extension type W_CT_MacroName(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_String(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -86,8 +204,28 @@ extension type W_CT_String(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
-extension type W_CT_TextScale(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TextScale(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Highlight(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_HighlightColor get val {
     return W_ST_HighlightColor.fromValue(
@@ -98,7 +236,30 @@ extension type W_CT_Highlight(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_HighlightColor.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Color(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_ThemeColor? get themeColor {
     return node.getAttribute(
@@ -130,7 +291,23 @@ extension type W_CT_Color(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_themeColor = node.getAttribute(
+      'themeColor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeColor != null &&
+        W_ST_ThemeColor.fromValue(v_themeColor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeColor' in ${node.name.qualified}: $v_themeColor",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Lang(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -138,7 +315,21 @@ extension type W_CT_Lang(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Guid(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -146,7 +337,13 @@ extension type W_CT_Guid(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Underline(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Underline? get val {
     return node.getAttribute(
@@ -195,7 +392,32 @@ extension type W_CT_Underline(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Underline.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    final v_themeColor = node.getAttribute(
+      'themeColor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeColor != null &&
+        W_ST_ThemeColor.fromValue(v_themeColor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeColor' in ${node.name.qualified}: $v_themeColor",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TextEffect(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_TextEffect get val {
     return W_ST_TextEffect.fromValue(
@@ -206,7 +428,30 @@ extension type W_CT_TextEffect(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TextEffect.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Border(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Border get val {
     return W_ST_Border.fromValue(
@@ -262,7 +507,40 @@ extension type W_CT_Border(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Border.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    final v_themeColor = node.getAttribute(
+      'themeColor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeColor != null &&
+        W_ST_ThemeColor.fromValue(v_themeColor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeColor' in ${node.name.qualified}: $v_themeColor",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Shd(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Shd get val {
     return W_ST_Shd.fromValue(
@@ -335,7 +613,49 @@ extension type W_CT_Shd(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Shd.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    final v_themeColor = node.getAttribute(
+      'themeColor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeColor != null &&
+        W_ST_ThemeColor.fromValue(v_themeColor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeColor' in ${node.name.qualified}: $v_themeColor",
+      );
+    }
+    final v_themeFill = node.getAttribute(
+      'themeFill',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeFill != null && W_ST_ThemeColor.fromValue(v_themeFill) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeFill' in ${node.name.qualified}: $v_themeFill",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_VerticalAlignRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   ST_VerticalAlignRun get val {
@@ -347,7 +667,30 @@ extension type W_CT_VerticalAlignRun(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && ST_VerticalAlignRun.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FitText(_i1.XmlElement node) implements _i1.XmlElement {
   String? get id {
     return node.getAttribute(
@@ -355,7 +698,13 @@ extension type W_CT_FitText(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Em(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Em get val {
     return W_ST_Em.fromValue(
@@ -366,7 +715,30 @@ extension type W_CT_Em(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Em.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Language(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -388,7 +760,13 @@ extension type W_CT_Language(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_EastAsianLayout(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get id {
@@ -414,7 +792,23 @@ extension type W_CT_EastAsianLayout(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_combineBrackets = node.getAttribute(
+      'combineBrackets',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_combineBrackets != null &&
+        W_ST_CombineBrackets.fromValue(v_combineBrackets) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'combineBrackets' in ${node.name.qualified}: $v_combineBrackets",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FramePr(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_DropCap? get dropCap {
     return node.getAttribute(
@@ -541,7 +935,76 @@ extension type W_CT_FramePr(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_dropCap = node.getAttribute(
+      'dropCap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_dropCap != null && W_ST_DropCap.fromValue(v_dropCap) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'dropCap' in ${node.name.qualified}: $v_dropCap",
+      );
+    }
+    final v_wrap = node.getAttribute(
+      'wrap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_wrap != null && W_ST_Wrap.fromValue(v_wrap) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'wrap' in ${node.name.qualified}: $v_wrap",
+      );
+    }
+    final v_hAnchor = node.getAttribute(
+      'hAnchor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hAnchor != null && W_ST_HAnchor.fromValue(v_hAnchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hAnchor' in ${node.name.qualified}: $v_hAnchor",
+      );
+    }
+    final v_vAnchor = node.getAttribute(
+      'vAnchor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_vAnchor != null && W_ST_VAnchor.fromValue(v_vAnchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vAnchor' in ${node.name.qualified}: $v_vAnchor",
+      );
+    }
+    final v_xAlign = node.getAttribute(
+      'xAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_xAlign != null && ST_XAlign.fromValue(v_xAlign) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'xAlign' in ${node.name.qualified}: $v_xAlign",
+      );
+    }
+    final v_yAlign = node.getAttribute(
+      'yAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_yAlign != null && ST_YAlign.fromValue(v_yAlign) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'yAlign' in ${node.name.qualified}: $v_yAlign",
+      );
+    }
+    final v_hRule = node.getAttribute(
+      'hRule',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hRule != null && W_ST_HeightRule.fromValue(v_hRule) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hRule' in ${node.name.qualified}: $v_hRule",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TabStop(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_TabJc get val {
     return W_ST_TabJc.fromValue(
@@ -569,7 +1032,39 @@ extension type W_CT_TabStop(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TabJc.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    final v_leader = node.getAttribute(
+      'leader',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_leader != null && W_ST_TabTlc.fromValue(v_leader) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'leader' in ${node.name.qualified}: $v_leader",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Spacing(_i1.XmlElement node) implements _i1.XmlElement {
   String? get beforeLines {
     return node.getAttribute(
@@ -601,7 +1096,23 @@ extension type W_CT_Spacing(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_lineRule = node.getAttribute(
+      'lineRule',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_lineRule != null &&
+        W_ST_LineSpacingRule.fromValue(v_lineRule) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'lineRule' in ${node.name.qualified}: $v_lineRule",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Ind(_i1.XmlElement node) implements _i1.XmlElement {
   String? get startChars {
     return node.getAttribute(
@@ -644,7 +1155,13 @@ extension type W_CT_Ind(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Jc(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Jc get val {
     return W_ST_Jc.fromValue(
@@ -655,7 +1172,30 @@ extension type W_CT_Jc(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Jc.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_JcTable(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_JcTable get val {
     return W_ST_JcTable.fromValue(
@@ -666,7 +1206,30 @@ extension type W_CT_JcTable(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_JcTable.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_View(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_View get val {
     return W_ST_View.fromValue(
@@ -677,7 +1240,30 @@ extension type W_CT_View(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_View.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Zoom(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Zoom? get val {
     return node.getAttribute(
@@ -695,7 +1281,22 @@ extension type W_CT_Zoom(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Zoom.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_WritingStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get lang {
@@ -725,7 +1326,51 @@ extension type W_CT_WritingStyle(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'lang',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'lang' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'vendorID',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'vendorID' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute(
+          'dllVersion',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'dllVersion' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute(
+          'appName',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'appName' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Proof(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Proof? get spelling {
     return node.getAttribute(
@@ -760,7 +1405,31 @@ extension type W_CT_Proof(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_spelling = node.getAttribute(
+      'spelling',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_spelling != null && W_ST_Proof.fromValue(v_spelling) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'spelling' in ${node.name.qualified}: $v_spelling",
+      );
+    }
+    final v_grammar = node.getAttribute(
+      'grammar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_grammar != null && W_ST_Proof.fromValue(v_grammar) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'grammar' in ${node.name.qualified}: $v_grammar",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocType(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -768,7 +1437,21 @@ extension type W_CT_DocType(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocProtect(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_DocProtect? get edit {
     return node.getAttribute(
@@ -786,7 +1469,22 @@ extension type W_CT_DocProtect(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_edit = node.getAttribute(
+      'edit',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_edit != null && W_ST_DocProtect.fromValue(v_edit) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'edit' in ${node.name.qualified}: $v_edit",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMergeDocType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_MailMergeDocType get val {
@@ -798,7 +1496,30 @@ extension type W_CT_MailMergeDocType(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_MailMergeDocType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMergeDataType(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -807,7 +1528,21 @@ extension type W_CT_MailMergeDataType(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMergeDest(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_MailMergeDest get val {
@@ -819,7 +1554,30 @@ extension type W_CT_MailMergeDest(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_MailMergeDest.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMergeOdsoFMDFieldType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_MailMergeOdsoFMDFieldType get val {
@@ -831,9 +1589,39 @@ extension type W_CT_MailMergeOdsoFMDFieldType(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null &&
+        W_ST_MailMergeOdsoFMDFieldType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TrackChangesView(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Kinsoku(_i1.XmlElement node) implements _i1.XmlElement {
   String get lang {
     return node.getAttribute(
@@ -848,7 +1636,29 @@ extension type W_CT_Kinsoku(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'lang',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'lang' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TextDirection(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_TextDirection get val {
@@ -860,7 +1670,30 @@ extension type W_CT_TextDirection(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TextDirection.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TextAlignment(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_TextAlignment get val {
@@ -872,7 +1705,30 @@ extension type W_CT_TextAlignment(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TextAlignment.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Markup(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
     return node.getAttribute(
@@ -880,7 +1736,21 @@ extension type W_CT_Markup(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TrackChange(_i1.XmlElement node) implements _i1.XmlElement {
   String get author {
     return node.getAttribute(
@@ -895,7 +1765,23 @@ extension type W_CT_TrackChange(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'author',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'author' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CellMergeTrackChange(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_AnnotationVMerge? get vMerge {
@@ -931,7 +1817,32 @@ extension type W_CT_CellMergeTrackChange(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_vMerge = node.getAttribute(
+      'vMerge',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_vMerge != null && W_ST_AnnotationVMerge.fromValue(v_vMerge) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vMerge' in ${node.name.qualified}: $v_vMerge",
+      );
+    }
+    final v_vMergeOrig = node.getAttribute(
+      'vMergeOrig',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_vMergeOrig != null &&
+        W_ST_AnnotationVMerge.fromValue(v_vMergeOrig) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vMergeOrig' in ${node.name.qualified}: $v_vMergeOrig",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TrackChangeRange(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_DisplacedByCustomXml? get displacedByCustomXml {
@@ -950,7 +1861,23 @@ extension type W_CT_TrackChangeRange(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_displacedByCustomXml = node.getAttribute(
+      'displacedByCustomXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_displacedByCustomXml != null &&
+        W_ST_DisplacedByCustomXml.fromValue(v_displacedByCustomXml) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'displacedByCustomXml' in ${node.name.qualified}: $v_displacedByCustomXml",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MarkupRange(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_DisplacedByCustomXml? get displacedByCustomXml {
     return node.getAttribute(
@@ -968,7 +1895,23 @@ extension type W_CT_MarkupRange(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_displacedByCustomXml = node.getAttribute(
+      'displacedByCustomXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_displacedByCustomXml != null &&
+        W_ST_DisplacedByCustomXml.fromValue(v_displacedByCustomXml) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'displacedByCustomXml' in ${node.name.qualified}: $v_displacedByCustomXml",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_BookmarkRange(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get colFirst {
@@ -984,7 +1927,13 @@ extension type W_CT_BookmarkRange(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Bookmark(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
     return node.getAttribute(
@@ -992,7 +1941,21 @@ extension type W_CT_Bookmark(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MoveBookmark(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get author {
@@ -1008,7 +1971,31 @@ extension type W_CT_MoveBookmark(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'author',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'author' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute(
+          'date',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'date' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Comment(_i1.XmlElement node) implements _i1.XmlElement {
   String? get initials {
     return node.getAttribute(
@@ -1016,7 +2003,13 @@ extension type W_CT_Comment(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_TrackChangeNumbering(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get original {
@@ -1025,23 +2018,88 @@ extension type W_CT_TrackChangeNumbering(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_TblPrExChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
-extension type W_CT_TcPrChange(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type W_CT_TrPrChange(_i1.XmlElement node) implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_TcPrChange(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_TrPrChange(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TblGridChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
-extension type W_CT_TblPrChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_TblPrChange(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_SectPrChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
-extension type W_CT_PPrChange(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type W_CT_RPrChange(_i1.XmlElement node) implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_PPrChange(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_RPrChange(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_ParaRPrChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_RunTrackChange(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_NumPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_DecimalNumber? get ilvl {
     final e = node.getElement(
@@ -1074,7 +2132,37 @@ extension type W_CT_NumPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TrackChange(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ilvl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numId',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numberingChange',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChangeNumbering(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PBdr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Border? get top {
     final e = node.getElement(
@@ -1123,7 +2211,49 @@ extension type W_CT_PBdr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Border(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'between',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Tabs(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_TabStop> get tab {
     return node
@@ -1134,7 +2264,19 @@ extension type W_CT_Tabs(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_TabStop.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tab',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TabStop(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TextboxTightWrap(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_TextboxTightWrap get val {
@@ -1146,8 +2288,30 @@ extension type W_CT_TextboxTightWrap(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TextboxTightWrap.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_PPr(_i1.XmlElement node) implements _i1.XmlElement {}
+
 extension type W_CT_PPrBase(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get pStyle {
     final e = node.getElement(
@@ -1412,8 +2576,225 @@ extension type W_CT_PPrBase(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Cnf(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'keepNext',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'keepLines',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pageBreakBefore',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'framePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FramePr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'widowControl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressLineNumbers',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pBdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PBdr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tabs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tabs(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressAutoHyphens',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'kinsoku',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wordWrap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'overflowPunct',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'topLinePunct',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoSpaceDE',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoSpaceDN',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bidi',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'adjustRightInd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'snapToGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Spacing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ind',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Ind(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contextualSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mirrorIndents',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressOverlap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'jc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Jc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textDirection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextDirection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textAlignment',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextAlignment(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textboxTightWrap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextboxTightWrap(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outlineLvl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'divId',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cnfStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Cnf(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_PPrGeneral(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_PPr(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_PPrGeneral(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Control(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
     return node.getAttribute(
@@ -1428,7 +2809,21 @@ extension type W_CT_Control(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Background(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_ThemeColor? get themeColor {
     return node.getAttribute(
@@ -1468,8 +2863,52 @@ extension type W_CT_Background(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Drawing(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_themeColor = node.getAttribute(
+      'themeColor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_themeColor != null &&
+        W_ST_ThemeColor.fromValue(v_themeColor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'themeColor' in ${node.name.qualified}: $v_themeColor",
+      );
+    }
+    for (final childNode in node.findElements(
+      'drawing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Drawing(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_Rel(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_Rel(_i1.XmlElement node) implements _i1.XmlElement {
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type W_CT_Object(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Drawing? get drawing {
     final e = node.getElement(
@@ -1510,7 +2949,43 @@ extension type W_CT_Object(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Rel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'drawing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Drawing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'control',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Control(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'objectLink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ObjectLink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'objectEmbed',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ObjectEmbed(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'movie',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Picture(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Rel? get movie {
     final e = node.getElement(
@@ -1527,7 +3002,25 @@ extension type W_CT_Picture(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Control(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'movie',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'control',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Control(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ObjectEmbed(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_ObjectDrawAspect? get drawAspect {
     return node.getAttribute(
@@ -1544,6 +3037,14 @@ extension type W_CT_ObjectEmbed(_i1.XmlElement node) implements _i1.XmlElement {
             )!,
           )
         : null;
+  }
+
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
   }
 
   String? get progId {
@@ -1566,7 +3067,31 @@ extension type W_CT_ObjectEmbed(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_drawAspect = node.getAttribute(
+      'drawAspect',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_drawAspect != null &&
+        W_ST_ObjectDrawAspect.fromValue(v_drawAspect) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'drawAspect' in ${node.name.qualified}: $v_drawAspect",
+      );
+    }
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ObjectLink(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_ObjectUpdateMode get updateMode {
     return W_ST_ObjectUpdateMode.fromValue(
@@ -1577,8 +3102,40 @@ extension type W_CT_ObjectLink(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'updateMode',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'updateMode' in ${node.name.qualified}",
+      );
+    }
+    final v_updateMode = node.getAttribute(
+      'updateMode',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_updateMode != null &&
+        W_ST_ObjectUpdateMode.fromValue(v_updateMode) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'updateMode' in ${node.name.qualified}: $v_updateMode",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_Drawing(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_Drawing(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_SimpleField(_i1.XmlElement node) implements _i1.XmlElement {
   String get instr {
     return node.getAttribute(
@@ -1914,7 +3471,221 @@ extension type W_CT_SimpleField(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'instr',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'instr' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'fldData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFTextType(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FFTextType get val {
     return W_ST_FFTextType.fromValue(
@@ -1925,7 +3696,30 @@ extension type W_CT_FFTextType(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_FFTextType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFName(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -1933,7 +3727,13 @@ extension type W_CT_FFName(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_FldChar(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FldCharType get fldCharType {
     return W_ST_FldCharType.fromValue(
@@ -1968,7 +3768,51 @@ extension type W_CT_FldChar(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TrackChangeNumbering(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'fldCharType',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'fldCharType' in ${node.name.qualified}",
+      );
+    }
+    final v_fldCharType = node.getAttribute(
+      'fldCharType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_fldCharType != null &&
+        W_ST_FldCharType.fromValue(v_fldCharType) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'fldCharType' in ${node.name.qualified}: $v_fldCharType",
+      );
+    }
+    for (final childNode in node.findElements(
+      'fldData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ffData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numberingChange',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChangeNumbering(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
   String? get tgtFrame {
     return node.getAttribute(
@@ -1995,6 +3839,14 @@ extension type W_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
     return node.getAttribute(
       'anchor',
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+  }
+
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
     );
   }
 
@@ -2317,7 +4169,205 @@ extension type W_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFData(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_FFName> get name {
     return node
@@ -2438,7 +4488,85 @@ extension type W_CT_FFData(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_FFTextInput.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'label',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tabIndex',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_UnsignedDecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'enabled',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'calcOnExit',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'entryMacro',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MacroName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'exitMacro',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MacroName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'helpText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFHelpText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'statusText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFStatusText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'checkBox',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFCheckBox(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ddList',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFDDList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textInput',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFTextInput(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFHelpText(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_InfoTextType? get type {
     return node.getAttribute(
@@ -2463,7 +4591,22 @@ extension type W_CT_FFHelpText(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_InfoTextType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFStatusText(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_InfoTextType? get type {
@@ -2489,7 +4632,22 @@ extension type W_CT_FFStatusText(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_InfoTextType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFCheckBox(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_HpsMeasure? get size {
     final e = node.getElement(
@@ -2522,7 +4680,37 @@ extension type W_CT_FFCheckBox(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'size',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sizeAuto',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'default',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'checked',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFDDList(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_DecimalNumber? get result {
     final e = node.getElement(
@@ -2549,7 +4737,31 @@ extension type W_CT_FFDDList(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_String.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'result',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'default',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'listEntry',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FFTextInput(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_FFTextType? get type {
     final e = node.getElement(
@@ -2582,7 +4794,37 @@ extension type W_CT_FFTextInput(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_String(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FFTextType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'default',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'maxLength',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'format',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SectType(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_SectionMark? get val {
     return node.getAttribute(
@@ -2600,7 +4842,22 @@ extension type W_CT_SectType(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_SectionMark.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PaperSource(_i1.XmlElement node) implements _i1.XmlElement {
   String? get first {
     return node.getAttribute(
@@ -2615,7 +4872,13 @@ extension type W_CT_PaperSource(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_PageSz(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_PageOrientation? get orient {
     return node.getAttribute(
@@ -2640,8 +4903,29 @@ extension type W_CT_PageSz(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_orient = node.getAttribute(
+      'orient',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_orient != null && W_ST_PageOrientation.fromValue(v_orient) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'orient' in ${node.name.qualified}: $v_orient",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_PageMar(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_PageMar(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_PageBorders(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_PageBorderZOrder? get zOrder {
     return node.getAttribute(
@@ -2725,12 +5009,129 @@ extension type W_CT_PageBorders(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_PageBorder(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_zOrder = node.getAttribute(
+      'zOrder',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_zOrder != null && W_ST_PageBorderZOrder.fromValue(v_zOrder) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'zOrder' in ${node.name.qualified}: $v_zOrder",
+      );
+    }
+    final v_display = node.getAttribute(
+      'display',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_display != null &&
+        W_ST_PageBorderDisplay.fromValue(v_display) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'display' in ${node.name.qualified}: $v_display",
+      );
+    }
+    final v_offsetFrom = node.getAttribute(
+      'offsetFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_offsetFrom != null &&
+        W_ST_PageBorderOffset.fromValue(v_offsetFrom) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'offsetFrom' in ${node.name.qualified}: $v_offsetFrom",
+      );
+    }
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TopPageBorder(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageBorder(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BottomPageBorder(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageBorder(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_PageBorder(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_PageBorder(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_BottomPageBorder(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  String? get r_bottomLeft {
+    return node.getAttribute(
+      'bottomLeft',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  String? get r_bottomRight {
+    return node.getAttribute(
+      'bottomRight',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TopPageBorder(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  String? get r_topLeft {
+    return node.getAttribute(
+      'topLeft',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  String? get r_topRight {
+    return node.getAttribute(
+      'topRight',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_LineNumber(_i1.XmlElement node) implements _i1.XmlElement {
   String? get countBy {
     return node.getAttribute(
@@ -2762,7 +5163,23 @@ extension type W_CT_LineNumber(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_restart = node.getAttribute(
+      'restart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_restart != null &&
+        W_ST_LineNumberRestart.fromValue(v_restart) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'restart' in ${node.name.qualified}: $v_restart",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PageNumber(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_NumberFormat? get fmt {
     return node.getAttribute(
@@ -2811,8 +5228,38 @@ extension type W_CT_PageNumber(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_fmt = node.getAttribute(
+      'fmt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_fmt != null && W_ST_NumberFormat.fromValue(v_fmt) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'fmt' in ${node.name.qualified}: $v_fmt",
+      );
+    }
+    final v_chapSep = node.getAttribute(
+      'chapSep',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_chapSep != null && W_ST_ChapterSep.fromValue(v_chapSep) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'chapSep' in ${node.name.qualified}: $v_chapSep",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_Column(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_Column(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Columns(_i1.XmlElement node) implements _i1.XmlElement {
   String? get num_ {
     return node.getAttribute(
@@ -2830,7 +5277,19 @@ extension type W_CT_Columns(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Column.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'col',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Column(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_VerticalJc(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_VerticalJc get val {
     return W_ST_VerticalJc.fromValue(
@@ -2841,7 +5300,30 @@ extension type W_CT_VerticalJc(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_VerticalJc.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocGrid(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_DocGrid? get type {
     return node.getAttribute(
@@ -2873,7 +5355,22 @@ extension type W_CT_DocGrid(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_DocGrid.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_HdrFtrRef(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_HdrFtr get type {
     return W_ST_HdrFtr.fromValue(
@@ -2884,7 +5381,30 @@ extension type W_CT_HdrFtrRef(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'type',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_HdrFtr.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_HdrFtr(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlBlock> get customXml {
     return node
@@ -3165,7 +5685,181 @@ extension type W_CT_HdrFtr(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_AltChunk.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SectPrBase(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_FtnProps? get footnotePr {
     final e = node.getElement(
@@ -3318,7 +6012,127 @@ extension type W_CT_SectPrBase(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Rel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'footnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EdnProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SectType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgSz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageSz(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgMar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageMar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'paperSrc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PaperSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageBorders(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnNumType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LineNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgNumType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cols',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Columns(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'formProt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalJc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noEndnote',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'titlePg',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textDirection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextDirection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bidi',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtlGutter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocGrid(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printerSettings',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SectPr(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_HdrFtrRef> get headerReference {
     return node
@@ -3499,7 +6313,145 @@ extension type W_CT_SectPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SectPrChange(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'headerReference',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HdrFtrRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footerReference',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HdrFtrRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EdnProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SectType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgSz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageSz(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgMar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageMar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'paperSrc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PaperSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageBorders(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnNumType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LineNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgNumType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PageNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cols',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Columns(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'formProt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalJc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noEndnote',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'titlePg',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textDirection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextDirection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bidi',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtlGutter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocGrid(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printerSettings',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sectPrChange',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SectPrChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Br(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_BrType? get type {
     return node.getAttribute(
@@ -3534,7 +6486,31 @@ extension type W_CT_Br(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_BrType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    final v_clear = node.getAttribute(
+      'clear',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_clear != null && W_ST_BrClear.fromValue(v_clear) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'clear' in ${node.name.qualified}: $v_clear",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PTab(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_PTabAlignment get alignment {
     return W_ST_PTabAlignment.fromValue(
@@ -3565,7 +6541,72 @@ extension type W_CT_PTab(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'alignment',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'alignment' in ${node.name.qualified}",
+      );
+    }
+    final v_alignment = node.getAttribute(
+      'alignment',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_alignment != null &&
+        W_ST_PTabAlignment.fromValue(v_alignment) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'alignment' in ${node.name.qualified}: $v_alignment",
+      );
+    }
+    if (node.getAttribute(
+          'relativeTo',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'relativeTo' in ${node.name.qualified}",
+      );
+    }
+    final v_relativeTo = node.getAttribute(
+      'relativeTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_relativeTo != null &&
+        W_ST_PTabRelativeTo.fromValue(v_relativeTo) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'relativeTo' in ${node.name.qualified}: $v_relativeTo",
+      );
+    }
+    if (node.getAttribute(
+          'leader',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'leader' in ${node.name.qualified}",
+      );
+    }
+    final v_leader = node.getAttribute(
+      'leader',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_leader != null && W_ST_PTabLeader.fromValue(v_leader) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'leader' in ${node.name.qualified}: $v_leader",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Sym(_i1.XmlElement node) implements _i1.XmlElement {
   String? get font {
     return node.getAttribute(
@@ -3580,7 +6621,13 @@ extension type W_CT_Sym(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_ProofErr(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_ProofErr get type {
     return W_ST_ProofErr.fromValue(
@@ -3591,7 +6638,30 @@ extension type W_CT_ProofErr(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'type',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_ProofErr.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Perm(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
     return node.getAttribute(
@@ -3616,7 +6686,31 @@ extension type W_CT_Perm(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    final v_displacedByCustomXml = node.getAttribute(
+      'displacedByCustomXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_displacedByCustomXml != null &&
+        W_ST_DisplacedByCustomXml.fromValue(v_displacedByCustomXml) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'displacedByCustomXml' in ${node.name.qualified}: $v_displacedByCustomXml",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PermStart(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_EdGrp? get edGrp {
     return node.getAttribute(
@@ -3655,8 +6749,33 @@ extension type W_CT_PermStart(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_edGrp = node.getAttribute(
+      'edGrp',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_edGrp != null && W_ST_EdGrp.fromValue(v_edGrp) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'edGrp' in ${node.name.qualified}: $v_edGrp",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_Text(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_Text(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get xml_space {
+    return node.getAttribute('space');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_R(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rsidRPr {
     return node.getAttribute(
@@ -4016,7 +7135,217 @@ extension type W_CT_R(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Empty.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'br',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Br(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      't',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'instrText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delInstrText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noBreakHyphen',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'softHyphen',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dayShort',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'monthShort',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yearShort',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dayLong',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'monthLong',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yearLong',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'annotationRef',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnoteRef',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnoteRef',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'separator',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'continuationSeparator',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sym',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Sym(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgNum',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tab',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'object',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Object(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pict',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldChar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FldChar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruby',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Ruby(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnoteReference',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnEdnRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnoteReference',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnEdnRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentReference',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Drawing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ptab',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PTab(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lastRenderedPageBreak',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Fonts(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Hint? get hint {
     return node.getAttribute(
@@ -4130,7 +7459,59 @@ extension type W_CT_Fonts(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_hint = node.getAttribute(
+      'hint',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hint != null && W_ST_Hint.fromValue(v_hint) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hint' in ${node.name.qualified}: $v_hint",
+      );
+    }
+    final v_asciiTheme = node.getAttribute(
+      'asciiTheme',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_asciiTheme != null && W_ST_Theme.fromValue(v_asciiTheme) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'asciiTheme' in ${node.name.qualified}: $v_asciiTheme",
+      );
+    }
+    final v_hAnsiTheme = node.getAttribute(
+      'hAnsiTheme',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hAnsiTheme != null && W_ST_Theme.fromValue(v_hAnsiTheme) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hAnsiTheme' in ${node.name.qualified}: $v_hAnsiTheme",
+      );
+    }
+    final v_eastAsiaTheme = node.getAttribute(
+      'eastAsiaTheme',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_eastAsiaTheme != null &&
+        W_ST_Theme.fromValue(v_eastAsiaTheme) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'eastAsiaTheme' in ${node.name.qualified}: $v_eastAsiaTheme",
+      );
+    }
+    final v_cstheme = node.getAttribute(
+      'cstheme',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_cstheme != null && W_ST_Theme.fromValue(v_cstheme) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'cstheme' in ${node.name.qualified}: $v_cstheme",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_RPr(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_String> get rStyle {
     return node
@@ -4529,11 +7910,267 @@ extension type W_CT_RPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_RPrChange(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Fonts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'b',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'i',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'iCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'caps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smallCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dstrike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outline',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shadow',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'emboss',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'imprint',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noProof',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'snapToGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'webHidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'color',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextScale(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'kern',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'position',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedHpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'szCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'highlight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Highlight(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'u',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Underline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fitText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FitText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vertAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalAlignRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'em',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Em(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lang',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Language(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eastAsianLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EastAsianLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'specVanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oMath',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPrChange',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPrChange(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_MathCtrlIns(_i1.XmlElement node)
-    implements _i1.XmlElement {}
-extension type W_CT_MathCtrlDel(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+
+extension type W_CT_MathCtrlIns(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_MathCtrlDel(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_RPrOriginal(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_String> get rStyle {
     return node
@@ -4924,7 +8561,247 @@ extension type W_CT_RPrOriginal(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_OnOff.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Fonts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'b',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'i',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'iCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'caps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smallCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dstrike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outline',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shadow',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'emboss',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'imprint',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noProof',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'snapToGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'webHidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'color',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextScale(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'kern',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'position',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedHpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'szCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'highlight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Highlight(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'u',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Underline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fitText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FitText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vertAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalAlignRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'em',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Em(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lang',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Language(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eastAsianLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EastAsianLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'specVanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oMath',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ParaRPrOriginal(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_TrackChange? get ins {
@@ -5348,7 +9225,271 @@ extension type W_CT_ParaRPrOriginal(_i1.XmlElement node)
         )
         .map(W_CT_OnOff.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Fonts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'b',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'i',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'iCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'caps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smallCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dstrike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outline',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shadow',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'emboss',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'imprint',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noProof',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'snapToGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'webHidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'color',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextScale(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'kern',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'position',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedHpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'szCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'highlight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Highlight(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'u',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Underline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fitText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FitText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vertAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalAlignRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'em',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Em(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lang',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Language(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eastAsianLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EastAsianLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'specVanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oMath',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ParaRPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_TrackChange? get ins {
     final e = node.getElement(
@@ -5779,8 +9920,286 @@ extension type W_CT_ParaRPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_ParaRPrChange(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Fonts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'b',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'i',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'iCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'caps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smallCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dstrike',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outline',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shadow',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'emboss',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'imprint',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noProof',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'snapToGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'webHidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'color',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextScale(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'kern',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'position',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedHpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'szCs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'highlight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Highlight(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'u',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Underline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fitText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FitText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vertAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalAlignRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'em',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Em(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lang',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Language(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eastAsianLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EastAsianLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'specVanish',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oMath',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPrChange',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ParaRPrChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_AltChunk(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
   W_CT_AltChunkPr? get altChunkPr {
     final e = node.getElement(
       'altChunkPr',
@@ -5788,7 +10207,19 @@ extension type W_CT_AltChunk(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_AltChunkPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'altChunkPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunkPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_AltChunkPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_OnOff? get matchSrc {
     final e = node.getElement(
@@ -5797,7 +10228,19 @@ extension type W_CT_AltChunkPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'matchSrc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_RubyAlign(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_RubyAlign get val {
     return W_ST_RubyAlign.fromValue(
@@ -5808,7 +10251,30 @@ extension type W_CT_RubyAlign(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_RubyAlign.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_RubyPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RubyAlign? get rubyAlign {
     final e = node.getElement(
@@ -5857,7 +10323,49 @@ extension type W_CT_RubyPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rubyAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RubyAlign(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hpsRaise',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hpsBaseText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HpsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lang(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dirty',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_RubyContent(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_R> get r {
     return node
@@ -6098,7 +10606,157 @@ extension type W_CT_RubyContent(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Ruby(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RubyPr? get rubyPr {
     final e = node.getElement(
@@ -6123,7 +10781,31 @@ extension type W_CT_Ruby(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_RubyContent(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rubyPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RubyPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RubyContent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rubyBase',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RubyContent(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Lock(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Lock? get val {
     return node.getAttribute(
@@ -6141,7 +10823,22 @@ extension type W_CT_Lock(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Lock.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtListItem(_i1.XmlElement node) implements _i1.XmlElement {
   String? get displayText {
     return node.getAttribute(
@@ -6156,7 +10853,13 @@ extension type W_CT_SdtListItem(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_SdtDateMappingType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_SdtDateMappingType? get val {
@@ -6175,7 +10878,22 @@ extension type W_CT_SdtDateMappingType(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_SdtDateMappingType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CalendarType(_i1.XmlElement node)
     implements _i1.XmlElement {
   ST_CalendarType? get val {
@@ -6194,7 +10912,22 @@ extension type W_CT_CalendarType(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && ST_CalendarType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtDate(_i1.XmlElement node) implements _i1.XmlElement {
   String? get fullDate {
     return node.getAttribute(
@@ -6234,7 +10967,37 @@ extension type W_CT_SdtDate(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_CalendarType(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'dateFormat',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lang(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'storeMappedDataAs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtDateMappingType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'calendar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CalendarType(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtComboBox(_i1.XmlElement node) implements _i1.XmlElement {
   String? get lastValue {
     return node.getAttribute(
@@ -6252,7 +11015,19 @@ extension type W_CT_SdtComboBox(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_SdtListItem.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'listItem',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtListItem(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtDocPart(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get docPartGallery {
     final e = node.getElement(
@@ -6277,7 +11052,31 @@ extension type W_CT_SdtDocPart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docPartGallery',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPartCategory',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPartUnique',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtDropDownList(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get lastValue {
@@ -6296,7 +11095,19 @@ extension type W_CT_SdtDropDownList(_i1.XmlElement node)
         )
         .map(W_CT_SdtListItem.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'listItem',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtListItem(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Placeholder(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get docPart {
     final e = node.getElement(
@@ -6305,8 +11116,26 @@ extension type W_CT_Placeholder(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_String(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docPart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_SdtText(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_SdtText(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_DataBinding(_i1.XmlElement node) implements _i1.XmlElement {
   String? get prefixMappings {
     return node.getAttribute(
@@ -6328,7 +11157,33 @@ extension type W_CT_DataBinding(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'xpath',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'xpath' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute(
+          'storeItemID',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'storeItemID' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RPr? get rPr {
     final e = node.getElement(
@@ -6513,7 +11368,151 @@ extension type W_CT_SdtPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Empty(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alias',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'id',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lock',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'placeholder',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Placeholder(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'temporary',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showingPlcHdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dataBinding',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DataBinding(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'label',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tabIndex',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_UnsignedDecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'equation',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comboBox',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtComboBox(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'date',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtDate(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPartObj',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtDocPart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPartList',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtDocPart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropDownList',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtDropDownList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'picture',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'richText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'text',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'citation',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'group',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bibliography',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtEndPr(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_RPr> get rPr {
     return node
@@ -6524,7 +11523,19 @@ extension type W_CT_SdtEndPr(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RPr.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DirContentRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_Direction? get val {
@@ -6863,7 +11874,214 @@ extension type W_CT_DirContentRun(_i1.XmlElement node)
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Direction.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_BdoContentRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_Direction? get val {
@@ -7202,7 +12420,214 @@ extension type W_CT_BdoContentRun(_i1.XmlElement node)
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Direction.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtContentRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlRun> get customXml {
@@ -7524,7 +12949,205 @@ extension type W_CT_SdtContentRun(_i1.XmlElement node)
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtContentBlock(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlBlock> get customXml {
@@ -7796,7 +13419,175 @@ extension type W_CT_SdtContentBlock(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtContentRow(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_Row> get tr {
@@ -8058,7 +13849,169 @@ extension type W_CT_SdtContentRow(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Row(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtContentCell(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_Tc> get tc {
@@ -8320,7 +14273,169 @@ extension type W_CT_SdtContentCell(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtBlock(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_SdtPr? get sdtPr {
     final e = node.getElement(
@@ -8345,7 +14460,31 @@ extension type W_CT_SdtBlock(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SdtContentBlock(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sdtPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtEndPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtEndPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtContent',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtContentBlock(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtRun(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_SdtPr? get sdtPr {
     final e = node.getElement(
@@ -8370,7 +14509,31 @@ extension type W_CT_SdtRun(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SdtContentRun(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sdtPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtEndPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtEndPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtContent',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtContentRun(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtCell(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_SdtPr? get sdtPr {
     final e = node.getElement(
@@ -8395,7 +14558,31 @@ extension type W_CT_SdtCell(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SdtContentCell(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sdtPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtEndPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtEndPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtContent',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtContentCell(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SdtRow(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_SdtPr? get sdtPr {
     final e = node.getElement(
@@ -8420,7 +14607,31 @@ extension type W_CT_SdtRow(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SdtContentRow(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sdtPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtEndPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtEndPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdtContent',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtContentRow(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Attr(_i1.XmlElement node) implements _i1.XmlElement {
   String? get uri {
     return node.getAttribute(
@@ -8442,7 +14653,29 @@ extension type W_CT_Attr(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CustomXmlRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uri {
@@ -8786,7 +15019,221 @@ extension type W_CT_CustomXmlRun(_i1.XmlElement node)
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'element',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'element' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXmlPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SmartTagRun(_i1.XmlElement node) implements _i1.XmlElement {
   String? get uri {
     return node.getAttribute(
@@ -9129,7 +15576,221 @@ extension type W_CT_SmartTagRun(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'element',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'element' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'smartTagPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CustomXmlBlock(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uri {
@@ -9423,7 +16084,191 @@ extension type W_CT_CustomXmlBlock(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'element',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'element' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXmlPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CustomXmlPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get placeholder {
     final e = node.getElement(
@@ -9442,7 +16287,25 @@ extension type W_CT_CustomXmlPr(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Attr.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'placeholder',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'attr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Attr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CustomXmlRow(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uri {
@@ -9726,7 +16589,185 @@ extension type W_CT_CustomXmlRow(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'element',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'element' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXmlPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Row(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CustomXmlCell(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uri {
@@ -10010,7 +17051,185 @@ extension type W_CT_CustomXmlCell(_i1.XmlElement node)
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'element',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'element' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'customXmlPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SmartTagPr(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Attr> get attr {
     return node
@@ -10021,7 +17240,19 @@ extension type W_CT_SmartTagPr(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Attr.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'attr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Attr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_P(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rsidRPr {
     return node.getAttribute(
@@ -10385,7 +17616,211 @@ extension type W_CT_P(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DirContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bdo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_BdoContentRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subDoc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Height(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_HeightRule? get hRule {
     return node.getAttribute(
@@ -10403,7 +17838,22 @@ extension type W_CT_Height(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_hRule = node.getAttribute(
+      'hRule',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hRule != null && W_ST_HeightRule.fromValue(v_hRule) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hRule' in ${node.name.qualified}: $v_hRule",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblWidth(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_TblWidth? get type {
     return node.getAttribute(
@@ -10421,8 +17871,29 @@ extension type W_CT_TblWidth(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_TblWidth.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
-extension type W_CT_TblGridCol(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TblGridCol(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TblGridBase(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_TblGridCol> get gridCol {
     return node
@@ -10433,8 +17904,26 @@ extension type W_CT_TblGridBase(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_TblGridCol.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'gridCol',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblGridCol(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_TblGrid(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TblGrid(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TcBorders(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Border? get top {
     final e = node.getElement(
@@ -10515,7 +18004,73 @@ extension type W_CT_TcBorders(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Border(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'start',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'end',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideH',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideV',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tl2br',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tr2bl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TcMar(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_TblWidth? get top {
     final e = node.getElement(
@@ -10564,7 +18119,49 @@ extension type W_CT_TcMar(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TblWidth(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'start',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'end',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_VMerge(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Merge? get val {
     return node.getAttribute(
@@ -10582,7 +18179,22 @@ extension type W_CT_VMerge(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Merge.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_HMerge(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Merge? get val {
     return node.getAttribute(
@@ -10600,7 +18212,22 @@ extension type W_CT_HMerge(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Merge.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TcPrBase(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Cnf? get cnfStyle {
     final e = node.getElement(
@@ -10713,9 +18340,111 @@ extension type W_CT_TcPrBase(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Headers(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cnfStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Cnf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcW',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gridSpan',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hMerge',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_HMerge(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vMerge',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VMerge(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TcBorders(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noWrap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcMar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TcMar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'textDirection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TextDirection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcFitText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vAlign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_VerticalJc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideMark',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'headers',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Headers(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_TcPr(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type W_CT_TcPrInner(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TcPr(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_TcPrInner(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Tc(_i1.XmlElement node) implements _i1.XmlElement {
   String? get id {
     return node.getAttribute(
@@ -11011,7 +18740,187 @@ extension type W_CT_Tc(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_AltChunk.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tcPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TcPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Cnf(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -11019,7 +18928,13 @@ extension type W_CT_Cnf(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Headers(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_String> get header {
     return node
@@ -11030,7 +18945,19 @@ extension type W_CT_Headers(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_String.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'header',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TrPrBase(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Cnf> get cnfStyle {
     return node
@@ -11151,8 +19078,92 @@ extension type W_CT_TrPrBase(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_OnOff.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cnfStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Cnf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'divId',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gridBefore',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gridAfter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wBefore',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wAfter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cantSplit',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trHeight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Height(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblHeader',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCellSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'jc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_JcTable(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_TrPr(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TrPr(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Row(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rsidRPr {
     return node.getAttribute(
@@ -11457,7 +19468,181 @@ extension type W_CT_Row(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tblPrEx',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblPrEx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblLayoutType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_TblLayoutType? get type {
@@ -11476,7 +19661,22 @@ extension type W_CT_TblLayoutType(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_TblLayoutType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblOverlap(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_TblOverlap get val {
     return W_ST_TblOverlap.fromValue(
@@ -11487,7 +19687,30 @@ extension type W_CT_TblOverlap(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TblOverlap.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblPPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_VAnchor? get vertAnchor {
     return node.getAttribute(
@@ -11556,7 +19779,49 @@ extension type W_CT_TblPPr(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_vertAnchor = node.getAttribute(
+      'vertAnchor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_vertAnchor != null && W_ST_VAnchor.fromValue(v_vertAnchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vertAnchor' in ${node.name.qualified}: $v_vertAnchor",
+      );
+    }
+    final v_horzAnchor = node.getAttribute(
+      'horzAnchor',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_horzAnchor != null && W_ST_HAnchor.fromValue(v_horzAnchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'horzAnchor' in ${node.name.qualified}: $v_horzAnchor",
+      );
+    }
+    final v_tblpXSpec = node.getAttribute(
+      'tblpXSpec',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_tblpXSpec != null && ST_XAlign.fromValue(v_tblpXSpec) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'tblpXSpec' in ${node.name.qualified}: $v_tblpXSpec",
+      );
+    }
+    final v_tblpYSpec = node.getAttribute(
+      'tblpYSpec',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_tblpYSpec != null && ST_YAlign.fromValue(v_tblpYSpec) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'tblpYSpec' in ${node.name.qualified}: $v_tblpYSpec",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblCellMar(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_TblWidth? get top {
     final e = node.getElement(
@@ -11605,7 +19870,49 @@ extension type W_CT_TblCellMar(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TblWidth(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'start',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'end',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblBorders(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Border? get top {
     final e = node.getElement(
@@ -11670,7 +19977,61 @@ extension type W_CT_TblBorders(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Border(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'start',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'end',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideH',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideV',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblPrBase(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get tblStyle {
     final e = node.getElement(
@@ -11807,8 +20168,122 @@ extension type W_CT_TblPrBase(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_String(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tblStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblpPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblPPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblOverlap',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblOverlap(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bidiVisual',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblStyleRowBandSize',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblStyleColBandSize',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblW',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'jc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_JcTable(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCellSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblInd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblBorders(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblLayoutType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCellMar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblCellMar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblLook',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblLook(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCaption',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblDescription',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_TblPr(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TblPr(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_TblPrExBase(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_TblWidth? get tblW {
     final e = node.getElement(
@@ -11881,8 +20356,74 @@ extension type W_CT_TblPrExBase(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TblLook(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tblW',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'jc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_JcTable(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCellSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblInd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblWidth(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblBorders(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Shd(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblLayoutType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblCellMar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblCellMar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblLook',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblLook(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_TblPrEx(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_TblPrEx(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Tbl(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Bookmark> get bookmarkStart {
     return node
@@ -12159,7 +20700,277 @@ extension type W_CT_Tbl(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblGrid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblGrid(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Row(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtRow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblLook(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -12167,7 +20978,13 @@ extension type W_CT_TblLook(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_FtnPos(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FtnPos get val {
     return W_ST_FtnPos.fromValue(
@@ -12178,7 +20995,30 @@ extension type W_CT_FtnPos(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_FtnPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_EdnPos(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_EdnPos get val {
     return W_ST_EdnPos.fromValue(
@@ -12189,7 +21029,30 @@ extension type W_CT_EdnPos(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_EdnPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_NumFmt(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_NumberFormat get val {
     return W_ST_NumberFormat.fromValue(
@@ -12207,7 +21070,30 @@ extension type W_CT_NumFmt(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_NumberFormat.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_NumRestart(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_RestartNumber get val {
     return W_ST_RestartNumber.fromValue(
@@ -12218,7 +21104,30 @@ extension type W_CT_NumRestart(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_RestartNumber.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FtnEdnRef(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
     return node.getAttribute(
@@ -12226,7 +21135,21 @@ extension type W_CT_FtnEdnRef(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FtnEdnSepRef(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get id {
@@ -12235,7 +21158,21 @@ extension type W_CT_FtnEdnSepRef(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FtnEdn(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FtnEdn? get type {
     return node.getAttribute(
@@ -12540,7 +21477,198 @@ extension type W_CT_FtnEdn(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_AltChunk.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_FtnEdn.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FtnProps(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_FtnPos? get pos {
     final e = node.getElement(
@@ -12573,7 +21701,37 @@ extension type W_CT_FtnProps(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_NumRestart(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numRestart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumRestart(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_EdnProps(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_EdnPos? get pos {
     final e = node.getElement(
@@ -12606,11 +21764,51 @@ extension type W_CT_EdnProps(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_NumRestart(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EdnPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numRestart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumRestart(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type W_CT_FtnDocProps(_i1.XmlElement node)
-    implements _i1.XmlElement {}
-extension type W_CT_EdnDocProps(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+
+extension type W_CT_FtnDocProps(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type W_CT_EdnDocProps(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_RecipientData(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_OnOff? get active {
@@ -12636,7 +21834,31 @@ extension type W_CT_RecipientData(_i1.XmlElement node)
     );
     return e != null ? W_CT_Base64Binary(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'active',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'column',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uniqueTag',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Base64Binary(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Base64Binary(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -12645,7 +21867,21 @@ extension type W_CT_Base64Binary(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Recipients(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_RecipientData> get recipientData {
     return node
@@ -12656,7 +21892,19 @@ extension type W_CT_Recipients(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RecipientData.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'recipientData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RecipientData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_OdsoFieldMapData(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_MailMergeOdsoFMDFieldType? get type {
@@ -12706,7 +21954,49 @@ extension type W_CT_OdsoFieldMapData(_i1.XmlElement node)
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMergeOdsoFMDFieldType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mappedName',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'column',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lang(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dynamicAddress',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMergeSourceType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_MailMergeSourceType get val {
@@ -12718,7 +22008,30 @@ extension type W_CT_MailMergeSourceType(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_MailMergeSourceType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Odso(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get udl {
     final e = node.getElement(
@@ -12787,7 +22100,61 @@ extension type W_CT_Odso(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Rel.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'udl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'table',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'src',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'colDelim',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMergeSourceType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fHdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fieldMapData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OdsoFieldMapData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'recipientData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MailMerge(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_MailMergeDocType? get mainDocumentType {
     final e = node.getElement(
@@ -12916,7 +22283,109 @@ extension type W_CT_MailMerge(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Odso(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'mainDocumentType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMergeDocType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'linkToQuery',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dataType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMergeDataType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'connectString',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'query',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dataSource',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'headerSource',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotSuppressBlankLines',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'destination',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMergeDest(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'addressFieldName',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mailSubject',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mailAsAttachment',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'viewMergedData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'activeRecord',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'checkErrors',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'odso',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Odso(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TargetScreenSz(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_TargetScreenSz get val {
@@ -12928,7 +22397,30 @@ extension type W_CT_TargetScreenSz(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_TargetScreenSz.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Compat(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_OnOff? get useSingleBorderforContiguousCells {
     final e = node.getElement(
@@ -13459,7 +22951,409 @@ extension type W_CT_Compat(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_CompatSetting.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'useSingleBorderforContiguousCells',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wpJustification',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noTabHangInd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noLeading',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spaceForUL',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noColumnBalance',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'balanceSingleByteDoubleByteWidth',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noExtraLineSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotLeaveBackslashAlone',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ulTrailSpace',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotExpandShiftReturn',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spacingInWholePoints',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lineWrapLikeWord6',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printBodyTextBeforeHeader',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printColBlack',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wpSpaceWidth',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showBreaksInFrames',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subFontBySize',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressBottomSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressTopSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressSpacingAtTopOfPage',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressTopSpacingWP',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suppressSpBfAfterPgBrk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'swapBordersFacingPages',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'convMailMergeEsc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'truncateFontHeightsLikeWP6',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mwSmallCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'usePrinterMetrics',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotSuppressParagraphBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapTrailSpaces',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnoteLayoutLikeWW8',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shapeLayoutLikeWW8',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alignTablesRowByRow',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forgetLastTabAlignment',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'adjustLineHeightInTable',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoSpaceLikeWord95',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noSpaceRaiseLower',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotUseHTMLParagraphAutoSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutRawTableWidth',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutTableRowsApart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useWord97LineBreakRules',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotBreakWrappedTables',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotSnapToGridInCell',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'selectFldWithFirstOrLastChar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'applyBreakingRules',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotWrapTextWithPunct',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotUseEastAsianBreakRules',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useWord2002TableStyleRules',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'growAutofit',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useFELayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useNormalStyleForList',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotUseIndentAsNumberingTabStop',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useAltKinsokuLineBreakRules',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'allowSpaceOfSameStyleInTable',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotSuppressIndentation',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotAutofitConstrainedTables',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autofitToFirstFixedWidthCell',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'underlineTabInNumList',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'displayHangulFixedWidth',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'splitPgBreakAndParaMark',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotVertAlignCellWithSp',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotBreakConstrainedForcedTable',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotVertAlignInTxbx',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useAnsiKerningPairs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cachedColBalance',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'compatSetting',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CompatSetting(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CompatSetting(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get name {
@@ -13482,7 +23376,13 @@ extension type W_CT_CompatSetting(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_DocVar(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
     return node.getAttribute(
@@ -13497,7 +23397,29 @@ extension type W_CT_DocVar(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocVars(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_DocVar> get docVar {
     return node
@@ -13508,7 +23430,19 @@ extension type W_CT_DocVars(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_DocVar.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docVar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocVar(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocRsids(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_LongHexNumber? get rsidRoot {
     final e = node.getElement(
@@ -13527,7 +23461,25 @@ extension type W_CT_DocRsids(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_LongHexNumber.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rsidRoot',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LongHexNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rsid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LongHexNumber(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_CharacterSpacing(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_CharacterSpacing get val {
@@ -13539,16 +23491,53 @@ extension type W_CT_CharacterSpacing(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_CharacterSpacing.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SaveThroughXslt(_i1.XmlElement node)
     implements _i1.XmlElement {
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    );
+  }
+
   String? get solutionID {
     return node.getAttribute(
       'solutionID',
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_RPrDefault(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RPr? get rPr {
     final e = node.getElement(
@@ -13557,7 +23546,19 @@ extension type W_CT_RPrDefault(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_RPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_PPrDefault(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_PPrGeneral? get pPr {
     final e = node.getElement(
@@ -13566,7 +23567,19 @@ extension type W_CT_PPrDefault(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_PPrGeneral(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPrGeneral(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocDefaults(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RPrDefault? get rPrDefault {
     final e = node.getElement(
@@ -13583,7 +23596,25 @@ extension type W_CT_DocDefaults(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_PPrDefault(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPrDefault',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPrDefault(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pPrDefault',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPrDefault(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ColorSchemeMapping(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_WmlColorSchemeIndex? get bg1 {
@@ -13789,7 +23820,129 @@ extension type W_CT_ColorSchemeMapping(_i1.XmlElement node)
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_bg1 = node.getAttribute(
+      'bg1',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_bg1 != null && W_ST_WmlColorSchemeIndex.fromValue(v_bg1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bg1' in ${node.name.qualified}: $v_bg1",
+      );
+    }
+    final v_t1 = node.getAttribute(
+      't1',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_t1 != null && W_ST_WmlColorSchemeIndex.fromValue(v_t1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 't1' in ${node.name.qualified}: $v_t1",
+      );
+    }
+    final v_bg2 = node.getAttribute(
+      'bg2',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_bg2 != null && W_ST_WmlColorSchemeIndex.fromValue(v_bg2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bg2' in ${node.name.qualified}: $v_bg2",
+      );
+    }
+    final v_t2 = node.getAttribute(
+      't2',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_t2 != null && W_ST_WmlColorSchemeIndex.fromValue(v_t2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 't2' in ${node.name.qualified}: $v_t2",
+      );
+    }
+    final v_accent1 = node.getAttribute(
+      'accent1',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent1 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent1' in ${node.name.qualified}: $v_accent1",
+      );
+    }
+    final v_accent2 = node.getAttribute(
+      'accent2',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent2 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent2' in ${node.name.qualified}: $v_accent2",
+      );
+    }
+    final v_accent3 = node.getAttribute(
+      'accent3',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent3 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent3) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent3' in ${node.name.qualified}: $v_accent3",
+      );
+    }
+    final v_accent4 = node.getAttribute(
+      'accent4',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent4 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent4) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent4' in ${node.name.qualified}: $v_accent4",
+      );
+    }
+    final v_accent5 = node.getAttribute(
+      'accent5',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent5 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent5) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent5' in ${node.name.qualified}: $v_accent5",
+      );
+    }
+    final v_accent6 = node.getAttribute(
+      'accent6',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_accent6 != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_accent6) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent6' in ${node.name.qualified}: $v_accent6",
+      );
+    }
+    final v_hyperlink = node.getAttribute(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_hyperlink != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_hyperlink) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hyperlink' in ${node.name.qualified}: $v_hyperlink",
+      );
+    }
+    final v_followedHyperlink = node.getAttribute(
+      'followedHyperlink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_followedHyperlink != null &&
+        W_ST_WmlColorSchemeIndex.fromValue(v_followedHyperlink) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'followedHyperlink' in ${node.name.qualified}: $v_followedHyperlink",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ReadingModeInkLockDown(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get w {
@@ -13805,9 +23958,37 @@ extension type W_CT_ReadingModeInkLockDown(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'w',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'w' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'h',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'h' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_WriteProtection(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Settings(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_WriteProtection? get writeProtection {
     final e = node.getElement(
@@ -14582,7 +24763,589 @@ extension type W_CT_Settings(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_String(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'writeProtection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_WriteProtection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'view',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_View(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'zoom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Zoom(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'removePersonalInformation',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'removeDateAndTime',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotDisplayPageBoundaries',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'displayBackgroundShape',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printPostScriptOverText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printFractionalCharacterWidth',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printFormsData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedTrueTypeFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedSystemFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveSubsetFonts',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveFormsData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mirrorMargins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alignBordersAndEdges',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bordersDoNotSurroundHeader',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bordersDoNotSurroundFooter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gutterAtTop',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideSpellingErrors',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideGrammaticalErrors',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'activeWritingStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_WritingStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofState',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Proof(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'formsDesign',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'attachedTemplate',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'linkStyles',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'stylePaneFormatFilter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_StylePaneFilter(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'stylePaneSortMethod',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_StyleSort(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'documentType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mailMerge',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MailMerge(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'revisionView',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChangesView(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trackRevisions',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotTrackMoves',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotTrackFormatting',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'documentProtection',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocProtect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoFormatOverride',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleLockTheme',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleLockQFSet',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'defaultTabStop',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoHyphenation',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'consecutiveHyphenLimit',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyphenationZone',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotHyphenateCaps',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showEnvelope',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'summaryLength',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumberOrPrecent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clickAndTypeStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'defaultTableStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'evenAndOddHeaders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookFoldRevPrinting',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookFoldPrinting',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookFoldPrintingSheets',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawingGridHorizontalSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawingGridVerticalSpacing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'displayHorizontalDrawingGridEvery',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'displayVerticalDrawingGridEvery',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotUseMarginsForDrawingGridOrigin',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawingGridHorizontalOrigin',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawingGridVerticalOrigin',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotShadeFormData',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noPunctuationKerning',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'characterSpacingControl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CharacterSpacing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printTwoOnOne',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strictFirstAndLastChars',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noLineBreaksAfter',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Kinsoku(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noLineBreaksBefore',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Kinsoku(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'savePreviewPicture',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotValidateAgainstSchema',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveInvalidXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ignoreMixedContent',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alwaysShowPlaceholderText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotDemarcateInvalidXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveXmlDataOnly',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useXSLTWhenSaving',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveThroughXslt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SaveThroughXslt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showXMLTags',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alwaysMergeEmptyNamespace',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'updateFields',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hdrShapeDefaults',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ShapeDefaults(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnDocProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnotePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_EdnDocProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'compat',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Compat(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docVars',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocVars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rsids',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocRsids(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'attachedSchema',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'themeFontLang',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Language(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrSchemeMapping',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ColorSchemeMapping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotIncludeSubdocsInStats',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotAutoCompressPictures',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forceUpgrade',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'captions',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Captions(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'readModeInkLockDown',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ReadingModeInkLockDown(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTagType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SmartTagType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shapeDefaults',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ShapeDefaults(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotEmbedSmartTags',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'decimalSymbol',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'listSeparator',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_StyleSort(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_StyleSort get val {
     return W_ST_StyleSort.fromValue(
@@ -14593,7 +25356,30 @@ extension type W_CT_StyleSort(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_StyleSort.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_StylePaneFilter(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get val {
@@ -14602,7 +25388,13 @@ extension type W_CT_StylePaneFilter(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_WebSettings(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Frameset? get frameset {
     final e = node.getElement(
@@ -14707,7 +25499,91 @@ extension type W_CT_WebSettings(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'frameset',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Frameset(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'divs',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Divs(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'encoding',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'optimizeForBrowser',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OptimizeForBrowser(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'relyOnVML',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'allowPNG',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotRelyOnCSS',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotSaveAsSingleFile',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotOrganizeInFolder',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doNotUseLongFileNames',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pixelsPerInch',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'targetScreenSz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TargetScreenSz(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'saveSmartTagsAsXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FrameScrollbar(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_FrameScrollbar get val {
@@ -14719,7 +25595,30 @@ extension type W_CT_FrameScrollbar(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_FrameScrollbar.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_OptimizeForBrowser(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get target {
@@ -14728,7 +25627,13 @@ extension type W_CT_OptimizeForBrowser(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Frame(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get sz {
     final e = node.getElement(
@@ -14809,7 +25714,73 @@ extension type W_CT_Frame(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'longDesc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sourceFileName',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marW',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PixelsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marH',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PixelsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scrollbar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FrameScrollbar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noResizeAllowed',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'linkedToFile',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FrameLayout(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FrameLayout get val {
     return W_ST_FrameLayout.fromValue(
@@ -14820,7 +25791,30 @@ extension type W_CT_FrameLayout(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_FrameLayout.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FramesetSplitbar(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_TwipsMeasure? get w {
@@ -14854,7 +25848,37 @@ extension type W_CT_FramesetSplitbar(_i1.XmlElement node)
     );
     return e != null ? W_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'color',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noBorder',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'flatBorders',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Frameset(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_String? get sz {
     final e = node.getElement(
@@ -14907,7 +25931,49 @@ extension type W_CT_Frameset(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Frame.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sz',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'framesetSplitbar',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FramesetSplitbar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'frameLayout',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FrameLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'frameset',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Frameset(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'frame',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Frame(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_NumPicBullet(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get numPicBulletId {
@@ -14932,7 +25998,35 @@ extension type W_CT_NumPicBullet(_i1.XmlElement node)
     );
     return e != null ? W_CT_Drawing(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'numPicBulletId',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'numPicBulletId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'pict',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawing',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Drawing(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_LevelSuffix(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_LevelSuffix get val {
     return W_ST_LevelSuffix.fromValue(
@@ -14943,7 +26037,30 @@ extension type W_CT_LevelSuffix(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_LevelSuffix.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_LevelText(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -14951,8 +26068,20 @@ extension type W_CT_LevelText(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
-extension type W_CT_LvlLegacy(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type W_CT_LvlLegacy(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Lvl(_i1.XmlElement node) implements _i1.XmlElement {
   String get ilvl {
     return node.getAttribute(
@@ -15063,7 +26192,93 @@ extension type W_CT_Lvl(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_RPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'ilvl',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'ilvl' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'start',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvlRestart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pStyle',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'isLgl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'suff',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LevelSuffix(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvlText',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LevelText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvlPicBulletId',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'legacy',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LvlLegacy(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvlJc',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Jc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPrGeneral(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_MultiLevelType(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_MultiLevelType get val {
@@ -15075,7 +26290,30 @@ extension type W_CT_MultiLevelType(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_MultiLevelType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_AbstractNum(_i1.XmlElement node) implements _i1.XmlElement {
   String get abstractNumId {
     return node.getAttribute(
@@ -15141,7 +26379,65 @@ extension type W_CT_AbstractNum(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Lvl.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'abstractNumId',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'abstractNumId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'nsid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LongHexNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'multiLevelType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MultiLevelType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tmpl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LongHexNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleLink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numStyleLink',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lvl(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_NumLvl(_i1.XmlElement node) implements _i1.XmlElement {
   String get ilvl {
     return node.getAttribute(
@@ -15165,7 +26461,33 @@ extension type W_CT_NumLvl(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Lvl(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'ilvl',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'ilvl' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'startOverride',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Lvl(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Num(_i1.XmlElement node) implements _i1.XmlElement {
   String get numId {
     return node.getAttribute(
@@ -15191,7 +26513,35 @@ extension type W_CT_Num(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_NumLvl.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'numId',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'numId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'abstractNumId',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvlOverride',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumLvl(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Numbering(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_NumPicBullet> get numPicBullet {
     return node
@@ -15230,7 +26580,37 @@ extension type W_CT_Numbering(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_DecimalNumber(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'numPicBullet',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_NumPicBullet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'abstractNum',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AbstractNum(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'num',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Num(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numIdMacAtCleanup',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TblStylePr(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_TblStyleOverrideType get type {
     return W_ST_TblStyleOverrideType.fromValue(
@@ -15281,7 +26661,60 @@ extension type W_CT_TblStylePr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_TcPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'type',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_TblStyleOverrideType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPrGeneral(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblPrBase(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TcPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_StyleType? get type {
     return node.getAttribute(
@@ -15484,7 +26917,154 @@ extension type W_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_TblStylePr.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_type != null && W_ST_StyleType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'aliases',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'basedOn',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'next',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'link',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoRedefine',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uiPriority',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DecimalNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'semiHidden',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'unhideWhenUsed',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'qFormat',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'locked',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'personal',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'personalCompose',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'personalReply',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rsid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LongHexNumber(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PPrGeneral(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblPrBase(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TcPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblStylePr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TblStylePr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_LsdException(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get name {
@@ -15500,7 +27080,21 @@ extension type W_CT_LsdException(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_LatentStyles(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get defUIPriority {
@@ -15526,7 +27120,19 @@ extension type W_CT_LatentStyles(_i1.XmlElement node)
         )
         .map(W_CT_LsdException.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'lsdException',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LsdException(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Styles(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_DocDefaults? get docDefaults {
     final e = node.getElement(
@@ -15553,7 +27159,31 @@ extension type W_CT_Styles(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Style.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docDefaults',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocDefaults(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'latentStyles',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_LatentStyles(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Style(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Panose(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -15561,7 +27191,21 @@ extension type W_CT_Panose(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FontFamily(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_FontFamily get val {
     return W_ST_FontFamily.fromValue(
@@ -15572,7 +27216,30 @@ extension type W_CT_FontFamily(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_FontFamily.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Pitch(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_Pitch get val {
     return W_ST_Pitch.fromValue(
@@ -15583,7 +27250,30 @@ extension type W_CT_Pitch(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_Pitch.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FontSig(_i1.XmlElement node) implements _i1.XmlElement {
   String get usb0 {
     return node.getAttribute(
@@ -15626,7 +27316,61 @@ extension type W_CT_FontSig(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'usb0',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'usb0' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'usb1',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'usb1' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'usb2',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'usb2' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'usb3',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'usb3' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'csb0',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'csb0' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'csb1',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'csb1' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FontRel(_i1.XmlElement node) implements _i1.XmlElement {
   String? get fontKey {
     return node.getAttribute(
@@ -15634,7 +27378,13 @@ extension type W_CT_FontRel(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_Font(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
     return node.getAttribute(
@@ -15730,7 +27480,87 @@ extension type W_CT_Font(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_FontRel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'altName',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'panose1',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Panose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'charset',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Charset(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'family',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontFamily(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'notTrueType',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pitch',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Pitch(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sig',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontSig(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedRegular',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontRel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedBold',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontRel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedItalic',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontRel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'embedBoldItalic',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FontRel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_FontsList(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Font> get font {
     return node
@@ -15741,7 +27571,19 @@ extension type W_CT_FontsList(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Font.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'font',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Font(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DivBdr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_Border? get top {
     final e = node.getElement(
@@ -15774,7 +27616,37 @@ extension type W_CT_DivBdr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Border(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Border(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Div(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
     return node.getAttribute(
@@ -15848,7 +27720,69 @@ extension type W_CT_Div(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Divs.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'blockQuote',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bodyDiv',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marLeft',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marRight',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marTop',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marBottom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SignedTwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'divBdr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DivBdr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'divsChild',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Divs(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Divs(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Div> get div {
     return node
@@ -15859,7 +27793,19 @@ extension type W_CT_Divs(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Div.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'div',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Div(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_TxbxContent(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlBlock> get customXml {
     return node
@@ -16140,7 +28086,181 @@ extension type W_CT_TxbxContent(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_AltChunk.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Body(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlBlock> get customXml {
     return node
@@ -16429,9 +28549,195 @@ extension type W_CT_Body(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_SectPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sectPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_SectPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_ShapeDefaults(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type W_CT_Comments(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Comment> get comment {
     return node
@@ -16442,7 +28748,19 @@ extension type W_CT_Comments(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Comment.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'comment',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Comment(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Footnotes(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_FtnEdn> get footnote {
     return node
@@ -16453,7 +28771,19 @@ extension type W_CT_Footnotes(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_FtnEdn.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'footnote',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnEdn(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Endnotes(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_FtnEdn> get endnote {
     return node
@@ -16464,7 +28794,19 @@ extension type W_CT_Endnotes(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_FtnEdn.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'endnote',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_FtnEdn(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_SmartTagType(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get namespaceuri {
@@ -16487,7 +28829,13 @@ extension type W_CT_SmartTagType(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartBehavior(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_DocPartBehavior get val {
@@ -16499,7 +28847,30 @@ extension type W_CT_DocPartBehavior(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_DocPartBehavior.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartBehaviors(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_DocPartBehavior> get behavior {
@@ -16511,7 +28882,19 @@ extension type W_CT_DocPartBehaviors(_i1.XmlElement node)
         )
         .map(W_CT_DocPartBehavior.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'behavior',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartBehavior(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartType(_i1.XmlElement node) implements _i1.XmlElement {
   W_ST_DocPartType get val {
     return W_ST_DocPartType.fromValue(
@@ -16522,7 +28905,30 @@ extension type W_CT_DocPartType(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_DocPartType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartTypes(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_DocPartType> get type {
@@ -16534,7 +28940,19 @@ extension type W_CT_DocPartTypes(_i1.XmlElement node)
         )
         .map(W_CT_DocPartType.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartType(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartGallery(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_ST_DocPartGallery get val {
@@ -16546,7 +28964,30 @@ extension type W_CT_DocPartGallery(_i1.XmlElement node)
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_val != null && W_ST_DocPartGallery.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartCategory(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_String? get name {
@@ -16564,7 +29005,25 @@ extension type W_CT_DocPartCategory(_i1.XmlElement node)
     );
     return e != null ? W_CT_DocPartGallery(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gallery',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartGallery(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartName(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -16572,7 +29031,21 @@ extension type W_CT_DocPartName(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPartPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_DocPartName? get name {
     final e = node.getElement(
@@ -16629,7 +29102,55 @@ extension type W_CT_DocPartPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Guid(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'name',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'category',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartCategory(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'types',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartTypes(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'behaviors',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartBehaviors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'description',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'guid',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Guid(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocPart(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_DocPartPr? get docPartPr {
     final e = node.getElement(
@@ -16646,7 +29167,25 @@ extension type W_CT_DocPart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_Body(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docPartPr',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPartPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPartBody',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Body(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocParts(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_DocPart> get docPart {
     return node
@@ -16657,7 +29196,19 @@ extension type W_CT_DocParts(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_DocPart.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'docPart',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_DocPart(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Caption(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
     return node.getAttribute(
@@ -16723,7 +29274,48 @@ extension type W_CT_Caption(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    final v_pos = node.getAttribute(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_pos != null && W_ST_CaptionPos.fromValue(v_pos) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'pos' in ${node.name.qualified}: $v_pos",
+      );
+    }
+    final v_numFmt = node.getAttribute(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_numFmt != null && W_ST_NumberFormat.fromValue(v_numFmt) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'numFmt' in ${node.name.qualified}: $v_numFmt",
+      );
+    }
+    final v_sep = node.getAttribute(
+      'sep',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_sep != null && W_ST_ChapterSep.fromValue(v_sep) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'sep' in ${node.name.qualified}: $v_sep",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_AutoCaption(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
     return node.getAttribute(
@@ -16738,7 +29330,31 @@ extension type W_CT_AutoCaption(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'name',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'caption',
+          namespace:
+              'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'caption' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_AutoCaptions(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<W_CT_AutoCaption> get autoCaption {
@@ -16750,7 +29366,19 @@ extension type W_CT_AutoCaptions(_i1.XmlElement node)
         )
         .map(W_CT_AutoCaption.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'autoCaption',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AutoCaption(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Captions(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_Caption> get caption {
     return node
@@ -16769,7 +29397,25 @@ extension type W_CT_Captions(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_AutoCaptions(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'caption',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Caption(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoCaptions',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_AutoCaptions(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_DocumentBase(_i1.XmlElement node)
     implements _i1.XmlElement {
   W_CT_Background? get background {
@@ -16779,7 +29425,19 @@ extension type W_CT_DocumentBase(_i1.XmlElement node)
     );
     return e != null ? W_CT_Background(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'background',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    )) {
+      errors.addAll(W_CT_Background(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_Document(_i1.XmlElement node) implements _i1.XmlElement {
   ST_ConformanceClass? get conformance {
     return node.getAttribute(
@@ -16797,9 +29455,37 @@ extension type W_CT_Document(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  String? get mc_Ignorable {
+    return node.getAttribute(
+      'Ignorable',
+      namespace: 'http://schemas.openxmlformats.org/markup-compatibility/2006',
+    );
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_conformance = node.getAttribute(
+      'conformance',
+      namespace: 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    );
+    if (v_conformance != null &&
+        ST_ConformanceClass.fromValue(v_conformance) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'conformance' in ${node.name.qualified}: $v_conformance",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type W_CT_GlossaryDocument(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
 
 enum W_ST_HighlightColor {
   black('black'),

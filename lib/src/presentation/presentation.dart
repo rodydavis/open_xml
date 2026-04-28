@@ -5,11 +5,15 @@ import 'package:open_xml/src/util/media_utils.dart'; // Add this
 
 import 'package:file/file.dart';
 
+import 'package:open_xml/src/validate/validate.dart';
 import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/pml/pml_builder.g.dart';
 import 'package:xml/xml.dart';
 
 import 'slide.dart';
+
+import 'package:open_xml/src/presentation/add_slide.dart' as add_slide;
+import 'package:open_xml/src/presentation/clean.dart' as clean;
 
 class _CommentAuthor {
   final int id;
@@ -69,6 +73,22 @@ class Presentation {
     await pres._parse();
     await pres._parseLayouts();
     return pres;
+  }
+
+  /// Recursively cleans unused assets and media files from the unpacked presentation.
+  /// 
+  /// Returns a list of the relative paths for all removed files.
+  /// NOTE: This operates on the underlying raw XML inside the package directory.
+  List<String> cleanUnusedFiles() {
+    return clean.cleanUnusedFiles(_package.directory);
+  }
+
+  /// Adds a new slide to the presentation.
+  /// 
+  /// [source] can be a slide to duplicate (e.g., 'slide2.xml') or a layout to use (e.g., 'slideLayout2.xml').
+  /// NOTE: This operates on the underlying raw XML inside the package directory.
+  void addSlideFromSource(String source) {
+    add_slide.addSlide(_package.directory, source);
   }
 
   int _slideWidth = 9144000;
@@ -191,6 +211,11 @@ class Presentation {
         _layoutFilenames[filename] = filename;
       }
     }
+  }
+
+  /// Validates the presentation based on the current internal state.
+  (bool, List<String>) validate() {
+    return validateDirectory(_package.directory);
   }
 
   /// Adds a slide to the presentation.
@@ -1497,6 +1522,15 @@ class Presentation {
     }
 
     await _package.save(outputFile);
+
+    final (isValid, messages) = validate();
+    if (!isValid) {
+      _log.warning('Validation failed:');
+      for (final msg in messages) {
+        _log.warning(msg);
+      }
+    }
+
     _log.info('Presentation saved successfully');
   }
 

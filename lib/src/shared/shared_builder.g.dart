@@ -542,6 +542,7 @@ extension M_CT_Text_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    String? xml_space,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -549,15 +550,16 @@ extension M_CT_Text_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, xml_space);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, xml_space);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? xml_space) {
+    if (xml_space != null) this.attribute('space', xml_space);
     children?.call(this);
   }
 }

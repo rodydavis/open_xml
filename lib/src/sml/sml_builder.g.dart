@@ -29,12 +29,7 @@ extension S_CT_AutoFilter_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? ref) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -68,24 +63,11 @@ extension S_CT_FilterColumn_Builder on _i1.XmlBuilder {
     bool? hiddenButton,
     bool? showButton,
   ) {
-    if (colId != null)
-      this.attribute(
-        'colId',
-        colId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (colId != null) this.attribute('colId', colId.toString());
     if (hiddenButton != null)
-      this.attribute(
-        'hiddenButton',
-        hiddenButton == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenButton', hiddenButton == true ? 'true' : 'false');
     if (showButton != null)
-      this.attribute(
-        'showButton',
-        showButton == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showButton', showButton == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -118,17 +100,9 @@ extension S_CT_Filters_Builder on _i1.XmlBuilder {
     ST_CalendarType? calendarType,
   ) {
     if (blank != null)
-      this.attribute(
-        'blank',
-        blank == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('blank', blank == true ? 'true' : 'false');
     if (calendarType != null)
-      this.attribute(
-        'calendarType',
-        calendarType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('calendarType', calendarType!.value);
     children?.call(this);
   }
 }
@@ -155,12 +129,7 @@ extension S_CT_Filter_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -187,12 +156,7 @@ extension S_CT_CustomFilters_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? and) {
-    if (and != null)
-      this.attribute(
-        'and',
-        and == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (and != null) this.attribute('and', and == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -224,18 +188,8 @@ extension S_CT_CustomFilter_Builder on _i1.XmlBuilder {
     S_ST_FilterOperator? operator_,
     String? val,
   ) {
-    if (operator_ != null)
-      this.attribute(
-        'operator',
-        operator_!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (operator_ != null) this.attribute('operator', operator_!.value);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -271,30 +225,11 @@ extension S_CT_Top10_Builder on _i1.XmlBuilder {
     double? val,
     double? filterVal,
   ) {
-    if (top != null)
-      this.attribute(
-        'top',
-        top == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (top != null) this.attribute('top', top == true ? 'true' : 'false');
     if (percent != null)
-      this.attribute(
-        'percent',
-        percent == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (filterVal != null)
-      this.attribute(
-        'filterVal',
-        filterVal.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('percent', percent == true ? 'true' : 'false');
+    if (val != null) this.attribute('val', val.toString());
+    if (filterVal != null) this.attribute('filterVal', filterVal.toString());
     children?.call(this);
   }
 }
@@ -326,18 +261,9 @@ extension S_CT_ColorFilter_Builder on _i1.XmlBuilder {
     String? dxfId,
     bool? cellColor,
   ) {
-    if (dxfId != null)
-      this.attribute(
-        'dxfId',
-        dxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (dxfId != null) this.attribute('dxfId', dxfId);
     if (cellColor != null)
-      this.attribute(
-        'cellColor',
-        cellColor == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('cellColor', cellColor == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -369,18 +295,8 @@ extension S_CT_IconFilter_Builder on _i1.XmlBuilder {
     S_ST_IconSetType? iconSet,
     int? iconId,
   ) {
-    if (iconSet != null)
-      this.attribute(
-        'iconSet',
-        iconSet!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (iconId != null)
-      this.attribute(
-        'iconId',
-        iconId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (iconSet != null) this.attribute('iconSet', iconSet!.value);
+    if (iconId != null) this.attribute('iconId', iconId.toString());
     children?.call(this);
   }
 }
@@ -418,36 +334,11 @@ extension S_CT_DynamicFilter_Builder on _i1.XmlBuilder {
     double? maxVal,
     String? maxValIso,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (valIso != null)
-      this.attribute(
-        'valIso',
-        valIso,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxVal != null)
-      this.attribute(
-        'maxVal',
-        maxVal.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxValIso != null)
-      this.attribute(
-        'maxValIso',
-        maxValIso,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (val != null) this.attribute('val', val.toString());
+    if (valIso != null) this.attribute('valIso', valIso);
+    if (maxVal != null) this.attribute('maxVal', maxVal.toString());
+    if (maxValIso != null) this.attribute('maxValIso', maxValIso);
     children?.call(this);
   }
 }
@@ -484,29 +375,11 @@ extension S_CT_SortState_Builder on _i1.XmlBuilder {
     String? ref,
   ) {
     if (columnSort != null)
-      this.attribute(
-        'columnSort',
-        columnSort == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('columnSort', columnSort == true ? 'true' : 'false');
     if (caseSensitive != null)
-      this.attribute(
-        'caseSensitive',
-        caseSensitive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sortMethod != null)
-      this.attribute(
-        'sortMethod',
-        sortMethod!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('caseSensitive', caseSensitive == true ? 'true' : 'false');
+    if (sortMethod != null) this.attribute('sortMethod', sortMethod!.value);
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -567,47 +440,13 @@ extension S_CT_SortCondition_Builder on _i1.XmlBuilder {
     int? iconId,
   ) {
     if (descending != null)
-      this.attribute(
-        'descending',
-        descending == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sortBy != null)
-      this.attribute(
-        'sortBy',
-        sortBy!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (customList != null)
-      this.attribute(
-        'customList',
-        customList,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dxfId != null)
-      this.attribute(
-        'dxfId',
-        dxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (iconSet != null)
-      this.attribute(
-        'iconSet',
-        iconSet!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (iconId != null)
-      this.attribute(
-        'iconId',
-        iconId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('descending', descending == true ? 'true' : 'false');
+    if (sortBy != null) this.attribute('sortBy', sortBy!.value);
+    if (ref != null) this.attribute('ref', ref);
+    if (customList != null) this.attribute('customList', customList);
+    if (dxfId != null) this.attribute('dxfId', dxfId);
+    if (iconSet != null) this.attribute('iconSet', iconSet!.value);
+    if (iconId != null) this.attribute('iconId', iconId.toString());
     children?.call(this);
   }
 }
@@ -667,48 +506,14 @@ extension S_CT_DateGroupItem_Builder on _i1.XmlBuilder {
     int? second,
     S_ST_DateTimeGrouping? dateTimeGrouping,
   ) {
-    if (year != null)
-      this.attribute(
-        'year',
-        year.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (month != null)
-      this.attribute(
-        'month',
-        month.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (day != null)
-      this.attribute(
-        'day',
-        day.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hour != null)
-      this.attribute(
-        'hour',
-        hour.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (minute != null)
-      this.attribute(
-        'minute',
-        minute.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (second != null)
-      this.attribute(
-        'second',
-        second.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (year != null) this.attribute('year', year.toString());
+    if (month != null) this.attribute('month', month.toString());
+    if (day != null) this.attribute('day', day.toString());
+    if (hour != null) this.attribute('hour', hour.toString());
+    if (minute != null) this.attribute('minute', minute.toString());
+    if (second != null) this.attribute('second', second.toString());
     if (dateTimeGrouping != null)
-      this.attribute(
-        'dateTimeGrouping',
-        dateTimeGrouping!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dateTimeGrouping', dateTimeGrouping!.value);
     children?.call(this);
   }
 }
@@ -735,12 +540,7 @@ extension S_CT_XStringElement_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? v) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v);
     children?.call(this);
   }
 }
@@ -767,12 +567,7 @@ extension S_CT_Extension_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? uri) {
-    if (uri != null)
-      this.attribute(
-        'uri',
-        uri,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (uri != null) this.attribute('uri', uri);
     children?.call(this);
   }
 }
@@ -805,17 +600,9 @@ extension S_CT_ObjectAnchor_Builder on _i1.XmlBuilder {
     bool? sizeWithCells,
   ) {
     if (moveWithCells != null)
-      this.attribute(
-        'moveWithCells',
-        moveWithCells == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('moveWithCells', moveWithCells == true ? 'true' : 'false');
     if (sizeWithCells != null)
-      this.attribute(
-        'sizeWithCells',
-        sizeWithCells == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sizeWithCells', sizeWithCells == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -907,48 +694,13 @@ extension S_CT_CalcCell_Builder on _i1.XmlBuilder {
     bool? t,
     bool? a,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (l != null)
-      this.attribute(
-        'l',
-        l == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (a != null)
-      this.attribute(
-        'a',
-        a == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
+    if (ref != null) this.attribute('ref', ref);
+    if (i != null) this.attribute('i', i.toString());
+    if (s != null) this.attribute('s', s == true ? 'true' : 'false');
+    if (l != null) this.attribute('l', l == true ? 'true' : 'false');
+    if (t != null) this.attribute('t', t == true ? 'true' : 'false');
+    if (a != null) this.attribute('a', a == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1059,30 +811,10 @@ extension S_CT_Comment_Builder on _i1.XmlBuilder {
     String? guid,
     int? shapeId,
   ) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (authorId != null)
-      this.attribute(
-        'authorId',
-        authorId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (shapeId != null)
-      this.attribute(
-        'shapeId',
-        shapeId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
+    if (authorId != null) this.attribute('authorId', authorId.toString());
+    if (guid != null) this.attribute('guid', guid);
+    if (shapeId != null) this.attribute('shapeId', shapeId.toString());
     children?.call(this);
   }
 }
@@ -1163,77 +895,26 @@ extension S_CT_CommentPr_Builder on _i1.XmlBuilder {
     bool? autoScale,
   ) {
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (defaultSize != null)
-      this.attribute(
-        'defaultSize',
-        defaultSize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultSize', defaultSize == true ? 'true' : 'false');
     if (print != null)
-      this.attribute(
-        'print',
-        print == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('print', print == true ? 'true' : 'false');
     if (disabled != null)
-      this.attribute(
-        'disabled',
-        disabled == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('disabled', disabled == true ? 'true' : 'false');
     if (autoFill != null)
-      this.attribute(
-        'autoFill',
-        autoFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoFill', autoFill == true ? 'true' : 'false');
     if (autoLine != null)
-      this.attribute(
-        'autoLine',
-        autoLine == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (altText != null)
-      this.attribute(
-        'altText',
-        altText,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (textHAlign != null)
-      this.attribute(
-        'textHAlign',
-        textHAlign!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (textVAlign != null)
-      this.attribute(
-        'textVAlign',
-        textVAlign!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoLine', autoLine == true ? 'true' : 'false');
+    if (altText != null) this.attribute('altText', altText);
+    if (textHAlign != null) this.attribute('textHAlign', textHAlign!.value);
+    if (textVAlign != null) this.attribute('textVAlign', textVAlign!.value);
     if (lockText != null)
-      this.attribute(
-        'lockText',
-        lockText == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('lockText', lockText == true ? 'true' : 'false');
     if (justLastX != null)
-      this.attribute(
-        'justLastX',
-        justLastX == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('justLastX', justLastX == true ? 'true' : 'false');
     if (autoScale != null)
-      this.attribute(
-        'autoScale',
-        autoScale == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoScale', autoScale == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -1264,11 +945,7 @@ extension S_CT_MapInfo_Builder on _i1.XmlBuilder {
     String? SelectionNamespaces,
   ) {
     if (SelectionNamespaces != null)
-      this.attribute(
-        'SelectionNamespaces',
-        SelectionNamespaces,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('SelectionNamespaces', SelectionNamespaces);
     children?.call(this);
   }
 }
@@ -1304,30 +981,11 @@ extension S_CT_Schema_Builder on _i1.XmlBuilder {
     String? Namespace,
     String? SchemaLanguage,
   ) {
-    if (ID != null)
-      this.attribute(
-        'ID',
-        ID,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (SchemaRef != null)
-      this.attribute(
-        'SchemaRef',
-        SchemaRef,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (Namespace != null)
-      this.attribute(
-        'Namespace',
-        Namespace,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ID != null) this.attribute('ID', ID);
+    if (SchemaRef != null) this.attribute('SchemaRef', SchemaRef);
+    if (Namespace != null) this.attribute('Namespace', Namespace);
     if (SchemaLanguage != null)
-      this.attribute(
-        'SchemaLanguage',
-        SchemaLanguage,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('SchemaLanguage', SchemaLanguage);
     children?.call(this);
   }
 }
@@ -1395,59 +1053,28 @@ extension S_CT_Map_Builder on _i1.XmlBuilder {
     bool? PreserveSortAFLayout,
     bool? PreserveFormat,
   ) {
-    if (ID != null)
-      this.attribute(
-        'ID',
-        ID.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (Name != null)
-      this.attribute(
-        'Name',
-        Name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (RootElement != null)
-      this.attribute(
-        'RootElement',
-        RootElement,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (SchemaID != null)
-      this.attribute(
-        'SchemaID',
-        SchemaID,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ID != null) this.attribute('ID', ID.toString());
+    if (Name != null) this.attribute('Name', Name);
+    if (RootElement != null) this.attribute('RootElement', RootElement);
+    if (SchemaID != null) this.attribute('SchemaID', SchemaID);
     if (ShowImportExportValidationErrors != null)
       this.attribute(
         'ShowImportExportValidationErrors',
         ShowImportExportValidationErrors == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (AutoFit != null)
-      this.attribute(
-        'AutoFit',
-        AutoFit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('AutoFit', AutoFit == true ? 'true' : 'false');
     if (Append != null)
-      this.attribute(
-        'Append',
-        Append == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('Append', Append == true ? 'true' : 'false');
     if (PreserveSortAFLayout != null)
       this.attribute(
         'PreserveSortAFLayout',
         PreserveSortAFLayout == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (PreserveFormat != null)
       this.attribute(
         'PreserveFormat',
         PreserveFormat == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -1501,35 +1128,15 @@ extension S_CT_DataBinding_Builder on _i1.XmlBuilder {
     int? DataBindingLoadMode,
   ) {
     if (DataBindingName != null)
-      this.attribute(
-        'DataBindingName',
-        DataBindingName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('DataBindingName', DataBindingName);
     if (FileBinding != null)
-      this.attribute(
-        'FileBinding',
-        FileBinding == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('FileBinding', FileBinding == true ? 'true' : 'false');
     if (ConnectionID != null)
-      this.attribute(
-        'ConnectionID',
-        ConnectionID.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('ConnectionID', ConnectionID.toString());
     if (FileBindingName != null)
-      this.attribute(
-        'FileBindingName',
-        FileBindingName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('FileBindingName', FileBindingName);
     if (DataBindingLoadMode != null)
-      this.attribute(
-        'DataBindingLoadMode',
-        DataBindingLoadMode.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('DataBindingLoadMode', DataBindingLoadMode.toString());
     children?.call(this);
   }
 }
@@ -1666,126 +1273,40 @@ extension S_CT_Connection_Builder on _i1.XmlBuilder {
     S_ST_CredMethod? credentials,
     String? singleSignOnId,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceFile != null)
-      this.attribute(
-        'sourceFile',
-        sourceFile,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (odcFile != null)
-      this.attribute(
-        'odcFile',
-        odcFile,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (sourceFile != null) this.attribute('sourceFile', sourceFile);
+    if (odcFile != null) this.attribute('odcFile', odcFile);
     if (keepAlive != null)
-      this.attribute(
-        'keepAlive',
-        keepAlive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (interval != null)
-      this.attribute(
-        'interval',
-        interval.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (description != null)
-      this.attribute(
-        'description',
-        description,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('keepAlive', keepAlive == true ? 'true' : 'false');
+    if (interval != null) this.attribute('interval', interval.toString());
+    if (name != null) this.attribute('name', name);
+    if (description != null) this.attribute('description', description);
+    if (type != null) this.attribute('type', type.toString());
     if (reconnectionMethod != null)
-      this.attribute(
-        'reconnectionMethod',
-        reconnectionMethod.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('reconnectionMethod', reconnectionMethod.toString());
     if (refreshedVersion != null)
-      this.attribute(
-        'refreshedVersion',
-        refreshedVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshedVersion', refreshedVersion.toString());
     if (minRefreshableVersion != null)
-      this.attribute(
-        'minRefreshableVersion',
-        minRefreshableVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minRefreshableVersion', minRefreshableVersion.toString());
     if (savePassword != null)
-      this.attribute(
-        'savePassword',
-        savePassword == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (new_ != null)
-      this.attribute(
-        'new',
-        new_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('savePassword', savePassword == true ? 'true' : 'false');
+    if (new_ != null) this.attribute('new', new_ == true ? 'true' : 'false');
     if (deleted != null)
-      this.attribute(
-        'deleted',
-        deleted == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('deleted', deleted == true ? 'true' : 'false');
     if (onlyUseConnectionFile != null)
       this.attribute(
         'onlyUseConnectionFile',
         onlyUseConnectionFile == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (background != null)
-      this.attribute(
-        'background',
-        background == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('background', background == true ? 'true' : 'false');
     if (refreshOnLoad != null)
-      this.attribute(
-        'refreshOnLoad',
-        refreshOnLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshOnLoad', refreshOnLoad == true ? 'true' : 'false');
     if (saveData != null)
-      this.attribute(
-        'saveData',
-        saveData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (credentials != null)
-      this.attribute(
-        'credentials',
-        credentials!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('saveData', saveData == true ? 'true' : 'false');
+    if (credentials != null) this.attribute('credentials', credentials!.value);
     if (singleSignOnId != null)
-      this.attribute(
-        'singleSignOnId',
-        singleSignOnId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('singleSignOnId', singleSignOnId);
     children?.call(this);
   }
 }
@@ -1821,30 +1342,11 @@ extension S_CT_DbPr_Builder on _i1.XmlBuilder {
     String? serverCommand,
     int? commandType,
   ) {
-    if (connection != null)
-      this.attribute(
-        'connection',
-        connection,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (command != null)
-      this.attribute(
-        'command',
-        command,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (serverCommand != null)
-      this.attribute(
-        'serverCommand',
-        serverCommand,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (connection != null) this.attribute('connection', connection);
+    if (command != null) this.attribute('command', command);
+    if (serverCommand != null) this.attribute('serverCommand', serverCommand);
     if (commandType != null)
-      this.attribute(
-        'commandType',
-        commandType.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('commandType', commandType.toString());
     children?.call(this);
   }
 }
@@ -1913,58 +1415,28 @@ extension S_CT_OlapPr_Builder on _i1.XmlBuilder {
     bool? serverFontColor,
   ) {
     if (local != null)
-      this.attribute(
-        'local',
-        local == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('local', local == true ? 'true' : 'false');
     if (localConnection != null)
-      this.attribute(
-        'localConnection',
-        localConnection,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('localConnection', localConnection);
     if (localRefresh != null)
-      this.attribute(
-        'localRefresh',
-        localRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('localRefresh', localRefresh == true ? 'true' : 'false');
     if (sendLocale != null)
-      this.attribute(
-        'sendLocale',
-        sendLocale == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sendLocale', sendLocale == true ? 'true' : 'false');
     if (rowDrillCount != null)
-      this.attribute(
-        'rowDrillCount',
-        rowDrillCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowDrillCount', rowDrillCount.toString());
     if (serverFill != null)
-      this.attribute(
-        'serverFill',
-        serverFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('serverFill', serverFill == true ? 'true' : 'false');
     if (serverNumberFormat != null)
       this.attribute(
         'serverNumberFormat',
         serverNumberFormat == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (serverFont != null)
-      this.attribute(
-        'serverFont',
-        serverFont == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('serverFont', serverFont == true ? 'true' : 'false');
     if (serverFontColor != null)
       this.attribute(
         'serverFontColor',
         serverFontColor == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -2049,84 +1521,26 @@ extension S_CT_WebPr_Builder on _i1.XmlBuilder {
     S_ST_HtmlFmt? htmlFormat,
     String? editPage,
   ) {
-    if (xml != null)
-      this.attribute(
-        'xml',
-        xml == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (xml != null) this.attribute('xml', xml == true ? 'true' : 'false');
     if (sourceData != null)
-      this.attribute(
-        'sourceData',
-        sourceData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sourceData', sourceData == true ? 'true' : 'false');
     if (parsePre != null)
-      this.attribute(
-        'parsePre',
-        parsePre == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('parsePre', parsePre == true ? 'true' : 'false');
     if (consecutive != null)
-      this.attribute(
-        'consecutive',
-        consecutive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('consecutive', consecutive == true ? 'true' : 'false');
     if (firstRow != null)
-      this.attribute(
-        'firstRow',
-        firstRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xl97 != null)
-      this.attribute(
-        'xl97',
-        xl97 == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstRow', firstRow == true ? 'true' : 'false');
+    if (xl97 != null) this.attribute('xl97', xl97 == true ? 'true' : 'false');
     if (textDates != null)
-      this.attribute(
-        'textDates',
-        textDates == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('textDates', textDates == true ? 'true' : 'false');
     if (xl2000 != null)
-      this.attribute(
-        'xl2000',
-        xl2000 == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (url != null)
-      this.attribute(
-        'url',
-        url,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (post != null)
-      this.attribute(
-        'post',
-        post,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('xl2000', xl2000 == true ? 'true' : 'false');
+    if (url != null) this.attribute('url', url);
+    if (post != null) this.attribute('post', post);
     if (htmlTables != null)
-      this.attribute(
-        'htmlTables',
-        htmlTables == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (htmlFormat != null)
-      this.attribute(
-        'htmlFormat',
-        htmlFormat!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (editPage != null)
-      this.attribute(
-        'editPage',
-        editPage,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('htmlTables', htmlTables == true ? 'true' : 'false');
+    if (htmlFormat != null) this.attribute('htmlFormat', htmlFormat!.value);
+    if (editPage != null) this.attribute('editPage', editPage);
     children?.call(this);
   }
 }
@@ -2153,12 +1567,7 @@ extension S_CT_Parameters_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -2230,66 +1639,22 @@ extension S_CT_Parameter_Builder on _i1.XmlBuilder {
     String? string,
     String? cell,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sqlType != null)
-      this.attribute(
-        'sqlType',
-        sqlType.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (sqlType != null) this.attribute('sqlType', sqlType.toString());
     if (parameterType != null)
-      this.attribute(
-        'parameterType',
-        parameterType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('parameterType', parameterType!.value);
     if (refreshOnChange != null)
       this.attribute(
         'refreshOnChange',
         refreshOnChange == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (prompt != null)
-      this.attribute(
-        'prompt',
-        prompt,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (prompt != null) this.attribute('prompt', prompt);
     if (boolean != null)
-      this.attribute(
-        'boolean',
-        boolean == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (double_ != null)
-      this.attribute(
-        'double',
-        double_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (integer != null)
-      this.attribute(
-        'integer',
-        integer.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (string != null)
-      this.attribute(
-        'string',
-        string,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cell != null)
-      this.attribute(
-        'cell',
-        cell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('boolean', boolean == true ? 'true' : 'false');
+    if (double_ != null) this.attribute('double', double_.toString());
+    if (integer != null) this.attribute('integer', integer.toString());
+    if (string != null) this.attribute('string', string);
+    if (cell != null) this.attribute('cell', cell);
     children?.call(this);
   }
 }
@@ -2316,12 +1681,7 @@ extension S_CT_Tables_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -2443,101 +1803,27 @@ extension S_CT_TextPr_Builder on _i1.XmlBuilder {
     String? delimiter,
   ) {
     if (prompt != null)
-      this.attribute(
-        'prompt',
-        prompt == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fileType != null)
-      this.attribute(
-        'fileType',
-        fileType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codePage != null)
-      this.attribute(
-        'codePage',
-        codePage.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (characterSet != null)
-      this.attribute(
-        'characterSet',
-        characterSet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (firstRow != null)
-      this.attribute(
-        'firstRow',
-        firstRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceFile != null)
-      this.attribute(
-        'sourceFile',
-        sourceFile,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('prompt', prompt == true ? 'true' : 'false');
+    if (fileType != null) this.attribute('fileType', fileType!.value);
+    if (codePage != null) this.attribute('codePage', codePage.toString());
+    if (characterSet != null) this.attribute('characterSet', characterSet);
+    if (firstRow != null) this.attribute('firstRow', firstRow.toString());
+    if (sourceFile != null) this.attribute('sourceFile', sourceFile);
     if (delimited != null)
-      this.attribute(
-        'delimited',
-        delimited == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (decimal != null)
-      this.attribute(
-        'decimal',
-        decimal,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (thousands != null)
-      this.attribute(
-        'thousands',
-        thousands,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tab != null)
-      this.attribute(
-        'tab',
-        tab == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('delimited', delimited == true ? 'true' : 'false');
+    if (decimal != null) this.attribute('decimal', decimal);
+    if (thousands != null) this.attribute('thousands', thousands);
+    if (tab != null) this.attribute('tab', tab == true ? 'true' : 'false');
     if (space != null)
-      this.attribute(
-        'space',
-        space == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('space', space == true ? 'true' : 'false');
     if (comma != null)
-      this.attribute(
-        'comma',
-        comma == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('comma', comma == true ? 'true' : 'false');
     if (semicolon != null)
-      this.attribute(
-        'semicolon',
-        semicolon == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('semicolon', semicolon == true ? 'true' : 'false');
     if (consecutive != null)
-      this.attribute(
-        'consecutive',
-        consecutive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (qualifier != null)
-      this.attribute(
-        'qualifier',
-        qualifier!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (delimiter != null)
-      this.attribute(
-        'delimiter',
-        delimiter,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('consecutive', consecutive == true ? 'true' : 'false');
+    if (qualifier != null) this.attribute('qualifier', qualifier!.value);
+    if (delimiter != null) this.attribute('delimiter', delimiter);
     children?.call(this);
   }
 }
@@ -2564,12 +1850,7 @@ extension S_CT_TextFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -2601,18 +1882,8 @@ extension S_CT_TextField_Builder on _i1.XmlBuilder {
     S_ST_ExternalConnectionType? type,
     int? position,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (position != null)
-      this.attribute(
-        'position',
-        position.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (position != null) this.attribute('position', position.toString());
     children?.call(this);
   }
 }
@@ -2622,6 +1893,7 @@ extension S_CT_PivotCacheDefinition_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     bool? invalid,
     bool? saveData,
     bool? refreshOnLoad,
@@ -2649,6 +1921,7 @@ extension S_CT_PivotCacheDefinition_Builder on _i1.XmlBuilder {
         nest: () {
           _buildBody(
             children,
+            r_id,
             invalid,
             saveData,
             refreshOnLoad,
@@ -2673,6 +1946,7 @@ extension S_CT_PivotCacheDefinition_Builder on _i1.XmlBuilder {
     } else {
       _buildBody(
         children,
+        r_id,
         invalid,
         saveData,
         refreshOnLoad,
@@ -2697,6 +1971,7 @@ extension S_CT_PivotCacheDefinition_Builder on _i1.XmlBuilder {
 
   void _buildBody(
     void Function(XmlBuilder)? children,
+    String? r_id,
     bool? invalid,
     bool? saveData,
     bool? refreshOnLoad,
@@ -2716,113 +1991,62 @@ extension S_CT_PivotCacheDefinition_Builder on _i1.XmlBuilder {
     bool? supportSubquery,
     bool? supportAdvancedDrill,
   ) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     if (invalid != null)
-      this.attribute(
-        'invalid',
-        invalid == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('invalid', invalid == true ? 'true' : 'false');
     if (saveData != null)
-      this.attribute(
-        'saveData',
-        saveData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('saveData', saveData == true ? 'true' : 'false');
     if (refreshOnLoad != null)
-      this.attribute(
-        'refreshOnLoad',
-        refreshOnLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshOnLoad', refreshOnLoad == true ? 'true' : 'false');
     if (optimizeMemory != null)
       this.attribute(
         'optimizeMemory',
         optimizeMemory == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (enableRefresh != null)
-      this.attribute(
-        'enableRefresh',
-        enableRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (refreshedBy != null)
-      this.attribute(
-        'refreshedBy',
-        refreshedBy,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('enableRefresh', enableRefresh == true ? 'true' : 'false');
+    if (refreshedBy != null) this.attribute('refreshedBy', refreshedBy);
     if (refreshedDate != null)
-      this.attribute(
-        'refreshedDate',
-        refreshedDate.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshedDate', refreshedDate.toString());
     if (refreshedDateIso != null)
-      this.attribute(
-        'refreshedDateIso',
-        refreshedDateIso,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshedDateIso', refreshedDateIso);
     if (backgroundQuery != null)
       this.attribute(
         'backgroundQuery',
         backgroundQuery == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (missingItemsLimit != null)
-      this.attribute(
-        'missingItemsLimit',
-        missingItemsLimit.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('missingItemsLimit', missingItemsLimit.toString());
     if (createdVersion != null)
-      this.attribute(
-        'createdVersion',
-        createdVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('createdVersion', createdVersion.toString());
     if (refreshedVersion != null)
-      this.attribute(
-        'refreshedVersion',
-        refreshedVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshedVersion', refreshedVersion.toString());
     if (minRefreshableVersion != null)
-      this.attribute(
-        'minRefreshableVersion',
-        minRefreshableVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minRefreshableVersion', minRefreshableVersion.toString());
     if (recordCount != null)
-      this.attribute(
-        'recordCount',
-        recordCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('recordCount', recordCount.toString());
     if (upgradeOnRefresh != null)
       this.attribute(
         'upgradeOnRefresh',
         upgradeOnRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (tupleCache != null)
-      this.attribute(
-        'tupleCache',
-        tupleCache == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('tupleCache', tupleCache == true ? 'true' : 'false');
     if (supportSubquery != null)
       this.attribute(
         'supportSubquery',
         supportSubquery == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (supportAdvancedDrill != null)
       this.attribute(
         'supportAdvancedDrill',
         supportAdvancedDrill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -2850,12 +2074,7 @@ extension S_CT_CacheFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -2939,83 +2158,26 @@ extension S_CT_CacheField_Builder on _i1.XmlBuilder {
     int? mappingCount,
     bool? memberPropertyField,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (propertyName != null)
-      this.attribute(
-        'propertyName',
-        propertyName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (caption != null) this.attribute('caption', caption);
+    if (propertyName != null) this.attribute('propertyName', propertyName);
     if (serverField != null)
-      this.attribute(
-        'serverField',
-        serverField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('serverField', serverField == true ? 'true' : 'false');
     if (uniqueList != null)
-      this.attribute(
-        'uniqueList',
-        uniqueList == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (formula != null)
-      this.attribute(
-        'formula',
-        formula,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sqlType != null)
-      this.attribute(
-        'sqlType',
-        sqlType.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hierarchy != null)
-      this.attribute(
-        'hierarchy',
-        hierarchy.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (level != null)
-      this.attribute(
-        'level',
-        level.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('uniqueList', uniqueList == true ? 'true' : 'false');
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
+    if (formula != null) this.attribute('formula', formula);
+    if (sqlType != null) this.attribute('sqlType', sqlType.toString());
+    if (hierarchy != null) this.attribute('hierarchy', hierarchy.toString());
+    if (level != null) this.attribute('level', level.toString());
     if (databaseField != null)
-      this.attribute(
-        'databaseField',
-        databaseField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('databaseField', databaseField == true ? 'true' : 'false');
     if (mappingCount != null)
-      this.attribute(
-        'mappingCount',
-        mappingCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('mappingCount', mappingCount.toString());
     if (memberPropertyField != null)
       this.attribute(
         'memberPropertyField',
         memberPropertyField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -3048,18 +2210,9 @@ extension S_CT_CacheSource_Builder on _i1.XmlBuilder {
     S_ST_SourceType? type,
     int? connectionId,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
     if (connectionId != null)
-      this.attribute(
-        'connectionId',
-        connectionId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('connectionId', connectionId.toString());
     children?.call(this);
   }
 }
@@ -3072,6 +2225,7 @@ extension S_CT_WorksheetSource_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3079,11 +2233,11 @@ extension S_CT_WorksheetSource_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, ref, name, sheet);
+          _buildBody(children, ref, name, sheet, r_id);
         },
       );
     } else {
-      _buildBody(children, ref, name, sheet);
+      _buildBody(children, ref, name, sheet, r_id);
     }
   }
 
@@ -3092,24 +2246,17 @@ extension S_CT_WorksheetSource_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
   ) {
-    if (ref != null)
+    if (ref != null) this.attribute('ref', ref);
+    if (name != null) this.attribute('name', name);
+    if (sheet != null) this.attribute('sheet', sheet);
+    if (r_id != null)
       this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sheet != null)
-      this.attribute(
-        'sheet',
-        sheet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -3138,11 +2285,7 @@ extension S_CT_Consolidation_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? autoPage) {
     if (autoPage != null)
-      this.attribute(
-        'autoPage',
-        autoPage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoPage', autoPage == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3169,12 +2312,7 @@ extension S_CT_Pages_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -3201,12 +2339,7 @@ extension S_CT_PCDSCPage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -3233,12 +2366,7 @@ extension S_CT_PageItem_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -3265,12 +2393,7 @@ extension S_CT_RangeSets_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -3287,6 +2410,7 @@ extension S_CT_RangeSet_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3294,11 +2418,11 @@ extension S_CT_RangeSet_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, i1, i2, i3, i4, ref, name, sheet);
+          _buildBody(children, i1, i2, i3, i4, ref, name, sheet, r_id);
         },
       );
     } else {
-      _buildBody(children, i1, i2, i3, i4, ref, name, sheet);
+      _buildBody(children, i1, i2, i3, i4, ref, name, sheet, r_id);
     }
   }
 
@@ -3311,48 +2435,21 @@ extension S_CT_RangeSet_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
   ) {
-    if (i1 != null)
+    if (i1 != null) this.attribute('i1', i1.toString());
+    if (i2 != null) this.attribute('i2', i2.toString());
+    if (i3 != null) this.attribute('i3', i3.toString());
+    if (i4 != null) this.attribute('i4', i4.toString());
+    if (ref != null) this.attribute('ref', ref);
+    if (name != null) this.attribute('name', name);
+    if (sheet != null) this.attribute('sheet', sheet);
+    if (r_id != null)
       this.attribute(
-        'i1',
-        i1.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i2 != null)
-      this.attribute(
-        'i2',
-        i2.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i3 != null)
-      this.attribute(
-        'i3',
-        i3.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i4 != null)
-      this.attribute(
-        'i4',
-        i4.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sheet != null)
-      this.attribute(
-        'sheet',
-        sheet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -3445,86 +2542,43 @@ extension S_CT_SharedItems_Builder on _i1.XmlBuilder {
       this.attribute(
         'containsSemiMixedTypes',
         containsSemiMixedTypes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (containsNonDate != null)
       this.attribute(
         'containsNonDate',
         containsNonDate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (containsDate != null)
-      this.attribute(
-        'containsDate',
-        containsDate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('containsDate', containsDate == true ? 'true' : 'false');
     if (containsString != null)
       this.attribute(
         'containsString',
         containsString == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (containsBlank != null)
-      this.attribute(
-        'containsBlank',
-        containsBlank == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('containsBlank', containsBlank == true ? 'true' : 'false');
     if (containsMixedTypes != null)
       this.attribute(
         'containsMixedTypes',
         containsMixedTypes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (containsNumber != null)
       this.attribute(
         'containsNumber',
         containsNumber == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (containsInteger != null)
       this.attribute(
         'containsInteger',
         containsInteger == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (minValue != null)
-      this.attribute(
-        'minValue',
-        minValue.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxValue != null)
-      this.attribute(
-        'maxValue',
-        maxValue.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (minDate != null)
-      this.attribute(
-        'minDate',
-        minDate,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxDate != null)
-      this.attribute(
-        'maxDate',
-        maxDate,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (minValue != null) this.attribute('minValue', minValue.toString());
+    if (maxValue != null) this.attribute('maxValue', maxValue.toString());
+    if (minDate != null) this.attribute('minDate', minDate);
+    if (maxDate != null) this.attribute('maxDate', maxDate);
+    if (count != null) this.attribute('count', count.toString());
     if (longText != null)
-      this.attribute(
-        'longText',
-        longText == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('longText', longText == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3574,72 +2628,17 @@ extension S_CT_Missing_Builder on _i1.XmlBuilder {
     bool? st,
     bool? b,
   ) {
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (in_ != null)
-      this.attribute(
-        'in',
-        in_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bc != null)
-      this.attribute(
-        'bc',
-        bc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fc != null)
-      this.attribute(
-        'fc',
-        fc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (un != null)
-      this.attribute(
-        'un',
-        un == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (st != null)
-      this.attribute(
-        'st',
-        st == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
+    if (in_ != null) this.attribute('in', in_.toString());
+    if (bc != null) this.attribute('bc', bc);
+    if (fc != null) this.attribute('fc', fc);
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (un != null) this.attribute('un', un == true ? 'true' : 'false');
+    if (st != null) this.attribute('st', st == true ? 'true' : 'false');
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3691,78 +2690,18 @@ extension S_CT_Number_Builder on _i1.XmlBuilder {
     bool? st,
     bool? b,
   ) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (in_ != null)
-      this.attribute(
-        'in',
-        in_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bc != null)
-      this.attribute(
-        'bc',
-        bc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fc != null)
-      this.attribute(
-        'fc',
-        fc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (un != null)
-      this.attribute(
-        'un',
-        un == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (st != null)
-      this.attribute(
-        'st',
-        st == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v.toString());
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
+    if (in_ != null) this.attribute('in', in_.toString());
+    if (bc != null) this.attribute('bc', bc);
+    if (fc != null) this.attribute('fc', fc);
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (un != null) this.attribute('un', un == true ? 'true' : 'false');
+    if (st != null) this.attribute('st', st == true ? 'true' : 'false');
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3800,36 +2739,11 @@ extension S_CT_Boolean_Builder on _i1.XmlBuilder {
     String? c,
     int? cp,
   ) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v == true ? 'true' : 'false');
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
     children?.call(this);
   }
 }
@@ -3881,78 +2795,18 @@ extension S_CT_Error_Builder on _i1.XmlBuilder {
     bool? st,
     bool? b,
   ) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (in_ != null)
-      this.attribute(
-        'in',
-        in_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bc != null)
-      this.attribute(
-        'bc',
-        bc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fc != null)
-      this.attribute(
-        'fc',
-        fc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (un != null)
-      this.attribute(
-        'un',
-        un == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (st != null)
-      this.attribute(
-        'st',
-        st == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v);
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
+    if (in_ != null) this.attribute('in', in_.toString());
+    if (bc != null) this.attribute('bc', bc);
+    if (fc != null) this.attribute('fc', fc);
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (un != null) this.attribute('un', un == true ? 'true' : 'false');
+    if (st != null) this.attribute('st', st == true ? 'true' : 'false');
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4004,78 +2858,18 @@ extension S_CT_String_Builder on _i1.XmlBuilder {
     bool? st,
     bool? b,
   ) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (in_ != null)
-      this.attribute(
-        'in',
-        in_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bc != null)
-      this.attribute(
-        'bc',
-        bc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fc != null)
-      this.attribute(
-        'fc',
-        fc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (un != null)
-      this.attribute(
-        'un',
-        un == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (st != null)
-      this.attribute(
-        'st',
-        st == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v);
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
+    if (in_ != null) this.attribute('in', in_.toString());
+    if (bc != null) this.attribute('bc', bc);
+    if (fc != null) this.attribute('fc', fc);
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (un != null) this.attribute('un', un == true ? 'true' : 'false');
+    if (st != null) this.attribute('st', st == true ? 'true' : 'false');
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4113,36 +2907,11 @@ extension S_CT_DateTime_Builder on _i1.XmlBuilder {
     String? c,
     int? cp,
   ) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cp != null)
-      this.attribute(
-        'cp',
-        cp.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v);
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c);
+    if (cp != null) this.attribute('cp', cp.toString());
     children?.call(this);
   }
 }
@@ -4170,18 +2939,8 @@ extension S_CT_FieldGroup_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? par, int? base) {
-    if (par != null)
-      this.attribute(
-        'par',
-        par.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (base != null)
-      this.attribute(
-        'base',
-        base.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (par != null) this.attribute('par', par.toString());
+    if (base != null) this.attribute('base', base.toString());
     children?.call(this);
   }
 }
@@ -4246,53 +3005,16 @@ extension S_CT_RangePr_Builder on _i1.XmlBuilder {
     double? groupInterval,
   ) {
     if (autoStart != null)
-      this.attribute(
-        'autoStart',
-        autoStart == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoStart', autoStart == true ? 'true' : 'false');
     if (autoEnd != null)
-      this.attribute(
-        'autoEnd',
-        autoEnd == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (groupBy != null)
-      this.attribute(
-        'groupBy',
-        groupBy!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (startNum != null)
-      this.attribute(
-        'startNum',
-        startNum.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (endNum != null)
-      this.attribute(
-        'endNum',
-        endNum.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (startDate != null)
-      this.attribute(
-        'startDate',
-        startDate,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (endDate != null)
-      this.attribute(
-        'endDate',
-        endDate,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoEnd', autoEnd == true ? 'true' : 'false');
+    if (groupBy != null) this.attribute('groupBy', groupBy!.value);
+    if (startNum != null) this.attribute('startNum', startNum.toString());
+    if (endNum != null) this.attribute('endNum', endNum.toString());
+    if (startDate != null) this.attribute('startDate', startDate);
+    if (endDate != null) this.attribute('endDate', endDate);
     if (groupInterval != null)
-      this.attribute(
-        'groupInterval',
-        groupInterval.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('groupInterval', groupInterval.toString());
     children?.call(this);
   }
 }
@@ -4319,12 +3041,7 @@ extension S_CT_DiscretePr_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4351,12 +3068,7 @@ extension S_CT_GroupItems_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4383,12 +3095,7 @@ extension S_CT_PivotCacheRecords_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4440,12 +3147,7 @@ extension S_CT_PCDKPIs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4521,72 +3223,17 @@ extension S_CT_PCDKPI_Builder on _i1.XmlBuilder {
     String? weight,
     String? time,
   ) {
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (displayFolder != null)
-      this.attribute(
-        'displayFolder',
-        displayFolder,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (measureGroup != null)
-      this.attribute(
-        'measureGroup',
-        measureGroup,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (parent != null)
-      this.attribute(
-        'parent',
-        parent,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (value_ != null)
-      this.attribute(
-        'value',
-        value_,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (goal != null)
-      this.attribute(
-        'goal',
-        goal,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (status != null)
-      this.attribute(
-        'status',
-        status,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (trend != null)
-      this.attribute(
-        'trend',
-        trend,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (weight != null)
-      this.attribute(
-        'weight',
-        weight,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (time != null)
-      this.attribute(
-        'time',
-        time,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (caption != null) this.attribute('caption', caption);
+    if (displayFolder != null) this.attribute('displayFolder', displayFolder);
+    if (measureGroup != null) this.attribute('measureGroup', measureGroup);
+    if (parent != null) this.attribute('parent', parent);
+    if (value_ != null) this.attribute('value', value_);
+    if (goal != null) this.attribute('goal', goal);
+    if (status != null) this.attribute('status', status);
+    if (trend != null) this.attribute('trend', trend);
+    if (weight != null) this.attribute('weight', weight);
+    if (time != null) this.attribute('time', time);
     children?.call(this);
   }
 }
@@ -4613,12 +3260,7 @@ extension S_CT_CacheHierarchies_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4738,138 +3380,42 @@ extension S_CT_CacheHierarchy_Builder on _i1.XmlBuilder {
     bool? unbalancedGroup,
     bool? hidden,
   ) {
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (caption != null) this.attribute('caption', caption);
     if (measure != null)
-      this.attribute(
-        'measure',
-        measure == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (set_ != null)
-      this.attribute(
-        'set',
-        set_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (parentSet != null)
-      this.attribute(
-        'parentSet',
-        parentSet.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (iconSet != null)
-      this.attribute(
-        'iconSet',
-        iconSet.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('measure', measure == true ? 'true' : 'false');
+    if (set_ != null) this.attribute('set', set_ == true ? 'true' : 'false');
+    if (parentSet != null) this.attribute('parentSet', parentSet.toString());
+    if (iconSet != null) this.attribute('iconSet', iconSet.toString());
     if (attribute != null)
-      this.attribute(
-        'attribute',
-        attribute == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (time != null)
-      this.attribute(
-        'time',
-        time == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('attribute', attribute == true ? 'true' : 'false');
+    if (time != null) this.attribute('time', time == true ? 'true' : 'false');
     if (keyAttribute != null)
-      this.attribute(
-        'keyAttribute',
-        keyAttribute == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('keyAttribute', keyAttribute == true ? 'true' : 'false');
     if (defaultMemberUniqueName != null)
-      this.attribute(
-        'defaultMemberUniqueName',
-        defaultMemberUniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (allUniqueName != null)
-      this.attribute(
-        'allUniqueName',
-        allUniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (allCaption != null)
-      this.attribute(
-        'allCaption',
-        allCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultMemberUniqueName', defaultMemberUniqueName);
+    if (allUniqueName != null) this.attribute('allUniqueName', allUniqueName);
+    if (allCaption != null) this.attribute('allCaption', allCaption);
     if (dimensionUniqueName != null)
-      this.attribute(
-        'dimensionUniqueName',
-        dimensionUniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (displayFolder != null)
-      this.attribute(
-        'displayFolder',
-        displayFolder,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (measureGroup != null)
-      this.attribute(
-        'measureGroup',
-        measureGroup,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dimensionUniqueName', dimensionUniqueName);
+    if (displayFolder != null) this.attribute('displayFolder', displayFolder);
+    if (measureGroup != null) this.attribute('measureGroup', measureGroup);
     if (measures != null)
-      this.attribute(
-        'measures',
-        measures == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('measures', measures == true ? 'true' : 'false');
+    if (count != null) this.attribute('count', count.toString());
     if (oneField != null)
-      this.attribute(
-        'oneField',
-        oneField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oneField', oneField == true ? 'true' : 'false');
     if (memberValueDatatype != null)
-      this.attribute(
-        'memberValueDatatype',
-        memberValueDatatype.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('memberValueDatatype', memberValueDatatype.toString());
     if (unbalanced != null)
-      this.attribute(
-        'unbalanced',
-        unbalanced == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('unbalanced', unbalanced == true ? 'true' : 'false');
     if (unbalancedGroup != null)
       this.attribute(
         'unbalancedGroup',
         unbalancedGroup == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4896,12 +3442,7 @@ extension S_CT_FieldsUsage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -4928,12 +3469,7 @@ extension S_CT_FieldUsage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? x) {
-    if (x != null)
-      this.attribute(
-        'x',
-        x.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (x != null) this.attribute('x', x.toString());
     children?.call(this);
   }
 }
@@ -4960,12 +3496,7 @@ extension S_CT_GroupLevels_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5001,30 +3532,11 @@ extension S_CT_GroupLevel_Builder on _i1.XmlBuilder {
     bool? user,
     bool? customRollUp,
   ) {
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (user != null)
-      this.attribute(
-        'user',
-        user == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (caption != null) this.attribute('caption', caption);
+    if (user != null) this.attribute('user', user == true ? 'true' : 'false');
     if (customRollUp != null)
-      this.attribute(
-        'customRollUp',
-        customRollUp == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customRollUp', customRollUp == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5051,12 +3563,7 @@ extension S_CT_Groups_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5094,36 +3601,11 @@ extension S_CT_LevelGroup_Builder on _i1.XmlBuilder {
     String? uniqueParent,
     int? id,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (uniqueParent != null)
-      this.attribute(
-        'uniqueParent',
-        uniqueParent,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (caption != null) this.attribute('caption', caption);
+    if (uniqueParent != null) this.attribute('uniqueParent', uniqueParent);
+    if (id != null) this.attribute('id', id.toString());
     children?.call(this);
   }
 }
@@ -5150,12 +3632,7 @@ extension S_CT_GroupMembers_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5187,18 +3664,9 @@ extension S_CT_GroupMember_Builder on _i1.XmlBuilder {
     String? uniqueName,
     bool? group,
   ) {
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
     if (group != null)
-      this.attribute(
-        'group',
-        group == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('group', group == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5255,18 +3723,8 @@ extension S_CT_ServerFormat_Builder on _i1.XmlBuilder {
     String? culture,
     String? format,
   ) {
-    if (culture != null)
-      this.attribute(
-        'culture',
-        culture,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (format != null)
-      this.attribute(
-        'format',
-        format,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (culture != null) this.attribute('culture', culture);
+    if (format != null) this.attribute('format', format);
     children?.call(this);
   }
 }
@@ -5293,12 +3751,7 @@ extension S_CT_ServerFormats_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5325,12 +3778,7 @@ extension S_CT_PCDSDTCEntries_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5357,12 +3805,7 @@ extension S_CT_Tuples_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? c) {
-    if (c != null)
-      this.attribute(
-        'c',
-        c.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (c != null) this.attribute('c', c.toString());
     children?.call(this);
   }
 }
@@ -5396,24 +3839,9 @@ extension S_CT_Tuple_Builder on _i1.XmlBuilder {
     int? hier,
     int? item,
   ) {
-    if (fld != null)
-      this.attribute(
-        'fld',
-        fld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hier != null)
-      this.attribute(
-        'hier',
-        hier.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (item != null)
-      this.attribute(
-        'item',
-        item.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (fld != null) this.attribute('fld', fld.toString());
+    if (hier != null) this.attribute('hier', hier.toString());
+    if (item != null) this.attribute('item', item.toString());
     children?.call(this);
   }
 }
@@ -5440,12 +3868,7 @@ extension S_CT_Sets_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5497,36 +3920,12 @@ extension S_CT_Set_Builder on _i1.XmlBuilder {
     S_ST_SortType? sortType,
     bool? queryFailed,
   ) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxRank != null)
-      this.attribute(
-        'maxRank',
-        maxRank.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (setDefinition != null)
-      this.attribute(
-        'setDefinition',
-        setDefinition,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sortType != null)
-      this.attribute(
-        'sortType',
-        sortType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
+    if (maxRank != null) this.attribute('maxRank', maxRank.toString());
+    if (setDefinition != null) this.attribute('setDefinition', setDefinition);
+    if (sortType != null) this.attribute('sortType', sortType!.value);
     if (queryFailed != null)
-      this.attribute(
-        'queryFailed',
-        queryFailed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('queryFailed', queryFailed == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5553,12 +3952,7 @@ extension S_CT_QueryCache_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5585,12 +3979,7 @@ extension S_CT_Query_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? mdx) {
-    if (mdx != null)
-      this.attribute(
-        'mdx',
-        mdx,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (mdx != null) this.attribute('mdx', mdx);
     children?.call(this);
   }
 }
@@ -5617,12 +4006,7 @@ extension S_CT_CalculatedItems_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5654,18 +4038,8 @@ extension S_CT_CalculatedItem_Builder on _i1.XmlBuilder {
     int? field,
     String? formula,
   ) {
-    if (field != null)
-      this.attribute(
-        'field',
-        field.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (formula != null)
-      this.attribute(
-        'formula',
-        formula,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (field != null) this.attribute('field', field.toString());
+    if (formula != null) this.attribute('formula', formula);
     children?.call(this);
   }
 }
@@ -5692,12 +4066,7 @@ extension S_CT_CalculatedMembers_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -5757,48 +4126,13 @@ extension S_CT_CalculatedMember_Builder on _i1.XmlBuilder {
     int? solveOrder,
     bool? set_,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (mdx != null)
-      this.attribute(
-        'mdx',
-        mdx,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (memberName != null)
-      this.attribute(
-        'memberName',
-        memberName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hierarchy != null)
-      this.attribute(
-        'hierarchy',
-        hierarchy,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (parent != null)
-      this.attribute(
-        'parent',
-        parent,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (solveOrder != null)
-      this.attribute(
-        'solveOrder',
-        solveOrder.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (set_ != null)
-      this.attribute(
-        'set',
-        set_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (mdx != null) this.attribute('mdx', mdx);
+    if (memberName != null) this.attribute('memberName', memberName);
+    if (hierarchy != null) this.attribute('hierarchy', hierarchy);
+    if (parent != null) this.attribute('parent', parent);
+    if (solveOrder != null) this.attribute('solveOrder', solveOrder.toString());
+    if (set_ != null) this.attribute('set', set_ == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -6074,371 +4408,169 @@ extension S_CT_pivotTableDefinition_Builder on _i1.XmlBuilder {
     bool? mdxSubqueries,
     bool? customListSort,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cacheId != null)
-      this.attribute(
-        'cacheId',
-        cacheId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (cacheId != null) this.attribute('cacheId', cacheId.toString());
     if (dataOnRows != null)
-      this.attribute(
-        'dataOnRows',
-        dataOnRows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dataOnRows', dataOnRows == true ? 'true' : 'false');
     if (dataPosition != null)
-      this.attribute(
-        'dataPosition',
-        dataPosition.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dataCaption != null)
-      this.attribute(
-        'dataCaption',
-        dataCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dataPosition', dataPosition.toString());
+    if (dataCaption != null) this.attribute('dataCaption', dataCaption);
     if (grandTotalCaption != null)
-      this.attribute(
-        'grandTotalCaption',
-        grandTotalCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (errorCaption != null)
-      this.attribute(
-        'errorCaption',
-        errorCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('grandTotalCaption', grandTotalCaption);
+    if (errorCaption != null) this.attribute('errorCaption', errorCaption);
     if (showError != null)
-      this.attribute(
-        'showError',
-        showError == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showError', showError == true ? 'true' : 'false');
     if (missingCaption != null)
-      this.attribute(
-        'missingCaption',
-        missingCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('missingCaption', missingCaption);
     if (showMissing != null)
-      this.attribute(
-        'showMissing',
-        showMissing == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (pageStyle != null)
-      this.attribute(
-        'pageStyle',
-        pageStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showMissing', showMissing == true ? 'true' : 'false');
+    if (pageStyle != null) this.attribute('pageStyle', pageStyle);
     if (pivotTableStyle != null)
-      this.attribute(
-        'pivotTableStyle',
-        pivotTableStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (vacatedStyle != null)
-      this.attribute(
-        'vacatedStyle',
-        vacatedStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tag != null)
-      this.attribute(
-        'tag',
-        tag,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pivotTableStyle', pivotTableStyle);
+    if (vacatedStyle != null) this.attribute('vacatedStyle', vacatedStyle);
+    if (tag != null) this.attribute('tag', tag);
     if (updatedVersion != null)
-      this.attribute(
-        'updatedVersion',
-        updatedVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('updatedVersion', updatedVersion.toString());
     if (minRefreshableVersion != null)
-      this.attribute(
-        'minRefreshableVersion',
-        minRefreshableVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minRefreshableVersion', minRefreshableVersion.toString());
     if (asteriskTotals != null)
       this.attribute(
         'asteriskTotals',
         asteriskTotals == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showItems != null)
-      this.attribute(
-        'showItems',
-        showItems == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showItems', showItems == true ? 'true' : 'false');
     if (editData != null)
-      this.attribute(
-        'editData',
-        editData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('editData', editData == true ? 'true' : 'false');
     if (disableFieldList != null)
       this.attribute(
         'disableFieldList',
         disableFieldList == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showCalcMbrs != null)
-      this.attribute(
-        'showCalcMbrs',
-        showCalcMbrs == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showCalcMbrs', showCalcMbrs == true ? 'true' : 'false');
     if (visualTotals != null)
-      this.attribute(
-        'visualTotals',
-        visualTotals == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('visualTotals', visualTotals == true ? 'true' : 'false');
     if (showMultipleLabel != null)
       this.attribute(
         'showMultipleLabel',
         showMultipleLabel == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showDataDropDown != null)
       this.attribute(
         'showDataDropDown',
         showDataDropDown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showDrill != null)
-      this.attribute(
-        'showDrill',
-        showDrill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showDrill', showDrill == true ? 'true' : 'false');
     if (printDrill != null)
-      this.attribute(
-        'printDrill',
-        printDrill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('printDrill', printDrill == true ? 'true' : 'false');
     if (showMemberPropertyTips != null)
       this.attribute(
         'showMemberPropertyTips',
         showMemberPropertyTips == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showDataTips != null)
-      this.attribute(
-        'showDataTips',
-        showDataTips == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showDataTips', showDataTips == true ? 'true' : 'false');
     if (enableWizard != null)
-      this.attribute(
-        'enableWizard',
-        enableWizard == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('enableWizard', enableWizard == true ? 'true' : 'false');
     if (enableDrill != null)
-      this.attribute(
-        'enableDrill',
-        enableDrill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('enableDrill', enableDrill == true ? 'true' : 'false');
     if (enableFieldProperties != null)
       this.attribute(
         'enableFieldProperties',
         enableFieldProperties == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (preserveFormatting != null)
       this.attribute(
         'preserveFormatting',
         preserveFormatting == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (useAutoFormatting != null)
       this.attribute(
         'useAutoFormatting',
         useAutoFormatting == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (pageWrap != null)
-      this.attribute(
-        'pageWrap',
-        pageWrap.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (pageWrap != null) this.attribute('pageWrap', pageWrap.toString());
     if (pageOverThenDown != null)
       this.attribute(
         'pageOverThenDown',
         pageOverThenDown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (subtotalHiddenItems != null)
       this.attribute(
         'subtotalHiddenItems',
         subtotalHiddenItems == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (rowGrandTotals != null)
       this.attribute(
         'rowGrandTotals',
         rowGrandTotals == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (colGrandTotals != null)
       this.attribute(
         'colGrandTotals',
         colGrandTotals == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (fieldPrintTitles != null)
       this.attribute(
         'fieldPrintTitles',
         fieldPrintTitles == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (itemPrintTitles != null)
       this.attribute(
         'itemPrintTitles',
         itemPrintTitles == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (mergeItem != null)
-      this.attribute(
-        'mergeItem',
-        mergeItem == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('mergeItem', mergeItem == true ? 'true' : 'false');
     if (showDropZones != null)
-      this.attribute(
-        'showDropZones',
-        showDropZones == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showDropZones', showDropZones == true ? 'true' : 'false');
     if (createdVersion != null)
-      this.attribute(
-        'createdVersion',
-        createdVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (indent != null)
-      this.attribute(
-        'indent',
-        indent.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('createdVersion', createdVersion.toString());
+    if (indent != null) this.attribute('indent', indent.toString());
     if (showEmptyRow != null)
-      this.attribute(
-        'showEmptyRow',
-        showEmptyRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showEmptyRow', showEmptyRow == true ? 'true' : 'false');
     if (showEmptyCol != null)
-      this.attribute(
-        'showEmptyCol',
-        showEmptyCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showEmptyCol', showEmptyCol == true ? 'true' : 'false');
     if (showHeaders != null)
-      this.attribute(
-        'showHeaders',
-        showHeaders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showHeaders', showHeaders == true ? 'true' : 'false');
     if (compact != null)
-      this.attribute(
-        'compact',
-        compact == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('compact', compact == true ? 'true' : 'false');
     if (outline != null)
-      this.attribute(
-        'outline',
-        outline == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outline', outline == true ? 'true' : 'false');
     if (outlineData != null)
-      this.attribute(
-        'outlineData',
-        outlineData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outlineData', outlineData == true ? 'true' : 'false');
     if (compactData != null)
-      this.attribute(
-        'compactData',
-        compactData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('compactData', compactData == true ? 'true' : 'false');
     if (published != null)
-      this.attribute(
-        'published',
-        published == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('published', published == true ? 'true' : 'false');
     if (gridDropZones != null)
-      this.attribute(
-        'gridDropZones',
-        gridDropZones == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('gridDropZones', gridDropZones == true ? 'true' : 'false');
     if (immersive != null)
-      this.attribute(
-        'immersive',
-        immersive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('immersive', immersive == true ? 'true' : 'false');
     if (multipleFieldFilters != null)
       this.attribute(
         'multipleFieldFilters',
         multipleFieldFilters == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (chartFormat != null)
-      this.attribute(
-        'chartFormat',
-        chartFormat.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('chartFormat', chartFormat.toString());
     if (rowHeaderCaption != null)
-      this.attribute(
-        'rowHeaderCaption',
-        rowHeaderCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowHeaderCaption', rowHeaderCaption);
     if (colHeaderCaption != null)
-      this.attribute(
-        'colHeaderCaption',
-        colHeaderCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('colHeaderCaption', colHeaderCaption);
     if (fieldListSortAscending != null)
       this.attribute(
         'fieldListSortAscending',
         fieldListSortAscending == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (mdxSubqueries != null)
-      this.attribute(
-        'mdxSubqueries',
-        mdxSubqueries == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('mdxSubqueries', mdxSubqueries == true ? 'true' : 'false');
     if (customListSort != null)
       this.attribute(
         'customListSort',
         customListSort == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -6495,42 +4627,17 @@ extension S_CT_Location_Builder on _i1.XmlBuilder {
     int? rowPageCount,
     int? colPageCount,
   ) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     if (firstHeaderRow != null)
-      this.attribute(
-        'firstHeaderRow',
-        firstHeaderRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstHeaderRow', firstHeaderRow.toString());
     if (firstDataRow != null)
-      this.attribute(
-        'firstDataRow',
-        firstDataRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstDataRow', firstDataRow.toString());
     if (firstDataCol != null)
-      this.attribute(
-        'firstDataCol',
-        firstDataCol.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstDataCol', firstDataCol.toString());
     if (rowPageCount != null)
-      this.attribute(
-        'rowPageCount',
-        rowPageCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowPageCount', rowPageCount.toString());
     if (colPageCount != null)
-      this.attribute(
-        'colPageCount',
-        colPageCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('colPageCount', colPageCount.toString());
     children?.call(this);
   }
 }
@@ -6557,12 +4664,7 @@ extension S_CT_PivotFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -6786,293 +4888,135 @@ extension S_CT_PivotField_Builder on _i1.XmlBuilder {
     bool? showPropAsCaption,
     bool? defaultAttributeDrillState,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (axis != null)
-      this.attribute(
-        'axis',
-        axis!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (axis != null) this.attribute('axis', axis!.value);
     if (dataField != null)
-      this.attribute(
-        'dataField',
-        dataField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dataField', dataField == true ? 'true' : 'false');
     if (subtotalCaption != null)
-      this.attribute(
-        'subtotalCaption',
-        subtotalCaption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('subtotalCaption', subtotalCaption);
     if (showDropDowns != null)
-      this.attribute(
-        'showDropDowns',
-        showDropDowns == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showDropDowns', showDropDowns == true ? 'true' : 'false');
     if (hiddenLevel != null)
-      this.attribute(
-        'hiddenLevel',
-        hiddenLevel == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenLevel', hiddenLevel == true ? 'true' : 'false');
     if (uniqueMemberProperty != null)
-      this.attribute(
-        'uniqueMemberProperty',
-        uniqueMemberProperty,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('uniqueMemberProperty', uniqueMemberProperty);
     if (compact != null)
-      this.attribute(
-        'compact',
-        compact == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('compact', compact == true ? 'true' : 'false');
     if (allDrilled != null)
-      this.attribute(
-        'allDrilled',
-        allDrilled == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('allDrilled', allDrilled == true ? 'true' : 'false');
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
     if (outline != null)
-      this.attribute(
-        'outline',
-        outline == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outline', outline == true ? 'true' : 'false');
     if (subtotalTop != null)
-      this.attribute(
-        'subtotalTop',
-        subtotalTop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('subtotalTop', subtotalTop == true ? 'true' : 'false');
     if (dragToRow != null)
-      this.attribute(
-        'dragToRow',
-        dragToRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToRow', dragToRow == true ? 'true' : 'false');
     if (dragToCol != null)
-      this.attribute(
-        'dragToCol',
-        dragToCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToCol', dragToCol == true ? 'true' : 'false');
     if (multipleItemSelectionAllowed != null)
       this.attribute(
         'multipleItemSelectionAllowed',
         multipleItemSelectionAllowed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (dragToPage != null)
-      this.attribute(
-        'dragToPage',
-        dragToPage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToPage', dragToPage == true ? 'true' : 'false');
     if (dragToData != null)
-      this.attribute(
-        'dragToData',
-        dragToData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToData', dragToData == true ? 'true' : 'false');
     if (dragOff != null)
-      this.attribute(
-        'dragOff',
-        dragOff == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragOff', dragOff == true ? 'true' : 'false');
     if (showAll != null)
-      this.attribute(
-        'showAll',
-        showAll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showAll', showAll == true ? 'true' : 'false');
     if (insertBlankRow != null)
       this.attribute(
         'insertBlankRow',
         insertBlankRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (serverField != null)
-      this.attribute(
-        'serverField',
-        serverField == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('serverField', serverField == true ? 'true' : 'false');
     if (insertPageBreak != null)
       this.attribute(
         'insertPageBreak',
         insertPageBreak == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (autoShow != null)
-      this.attribute(
-        'autoShow',
-        autoShow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoShow', autoShow == true ? 'true' : 'false');
     if (topAutoShow != null)
-      this.attribute(
-        'topAutoShow',
-        topAutoShow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('topAutoShow', topAutoShow == true ? 'true' : 'false');
     if (hideNewItems != null)
-      this.attribute(
-        'hideNewItems',
-        hideNewItems == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hideNewItems', hideNewItems == true ? 'true' : 'false');
     if (measureFilter != null)
-      this.attribute(
-        'measureFilter',
-        measureFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('measureFilter', measureFilter == true ? 'true' : 'false');
     if (includeNewItemsInFilter != null)
       this.attribute(
         'includeNewItemsInFilter',
         includeNewItemsInFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (itemPageCount != null)
-      this.attribute(
-        'itemPageCount',
-        itemPageCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sortType != null)
-      this.attribute(
-        'sortType',
-        sortType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('itemPageCount', itemPageCount.toString());
+    if (sortType != null) this.attribute('sortType', sortType!.value);
     if (dataSourceSort != null)
       this.attribute(
         'dataSourceSort',
         dataSourceSort == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (nonAutoSortDefault != null)
       this.attribute(
         'nonAutoSortDefault',
         nonAutoSortDefault == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (rankBy != null)
-      this.attribute(
-        'rankBy',
-        rankBy.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (rankBy != null) this.attribute('rankBy', rankBy.toString());
     if (defaultSubtotal != null)
       this.attribute(
         'defaultSubtotal',
         defaultSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (sumSubtotal != null)
-      this.attribute(
-        'sumSubtotal',
-        sumSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sumSubtotal', sumSubtotal == true ? 'true' : 'false');
     if (countASubtotal != null)
       this.attribute(
         'countASubtotal',
         countASubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (avgSubtotal != null)
-      this.attribute(
-        'avgSubtotal',
-        avgSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('avgSubtotal', avgSubtotal == true ? 'true' : 'false');
     if (maxSubtotal != null)
-      this.attribute(
-        'maxSubtotal',
-        maxSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('maxSubtotal', maxSubtotal == true ? 'true' : 'false');
     if (minSubtotal != null)
-      this.attribute(
-        'minSubtotal',
-        minSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minSubtotal', minSubtotal == true ? 'true' : 'false');
     if (productSubtotal != null)
       this.attribute(
         'productSubtotal',
         productSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (countSubtotal != null)
-      this.attribute(
-        'countSubtotal',
-        countSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('countSubtotal', countSubtotal == true ? 'true' : 'false');
     if (stdDevSubtotal != null)
       this.attribute(
         'stdDevSubtotal',
         stdDevSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (stdDevPSubtotal != null)
       this.attribute(
         'stdDevPSubtotal',
         stdDevPSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (varSubtotal != null)
-      this.attribute(
-        'varSubtotal',
-        varSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('varSubtotal', varSubtotal == true ? 'true' : 'false');
     if (varPSubtotal != null)
-      this.attribute(
-        'varPSubtotal',
-        varPSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('varPSubtotal', varPSubtotal == true ? 'true' : 'false');
     if (showPropCell != null)
-      this.attribute(
-        'showPropCell',
-        showPropCell == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showPropCell', showPropCell == true ? 'true' : 'false');
     if (showPropTip != null)
-      this.attribute(
-        'showPropTip',
-        showPropTip == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showPropTip', showPropTip == true ? 'true' : 'false');
     if (showPropAsCaption != null)
       this.attribute(
         'showPropAsCaption',
         showPropAsCaption == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (defaultAttributeDrillState != null)
       this.attribute(
         'defaultAttributeDrillState',
         defaultAttributeDrillState == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -7125,12 +5069,7 @@ extension S_CT_Items_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7180,72 +5119,17 @@ extension S_CT_Item_Builder on _i1.XmlBuilder {
     bool? d,
     bool? e,
   ) {
-    if (n != null)
-      this.attribute(
-        'n',
-        n,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (h != null)
-      this.attribute(
-        'h',
-        h == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sd != null)
-      this.attribute(
-        'sd',
-        sd == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (m != null)
-      this.attribute(
-        'm',
-        m == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (x != null)
-      this.attribute(
-        'x',
-        x.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (d != null)
-      this.attribute(
-        'd',
-        d == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (e != null)
-      this.attribute(
-        'e',
-        e == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (n != null) this.attribute('n', n);
+    if (t != null) this.attribute('t', t!.value);
+    if (h != null) this.attribute('h', h == true ? 'true' : 'false');
+    if (s != null) this.attribute('s', s == true ? 'true' : 'false');
+    if (sd != null) this.attribute('sd', sd == true ? 'true' : 'false');
+    if (f != null) this.attribute('f', f == true ? 'true' : 'false');
+    if (m != null) this.attribute('m', m == true ? 'true' : 'false');
+    if (c != null) this.attribute('c', c == true ? 'true' : 'false');
+    if (x != null) this.attribute('x', x.toString());
+    if (d != null) this.attribute('d', d == true ? 'true' : 'false');
+    if (e != null) this.attribute('e', e == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -7272,12 +5156,7 @@ extension S_CT_PageFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7315,36 +5194,11 @@ extension S_CT_PageField_Builder on _i1.XmlBuilder {
     String? name,
     String? cap,
   ) {
-    if (fld != null)
-      this.attribute(
-        'fld',
-        fld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (item != null)
-      this.attribute(
-        'item',
-        item.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hier != null)
-      this.attribute(
-        'hier',
-        hier.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cap != null)
-      this.attribute(
-        'cap',
-        cap,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (fld != null) this.attribute('fld', fld.toString());
+    if (item != null) this.attribute('item', item.toString());
+    if (hier != null) this.attribute('hier', hier.toString());
+    if (name != null) this.attribute('name', name);
+    if (cap != null) this.attribute('cap', cap);
     children?.call(this);
   }
 }
@@ -7371,12 +5225,7 @@ extension S_CT_DataFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7436,48 +5285,13 @@ extension S_CT_DataField_Builder on _i1.XmlBuilder {
     int? baseItem,
     String? numFmtId,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fld != null)
-      this.attribute(
-        'fld',
-        fld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (subtotal != null)
-      this.attribute(
-        'subtotal',
-        subtotal!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (showDataAs != null)
-      this.attribute(
-        'showDataAs',
-        showDataAs!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (baseField != null)
-      this.attribute(
-        'baseField',
-        baseField.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (baseItem != null)
-      this.attribute(
-        'baseItem',
-        baseItem.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (fld != null) this.attribute('fld', fld.toString());
+    if (subtotal != null) this.attribute('subtotal', subtotal!.value);
+    if (showDataAs != null) this.attribute('showDataAs', showDataAs!.value);
+    if (baseField != null) this.attribute('baseField', baseField.toString());
+    if (baseItem != null) this.attribute('baseItem', baseItem.toString());
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
     children?.call(this);
   }
 }
@@ -7504,12 +5318,7 @@ extension S_CT_rowItems_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7536,12 +5345,7 @@ extension S_CT_colItems_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7575,24 +5379,9 @@ extension S_CT_I_Builder on _i1.XmlBuilder {
     int? r,
     int? i,
   ) {
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (r != null)
-      this.attribute(
-        'r',
-        r.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (t != null) this.attribute('t', t!.value);
+    if (r != null) this.attribute('r', r.toString());
+    if (i != null) this.attribute('i', i.toString());
     children?.call(this);
   }
 }
@@ -7619,12 +5408,7 @@ extension S_CT_X_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? v) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v.toString());
     children?.call(this);
   }
 }
@@ -7651,12 +5435,7 @@ extension S_CT_RowFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7683,12 +5462,7 @@ extension S_CT_ColFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7715,12 +5489,7 @@ extension S_CT_Field_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? x) {
-    if (x != null)
-      this.attribute(
-        'x',
-        x.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (x != null) this.attribute('x', x.toString());
     children?.call(this);
   }
 }
@@ -7747,12 +5516,7 @@ extension S_CT_Formats_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7784,18 +5548,8 @@ extension S_CT_Format_Builder on _i1.XmlBuilder {
     S_ST_FormatAction? action,
     String? dxfId,
   ) {
-    if (action != null)
-      this.attribute(
-        'action',
-        action!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dxfId != null)
-      this.attribute(
-        'dxfId',
-        dxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (action != null) this.attribute('action', action!.value);
+    if (dxfId != null) this.attribute('dxfId', dxfId);
     children?.call(this);
   }
 }
@@ -7822,12 +5576,7 @@ extension S_CT_ConditionalFormats_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7861,24 +5610,9 @@ extension S_CT_ConditionalFormat_Builder on _i1.XmlBuilder {
     S_ST_Type? type,
     int? priority,
   ) {
-    if (scope != null)
-      this.attribute(
-        'scope',
-        scope!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (priority != null)
-      this.attribute(
-        'priority',
-        priority.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (scope != null) this.attribute('scope', scope!.value);
+    if (type != null) this.attribute('type', type!.value);
+    if (priority != null) this.attribute('priority', priority.toString());
     children?.call(this);
   }
 }
@@ -7905,12 +5639,7 @@ extension S_CT_PivotAreas_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7937,12 +5666,7 @@ extension S_CT_ChartFormats_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -7976,24 +5700,10 @@ extension S_CT_ChartFormat_Builder on _i1.XmlBuilder {
     int? format,
     bool? series,
   ) {
-    if (chart != null)
-      this.attribute(
-        'chart',
-        chart.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (format != null)
-      this.attribute(
-        'format',
-        format.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (chart != null) this.attribute('chart', chart.toString());
+    if (format != null) this.attribute('format', format.toString());
     if (series != null)
-      this.attribute(
-        'series',
-        series == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('series', series == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -8020,12 +5730,7 @@ extension S_CT_PivotHierarchies_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8102,71 +5807,35 @@ extension S_CT_PivotHierarchy_Builder on _i1.XmlBuilder {
     String? caption,
   ) {
     if (outline != null)
-      this.attribute(
-        'outline',
-        outline == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outline', outline == true ? 'true' : 'false');
     if (multipleItemSelectionAllowed != null)
       this.attribute(
         'multipleItemSelectionAllowed',
         multipleItemSelectionAllowed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (subtotalTop != null)
-      this.attribute(
-        'subtotalTop',
-        subtotalTop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('subtotalTop', subtotalTop == true ? 'true' : 'false');
     if (showInFieldList != null)
       this.attribute(
         'showInFieldList',
         showInFieldList == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (dragToRow != null)
-      this.attribute(
-        'dragToRow',
-        dragToRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToRow', dragToRow == true ? 'true' : 'false');
     if (dragToCol != null)
-      this.attribute(
-        'dragToCol',
-        dragToCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToCol', dragToCol == true ? 'true' : 'false');
     if (dragToPage != null)
-      this.attribute(
-        'dragToPage',
-        dragToPage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToPage', dragToPage == true ? 'true' : 'false');
     if (dragToData != null)
-      this.attribute(
-        'dragToData',
-        dragToData == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragToData', dragToData == true ? 'true' : 'false');
     if (dragOff != null)
-      this.attribute(
-        'dragOff',
-        dragOff == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dragOff', dragOff == true ? 'true' : 'false');
     if (includeNewItemsInFilter != null)
       this.attribute(
         'includeNewItemsInFilter',
         includeNewItemsInFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (caption != null) this.attribute('caption', caption);
     children?.call(this);
   }
 }
@@ -8193,12 +5862,7 @@ extension S_CT_RowHierarchiesUsage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8225,12 +5889,7 @@ extension S_CT_ColHierarchiesUsage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8258,11 +5917,7 @@ extension S_CT_HierarchyUsage_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, int? hierarchyUsage) {
     if (hierarchyUsage != null)
-      this.attribute(
-        'hierarchyUsage',
-        hierarchyUsage.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hierarchyUsage', hierarchyUsage.toString());
     children?.call(this);
   }
 }
@@ -8289,12 +5944,7 @@ extension S_CT_MemberProperties_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8362,60 +6012,18 @@ extension S_CT_MemberProperty_Builder on _i1.XmlBuilder {
     int? level,
     int? field,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (showCell != null)
-      this.attribute(
-        'showCell',
-        showCell == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showCell', showCell == true ? 'true' : 'false');
     if (showTip != null)
-      this.attribute(
-        'showTip',
-        showTip == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showTip', showTip == true ? 'true' : 'false');
     if (showAsCaption != null)
-      this.attribute(
-        'showAsCaption',
-        showAsCaption == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (nameLen != null)
-      this.attribute(
-        'nameLen',
-        nameLen.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (pPos != null)
-      this.attribute(
-        'pPos',
-        pPos.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (pLen != null)
-      this.attribute(
-        'pLen',
-        pLen.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (level != null)
-      this.attribute(
-        'level',
-        level.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (field != null)
-      this.attribute(
-        'field',
-        field.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showAsCaption', showAsCaption == true ? 'true' : 'false');
+    if (nameLen != null) this.attribute('nameLen', nameLen.toString());
+    if (pPos != null) this.attribute('pPos', pPos.toString());
+    if (pLen != null) this.attribute('pLen', pLen.toString());
+    if (level != null) this.attribute('level', level.toString());
+    if (field != null) this.attribute('field', field.toString());
     children?.call(this);
   }
 }
@@ -8443,18 +6051,8 @@ extension S_CT_Members_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count, int? level) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (level != null)
-      this.attribute(
-        'level',
-        level.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
+    if (level != null) this.attribute('level', level.toString());
     children?.call(this);
   }
 }
@@ -8481,12 +6079,7 @@ extension S_CT_Member_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -8513,12 +6106,7 @@ extension S_CT_Dimensions_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8555,29 +6143,10 @@ extension S_CT_PivotDimension_Builder on _i1.XmlBuilder {
     String? caption,
   ) {
     if (measure != null)
-      this.attribute(
-        'measure',
-        measure == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('measure', measure == true ? 'true' : 'false');
+    if (name != null) this.attribute('name', name);
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (caption != null) this.attribute('caption', caption);
     children?.call(this);
   }
 }
@@ -8604,12 +6173,7 @@ extension S_CT_MeasureGroups_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8636,12 +6200,7 @@ extension S_CT_MeasureDimensionMaps_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8673,18 +6232,8 @@ extension S_CT_MeasureGroup_Builder on _i1.XmlBuilder {
     String? name,
     String? caption,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (caption != null)
-      this.attribute(
-        'caption',
-        caption,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (caption != null) this.attribute('caption', caption);
     children?.call(this);
   }
 }
@@ -8717,17 +6266,8 @@ extension S_CT_MeasureDimensionMap_Builder on _i1.XmlBuilder {
     int? dimension,
   ) {
     if (measureGroup != null)
-      this.attribute(
-        'measureGroup',
-        measureGroup.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dimension != null)
-      this.attribute(
-        'dimension',
-        dimension.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('measureGroup', measureGroup.toString());
+    if (dimension != null) this.attribute('dimension', dimension.toString());
     children?.call(this);
   }
 }
@@ -8783,41 +6323,31 @@ extension S_CT_PivotTableStyle_Builder on _i1.XmlBuilder {
     bool? showColStripes,
     bool? showLastColumn,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (showRowHeaders != null)
       this.attribute(
         'showRowHeaders',
         showRowHeaders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showColHeaders != null)
       this.attribute(
         'showColHeaders',
         showColHeaders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showRowStripes != null)
       this.attribute(
         'showRowStripes',
         showRowStripes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showColStripes != null)
       this.attribute(
         'showColStripes',
         showColStripes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showLastColumn != null)
       this.attribute(
         'showLastColumn',
         showLastColumn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -8845,12 +6375,7 @@ extension S_CT_PivotFilters_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -8926,72 +6451,19 @@ extension S_CT_PivotFilter_Builder on _i1.XmlBuilder {
     String? stringValue1,
     String? stringValue2,
   ) {
-    if (fld != null)
-      this.attribute(
-        'fld',
-        fld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (mpFld != null)
-      this.attribute(
-        'mpFld',
-        mpFld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (evalOrder != null)
-      this.attribute(
-        'evalOrder',
-        evalOrder.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (fld != null) this.attribute('fld', fld.toString());
+    if (mpFld != null) this.attribute('mpFld', mpFld.toString());
+    if (type != null) this.attribute('type', type!.value);
+    if (evalOrder != null) this.attribute('evalOrder', evalOrder.toString());
+    if (id != null) this.attribute('id', id.toString());
     if (iMeasureHier != null)
-      this.attribute(
-        'iMeasureHier',
-        iMeasureHier.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('iMeasureHier', iMeasureHier.toString());
     if (iMeasureFld != null)
-      this.attribute(
-        'iMeasureFld',
-        iMeasureFld.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (description != null)
-      this.attribute(
-        'description',
-        description,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (stringValue1 != null)
-      this.attribute(
-        'stringValue1',
-        stringValue1,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (stringValue2 != null)
-      this.attribute(
-        'stringValue2',
-        stringValue2,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('iMeasureFld', iMeasureFld.toString());
+    if (name != null) this.attribute('name', name);
+    if (description != null) this.attribute('description', description);
+    if (stringValue1 != null) this.attribute('stringValue1', stringValue1);
+    if (stringValue2 != null) this.attribute('stringValue2', stringValue2);
     children?.call(this);
   }
 }
@@ -9071,78 +6543,29 @@ extension S_CT_PivotArea_Builder on _i1.XmlBuilder {
     S_ST_Axis? axis,
     int? fieldPosition,
   ) {
-    if (field != null)
-      this.attribute(
-        'field',
-        field.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (field != null) this.attribute('field', field.toString());
+    if (type != null) this.attribute('type', type!.value);
     if (dataOnly != null)
-      this.attribute(
-        'dataOnly',
-        dataOnly == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dataOnly', dataOnly == true ? 'true' : 'false');
     if (labelOnly != null)
-      this.attribute(
-        'labelOnly',
-        labelOnly == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('labelOnly', labelOnly == true ? 'true' : 'false');
     if (grandRow != null)
-      this.attribute(
-        'grandRow',
-        grandRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('grandRow', grandRow == true ? 'true' : 'false');
     if (grandCol != null)
-      this.attribute(
-        'grandCol',
-        grandCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('grandCol', grandCol == true ? 'true' : 'false');
     if (cacheIndex != null)
-      this.attribute(
-        'cacheIndex',
-        cacheIndex == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('cacheIndex', cacheIndex == true ? 'true' : 'false');
     if (outline != null)
-      this.attribute(
-        'outline',
-        outline == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (offset != null)
-      this.attribute(
-        'offset',
-        offset,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outline', outline == true ? 'true' : 'false');
+    if (offset != null) this.attribute('offset', offset);
     if (collapsedLevelsAreSubtotals != null)
       this.attribute(
         'collapsedLevelsAreSubtotals',
         collapsedLevelsAreSubtotals == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (axis != null)
-      this.attribute(
-        'axis',
-        axis!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (axis != null) this.attribute('axis', axis!.value);
     if (fieldPosition != null)
-      this.attribute(
-        'fieldPosition',
-        fieldPosition.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fieldPosition', fieldPosition.toString());
     children?.call(this);
   }
 }
@@ -9169,12 +6592,7 @@ extension S_CT_PivotAreaReferences_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -9274,108 +6692,53 @@ extension S_CT_PivotAreaReference_Builder on _i1.XmlBuilder {
     bool? varSubtotal,
     bool? varPSubtotal,
   ) {
-    if (field != null)
-      this.attribute(
-        'field',
-        field.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (field != null) this.attribute('field', field.toString());
+    if (count != null) this.attribute('count', count.toString());
     if (selected != null)
-      this.attribute(
-        'selected',
-        selected == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('selected', selected == true ? 'true' : 'false');
     if (byPosition != null)
-      this.attribute(
-        'byPosition',
-        byPosition == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('byPosition', byPosition == true ? 'true' : 'false');
     if (relative != null)
-      this.attribute(
-        'relative',
-        relative == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('relative', relative == true ? 'true' : 'false');
     if (defaultSubtotal != null)
       this.attribute(
         'defaultSubtotal',
         defaultSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (sumSubtotal != null)
-      this.attribute(
-        'sumSubtotal',
-        sumSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sumSubtotal', sumSubtotal == true ? 'true' : 'false');
     if (countASubtotal != null)
       this.attribute(
         'countASubtotal',
         countASubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (avgSubtotal != null)
-      this.attribute(
-        'avgSubtotal',
-        avgSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('avgSubtotal', avgSubtotal == true ? 'true' : 'false');
     if (maxSubtotal != null)
-      this.attribute(
-        'maxSubtotal',
-        maxSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('maxSubtotal', maxSubtotal == true ? 'true' : 'false');
     if (minSubtotal != null)
-      this.attribute(
-        'minSubtotal',
-        minSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minSubtotal', minSubtotal == true ? 'true' : 'false');
     if (productSubtotal != null)
       this.attribute(
         'productSubtotal',
         productSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (countSubtotal != null)
-      this.attribute(
-        'countSubtotal',
-        countSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('countSubtotal', countSubtotal == true ? 'true' : 'false');
     if (stdDevSubtotal != null)
       this.attribute(
         'stdDevSubtotal',
         stdDevSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (stdDevPSubtotal != null)
       this.attribute(
         'stdDevPSubtotal',
         stdDevPSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (varSubtotal != null)
-      this.attribute(
-        'varSubtotal',
-        varSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('varSubtotal', varSubtotal == true ? 'true' : 'false');
     if (varPSubtotal != null)
-      this.attribute(
-        'varPSubtotal',
-        varPSubtotal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('varPSubtotal', varPSubtotal == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -9402,12 +6765,7 @@ extension S_CT_Index_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? v) {
-    if (v != null)
-      this.attribute(
-        'v',
-        v.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (v != null) this.attribute('v', v.toString());
     children?.call(this);
   }
 }
@@ -9499,96 +6857,53 @@ extension S_CT_QueryTable_Builder on _i1.XmlBuilder {
     bool? intermediate,
     int? connectionId,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (headers != null)
-      this.attribute(
-        'headers',
-        headers == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headers', headers == true ? 'true' : 'false');
     if (rowNumbers != null)
-      this.attribute(
-        'rowNumbers',
-        rowNumbers == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowNumbers', rowNumbers == true ? 'true' : 'false');
     if (disableRefresh != null)
       this.attribute(
         'disableRefresh',
         disableRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (backgroundRefresh != null)
       this.attribute(
         'backgroundRefresh',
         backgroundRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (firstBackgroundRefresh != null)
       this.attribute(
         'firstBackgroundRefresh',
         firstBackgroundRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (refreshOnLoad != null)
-      this.attribute(
-        'refreshOnLoad',
-        refreshOnLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshOnLoad', refreshOnLoad == true ? 'true' : 'false');
     if (growShrinkType != null)
-      this.attribute(
-        'growShrinkType',
-        growShrinkType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('growShrinkType', growShrinkType!.value);
     if (fillFormulas != null)
-      this.attribute(
-        'fillFormulas',
-        fillFormulas == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fillFormulas', fillFormulas == true ? 'true' : 'false');
     if (removeDataOnSave != null)
       this.attribute(
         'removeDataOnSave',
         removeDataOnSave == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (disableEdit != null)
-      this.attribute(
-        'disableEdit',
-        disableEdit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('disableEdit', disableEdit == true ? 'true' : 'false');
     if (preserveFormatting != null)
       this.attribute(
         'preserveFormatting',
         preserveFormatting == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (adjustColumnWidth != null)
       this.attribute(
         'adjustColumnWidth',
         adjustColumnWidth == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (intermediate != null)
-      this.attribute(
-        'intermediate',
-        intermediate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('intermediate', intermediate == true ? 'true' : 'false');
     if (connectionId != null)
-      this.attribute(
-        'connectionId',
-        connectionId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('connectionId', connectionId.toString());
     children?.call(this);
   }
 }
@@ -9652,44 +6967,24 @@ extension S_CT_QueryTableRefresh_Builder on _i1.XmlBuilder {
       this.attribute(
         'preserveSortFilterLayout',
         preserveSortFilterLayout == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (fieldIdWrapped != null)
       this.attribute(
         'fieldIdWrapped',
         fieldIdWrapped == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (headersInLastRefresh != null)
       this.attribute(
         'headersInLastRefresh',
         headersInLastRefresh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (minimumVersion != null)
-      this.attribute(
-        'minimumVersion',
-        minimumVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (nextId != null)
-      this.attribute(
-        'nextId',
-        nextId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minimumVersion', minimumVersion.toString());
+    if (nextId != null) this.attribute('nextId', nextId.toString());
     if (unboundColumnsLeft != null)
-      this.attribute(
-        'unboundColumnsLeft',
-        unboundColumnsLeft.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('unboundColumnsLeft', unboundColumnsLeft.toString());
     if (unboundColumnsRight != null)
-      this.attribute(
-        'unboundColumnsRight',
-        unboundColumnsRight.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('unboundColumnsRight', unboundColumnsRight.toString());
     children?.call(this);
   }
 }
@@ -9716,12 +7011,7 @@ extension S_CT_QueryTableDeletedFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -9748,12 +7038,7 @@ extension S_CT_DeletedField_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -9780,12 +7065,7 @@ extension S_CT_QueryTableFields_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -9845,48 +7125,18 @@ extension S_CT_QueryTableField_Builder on _i1.XmlBuilder {
     bool? clipped,
     int? tableColumnId,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (name != null) this.attribute('name', name);
     if (dataBound != null)
-      this.attribute(
-        'dataBound',
-        dataBound == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('dataBound', dataBound == true ? 'true' : 'false');
     if (rowNumbers != null)
-      this.attribute(
-        'rowNumbers',
-        rowNumbers == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowNumbers', rowNumbers == true ? 'true' : 'false');
     if (fillFormulas != null)
-      this.attribute(
-        'fillFormulas',
-        fillFormulas == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fillFormulas', fillFormulas == true ? 'true' : 'false');
     if (clipped != null)
-      this.attribute(
-        'clipped',
-        clipped == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('clipped', clipped == true ? 'true' : 'false');
     if (tableColumnId != null)
-      this.attribute(
-        'tableColumnId',
-        tableColumnId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('tableColumnId', tableColumnId.toString());
     children?.call(this);
   }
 }
@@ -9918,18 +7168,9 @@ extension S_CT_Sst_Builder on _i1.XmlBuilder {
     int? count,
     int? uniqueCount,
   ) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     if (uniqueCount != null)
-      this.attribute(
-        'uniqueCount',
-        uniqueCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('uniqueCount', uniqueCount.toString());
     children?.call(this);
   }
 }
@@ -9957,18 +7198,8 @@ extension S_CT_PhoneticRun_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? sb, int? eb) {
-    if (sb != null)
-      this.attribute(
-        'sb',
-        sb.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (eb != null)
-      this.attribute(
-        'eb',
-        eb.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sb != null) this.attribute('sb', sb.toString());
+    if (eb != null) this.attribute('eb', eb.toString());
     children?.call(this);
   }
 }
@@ -10077,24 +7308,9 @@ extension S_CT_PhoneticPr_Builder on _i1.XmlBuilder {
     S_ST_PhoneticType? type,
     S_ST_PhoneticAlignment? alignment,
   ) {
-    if (fontId != null)
-      this.attribute(
-        'fontId',
-        fontId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (alignment != null)
-      this.attribute(
-        'alignment',
-        alignment!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (fontId != null) this.attribute('fontId', fontId);
+    if (type != null) this.attribute('type', type!.value);
+    if (alignment != null) this.attribute('alignment', alignment!.value);
     children?.call(this);
   }
 }
@@ -10174,78 +7390,32 @@ extension S_CT_RevisionHeaders_Builder on _i1.XmlBuilder {
     bool? protected,
     int? preserveHistory,
   ) {
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lastGuid != null)
-      this.attribute(
-        'lastGuid',
-        lastGuid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (guid != null) this.attribute('guid', guid);
+    if (lastGuid != null) this.attribute('lastGuid', lastGuid);
     if (shared != null)
-      this.attribute(
-        'shared',
-        shared == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('shared', shared == true ? 'true' : 'false');
     if (diskRevisions != null)
-      this.attribute(
-        'diskRevisions',
-        diskRevisions == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('diskRevisions', diskRevisions == true ? 'true' : 'false');
     if (history != null)
-      this.attribute(
-        'history',
-        history == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('history', history == true ? 'true' : 'false');
     if (trackRevisions != null)
       this.attribute(
         'trackRevisions',
         trackRevisions == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (exclusive != null)
-      this.attribute(
-        'exclusive',
-        exclusive == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (revisionId != null)
-      this.attribute(
-        'revisionId',
-        revisionId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (version != null)
-      this.attribute(
-        'version',
-        version.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('exclusive', exclusive == true ? 'true' : 'false');
+    if (revisionId != null) this.attribute('revisionId', revisionId.toString());
+    if (version != null) this.attribute('version', version.toString());
     if (keepChangeHistory != null)
       this.attribute(
         'keepChangeHistory',
         keepChangeHistory == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (protected != null)
-      this.attribute(
-        'protected',
-        protected == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('protected', protected == true ? 'true' : 'false');
     if (preserveHistory != null)
-      this.attribute(
-        'preserveHistory',
-        preserveHistory.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('preserveHistory', preserveHistory.toString());
     children?.call(this);
   }
 }
@@ -10284,6 +7454,7 @@ extension S_CT_RevisionHeader_Builder on _i1.XmlBuilder {
     String? dateTime,
     int? maxSheetId,
     String? userName,
+    String? r_id,
     int? minRId,
     int? maxRId,
     void Function(XmlBuilder)? children,
@@ -10299,6 +7470,7 @@ extension S_CT_RevisionHeader_Builder on _i1.XmlBuilder {
             dateTime,
             maxSheetId,
             userName,
+            r_id,
             minRId,
             maxRId,
           );
@@ -10311,6 +7483,7 @@ extension S_CT_RevisionHeader_Builder on _i1.XmlBuilder {
         dateTime,
         maxSheetId,
         userName,
+        r_id,
         minRId,
         maxRId,
       );
@@ -10323,45 +7496,23 @@ extension S_CT_RevisionHeader_Builder on _i1.XmlBuilder {
     String? dateTime,
     int? maxSheetId,
     String? userName,
+    String? r_id,
     int? minRId,
     int? maxRId,
   ) {
-    if (guid != null)
+    if (guid != null) this.attribute('guid', guid);
+    if (dateTime != null) this.attribute('dateTime', dateTime);
+    if (maxSheetId != null) this.attribute('maxSheetId', maxSheetId.toString());
+    if (userName != null) this.attribute('userName', userName);
+    if (r_id != null)
       this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
-    if (dateTime != null)
-      this.attribute(
-        'dateTime',
-        dateTime,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxSheetId != null)
-      this.attribute(
-        'maxSheetId',
-        maxSheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (userName != null)
-      this.attribute(
-        'userName',
-        userName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (minRId != null)
-      this.attribute(
-        'minRId',
-        minRId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxRId != null)
-      this.attribute(
-        'maxRId',
-        maxRId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (minRId != null) this.attribute('minRId', minRId.toString());
+    if (maxRId != null) this.attribute('maxRId', maxRId.toString());
     children?.call(this);
   }
 }
@@ -10388,12 +7539,7 @@ extension S_CT_SheetIdMap_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -10420,12 +7566,7 @@ extension S_CT_SheetId_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -10452,12 +7593,7 @@ extension S_CT_ReviewedRevisions_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -10484,12 +7620,7 @@ extension S_CT_Reviewed_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? rId) {
-    if (rId != null)
-      this.attribute(
-        'rId',
-        rId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (rId != null) this.attribute('rId', rId.toString());
     children?.call(this);
   }
 }
@@ -10565,72 +7696,19 @@ extension S_CT_UndoInfo_Builder on _i1.XmlBuilder {
     String? r,
     int? sId,
   ) {
-    if (index_ != null)
-      this.attribute(
-        'index',
-        index_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (exp != null)
-      this.attribute(
-        'exp',
-        exp!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (index_ != null) this.attribute('index', index_.toString());
+    if (exp != null) this.attribute('exp', exp!.value);
     if (ref3D != null)
-      this.attribute(
-        'ref3D',
-        ref3D == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('ref3D', ref3D == true ? 'true' : 'false');
     if (array != null)
-      this.attribute(
-        'array',
-        array == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (v != null)
-      this.attribute(
-        'v',
-        v == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (nf != null)
-      this.attribute(
-        'nf',
-        nf == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cs != null)
-      this.attribute(
-        'cs',
-        cs == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dr != null)
-      this.attribute(
-        'dr',
-        dr,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dn != null)
-      this.attribute(
-        'dn',
-        dn,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sId != null)
-      this.attribute(
-        'sId',
-        sId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('array', array == true ? 'true' : 'false');
+    if (v != null) this.attribute('v', v == true ? 'true' : 'false');
+    if (nf != null) this.attribute('nf', nf == true ? 'true' : 'false');
+    if (cs != null) this.attribute('cs', cs == true ? 'true' : 'false');
+    if (dr != null) this.attribute('dr', dr);
+    if (dn != null) this.attribute('dn', dn);
+    if (r != null) this.attribute('r', r);
+    if (sId != null) this.attribute('sId', sId.toString());
     children?.call(this);
   }
 }
@@ -10668,36 +7746,11 @@ extension S_CT_RevisionRowColumn_Builder on _i1.XmlBuilder {
     S_ST_rwColActionType? action,
     bool? edge,
   ) {
-    if (sId != null)
-      this.attribute(
-        'sId',
-        sId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (eol != null)
-      this.attribute(
-        'eol',
-        eol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (action != null)
-      this.attribute(
-        'action',
-        action!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (edge != null)
-      this.attribute(
-        'edge',
-        edge == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sId != null) this.attribute('sId', sId.toString());
+    if (eol != null) this.attribute('eol', eol == true ? 'true' : 'false');
+    if (ref != null) this.attribute('ref', ref);
+    if (action != null) this.attribute('action', action!.value);
+    if (edge != null) this.attribute('edge', edge == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -10733,30 +7786,11 @@ extension S_CT_RevisionMove_Builder on _i1.XmlBuilder {
     String? destination,
     int? sourceSheetId,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (source != null)
-      this.attribute(
-        'source',
-        source,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (destination != null)
-      this.attribute(
-        'destination',
-        destination,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (source != null) this.attribute('source', source);
+    if (destination != null) this.attribute('destination', destination);
     if (sourceSheetId != null)
-      this.attribute(
-        'sourceSheetId',
-        sourceSheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sourceSheetId', sourceSheetId.toString());
     children?.call(this);
   }
 }
@@ -10788,18 +7822,8 @@ extension S_CT_RevisionCustomView_Builder on _i1.XmlBuilder {
     String? guid,
     S_ST_RevisionAction? action,
   ) {
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (action != null)
-      this.attribute(
-        'action',
-        action!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (guid != null) this.attribute('guid', guid);
+    if (action != null) this.attribute('action', action!.value);
     children?.call(this);
   }
 }
@@ -10833,24 +7857,9 @@ extension S_CT_RevisionSheetRename_Builder on _i1.XmlBuilder {
     String? oldName,
     String? newName,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldName != null)
-      this.attribute(
-        'oldName',
-        oldName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (newName != null)
-      this.attribute(
-        'newName',
-        newName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (oldName != null) this.attribute('oldName', oldName);
+    if (newName != null) this.attribute('newName', newName);
     children?.call(this);
   }
 }
@@ -10884,24 +7893,10 @@ extension S_CT_RevisionInsertSheet_Builder on _i1.XmlBuilder {
     String? name,
     int? sheetPosition,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (name != null) this.attribute('name', name);
     if (sheetPosition != null)
-      this.attribute(
-        'sheetPosition',
-        sheetPosition.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sheetPosition', sheetPosition.toString());
     children?.call(this);
   }
 }
@@ -10977,71 +7972,27 @@ extension S_CT_RevisionCellChange_Builder on _i1.XmlBuilder {
     bool? oldPh,
     bool? endOfListFormulaUpdate,
   ) {
-    if (sId != null)
-      this.attribute(
-        'sId',
-        sId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (odxf != null)
-      this.attribute(
-        'odxf',
-        odxf == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sId != null) this.attribute('sId', sId.toString());
+    if (odxf != null) this.attribute('odxf', odxf == true ? 'true' : 'false');
     if (xfDxf != null)
-      this.attribute(
-        'xfDxf',
-        xfDxf == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dxf != null)
-      this.attribute(
-        'dxf',
-        dxf == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('xfDxf', xfDxf == true ? 'true' : 'false');
+    if (s != null) this.attribute('s', s == true ? 'true' : 'false');
+    if (dxf != null) this.attribute('dxf', dxf == true ? 'true' : 'false');
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
     if (quotePrefix != null)
-      this.attribute(
-        'quotePrefix',
-        quotePrefix == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('quotePrefix', quotePrefix == true ? 'true' : 'false');
     if (oldQuotePrefix != null)
       this.attribute(
         'oldQuotePrefix',
         oldQuotePrefix == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (ph != null)
-      this.attribute(
-        'ph',
-        ph == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ph != null) this.attribute('ph', ph == true ? 'true' : 'false');
     if (oldPh != null)
-      this.attribute(
-        'oldPh',
-        oldPh == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldPh', oldPh == true ? 'true' : 'false');
     if (endOfListFormulaUpdate != null)
       this.attribute(
         'endOfListFormulaUpdate',
         endOfListFormulaUpdate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -11080,36 +8031,12 @@ extension S_CT_RevisionFormatting_Builder on _i1.XmlBuilder {
     int? start,
     int? length,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
     if (xfDxf != null)
-      this.attribute(
-        'xfDxf',
-        xfDxf == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (start != null)
-      this.attribute(
-        'start',
-        start.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (length != null)
-      this.attribute(
-        'length',
-        length.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('xfDxf', xfDxf == true ? 'true' : 'false');
+    if (s != null) this.attribute('s', s == true ? 'true' : 'false');
+    if (start != null) this.attribute('start', start.toString());
+    if (length != null) this.attribute('length', length.toString());
     children?.call(this);
   }
 }
@@ -11141,18 +8068,8 @@ extension S_CT_RevisionAutoFormatting_Builder on _i1.XmlBuilder {
     int? sheetId,
     String? ref,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -11228,72 +8145,20 @@ extension S_CT_RevisionComment_Builder on _i1.XmlBuilder {
     int? oldLength,
     int? newLength,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cell != null)
-      this.attribute(
-        'cell',
-        cell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (action != null)
-      this.attribute(
-        'action',
-        action!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (cell != null) this.attribute('cell', cell);
+    if (guid != null) this.attribute('guid', guid);
+    if (action != null) this.attribute('action', action!.value);
     if (alwaysShow != null)
-      this.attribute(
-        'alwaysShow',
-        alwaysShow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (old != null)
-      this.attribute(
-        'old',
-        old == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('alwaysShow', alwaysShow == true ? 'true' : 'false');
+    if (old != null) this.attribute('old', old == true ? 'true' : 'false');
     if (hiddenRow != null)
-      this.attribute(
-        'hiddenRow',
-        hiddenRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenRow', hiddenRow == true ? 'true' : 'false');
     if (hiddenColumn != null)
-      this.attribute(
-        'hiddenColumn',
-        hiddenColumn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (author != null)
-      this.attribute(
-        'author',
-        author,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldLength != null)
-      this.attribute(
-        'oldLength',
-        oldLength.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (newLength != null)
-      this.attribute(
-        'newLength',
-        newLength.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenColumn', hiddenColumn == true ? 'true' : 'false');
+    if (author != null) this.attribute('author', author);
+    if (oldLength != null) this.attribute('oldLength', oldLength.toString());
+    if (newLength != null) this.attribute('newLength', newLength.toString());
     children?.call(this);
   }
 }
@@ -11410,131 +8275,37 @@ extension S_CT_RevisionDefinedName_Builder on _i1.XmlBuilder {
     String? oldComment,
   ) {
     if (localSheetId != null)
-      this.attribute(
-        'localSheetId',
-        localSheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('localSheetId', localSheetId.toString());
     if (customView != null)
-      this.attribute(
-        'customView',
-        customView == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customView', customView == true ? 'true' : 'false');
+    if (name != null) this.attribute('name', name);
     if (function_ != null)
-      this.attribute(
-        'function',
-        function_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('function', function_ == true ? 'true' : 'false');
     if (oldFunction != null)
-      this.attribute(
-        'oldFunction',
-        oldFunction == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldFunction', oldFunction == true ? 'true' : 'false');
     if (functionGroupId != null)
-      this.attribute(
-        'functionGroupId',
-        functionGroupId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('functionGroupId', functionGroupId.toString());
     if (oldFunctionGroupId != null)
-      this.attribute(
-        'oldFunctionGroupId',
-        oldFunctionGroupId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldFunctionGroupId', oldFunctionGroupId.toString());
     if (shortcutKey != null)
-      this.attribute(
-        'shortcutKey',
-        shortcutKey.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('shortcutKey', shortcutKey.toString());
     if (oldShortcutKey != null)
-      this.attribute(
-        'oldShortcutKey',
-        oldShortcutKey.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldShortcutKey', oldShortcutKey.toString());
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (oldHidden != null)
-      this.attribute(
-        'oldHidden',
-        oldHidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (customMenu != null)
-      this.attribute(
-        'customMenu',
-        customMenu,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldCustomMenu != null)
-      this.attribute(
-        'oldCustomMenu',
-        oldCustomMenu,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (description != null)
-      this.attribute(
-        'description',
-        description,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldHidden', oldHidden == true ? 'true' : 'false');
+    if (customMenu != null) this.attribute('customMenu', customMenu);
+    if (oldCustomMenu != null) this.attribute('oldCustomMenu', oldCustomMenu);
+    if (description != null) this.attribute('description', description);
     if (oldDescription != null)
-      this.attribute(
-        'oldDescription',
-        oldDescription,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (help != null)
-      this.attribute(
-        'help',
-        help,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldHelp != null)
-      this.attribute(
-        'oldHelp',
-        oldHelp,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (statusBar != null)
-      this.attribute(
-        'statusBar',
-        statusBar,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldStatusBar != null)
-      this.attribute(
-        'oldStatusBar',
-        oldStatusBar,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (comment != null)
-      this.attribute(
-        'comment',
-        comment,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oldComment != null)
-      this.attribute(
-        'oldComment',
-        oldComment,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('oldDescription', oldDescription);
+    if (help != null) this.attribute('help', help);
+    if (oldHelp != null) this.attribute('oldHelp', oldHelp);
+    if (statusBar != null) this.attribute('statusBar', statusBar);
+    if (oldStatusBar != null) this.attribute('oldStatusBar', oldStatusBar);
+    if (comment != null) this.attribute('comment', comment);
+    if (oldComment != null) this.attribute('oldComment', oldComment);
     children?.call(this);
   }
 }
@@ -11561,12 +8332,7 @@ extension S_CT_RevisionConflict_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? sheetId) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
     children?.call(this);
   }
 }
@@ -11600,24 +8366,9 @@ extension S_CT_RevisionQueryTableField_Builder on _i1.XmlBuilder {
     String? ref,
     int? fieldId,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fieldId != null)
-      this.attribute(
-        'fieldId',
-        fieldId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (ref != null) this.attribute('ref', ref);
+    if (fieldId != null) this.attribute('fieldId', fieldId.toString());
     children?.call(this);
   }
 }
@@ -11644,12 +8395,7 @@ extension S_CT_Users_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -11685,30 +8431,10 @@ extension S_CT_SharedUser_Builder on _i1.XmlBuilder {
     int? id,
     String? dateTime,
   ) {
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dateTime != null)
-      this.attribute(
-        'dateTime',
-        dateTime,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (guid != null) this.attribute('guid', guid);
+    if (name != null) this.attribute('name', name);
+    if (id != null) this.attribute('id', id.toString());
+    if (dateTime != null) this.attribute('dateTime', dateTime);
     children?.call(this);
   }
 }
@@ -11839,7 +8565,6 @@ extension S_CT_SheetCalcPr_Builder on _i1.XmlBuilder {
       this.attribute(
         'fullCalcOnLoad',
         fullCalcOnLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -11909,59 +8634,23 @@ extension S_CT_SheetFormatPr_Builder on _i1.XmlBuilder {
     int? outlineLevelCol,
   ) {
     if (baseColWidth != null)
-      this.attribute(
-        'baseColWidth',
-        baseColWidth.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('baseColWidth', baseColWidth.toString());
     if (defaultColWidth != null)
-      this.attribute(
-        'defaultColWidth',
-        defaultColWidth.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultColWidth', defaultColWidth.toString());
     if (defaultRowHeight != null)
-      this.attribute(
-        'defaultRowHeight',
-        defaultRowHeight.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultRowHeight', defaultRowHeight.toString());
     if (customHeight != null)
-      this.attribute(
-        'customHeight',
-        customHeight == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customHeight', customHeight == true ? 'true' : 'false');
     if (zeroHeight != null)
-      this.attribute(
-        'zeroHeight',
-        zeroHeight == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('zeroHeight', zeroHeight == true ? 'true' : 'false');
     if (thickTop != null)
-      this.attribute(
-        'thickTop',
-        thickTop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('thickTop', thickTop == true ? 'true' : 'false');
     if (thickBottom != null)
-      this.attribute(
-        'thickBottom',
-        thickBottom == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('thickBottom', thickBottom == true ? 'true' : 'false');
     if (outlineLevelRow != null)
-      this.attribute(
-        'outlineLevelRow',
-        outlineLevelRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outlineLevelRow', outlineLevelRow.toString());
     if (outlineLevelCol != null)
-      this.attribute(
-        'outlineLevelCol',
-        outlineLevelCol.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outlineLevelCol', outlineLevelCol.toString());
     children?.call(this);
   }
 }
@@ -12058,66 +8747,22 @@ extension S_CT_Col_Builder on _i1.XmlBuilder {
     int? outlineLevel,
     bool? collapsed,
   ) {
-    if (min != null)
-      this.attribute(
-        'min',
-        min.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (max != null)
-      this.attribute(
-        'max',
-        max.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (width != null)
-      this.attribute(
-        'width',
-        width.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (style != null)
-      this.attribute(
-        'style',
-        style.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (min != null) this.attribute('min', min.toString());
+    if (max != null) this.attribute('max', max.toString());
+    if (width != null) this.attribute('width', width.toString());
+    if (style != null) this.attribute('style', style.toString());
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (bestFit != null)
-      this.attribute(
-        'bestFit',
-        bestFit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('bestFit', bestFit == true ? 'true' : 'false');
     if (customWidth != null)
-      this.attribute(
-        'customWidth',
-        customWidth == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customWidth', customWidth == true ? 'true' : 'false');
     if (phonetic != null)
-      this.attribute(
-        'phonetic',
-        phonetic == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('phonetic', phonetic == true ? 'true' : 'false');
     if (outlineLevel != null)
-      this.attribute(
-        'outlineLevel',
-        outlineLevel.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outlineLevel', outlineLevel.toString());
     if (collapsed != null)
-      this.attribute(
-        'collapsed',
-        collapsed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('collapsed', collapsed == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -12193,72 +8838,24 @@ extension S_CT_Row_Builder on _i1.XmlBuilder {
     bool? thickBot,
     bool? ph,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r.toString());
+    if (s != null) this.attribute('s', s.toString());
     if (customFormat != null)
-      this.attribute(
-        'customFormat',
-        customFormat == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ht != null)
-      this.attribute(
-        'ht',
-        ht.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customFormat', customFormat == true ? 'true' : 'false');
+    if (ht != null) this.attribute('ht', ht.toString());
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (customHeight != null)
-      this.attribute(
-        'customHeight',
-        customHeight == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customHeight', customHeight == true ? 'true' : 'false');
     if (outlineLevel != null)
-      this.attribute(
-        'outlineLevel',
-        outlineLevel.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outlineLevel', outlineLevel.toString());
     if (collapsed != null)
-      this.attribute(
-        'collapsed',
-        collapsed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('collapsed', collapsed == true ? 'true' : 'false');
     if (thickTop != null)
-      this.attribute(
-        'thickTop',
-        thickTop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('thickTop', thickTop == true ? 'true' : 'false');
     if (thickBot != null)
-      this.attribute(
-        'thickBot',
-        thickBot == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ph != null)
-      this.attribute(
-        'ph',
-        ph == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('thickBot', thickBot == true ? 'true' : 'false');
+    if (ph != null) this.attribute('ph', ph == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -12298,42 +8895,12 @@ extension S_CT_Cell_Builder on _i1.XmlBuilder {
     int? vm,
     bool? ph,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cm != null)
-      this.attribute(
-        'cm',
-        cm.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (vm != null)
-      this.attribute(
-        'vm',
-        vm.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ph != null)
-      this.attribute(
-        'ph',
-        ph == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
+    if (s != null) this.attribute('s', s.toString());
+    if (t != null) this.attribute('t', t!.value);
+    if (cm != null) this.attribute('cm', cm.toString());
+    if (vm != null) this.attribute('vm', vm.toString());
+    if (ph != null) this.attribute('ph', ph == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -12405,55 +8972,29 @@ extension S_CT_SheetPr_Builder on _i1.XmlBuilder {
       this.attribute(
         'syncHorizontal',
         syncHorizontal == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (syncVertical != null)
-      this.attribute(
-        'syncVertical',
-        syncVertical == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (syncRef != null)
-      this.attribute(
-        'syncRef',
-        syncRef,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('syncVertical', syncVertical == true ? 'true' : 'false');
+    if (syncRef != null) this.attribute('syncRef', syncRef);
     if (transitionEvaluation != null)
       this.attribute(
         'transitionEvaluation',
         transitionEvaluation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (transitionEntry != null)
       this.attribute(
         'transitionEntry',
         transitionEntry == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (published != null)
-      this.attribute(
-        'published',
-        published == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codeName != null)
-      this.attribute(
-        'codeName',
-        codeName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('published', published == true ? 'true' : 'false');
+    if (codeName != null) this.attribute('codeName', codeName);
     if (filterMode != null)
-      this.attribute(
-        'filterMode',
-        filterMode == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('filterMode', filterMode == true ? 'true' : 'false');
     if (enableFormatConditionsCalculation != null)
       this.attribute(
         'enableFormatConditionsCalculation',
         enableFormatConditionsCalculation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -12481,12 +9022,7 @@ extension S_CT_SheetDimension_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? ref) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -12623,116 +9159,57 @@ extension S_CT_SheetView_Builder on _i1.XmlBuilder {
       this.attribute(
         'windowProtection',
         windowProtection == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showFormulas != null)
-      this.attribute(
-        'showFormulas',
-        showFormulas == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showFormulas', showFormulas == true ? 'true' : 'false');
     if (showGridLines != null)
-      this.attribute(
-        'showGridLines',
-        showGridLines == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showGridLines', showGridLines == true ? 'true' : 'false');
     if (showRowColHeaders != null)
       this.attribute(
         'showRowColHeaders',
         showRowColHeaders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showZeros != null)
-      this.attribute(
-        'showZeros',
-        showZeros == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showZeros', showZeros == true ? 'true' : 'false');
     if (rightToLeft != null)
-      this.attribute(
-        'rightToLeft',
-        rightToLeft == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rightToLeft', rightToLeft == true ? 'true' : 'false');
     if (tabSelected != null)
-      this.attribute(
-        'tabSelected',
-        tabSelected == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('tabSelected', tabSelected == true ? 'true' : 'false');
     if (showRuler != null)
-      this.attribute(
-        'showRuler',
-        showRuler == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showRuler', showRuler == true ? 'true' : 'false');
     if (showOutlineSymbols != null)
       this.attribute(
         'showOutlineSymbols',
         showOutlineSymbols == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (defaultGridColor != null)
       this.attribute(
         'defaultGridColor',
         defaultGridColor == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showWhiteSpace != null)
       this.attribute(
         'showWhiteSpace',
         showWhiteSpace == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (view != null)
-      this.attribute(
-        'view',
-        view!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (topLeftCell != null)
-      this.attribute(
-        'topLeftCell',
-        topLeftCell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (colorId != null)
-      this.attribute(
-        'colorId',
-        colorId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (zoomScale != null)
-      this.attribute(
-        'zoomScale',
-        zoomScale.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (view != null) this.attribute('view', view!.value);
+    if (topLeftCell != null) this.attribute('topLeftCell', topLeftCell);
+    if (colorId != null) this.attribute('colorId', colorId.toString());
+    if (zoomScale != null) this.attribute('zoomScale', zoomScale.toString());
     if (zoomScaleNormal != null)
-      this.attribute(
-        'zoomScaleNormal',
-        zoomScaleNormal.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('zoomScaleNormal', zoomScaleNormal.toString());
     if (zoomScaleSheetLayoutView != null)
       this.attribute(
         'zoomScaleSheetLayoutView',
         zoomScaleSheetLayoutView.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (zoomScalePageLayoutView != null)
       this.attribute(
         'zoomScalePageLayoutView',
         zoomScalePageLayoutView.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (workbookViewId != null)
-      this.attribute(
-        'workbookViewId',
-        workbookViewId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookViewId', workbookViewId.toString());
     children?.call(this);
   }
 }
@@ -12770,36 +9247,11 @@ extension S_CT_Pane_Builder on _i1.XmlBuilder {
     S_ST_Pane? activePane,
     S_ST_PaneState? state,
   ) {
-    if (xSplit != null)
-      this.attribute(
-        'xSplit',
-        xSplit.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ySplit != null)
-      this.attribute(
-        'ySplit',
-        ySplit.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (topLeftCell != null)
-      this.attribute(
-        'topLeftCell',
-        topLeftCell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (activePane != null)
-      this.attribute(
-        'activePane',
-        activePane!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (state != null)
-      this.attribute(
-        'state',
-        state!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (xSplit != null) this.attribute('xSplit', xSplit.toString());
+    if (ySplit != null) this.attribute('ySplit', ySplit.toString());
+    if (topLeftCell != null) this.attribute('topLeftCell', topLeftCell);
+    if (activePane != null) this.attribute('activePane', activePane!.value);
+    if (state != null) this.attribute('state', state!.value);
     children?.call(this);
   }
 }
@@ -12825,6 +9277,7 @@ extension S_CT_PivotSelection_Builder on _i1.XmlBuilder {
     int? previousRow,
     int? previousCol,
     int? click,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -12850,6 +9303,7 @@ extension S_CT_PivotSelection_Builder on _i1.XmlBuilder {
             previousRow,
             previousCol,
             click,
+            r_id,
           );
         },
       );
@@ -12872,6 +9326,7 @@ extension S_CT_PivotSelection_Builder on _i1.XmlBuilder {
         previousRow,
         previousCol,
         click,
+        r_id,
       );
     }
   }
@@ -12894,102 +9349,35 @@ extension S_CT_PivotSelection_Builder on _i1.XmlBuilder {
     int? previousRow,
     int? previousCol,
     int? click,
+    String? r_id,
   ) {
-    if (pane != null)
-      this.attribute(
-        'pane',
-        pane!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (pane != null) this.attribute('pane', pane!.value);
     if (showHeader != null)
-      this.attribute(
-        'showHeader',
-        showHeader == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showHeader', showHeader == true ? 'true' : 'false');
     if (label != null)
-      this.attribute(
-        'label',
-        label == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (data != null)
-      this.attribute(
-        'data',
-        data == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('label', label == true ? 'true' : 'false');
+    if (data != null) this.attribute('data', data == true ? 'true' : 'false');
     if (extendable != null)
-      this.attribute(
-        'extendable',
-        extendable == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (axis != null)
-      this.attribute(
-        'axis',
-        axis!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dimension != null)
-      this.attribute(
-        'dimension',
-        dimension.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (start != null)
-      this.attribute(
-        'start',
-        start.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (min != null)
-      this.attribute(
-        'min',
-        min.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (max != null)
-      this.attribute(
-        'max',
-        max.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (activeRow != null)
-      this.attribute(
-        'activeRow',
-        activeRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (activeCol != null)
-      this.attribute(
-        'activeCol',
-        activeCol.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('extendable', extendable == true ? 'true' : 'false');
+    if (count != null) this.attribute('count', count.toString());
+    if (axis != null) this.attribute('axis', axis!.value);
+    if (dimension != null) this.attribute('dimension', dimension.toString());
+    if (start != null) this.attribute('start', start.toString());
+    if (min != null) this.attribute('min', min.toString());
+    if (max != null) this.attribute('max', max.toString());
+    if (activeRow != null) this.attribute('activeRow', activeRow.toString());
+    if (activeCol != null) this.attribute('activeCol', activeCol.toString());
     if (previousRow != null)
-      this.attribute(
-        'previousRow',
-        previousRow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('previousRow', previousRow.toString());
     if (previousCol != null)
+      this.attribute('previousCol', previousCol.toString());
+    if (click != null) this.attribute('click', click.toString());
+    if (r_id != null)
       this.attribute(
-        'previousCol',
-        previousCol.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (click != null)
-      this.attribute(
-        'click',
-        click.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -13024,24 +9412,10 @@ extension S_CT_Selection_Builder on _i1.XmlBuilder {
     String? activeCell,
     int? activeCellId,
   ) {
-    if (pane != null)
-      this.attribute(
-        'pane',
-        pane!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (activeCell != null)
-      this.attribute(
-        'activeCell',
-        activeCell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (pane != null) this.attribute('pane', pane!.value);
+    if (activeCell != null) this.attribute('activeCell', activeCell);
     if (activeCellId != null)
-      this.attribute(
-        'activeCellId',
-        activeCellId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('activeCellId', activeCellId.toString());
     children?.call(this);
   }
 }
@@ -13073,18 +9447,9 @@ extension S_CT_PageBreak_Builder on _i1.XmlBuilder {
     int? count,
     int? manualBreakCount,
   ) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     if (manualBreakCount != null)
-      this.attribute(
-        'manualBreakCount',
-        manualBreakCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('manualBreakCount', manualBreakCount.toString());
     children?.call(this);
   }
 }
@@ -13122,36 +9487,11 @@ extension S_CT_Break_Builder on _i1.XmlBuilder {
     bool? man,
     bool? pt,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (min != null)
-      this.attribute(
-        'min',
-        min.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (max != null)
-      this.attribute(
-        'max',
-        max.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (man != null)
-      this.attribute(
-        'man',
-        man == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (pt != null)
-      this.attribute(
-        'pt',
-        pt == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (min != null) this.attribute('min', min.toString());
+    if (max != null) this.attribute('max', max.toString());
+    if (man != null) this.attribute('man', man == true ? 'true' : 'false');
+    if (pt != null) this.attribute('pt', pt == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -13200,28 +9540,15 @@ extension S_CT_OutlinePr_Builder on _i1.XmlBuilder {
     bool? showOutlineSymbols,
   ) {
     if (applyStyles != null)
-      this.attribute(
-        'applyStyles',
-        applyStyles == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('applyStyles', applyStyles == true ? 'true' : 'false');
     if (summaryBelow != null)
-      this.attribute(
-        'summaryBelow',
-        summaryBelow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('summaryBelow', summaryBelow == true ? 'true' : 'false');
     if (summaryRight != null)
-      this.attribute(
-        'summaryRight',
-        summaryRight == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('summaryRight', summaryRight == true ? 'true' : 'false');
     if (showOutlineSymbols != null)
       this.attribute(
         'showOutlineSymbols',
         showOutlineSymbols == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -13258,14 +9585,9 @@ extension S_CT_PageSetUpPr_Builder on _i1.XmlBuilder {
       this.attribute(
         'autoPageBreaks',
         autoPageBreaks == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (fitToPage != null)
-      this.attribute(
-        'fitToPage',
-        fitToPage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fitToPage', fitToPage == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -13310,36 +9632,14 @@ extension S_CT_DataConsolidate_Builder on _i1.XmlBuilder {
     bool? topLabels,
     bool? link,
   ) {
-    if (function_ != null)
-      this.attribute(
-        'function',
-        function_!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (function_ != null) this.attribute('function', function_!.value);
     if (startLabels != null)
-      this.attribute(
-        'startLabels',
-        startLabels == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('startLabels', startLabels == true ? 'true' : 'false');
     if (leftLabels != null)
-      this.attribute(
-        'leftLabels',
-        leftLabels == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('leftLabels', leftLabels == true ? 'true' : 'false');
     if (topLabels != null)
-      this.attribute(
-        'topLabels',
-        topLabels == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (link != null)
-      this.attribute(
-        'link',
-        link == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('topLabels', topLabels == true ? 'true' : 'false');
+    if (link != null) this.attribute('link', link == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -13366,12 +9666,7 @@ extension S_CT_DataRefs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -13384,6 +9679,7 @@ extension S_CT_DataRef_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -13391,11 +9687,11 @@ extension S_CT_DataRef_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, ref, name, sheet);
+          _buildBody(children, ref, name, sheet, r_id);
         },
       );
     } else {
-      _buildBody(children, ref, name, sheet);
+      _buildBody(children, ref, name, sheet, r_id);
     }
   }
 
@@ -13404,24 +9700,17 @@ extension S_CT_DataRef_Builder on _i1.XmlBuilder {
     String? ref,
     String? name,
     String? sheet,
+    String? r_id,
   ) {
-    if (ref != null)
+    if (ref != null) this.attribute('ref', ref);
+    if (name != null) this.attribute('name', name);
+    if (sheet != null) this.attribute('sheet', sheet);
+    if (r_id != null)
       this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sheet != null)
-      this.attribute(
-        'sheet',
-        sheet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -13449,12 +9738,7 @@ extension S_CT_MergeCells_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -13481,12 +9765,7 @@ extension S_CT_MergeCell_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? ref) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -13538,12 +9817,7 @@ extension S_CT_CellSmartTags_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? r) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
     children?.call(this);
   }
 }
@@ -13577,24 +9851,11 @@ extension S_CT_CellSmartTag_Builder on _i1.XmlBuilder {
     bool? deleted,
     bool? xmlBased,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type.toString());
     if (deleted != null)
-      this.attribute(
-        'deleted',
-        deleted == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('deleted', deleted == true ? 'true' : 'false');
     if (xmlBased != null)
-      this.attribute(
-        'xmlBased',
-        xmlBased == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('xmlBased', xmlBased == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -13626,18 +9887,8 @@ extension S_CT_CellSmartTagPr_Builder on _i1.XmlBuilder {
     String? key,
     String? val,
   ) {
-    if (key != null)
-      this.attribute(
-        'key',
-        key,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (key != null) this.attribute('key', key);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -13647,6 +9898,7 @@ extension S_CT_Drawing_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -13654,15 +9906,22 @@ extension S_CT_Drawing_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -13672,6 +9931,7 @@ extension S_CT_LegacyDrawing_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -13679,15 +9939,22 @@ extension S_CT_LegacyDrawing_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -13697,6 +9964,7 @@ extension S_CT_DrawingHF_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     int? lho,
     int? lhe,
     int? lhf,
@@ -13724,6 +9992,7 @@ extension S_CT_DrawingHF_Builder on _i1.XmlBuilder {
         nest: () {
           _buildBody(
             children,
+            r_id,
             lho,
             lhe,
             lhf,
@@ -13748,6 +10017,7 @@ extension S_CT_DrawingHF_Builder on _i1.XmlBuilder {
     } else {
       _buildBody(
         children,
+        r_id,
         lho,
         lhe,
         lhf,
@@ -13772,6 +10042,7 @@ extension S_CT_DrawingHF_Builder on _i1.XmlBuilder {
 
   void _buildBody(
     void Function(XmlBuilder)? children,
+    String? r_id,
     int? lho,
     int? lhe,
     int? lhf,
@@ -13791,114 +10062,31 @@ extension S_CT_DrawingHF_Builder on _i1.XmlBuilder {
     int? rfe,
     int? rff,
   ) {
-    if (lho != null)
+    if (r_id != null)
       this.attribute(
-        'lho',
-        lho.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
-    if (lhe != null)
-      this.attribute(
-        'lhe',
-        lhe.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lhf != null)
-      this.attribute(
-        'lhf',
-        lhf.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cho != null)
-      this.attribute(
-        'cho',
-        cho.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (che != null)
-      this.attribute(
-        'che',
-        che.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (chf != null)
-      this.attribute(
-        'chf',
-        chf.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rho != null)
-      this.attribute(
-        'rho',
-        rho.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rhe != null)
-      this.attribute(
-        'rhe',
-        rhe.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rhf != null)
-      this.attribute(
-        'rhf',
-        rhf.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lfo != null)
-      this.attribute(
-        'lfo',
-        lfo.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lfe != null)
-      this.attribute(
-        'lfe',
-        lfe.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lff != null)
-      this.attribute(
-        'lff',
-        lff.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cfo != null)
-      this.attribute(
-        'cfo',
-        cfo.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cfe != null)
-      this.attribute(
-        'cfe',
-        cfe.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cff != null)
-      this.attribute(
-        'cff',
-        cff.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rfo != null)
-      this.attribute(
-        'rfo',
-        rfo.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rfe != null)
-      this.attribute(
-        'rfe',
-        rfe.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rff != null)
-      this.attribute(
-        'rff',
-        rff.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (lho != null) this.attribute('lho', lho.toString());
+    if (lhe != null) this.attribute('lhe', lhe.toString());
+    if (lhf != null) this.attribute('lhf', lhf.toString());
+    if (cho != null) this.attribute('cho', cho.toString());
+    if (che != null) this.attribute('che', che.toString());
+    if (chf != null) this.attribute('chf', chf.toString());
+    if (rho != null) this.attribute('rho', rho.toString());
+    if (rhe != null) this.attribute('rhe', rhe.toString());
+    if (rhf != null) this.attribute('rhf', rhf.toString());
+    if (lfo != null) this.attribute('lfo', lfo.toString());
+    if (lfe != null) this.attribute('lfe', lfe.toString());
+    if (lff != null) this.attribute('lff', lff.toString());
+    if (cfo != null) this.attribute('cfo', cfo.toString());
+    if (cfe != null) this.attribute('cfe', cfe.toString());
+    if (cff != null) this.attribute('cff', cff.toString());
+    if (rfo != null) this.attribute('rfo', rfo.toString());
+    if (rfe != null) this.attribute('rfe', rfe.toString());
+    if (rff != null) this.attribute('rff', rff.toString());
     children?.call(this);
   }
 }
@@ -14035,126 +10223,49 @@ extension S_CT_CustomSheetView_Builder on _i1.XmlBuilder {
     bool? showRuler,
     String? topLeftCell,
   ) {
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (scale != null)
-      this.attribute(
-        'scale',
-        scale.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (colorId != null)
-      this.attribute(
-        'colorId',
-        colorId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (guid != null) this.attribute('guid', guid);
+    if (scale != null) this.attribute('scale', scale.toString());
+    if (colorId != null) this.attribute('colorId', colorId.toString());
     if (showPageBreaks != null)
       this.attribute(
         'showPageBreaks',
         showPageBreaks == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showFormulas != null)
-      this.attribute(
-        'showFormulas',
-        showFormulas == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showFormulas', showFormulas == true ? 'true' : 'false');
     if (showGridLines != null)
-      this.attribute(
-        'showGridLines',
-        showGridLines == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showGridLines', showGridLines == true ? 'true' : 'false');
     if (showRowCol != null)
-      this.attribute(
-        'showRowCol',
-        showRowCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showRowCol', showRowCol == true ? 'true' : 'false');
     if (outlineSymbols != null)
       this.attribute(
         'outlineSymbols',
         outlineSymbols == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (zeroValues != null)
-      this.attribute(
-        'zeroValues',
-        zeroValues == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('zeroValues', zeroValues == true ? 'true' : 'false');
     if (fitToPage != null)
-      this.attribute(
-        'fitToPage',
-        fitToPage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fitToPage', fitToPage == true ? 'true' : 'false');
     if (printArea != null)
-      this.attribute(
-        'printArea',
-        printArea == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('printArea', printArea == true ? 'true' : 'false');
     if (filter != null)
-      this.attribute(
-        'filter',
-        filter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('filter', filter == true ? 'true' : 'false');
     if (showAutoFilter != null)
       this.attribute(
         'showAutoFilter',
         showAutoFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (hiddenRows != null)
-      this.attribute(
-        'hiddenRows',
-        hiddenRows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenRows', hiddenRows == true ? 'true' : 'false');
     if (hiddenColumns != null)
-      this.attribute(
-        'hiddenColumns',
-        hiddenColumns == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (state != null)
-      this.attribute(
-        'state',
-        state!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hiddenColumns', hiddenColumns == true ? 'true' : 'false');
+    if (state != null) this.attribute('state', state!.value);
     if (filterUnique != null)
-      this.attribute(
-        'filterUnique',
-        filterUnique == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (view != null)
-      this.attribute(
-        'view',
-        view!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('filterUnique', filterUnique == true ? 'true' : 'false');
+    if (view != null) this.attribute('view', view!.value);
     if (showRuler != null)
-      this.attribute(
-        'showRuler',
-        showRuler == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (topLeftCell != null)
-      this.attribute(
-        'topLeftCell',
-        topLeftCell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showRuler', showRuler == true ? 'true' : 'false');
+    if (topLeftCell != null) this.attribute('topLeftCell', topLeftCell);
     children?.call(this);
   }
 }
@@ -14194,26 +10305,10 @@ extension S_CT_DataValidations_Builder on _i1.XmlBuilder {
       this.attribute(
         'disablePrompts',
         disablePrompts == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (xWindow != null)
-      this.attribute(
-        'xWindow',
-        xWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (yWindow != null)
-      this.attribute(
-        'yWindow',
-        yWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (xWindow != null) this.attribute('xWindow', xWindow.toString());
+    if (yWindow != null) this.attribute('yWindow', yWindow.toString());
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -14293,78 +10388,28 @@ extension S_CT_DataValidation_Builder on _i1.XmlBuilder {
     String? promptTitle,
     String? prompt,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (errorStyle != null)
-      this.attribute(
-        'errorStyle',
-        errorStyle!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (imeMode != null)
-      this.attribute(
-        'imeMode',
-        imeMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (operator_ != null)
-      this.attribute(
-        'operator',
-        operator_!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (errorStyle != null) this.attribute('errorStyle', errorStyle!.value);
+    if (imeMode != null) this.attribute('imeMode', imeMode!.value);
+    if (operator_ != null) this.attribute('operator', operator_!.value);
     if (allowBlank != null)
-      this.attribute(
-        'allowBlank',
-        allowBlank == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('allowBlank', allowBlank == true ? 'true' : 'false');
     if (showDropDown != null)
-      this.attribute(
-        'showDropDown',
-        showDropDown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showDropDown', showDropDown == true ? 'true' : 'false');
     if (showInputMessage != null)
       this.attribute(
         'showInputMessage',
         showInputMessage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showErrorMessage != null)
       this.attribute(
         'showErrorMessage',
         showErrorMessage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (errorTitle != null)
-      this.attribute(
-        'errorTitle',
-        errorTitle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (error != null)
-      this.attribute(
-        'error',
-        error,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (promptTitle != null)
-      this.attribute(
-        'promptTitle',
-        promptTitle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (prompt != null)
-      this.attribute(
-        'prompt',
-        prompt,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (errorTitle != null) this.attribute('errorTitle', errorTitle);
+    if (error != null) this.attribute('error', error);
+    if (promptTitle != null) this.attribute('promptTitle', promptTitle);
+    if (prompt != null) this.attribute('prompt', prompt);
     children?.call(this);
   }
 }
@@ -14392,11 +10437,7 @@ extension S_CT_ConditionalFormatting_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? pivot) {
     if (pivot != null)
-      this.attribute(
-        'pivot',
-        pivot == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pivot', pivot == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -14480,84 +10521,24 @@ extension S_CT_CfRule_Builder on _i1.XmlBuilder {
     int? stdDev,
     bool? equalAverage,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dxfId != null)
-      this.attribute(
-        'dxfId',
-        dxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (priority != null)
-      this.attribute(
-        'priority',
-        priority.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (dxfId != null) this.attribute('dxfId', dxfId);
+    if (priority != null) this.attribute('priority', priority.toString());
     if (stopIfTrue != null)
-      this.attribute(
-        'stopIfTrue',
-        stopIfTrue == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('stopIfTrue', stopIfTrue == true ? 'true' : 'false');
     if (aboveAverage != null)
-      this.attribute(
-        'aboveAverage',
-        aboveAverage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('aboveAverage', aboveAverage == true ? 'true' : 'false');
     if (percent != null)
-      this.attribute(
-        'percent',
-        percent == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('percent', percent == true ? 'true' : 'false');
     if (bottom != null)
-      this.attribute(
-        'bottom',
-        bottom == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (operator_ != null)
-      this.attribute(
-        'operator',
-        operator_!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (text != null)
-      this.attribute(
-        'text',
-        text,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (timePeriod != null)
-      this.attribute(
-        'timePeriod',
-        timePeriod!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rank != null)
-      this.attribute(
-        'rank',
-        rank.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (stdDev != null)
-      this.attribute(
-        'stdDev',
-        stdDev.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('bottom', bottom == true ? 'true' : 'false');
+    if (operator_ != null) this.attribute('operator', operator_!.value);
+    if (text != null) this.attribute('text', text);
+    if (timePeriod != null) this.attribute('timePeriod', timePeriod!.value);
+    if (rank != null) this.attribute('rank', rank.toString());
+    if (stdDev != null) this.attribute('stdDev', stdDev.toString());
     if (equalAverage != null)
-      this.attribute(
-        'equalAverage',
-        equalAverage == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('equalAverage', equalAverage == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -14593,6 +10574,7 @@ extension S_CT_Hyperlink_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
     String? ref,
+    String? r_id,
     String? location,
     String? tooltip,
     String? display,
@@ -14603,45 +10585,33 @@ extension S_CT_Hyperlink_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, ref, location, tooltip, display);
+          _buildBody(children, ref, r_id, location, tooltip, display);
         },
       );
     } else {
-      _buildBody(children, ref, location, tooltip, display);
+      _buildBody(children, ref, r_id, location, tooltip, display);
     }
   }
 
   void _buildBody(
     void Function(XmlBuilder)? children,
     String? ref,
+    String? r_id,
     String? location,
     String? tooltip,
     String? display,
   ) {
-    if (ref != null)
+    if (ref != null) this.attribute('ref', ref);
+    if (r_id != null)
       this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
-    if (location != null)
-      this.attribute(
-        'location',
-        location,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tooltip != null)
-      this.attribute(
-        'tooltip',
-        tooltip,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (display != null)
-      this.attribute(
-        'display',
-        display,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (location != null) this.attribute('location', location);
+    if (tooltip != null) this.attribute('tooltip', tooltip);
+    if (display != null) this.attribute('display', display);
     children?.call(this);
   }
 }
@@ -14721,78 +10691,18 @@ extension S_CT_CellFormula_Builder on _i1.XmlBuilder {
     int? si,
     bool? bx,
   ) {
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (aca != null)
-      this.attribute(
-        'aca',
-        aca == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dt2D != null)
-      this.attribute(
-        'dt2D',
-        dt2D == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dtr != null)
-      this.attribute(
-        'dtr',
-        dtr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (del1 != null)
-      this.attribute(
-        'del1',
-        del1 == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (del2 != null)
-      this.attribute(
-        'del2',
-        del2 == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (r1 != null)
-      this.attribute(
-        'r1',
-        r1,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (r2 != null)
-      this.attribute(
-        'r2',
-        r2,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ca != null)
-      this.attribute(
-        'ca',
-        ca == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (si != null)
-      this.attribute(
-        'si',
-        si.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bx != null)
-      this.attribute(
-        'bx',
-        bx == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (t != null) this.attribute('t', t!.value);
+    if (aca != null) this.attribute('aca', aca == true ? 'true' : 'false');
+    if (ref != null) this.attribute('ref', ref);
+    if (dt2D != null) this.attribute('dt2D', dt2D == true ? 'true' : 'false');
+    if (dtr != null) this.attribute('dtr', dtr == true ? 'true' : 'false');
+    if (del1 != null) this.attribute('del1', del1 == true ? 'true' : 'false');
+    if (del2 != null) this.attribute('del2', del2 == true ? 'true' : 'false');
+    if (r1 != null) this.attribute('r1', r1);
+    if (r2 != null) this.attribute('r2', r2);
+    if (ca != null) this.attribute('ca', ca == true ? 'true' : 'false');
+    if (si != null) this.attribute('si', si.toString());
+    if (bx != null) this.attribute('bx', bx == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -14851,24 +10761,10 @@ extension S_CT_DataBar_Builder on _i1.XmlBuilder {
     int? maxLength,
     bool? showValue,
   ) {
-    if (minLength != null)
-      this.attribute(
-        'minLength',
-        minLength.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (maxLength != null)
-      this.attribute(
-        'maxLength',
-        maxLength.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (minLength != null) this.attribute('minLength', minLength.toString());
+    if (maxLength != null) this.attribute('maxLength', maxLength.toString());
     if (showValue != null)
-      this.attribute(
-        'showValue',
-        showValue == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showValue', showValue == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -14904,30 +10800,13 @@ extension S_CT_IconSet_Builder on _i1.XmlBuilder {
     bool? percent,
     bool? reverse,
   ) {
-    if (iconSet != null)
-      this.attribute(
-        'iconSet',
-        iconSet!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (iconSet != null) this.attribute('iconSet', iconSet!.value);
     if (showValue != null)
-      this.attribute(
-        'showValue',
-        showValue == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showValue', showValue == true ? 'true' : 'false');
     if (percent != null)
-      this.attribute(
-        'percent',
-        percent == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('percent', percent == true ? 'true' : 'false');
     if (reverse != null)
-      this.attribute(
-        'reverse',
-        reverse == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('reverse', reverse == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -14961,24 +10840,9 @@ extension S_CT_Cfvo_Builder on _i1.XmlBuilder {
     String? val,
     bool? gte,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (gte != null)
-      this.attribute(
-        'gte',
-        gte == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (val != null) this.attribute('val', val);
+    if (gte != null) this.attribute('gte', gte == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -15018,42 +10882,12 @@ extension S_CT_PageMargins_Builder on _i1.XmlBuilder {
     double? header,
     double? footer,
   ) {
-    if (left != null)
-      this.attribute(
-        'left',
-        left.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (right != null)
-      this.attribute(
-        'right',
-        right.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (top != null)
-      this.attribute(
-        'top',
-        top.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bottom != null)
-      this.attribute(
-        'bottom',
-        bottom.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (header != null)
-      this.attribute(
-        'header',
-        header.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (footer != null)
-      this.attribute(
-        'footer',
-        footer.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (left != null) this.attribute('left', left.toString());
+    if (right != null) this.attribute('right', right.toString());
+    if (top != null) this.attribute('top', top.toString());
+    if (bottom != null) this.attribute('bottom', bottom.toString());
+    if (header != null) this.attribute('header', header.toString());
+    if (footer != null) this.attribute('footer', footer.toString());
     children?.call(this);
   }
 }
@@ -15109,32 +10943,18 @@ extension S_CT_PrintOptions_Builder on _i1.XmlBuilder {
       this.attribute(
         'horizontalCentered',
         horizontalCentered == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (verticalCentered != null)
       this.attribute(
         'verticalCentered',
         verticalCentered == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (headings != null)
-      this.attribute(
-        'headings',
-        headings == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headings', headings == true ? 'true' : 'false');
     if (gridLines != null)
-      this.attribute(
-        'gridLines',
-        gridLines == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('gridLines', gridLines == true ? 'true' : 'false');
     if (gridLinesSet != null)
-      this.attribute(
-        'gridLinesSet',
-        gridLinesSet == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('gridLinesSet', gridLinesSet == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -15162,6 +10982,7 @@ extension S_CT_PageSetup_Builder on _i1.XmlBuilder {
     int? horizontalDpi,
     int? verticalDpi,
     int? copies,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -15189,6 +11010,7 @@ extension S_CT_PageSetup_Builder on _i1.XmlBuilder {
             horizontalDpi,
             verticalDpi,
             copies,
+            r_id,
           );
         },
       );
@@ -15213,6 +11035,7 @@ extension S_CT_PageSetup_Builder on _i1.XmlBuilder {
         horizontalDpi,
         verticalDpi,
         copies,
+        r_id,
       );
     }
   }
@@ -15237,114 +11060,47 @@ extension S_CT_PageSetup_Builder on _i1.XmlBuilder {
     int? horizontalDpi,
     int? verticalDpi,
     int? copies,
+    String? r_id,
   ) {
-    if (paperSize != null)
-      this.attribute(
-        'paperSize',
-        paperSize.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (paperHeight != null)
-      this.attribute(
-        'paperHeight',
-        paperHeight,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (paperWidth != null)
-      this.attribute(
-        'paperWidth',
-        paperWidth,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (scale != null)
-      this.attribute(
-        'scale',
-        scale.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (paperSize != null) this.attribute('paperSize', paperSize.toString());
+    if (paperHeight != null) this.attribute('paperHeight', paperHeight);
+    if (paperWidth != null) this.attribute('paperWidth', paperWidth);
+    if (scale != null) this.attribute('scale', scale.toString());
     if (firstPageNumber != null)
-      this.attribute(
-        'firstPageNumber',
-        firstPageNumber.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fitToWidth != null)
-      this.attribute(
-        'fitToWidth',
-        fitToWidth.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstPageNumber', firstPageNumber.toString());
+    if (fitToWidth != null) this.attribute('fitToWidth', fitToWidth.toString());
     if (fitToHeight != null)
-      this.attribute(
-        'fitToHeight',
-        fitToHeight.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (pageOrder != null)
-      this.attribute(
-        'pageOrder',
-        pageOrder!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (orientation != null)
-      this.attribute(
-        'orientation',
-        orientation!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fitToHeight', fitToHeight.toString());
+    if (pageOrder != null) this.attribute('pageOrder', pageOrder!.value);
+    if (orientation != null) this.attribute('orientation', orientation!.value);
     if (usePrinterDefaults != null)
       this.attribute(
         'usePrinterDefaults',
         usePrinterDefaults == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (blackAndWhite != null)
-      this.attribute(
-        'blackAndWhite',
-        blackAndWhite == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('blackAndWhite', blackAndWhite == true ? 'true' : 'false');
     if (draft != null)
-      this.attribute(
-        'draft',
-        draft == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('draft', draft == true ? 'true' : 'false');
     if (cellComments != null)
-      this.attribute(
-        'cellComments',
-        cellComments!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('cellComments', cellComments!.value);
     if (useFirstPageNumber != null)
       this.attribute(
         'useFirstPageNumber',
         useFirstPageNumber == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (errors != null)
-      this.attribute(
-        'errors',
-        errors!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (errors != null) this.attribute('errors', errors!.value);
     if (horizontalDpi != null)
-      this.attribute(
-        'horizontalDpi',
-        horizontalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('horizontalDpi', horizontalDpi.toString());
     if (verticalDpi != null)
+      this.attribute('verticalDpi', verticalDpi.toString());
+    if (copies != null) this.attribute('copies', copies.toString());
+    if (r_id != null)
       this.attribute(
-        'verticalDpi',
-        verticalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (copies != null)
-      this.attribute(
-        'copies',
-        copies.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -15397,25 +11153,18 @@ extension S_CT_HeaderFooter_Builder on _i1.XmlBuilder {
       this.attribute(
         'differentOddEven',
         differentOddEven == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (differentFirst != null)
       this.attribute(
         'differentFirst',
         differentFirst == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (scaleWithDoc != null)
-      this.attribute(
-        'scaleWithDoc',
-        scaleWithDoc == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('scaleWithDoc', scaleWithDoc == true ? 'true' : 'false');
     if (alignWithMargins != null)
       this.attribute(
         'alignWithMargins',
         alignWithMargins == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -15448,18 +11197,8 @@ extension S_CT_Scenarios_Builder on _i1.XmlBuilder {
     int? current,
     int? show_,
   ) {
-    if (current != null)
-      this.attribute(
-        'current',
-        current.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (show_ != null)
-      this.attribute(
-        'show',
-        show_.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (current != null) this.attribute('current', current.toString());
+    if (show_ != null) this.attribute('show', show_.toString());
     children?.call(this);
   }
 }
@@ -15575,131 +11314,50 @@ extension S_CT_SheetProtection_Builder on _i1.XmlBuilder {
     bool? pivotTables,
     bool? selectUnlockedCells,
   ) {
-    if (password != null)
-      this.attribute(
-        'password',
-        password,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (algorithmName != null)
-      this.attribute(
-        'algorithmName',
-        algorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hashValue != null)
-      this.attribute(
-        'hashValue',
-        hashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (saltValue != null)
-      this.attribute(
-        'saltValue',
-        saltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (spinCount != null)
-      this.attribute(
-        'spinCount',
-        spinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (password != null) this.attribute('password', password);
+    if (algorithmName != null) this.attribute('algorithmName', algorithmName);
+    if (hashValue != null) this.attribute('hashValue', hashValue);
+    if (saltValue != null) this.attribute('saltValue', saltValue);
+    if (spinCount != null) this.attribute('spinCount', spinCount.toString());
     if (sheet != null)
-      this.attribute(
-        'sheet',
-        sheet == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('sheet', sheet == true ? 'true' : 'false');
     if (objects != null)
-      this.attribute(
-        'objects',
-        objects == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('objects', objects == true ? 'true' : 'false');
     if (scenarios != null)
-      this.attribute(
-        'scenarios',
-        scenarios == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('scenarios', scenarios == true ? 'true' : 'false');
     if (formatCells != null)
-      this.attribute(
-        'formatCells',
-        formatCells == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('formatCells', formatCells == true ? 'true' : 'false');
     if (formatColumns != null)
-      this.attribute(
-        'formatColumns',
-        formatColumns == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('formatColumns', formatColumns == true ? 'true' : 'false');
     if (formatRows != null)
-      this.attribute(
-        'formatRows',
-        formatRows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('formatRows', formatRows == true ? 'true' : 'false');
     if (insertColumns != null)
-      this.attribute(
-        'insertColumns',
-        insertColumns == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('insertColumns', insertColumns == true ? 'true' : 'false');
     if (insertRows != null)
-      this.attribute(
-        'insertRows',
-        insertRows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('insertRows', insertRows == true ? 'true' : 'false');
     if (insertHyperlinks != null)
       this.attribute(
         'insertHyperlinks',
         insertHyperlinks == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (deleteColumns != null)
-      this.attribute(
-        'deleteColumns',
-        deleteColumns == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('deleteColumns', deleteColumns == true ? 'true' : 'false');
     if (deleteRows != null)
-      this.attribute(
-        'deleteRows',
-        deleteRows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('deleteRows', deleteRows == true ? 'true' : 'false');
     if (selectLockedCells != null)
       this.attribute(
         'selectLockedCells',
         selectLockedCells == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (sort != null)
-      this.attribute(
-        'sort',
-        sort == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sort != null) this.attribute('sort', sort == true ? 'true' : 'false');
     if (autoFilter != null)
-      this.attribute(
-        'autoFilter',
-        autoFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoFilter', autoFilter == true ? 'true' : 'false');
     if (pivotTables != null)
-      this.attribute(
-        'pivotTables',
-        pivotTables == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pivotTables', pivotTables == true ? 'true' : 'false');
     if (selectUnlockedCells != null)
       this.attribute(
         'selectUnlockedCells',
         selectUnlockedCells == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -15785,48 +11443,14 @@ extension S_CT_ProtectedRange_Builder on _i1.XmlBuilder {
     String? saltValue,
     int? spinCount,
   ) {
-    if (password != null)
-      this.attribute(
-        'password',
-        password,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (password != null) this.attribute('password', password);
+    if (name != null) this.attribute('name', name);
     if (securityDescriptor != null)
-      this.attribute(
-        'securityDescriptor',
-        securityDescriptor,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (algorithmName != null)
-      this.attribute(
-        'algorithmName',
-        algorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hashValue != null)
-      this.attribute(
-        'hashValue',
-        hashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (saltValue != null)
-      this.attribute(
-        'saltValue',
-        saltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (spinCount != null)
-      this.attribute(
-        'spinCount',
-        spinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('securityDescriptor', securityDescriptor);
+    if (algorithmName != null) this.attribute('algorithmName', algorithmName);
+    if (hashValue != null) this.attribute('hashValue', hashValue);
+    if (saltValue != null) this.attribute('saltValue', saltValue);
+    if (spinCount != null) this.attribute('spinCount', spinCount.toString());
     children?.call(this);
   }
 }
@@ -15866,42 +11490,14 @@ extension S_CT_Scenario_Builder on _i1.XmlBuilder {
     String? user,
     String? comment,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (user != null)
-      this.attribute(
-        'user',
-        user,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (comment != null)
-      this.attribute(
-        'comment',
-        comment,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
+    if (count != null) this.attribute('count', count.toString());
+    if (user != null) this.attribute('user', user);
+    if (comment != null) this.attribute('comment', comment);
     children?.call(this);
   }
 }
@@ -15939,36 +11535,13 @@ extension S_CT_InputCells_Builder on _i1.XmlBuilder {
     String? val,
     String? numFmtId,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
     if (deleted != null)
-      this.attribute(
-        'deleted',
-        deleted == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('deleted', deleted == true ? 'true' : 'false');
     if (undone != null)
-      this.attribute(
-        'undone',
-        undone == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('undone', undone == true ? 'true' : 'false');
+    if (val != null) this.attribute('val', val);
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
     children?.call(this);
   }
 }
@@ -16020,12 +11593,7 @@ extension S_CT_CellWatch_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? r) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
     children?.call(this);
   }
 }
@@ -16083,17 +11651,8 @@ extension S_CT_ChartsheetPr_Builder on _i1.XmlBuilder {
     String? codeName,
   ) {
     if (published != null)
-      this.attribute(
-        'published',
-        published == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codeName != null)
-      this.attribute(
-        'codeName',
-        codeName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('published', published == true ? 'true' : 'false');
+    if (codeName != null) this.attribute('codeName', codeName);
     children?.call(this);
   }
 }
@@ -16161,29 +11720,12 @@ extension S_CT_ChartsheetView_Builder on _i1.XmlBuilder {
     bool? zoomToFit,
   ) {
     if (tabSelected != null)
-      this.attribute(
-        'tabSelected',
-        tabSelected == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (zoomScale != null)
-      this.attribute(
-        'zoomScale',
-        zoomScale.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('tabSelected', tabSelected == true ? 'true' : 'false');
+    if (zoomScale != null) this.attribute('zoomScale', zoomScale.toString());
     if (workbookViewId != null)
-      this.attribute(
-        'workbookViewId',
-        workbookViewId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookViewId', workbookViewId.toString());
     if (zoomToFit != null)
-      this.attribute(
-        'zoomToFit',
-        zoomToFit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('zoomToFit', zoomToFit == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -16243,48 +11785,15 @@ extension S_CT_ChartsheetProtection_Builder on _i1.XmlBuilder {
     bool? content,
     bool? objects,
   ) {
-    if (password != null)
-      this.attribute(
-        'password',
-        password,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (algorithmName != null)
-      this.attribute(
-        'algorithmName',
-        algorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hashValue != null)
-      this.attribute(
-        'hashValue',
-        hashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (saltValue != null)
-      this.attribute(
-        'saltValue',
-        saltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (spinCount != null)
-      this.attribute(
-        'spinCount',
-        spinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (password != null) this.attribute('password', password);
+    if (algorithmName != null) this.attribute('algorithmName', algorithmName);
+    if (hashValue != null) this.attribute('hashValue', hashValue);
+    if (saltValue != null) this.attribute('saltValue', saltValue);
+    if (spinCount != null) this.attribute('spinCount', spinCount.toString());
     if (content != null)
-      this.attribute(
-        'content',
-        content == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('content', content == true ? 'true' : 'false');
     if (objects != null)
-      this.attribute(
-        'objects',
-        objects == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('objects', objects == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -16306,6 +11815,7 @@ extension S_CT_CsPageSetup_Builder on _i1.XmlBuilder {
     int? horizontalDpi,
     int? verticalDpi,
     int? copies,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -16327,6 +11837,7 @@ extension S_CT_CsPageSetup_Builder on _i1.XmlBuilder {
             horizontalDpi,
             verticalDpi,
             copies,
+            r_id,
           );
         },
       );
@@ -16345,6 +11856,7 @@ extension S_CT_CsPageSetup_Builder on _i1.XmlBuilder {
         horizontalDpi,
         verticalDpi,
         copies,
+        r_id,
       );
     }
   }
@@ -16363,78 +11875,39 @@ extension S_CT_CsPageSetup_Builder on _i1.XmlBuilder {
     int? horizontalDpi,
     int? verticalDpi,
     int? copies,
+    String? r_id,
   ) {
-    if (paperSize != null)
-      this.attribute(
-        'paperSize',
-        paperSize.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (paperHeight != null)
-      this.attribute(
-        'paperHeight',
-        paperHeight,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (paperWidth != null)
-      this.attribute(
-        'paperWidth',
-        paperWidth,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (paperSize != null) this.attribute('paperSize', paperSize.toString());
+    if (paperHeight != null) this.attribute('paperHeight', paperHeight);
+    if (paperWidth != null) this.attribute('paperWidth', paperWidth);
     if (firstPageNumber != null)
-      this.attribute(
-        'firstPageNumber',
-        firstPageNumber.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (orientation != null)
-      this.attribute(
-        'orientation',
-        orientation!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('firstPageNumber', firstPageNumber.toString());
+    if (orientation != null) this.attribute('orientation', orientation!.value);
     if (usePrinterDefaults != null)
       this.attribute(
         'usePrinterDefaults',
         usePrinterDefaults == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (blackAndWhite != null)
-      this.attribute(
-        'blackAndWhite',
-        blackAndWhite == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('blackAndWhite', blackAndWhite == true ? 'true' : 'false');
     if (draft != null)
-      this.attribute(
-        'draft',
-        draft == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('draft', draft == true ? 'true' : 'false');
     if (useFirstPageNumber != null)
       this.attribute(
         'useFirstPageNumber',
         useFirstPageNumber == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (horizontalDpi != null)
-      this.attribute(
-        'horizontalDpi',
-        horizontalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('horizontalDpi', horizontalDpi.toString());
     if (verticalDpi != null)
+      this.attribute('verticalDpi', verticalDpi.toString());
+    if (copies != null) this.attribute('copies', copies.toString());
+    if (r_id != null)
       this.attribute(
-        'verticalDpi',
-        verticalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (copies != null)
-      this.attribute(
-        'copies',
-        copies.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -16496,30 +11969,11 @@ extension S_CT_CustomChartsheetView_Builder on _i1.XmlBuilder {
     S_ST_SheetState? state,
     bool? zoomToFit,
   ) {
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (scale != null)
-      this.attribute(
-        'scale',
-        scale.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (state != null)
-      this.attribute(
-        'state',
-        state!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (guid != null) this.attribute('guid', guid);
+    if (scale != null) this.attribute('scale', scale.toString());
+    if (state != null) this.attribute('state', state!.value);
     if (zoomToFit != null)
-      this.attribute(
-        'zoomToFit',
-        zoomToFit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('zoomToFit', zoomToFit == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -16555,6 +12009,7 @@ extension S_CT_CustomProperty_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
     String? name,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -16562,20 +12017,26 @@ extension S_CT_CustomProperty_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, name);
+          _buildBody(children, name, r_id);
         },
       );
     } else {
-      _buildBody(children, name);
+      _buildBody(children, name, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? name,
+    String? r_id,
+  ) {
+    if (name != null) this.attribute('name', name);
+    if (r_id != null)
       this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -16617,6 +12078,7 @@ extension S_CT_OleObject_Builder on _i1.XmlBuilder {
     S_ST_OleUpdate? oleUpdate,
     bool? autoLoad,
     int? shapeId,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -16632,6 +12094,7 @@ extension S_CT_OleObject_Builder on _i1.XmlBuilder {
             oleUpdate,
             autoLoad,
             shapeId,
+            r_id,
           );
         },
       );
@@ -16644,6 +12107,7 @@ extension S_CT_OleObject_Builder on _i1.XmlBuilder {
         oleUpdate,
         autoLoad,
         shapeId,
+        r_id,
       );
     }
   }
@@ -16656,42 +12120,21 @@ extension S_CT_OleObject_Builder on _i1.XmlBuilder {
     S_ST_OleUpdate? oleUpdate,
     bool? autoLoad,
     int? shapeId,
+    String? r_id,
   ) {
-    if (progId != null)
-      this.attribute(
-        'progId',
-        progId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dvAspect != null)
-      this.attribute(
-        'dvAspect',
-        dvAspect!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (link != null)
-      this.attribute(
-        'link',
-        link,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (oleUpdate != null)
-      this.attribute(
-        'oleUpdate',
-        oleUpdate!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (progId != null) this.attribute('progId', progId);
+    if (dvAspect != null) this.attribute('dvAspect', dvAspect!.value);
+    if (link != null) this.attribute('link', link);
+    if (oleUpdate != null) this.attribute('oleUpdate', oleUpdate!.value);
     if (autoLoad != null)
+      this.attribute('autoLoad', autoLoad == true ? 'true' : 'false');
+    if (shapeId != null) this.attribute('shapeId', shapeId.toString());
+    if (r_id != null)
       this.attribute(
-        'autoLoad',
-        autoLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (shapeId != null)
-      this.attribute(
-        'shapeId',
-        shapeId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -16713,6 +12156,7 @@ extension S_CT_ObjectPr_Builder on _i1.XmlBuilder {
     String? macro,
     String? altText,
     bool? dde,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -16733,6 +12177,7 @@ extension S_CT_ObjectPr_Builder on _i1.XmlBuilder {
             macro,
             altText,
             dde,
+            r_id,
           );
         },
       );
@@ -16750,6 +12195,7 @@ extension S_CT_ObjectPr_Builder on _i1.XmlBuilder {
         macro,
         altText,
         dde,
+        r_id,
       );
     }
   }
@@ -16767,72 +12213,33 @@ extension S_CT_ObjectPr_Builder on _i1.XmlBuilder {
     String? macro,
     String? altText,
     bool? dde,
+    String? r_id,
   ) {
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (defaultSize != null)
-      this.attribute(
-        'defaultSize',
-        defaultSize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultSize', defaultSize == true ? 'true' : 'false');
     if (print != null)
-      this.attribute(
-        'print',
-        print == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('print', print == true ? 'true' : 'false');
     if (disabled != null)
-      this.attribute(
-        'disabled',
-        disabled == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('disabled', disabled == true ? 'true' : 'false');
     if (uiObject != null)
-      this.attribute(
-        'uiObject',
-        uiObject == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('uiObject', uiObject == true ? 'true' : 'false');
     if (autoFill != null)
-      this.attribute(
-        'autoFill',
-        autoFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoFill', autoFill == true ? 'true' : 'false');
     if (autoLine != null)
-      this.attribute(
-        'autoLine',
-        autoLine == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoLine', autoLine == true ? 'true' : 'false');
     if (autoPict != null)
+      this.attribute('autoPict', autoPict == true ? 'true' : 'false');
+    if (macro != null) this.attribute('macro', macro);
+    if (altText != null) this.attribute('altText', altText);
+    if (dde != null) this.attribute('dde', dde == true ? 'true' : 'false');
+    if (r_id != null)
       this.attribute(
-        'autoPict',
-        autoPict == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (altText != null)
-      this.attribute(
-        'altText',
-        altText,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dde != null)
-      this.attribute(
-        'dde',
-        dde == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -16860,12 +12267,7 @@ extension S_CT_WebPublishItems_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -16929,54 +12331,16 @@ extension S_CT_WebPublishItem_Builder on _i1.XmlBuilder {
     String? title,
     bool? autoRepublish,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (divId != null)
-      this.attribute(
-        'divId',
-        divId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceType != null)
-      this.attribute(
-        'sourceType',
-        sourceType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceRef != null)
-      this.attribute(
-        'sourceRef',
-        sourceRef,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceObject != null)
-      this.attribute(
-        'sourceObject',
-        sourceObject,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (divId != null) this.attribute('divId', divId);
+    if (sourceType != null) this.attribute('sourceType', sourceType!.value);
+    if (sourceRef != null) this.attribute('sourceRef', sourceRef);
+    if (sourceObject != null) this.attribute('sourceObject', sourceObject);
     if (destinationFile != null)
-      this.attribute(
-        'destinationFile',
-        destinationFile,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (title != null)
-      this.attribute(
-        'title',
-        title,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('destinationFile', destinationFile);
+    if (title != null) this.attribute('title', title);
     if (autoRepublish != null)
-      this.attribute(
-        'autoRepublish',
-        autoRepublish == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoRepublish', autoRepublish == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -17012,6 +12376,7 @@ extension S_CT_Control_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
     int? shapeId,
+    String? r_id,
     String? name,
     void Function(XmlBuilder)? children,
   }) {
@@ -17020,31 +12385,29 @@ extension S_CT_Control_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, shapeId, name);
+          _buildBody(children, shapeId, r_id, name);
         },
       );
     } else {
-      _buildBody(children, shapeId, name);
+      _buildBody(children, shapeId, r_id, name);
     }
   }
 
   void _buildBody(
     void Function(XmlBuilder)? children,
     int? shapeId,
+    String? r_id,
     String? name,
   ) {
-    if (shapeId != null)
+    if (shapeId != null) this.attribute('shapeId', shapeId.toString());
+    if (r_id != null)
       this.attribute(
-        'shapeId',
-        shapeId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -17068,6 +12431,7 @@ extension S_CT_ControlPr_Builder on _i1.XmlBuilder {
     String? linkedCell,
     String? listFillRange,
     String? cf,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -17091,6 +12455,7 @@ extension S_CT_ControlPr_Builder on _i1.XmlBuilder {
             linkedCell,
             listFillRange,
             cf,
+            r_id,
           );
         },
       );
@@ -17111,6 +12476,7 @@ extension S_CT_ControlPr_Builder on _i1.XmlBuilder {
         linkedCell,
         listFillRange,
         cf,
+        r_id,
       );
     }
   }
@@ -17131,90 +12497,37 @@ extension S_CT_ControlPr_Builder on _i1.XmlBuilder {
     String? linkedCell,
     String? listFillRange,
     String? cf,
+    String? r_id,
   ) {
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (defaultSize != null)
-      this.attribute(
-        'defaultSize',
-        defaultSize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultSize', defaultSize == true ? 'true' : 'false');
     if (print != null)
-      this.attribute(
-        'print',
-        print == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('print', print == true ? 'true' : 'false');
     if (disabled != null)
-      this.attribute(
-        'disabled',
-        disabled == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('disabled', disabled == true ? 'true' : 'false');
     if (recalcAlways != null)
-      this.attribute(
-        'recalcAlways',
-        recalcAlways == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('recalcAlways', recalcAlways == true ? 'true' : 'false');
     if (uiObject != null)
-      this.attribute(
-        'uiObject',
-        uiObject == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('uiObject', uiObject == true ? 'true' : 'false');
     if (autoFill != null)
-      this.attribute(
-        'autoFill',
-        autoFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoFill', autoFill == true ? 'true' : 'false');
     if (autoLine != null)
-      this.attribute(
-        'autoLine',
-        autoLine == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoLine', autoLine == true ? 'true' : 'false');
     if (autoPict != null)
+      this.attribute('autoPict', autoPict == true ? 'true' : 'false');
+    if (macro != null) this.attribute('macro', macro);
+    if (altText != null) this.attribute('altText', altText);
+    if (linkedCell != null) this.attribute('linkedCell', linkedCell);
+    if (listFillRange != null) this.attribute('listFillRange', listFillRange);
+    if (cf != null) this.attribute('cf', cf);
+    if (r_id != null)
       this.attribute(
-        'autoPict',
-        autoPict == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (altText != null)
-      this.attribute(
-        'altText',
-        altText,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (linkedCell != null)
-      this.attribute(
-        'linkedCell',
-        linkedCell,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (listFillRange != null)
-      this.attribute(
-        'listFillRange',
-        listFillRange,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cf != null)
-      this.attribute(
-        'cf',
-        cf,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -17309,58 +12622,40 @@ extension S_CT_IgnoredError_Builder on _i1.XmlBuilder {
     bool? calculatedColumn,
   ) {
     if (evalError != null)
-      this.attribute(
-        'evalError',
-        evalError == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('evalError', evalError == true ? 'true' : 'false');
     if (twoDigitTextYear != null)
       this.attribute(
         'twoDigitTextYear',
         twoDigitTextYear == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (numberStoredAsText != null)
       this.attribute(
         'numberStoredAsText',
         numberStoredAsText == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (formula != null)
-      this.attribute(
-        'formula',
-        formula == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('formula', formula == true ? 'true' : 'false');
     if (formulaRange != null)
-      this.attribute(
-        'formulaRange',
-        formulaRange == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('formulaRange', formulaRange == true ? 'true' : 'false');
     if (unlockedFormula != null)
       this.attribute(
         'unlockedFormula',
         unlockedFormula == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (emptyCellReference != null)
       this.attribute(
         'emptyCellReference',
         emptyCellReference == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (listDataValidation != null)
       this.attribute(
         'listDataValidation',
         listDataValidation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (calculatedColumn != null)
       this.attribute(
         'calculatedColumn',
         calculatedColumn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -17388,12 +12683,7 @@ extension S_CT_TableParts_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -17403,6 +12693,7 @@ extension S_CT_TablePart_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -17410,15 +12701,22 @@ extension S_CT_TablePart_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -17470,12 +12768,7 @@ extension S_CT_MetadataTypes_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -17619,174 +12912,68 @@ extension S_CT_MetadataType_Builder on _i1.XmlBuilder {
     bool? adjust,
     bool? cellMeta,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (minSupportedVersion != null)
-      this.attribute(
-        'minSupportedVersion',
-        minSupportedVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minSupportedVersion', minSupportedVersion.toString());
     if (ghostRow != null)
-      this.attribute(
-        'ghostRow',
-        ghostRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('ghostRow', ghostRow == true ? 'true' : 'false');
     if (ghostCol != null)
-      this.attribute(
-        'ghostCol',
-        ghostCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (edit != null)
-      this.attribute(
-        'edit',
-        edit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('ghostCol', ghostCol == true ? 'true' : 'false');
+    if (edit != null) this.attribute('edit', edit == true ? 'true' : 'false');
     if (delete != null)
-      this.attribute(
-        'delete',
-        delete == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (copy != null)
-      this.attribute(
-        'copy',
-        copy == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('delete', delete == true ? 'true' : 'false');
+    if (copy != null) this.attribute('copy', copy == true ? 'true' : 'false');
     if (pasteAll != null)
-      this.attribute(
-        'pasteAll',
-        pasteAll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteAll', pasteAll == true ? 'true' : 'false');
     if (pasteFormulas != null)
-      this.attribute(
-        'pasteFormulas',
-        pasteFormulas == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteFormulas', pasteFormulas == true ? 'true' : 'false');
     if (pasteValues != null)
-      this.attribute(
-        'pasteValues',
-        pasteValues == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteValues', pasteValues == true ? 'true' : 'false');
     if (pasteFormats != null)
-      this.attribute(
-        'pasteFormats',
-        pasteFormats == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteFormats', pasteFormats == true ? 'true' : 'false');
     if (pasteComments != null)
-      this.attribute(
-        'pasteComments',
-        pasteComments == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteComments', pasteComments == true ? 'true' : 'false');
     if (pasteDataValidation != null)
       this.attribute(
         'pasteDataValidation',
         pasteDataValidation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (pasteBorders != null)
-      this.attribute(
-        'pasteBorders',
-        pasteBorders == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pasteBorders', pasteBorders == true ? 'true' : 'false');
     if (pasteColWidths != null)
       this.attribute(
         'pasteColWidths',
         pasteColWidths == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (pasteNumberFormats != null)
       this.attribute(
         'pasteNumberFormats',
         pasteNumberFormats == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (merge != null)
-      this.attribute(
-        'merge',
-        merge == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('merge', merge == true ? 'true' : 'false');
     if (splitFirst != null)
-      this.attribute(
-        'splitFirst',
-        splitFirst == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('splitFirst', splitFirst == true ? 'true' : 'false');
     if (splitAll != null)
-      this.attribute(
-        'splitAll',
-        splitAll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('splitAll', splitAll == true ? 'true' : 'false');
     if (rowColShift != null)
-      this.attribute(
-        'rowColShift',
-        rowColShift == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('rowColShift', rowColShift == true ? 'true' : 'false');
     if (clearAll != null)
-      this.attribute(
-        'clearAll',
-        clearAll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('clearAll', clearAll == true ? 'true' : 'false');
     if (clearFormats != null)
-      this.attribute(
-        'clearFormats',
-        clearFormats == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('clearFormats', clearFormats == true ? 'true' : 'false');
     if (clearContents != null)
-      this.attribute(
-        'clearContents',
-        clearContents == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('clearContents', clearContents == true ? 'true' : 'false');
     if (clearComments != null)
-      this.attribute(
-        'clearComments',
-        clearComments == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('clearComments', clearComments == true ? 'true' : 'false');
     if (assign != null)
-      this.attribute(
-        'assign',
-        assign == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('assign', assign == true ? 'true' : 'false');
     if (coerce != null)
-      this.attribute(
-        'coerce',
-        coerce == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('coerce', coerce == true ? 'true' : 'false');
     if (adjust != null)
-      this.attribute(
-        'adjust',
-        adjust == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('adjust', adjust == true ? 'true' : 'false');
     if (cellMeta != null)
-      this.attribute(
-        'cellMeta',
-        cellMeta == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('cellMeta', cellMeta == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -17813,12 +13000,7 @@ extension S_CT_MetadataBlocks_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -17871,18 +13053,8 @@ extension S_CT_MetadataRecord_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? t, int? v) {
-    if (t != null)
-      this.attribute(
-        't',
-        t.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (v != null)
-      this.attribute(
-        'v',
-        v.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (t != null) this.attribute('t', t.toString());
+    if (v != null) this.attribute('v', v.toString());
     children?.call(this);
   }
 }
@@ -17914,18 +13086,8 @@ extension S_CT_FutureMetadata_Builder on _i1.XmlBuilder {
     String? name,
     int? count,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -17977,12 +13139,7 @@ extension S_CT_MdxMetadata_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -18014,18 +13171,8 @@ extension S_CT_Mdx_Builder on _i1.XmlBuilder {
     int? n,
     S_ST_MdxFunctionType? f,
   ) {
-    if (n != null)
-      this.attribute(
-        'n',
-        n.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (f != null)
-      this.attribute(
-        'f',
-        f!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (n != null) this.attribute('n', n.toString());
+    if (f != null) this.attribute('f', f!.value);
     children?.call(this);
   }
 }
@@ -18073,66 +13220,16 @@ extension S_CT_MdxTuple_Builder on _i1.XmlBuilder {
     bool? st,
     bool? b,
   ) {
-    if (c != null)
-      this.attribute(
-        'c',
-        c.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ct != null)
-      this.attribute(
-        'ct',
-        ct,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (si != null)
-      this.attribute(
-        'si',
-        si.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fi != null)
-      this.attribute(
-        'fi',
-        fi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bc != null)
-      this.attribute(
-        'bc',
-        bc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fc != null)
-      this.attribute(
-        'fc',
-        fc,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (st != null)
-      this.attribute(
-        'st',
-        st == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (c != null) this.attribute('c', c.toString());
+    if (ct != null) this.attribute('ct', ct);
+    if (si != null) this.attribute('si', si.toString());
+    if (fi != null) this.attribute('fi', fi.toString());
+    if (bc != null) this.attribute('bc', bc);
+    if (fc != null) this.attribute('fc', fc);
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (u != null) this.attribute('u', u == true ? 'true' : 'false');
+    if (st != null) this.attribute('st', st == true ? 'true' : 'false');
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -18166,24 +13263,9 @@ extension S_CT_MdxSet_Builder on _i1.XmlBuilder {
     int? c,
     S_ST_MdxSetOrder? o,
   ) {
-    if (ns != null)
-      this.attribute(
-        'ns',
-        ns.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (c != null)
-      this.attribute(
-        'c',
-        c.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (o != null)
-      this.attribute(
-        'o',
-        o!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ns != null) this.attribute('ns', ns.toString());
+    if (c != null) this.attribute('c', c.toString());
+    if (o != null) this.attribute('o', o!.value);
     children?.call(this);
   }
 }
@@ -18211,18 +13293,8 @@ extension S_CT_MdxMemeberProp_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? n, int? np) {
-    if (n != null)
-      this.attribute(
-        'n',
-        n.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (np != null)
-      this.attribute(
-        'np',
-        np.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (n != null) this.attribute('n', n.toString());
+    if (np != null) this.attribute('np', np.toString());
     children?.call(this);
   }
 }
@@ -18256,24 +13328,9 @@ extension S_CT_MdxKPI_Builder on _i1.XmlBuilder {
     int? np,
     S_ST_MdxKPIProperty? p,
   ) {
-    if (n != null)
-      this.attribute(
-        'n',
-        n.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (np != null)
-      this.attribute(
-        'np',
-        np.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (p != null)
-      this.attribute(
-        'p',
-        p!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (n != null) this.attribute('n', n.toString());
+    if (np != null) this.attribute('np', np.toString());
+    if (p != null) this.attribute('p', p!.value);
     children?.call(this);
   }
 }
@@ -18301,18 +13358,8 @@ extension S_CT_MetadataStringIndex_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? x, bool? s) {
-    if (x != null)
-      this.attribute(
-        'x',
-        x.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (x != null) this.attribute('x', x.toString());
+    if (s != null) this.attribute('s', s == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -18339,12 +13386,7 @@ extension S_CT_MetadataStrings_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -18403,24 +13445,10 @@ extension S_CT_SingleXmlCell_Builder on _i1.XmlBuilder {
     String? r,
     int? connectionId,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (r != null) this.attribute('r', r);
     if (connectionId != null)
-      this.attribute(
-        'connectionId',
-        connectionId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('connectionId', connectionId.toString());
     children?.call(this);
   }
 }
@@ -18452,18 +13480,8 @@ extension S_CT_XmlCellPr_Builder on _i1.XmlBuilder {
     int? id,
     String? uniqueName,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
     children?.call(this);
   }
 }
@@ -18497,24 +13515,9 @@ extension S_CT_XmlPr_Builder on _i1.XmlBuilder {
     String? xpath,
     String? xmlDataType,
   ) {
-    if (mapId != null)
-      this.attribute(
-        'mapId',
-        mapId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xpath != null)
-      this.attribute(
-        'xpath',
-        xpath,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xmlDataType != null)
-      this.attribute(
-        'xmlDataType',
-        xmlDataType,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (mapId != null) this.attribute('mapId', mapId.toString());
+    if (xpath != null) this.attribute('xpath', xpath);
+    if (xmlDataType != null) this.attribute('xmlDataType', xmlDataType);
     children?.call(this);
   }
 }
@@ -18607,60 +13610,23 @@ extension S_CT_CellAlignment_Builder on _i1.XmlBuilder {
     bool? shrinkToFit,
     int? readingOrder,
   ) {
-    if (horizontal != null)
-      this.attribute(
-        'horizontal',
-        horizontal!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (vertical != null)
-      this.attribute(
-        'vertical',
-        vertical!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (textRotation != null)
-      this.attribute(
-        'textRotation',
-        textRotation,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (horizontal != null) this.attribute('horizontal', horizontal!.value);
+    if (vertical != null) this.attribute('vertical', vertical!.value);
+    if (textRotation != null) this.attribute('textRotation', textRotation);
     if (wrapText != null)
-      this.attribute(
-        'wrapText',
-        wrapText == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (indent != null)
-      this.attribute(
-        'indent',
-        indent.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('wrapText', wrapText == true ? 'true' : 'false');
+    if (indent != null) this.attribute('indent', indent.toString());
     if (relativeIndent != null)
-      this.attribute(
-        'relativeIndent',
-        relativeIndent.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('relativeIndent', relativeIndent.toString());
     if (justifyLastLine != null)
       this.attribute(
         'justifyLastLine',
         justifyLastLine == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (shrinkToFit != null)
-      this.attribute(
-        'shrinkToFit',
-        shrinkToFit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('shrinkToFit', shrinkToFit == true ? 'true' : 'false');
     if (readingOrder != null)
-      this.attribute(
-        'readingOrder',
-        readingOrder.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('readingOrder', readingOrder.toString());
     children?.call(this);
   }
 }
@@ -18687,12 +13653,7 @@ extension S_CT_Borders_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -18727,23 +13688,11 @@ extension S_CT_Border_Builder on _i1.XmlBuilder {
     bool? outline,
   ) {
     if (diagonalUp != null)
-      this.attribute(
-        'diagonalUp',
-        diagonalUp == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('diagonalUp', diagonalUp == true ? 'true' : 'false');
     if (diagonalDown != null)
-      this.attribute(
-        'diagonalDown',
-        diagonalDown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('diagonalDown', diagonalDown == true ? 'true' : 'false');
     if (outline != null)
-      this.attribute(
-        'outline',
-        outline == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('outline', outline == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -18773,12 +13722,7 @@ extension S_CT_BorderPr_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     S_ST_BorderStyle? style,
   ) {
-    if (style != null)
-      this.attribute(
-        'style',
-        style!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (style != null) this.attribute('style', style!.value);
     children?.call(this);
   }
 }
@@ -18811,17 +13755,9 @@ extension S_CT_CellProtection_Builder on _i1.XmlBuilder {
     bool? hidden,
   ) {
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -18848,12 +13784,7 @@ extension S_CT_Fonts_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -18880,12 +13811,7 @@ extension S_CT_Fills_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -18940,12 +13866,7 @@ extension S_CT_PatternFill_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     S_ST_PatternType? patternType,
   ) {
-    if (patternType != null)
-      this.attribute(
-        'patternType',
-        patternType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (patternType != null) this.attribute('patternType', patternType!.value);
     children?.call(this);
   }
 }
@@ -18983,36 +13904,11 @@ extension S_CT_Color_Builder on _i1.XmlBuilder {
     int? theme,
     double? tint,
   ) {
-    if (auto != null)
-      this.attribute(
-        'auto',
-        auto == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (indexed != null)
-      this.attribute(
-        'indexed',
-        indexed.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rgb != null)
-      this.attribute(
-        'rgb',
-        rgb,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (theme != null)
-      this.attribute(
-        'theme',
-        theme.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tint != null)
-      this.attribute(
-        'tint',
-        tint.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (auto != null) this.attribute('auto', auto == true ? 'true' : 'false');
+    if (indexed != null) this.attribute('indexed', indexed.toString());
+    if (rgb != null) this.attribute('rgb', rgb);
+    if (theme != null) this.attribute('theme', theme.toString());
+    if (tint != null) this.attribute('tint', tint.toString());
     children?.call(this);
   }
 }
@@ -19052,42 +13948,12 @@ extension S_CT_GradientFill_Builder on _i1.XmlBuilder {
     double? top,
     double? bottom,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (degree != null)
-      this.attribute(
-        'degree',
-        degree.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (left != null)
-      this.attribute(
-        'left',
-        left.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (right != null)
-      this.attribute(
-        'right',
-        right.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (top != null)
-      this.attribute(
-        'top',
-        top.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (bottom != null)
-      this.attribute(
-        'bottom',
-        bottom.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (degree != null) this.attribute('degree', degree.toString());
+    if (left != null) this.attribute('left', left.toString());
+    if (right != null) this.attribute('right', right.toString());
+    if (top != null) this.attribute('top', top.toString());
+    if (bottom != null) this.attribute('bottom', bottom.toString());
     children?.call(this);
   }
 }
@@ -19114,12 +13980,7 @@ extension S_CT_GradientStop_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, double? position) {
-    if (position != null)
-      this.attribute(
-        'position',
-        position.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (position != null) this.attribute('position', position.toString());
     children?.call(this);
   }
 }
@@ -19146,12 +14007,7 @@ extension S_CT_NumFmts_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19183,18 +14039,8 @@ extension S_CT_NumFmt_Builder on _i1.XmlBuilder {
     String? numFmtId,
     String? formatCode,
   ) {
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (formatCode != null)
-      this.attribute(
-        'formatCode',
-        formatCode,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
+    if (formatCode != null) this.attribute('formatCode', formatCode);
     children?.call(this);
   }
 }
@@ -19221,12 +14067,7 @@ extension S_CT_CellStyleXfs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19253,12 +14094,7 @@ extension S_CT_CellXfs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19342,83 +14178,35 @@ extension S_CT_Xf_Builder on _i1.XmlBuilder {
     bool? applyAlignment,
     bool? applyProtection,
   ) {
-    if (numFmtId != null)
-      this.attribute(
-        'numFmtId',
-        numFmtId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fontId != null)
-      this.attribute(
-        'fontId',
-        fontId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (fillId != null)
-      this.attribute(
-        'fillId',
-        fillId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (borderId != null)
-      this.attribute(
-        'borderId',
-        borderId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xfId != null)
-      this.attribute(
-        'xfId',
-        xfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (numFmtId != null) this.attribute('numFmtId', numFmtId);
+    if (fontId != null) this.attribute('fontId', fontId);
+    if (fillId != null) this.attribute('fillId', fillId);
+    if (borderId != null) this.attribute('borderId', borderId);
+    if (xfId != null) this.attribute('xfId', xfId);
     if (quotePrefix != null)
-      this.attribute(
-        'quotePrefix',
-        quotePrefix == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('quotePrefix', quotePrefix == true ? 'true' : 'false');
     if (pivotButton != null)
-      this.attribute(
-        'pivotButton',
-        pivotButton == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pivotButton', pivotButton == true ? 'true' : 'false');
     if (applyNumberFormat != null)
       this.attribute(
         'applyNumberFormat',
         applyNumberFormat == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (applyFont != null)
-      this.attribute(
-        'applyFont',
-        applyFont == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('applyFont', applyFont == true ? 'true' : 'false');
     if (applyFill != null)
-      this.attribute(
-        'applyFill',
-        applyFill == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('applyFill', applyFill == true ? 'true' : 'false');
     if (applyBorder != null)
-      this.attribute(
-        'applyBorder',
-        applyBorder == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('applyBorder', applyBorder == true ? 'true' : 'false');
     if (applyAlignment != null)
       this.attribute(
         'applyAlignment',
         applyAlignment == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (applyProtection != null)
       this.attribute(
         'applyProtection',
         applyProtection == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -19446,12 +14234,7 @@ extension S_CT_CellStyles_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19507,42 +14290,14 @@ extension S_CT_CellStyle_Builder on _i1.XmlBuilder {
     bool? hidden,
     bool? customBuiltin,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xfId != null)
-      this.attribute(
-        'xfId',
-        xfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (builtinId != null)
-      this.attribute(
-        'builtinId',
-        builtinId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (iLevel != null)
-      this.attribute(
-        'iLevel',
-        iLevel.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (xfId != null) this.attribute('xfId', xfId);
+    if (builtinId != null) this.attribute('builtinId', builtinId.toString());
+    if (iLevel != null) this.attribute('iLevel', iLevel.toString());
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (customBuiltin != null)
-      this.attribute(
-        'customBuiltin',
-        customBuiltin == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('customBuiltin', customBuiltin == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -19569,12 +14324,7 @@ extension S_CT_Dxfs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19701,12 +14451,7 @@ extension S_CT_RgbColor_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? rgb) {
-    if (rgb != null)
-      this.attribute(
-        'rgb',
-        rgb,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (rgb != null) this.attribute('rgb', rgb);
     children?.call(this);
   }
 }
@@ -19740,24 +14485,11 @@ extension S_CT_TableStyles_Builder on _i1.XmlBuilder {
     String? defaultTableStyle,
     String? defaultPivotStyle,
   ) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     if (defaultTableStyle != null)
-      this.attribute(
-        'defaultTableStyle',
-        defaultTableStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultTableStyle', defaultTableStyle);
     if (defaultPivotStyle != null)
-      this.attribute(
-        'defaultPivotStyle',
-        defaultPivotStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultPivotStyle', defaultPivotStyle);
     children?.call(this);
   }
 }
@@ -19793,30 +14525,12 @@ extension S_CT_TableStyle_Builder on _i1.XmlBuilder {
     bool? table,
     int? count,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (pivot != null)
-      this.attribute(
-        'pivot',
-        pivot == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('pivot', pivot == true ? 'true' : 'false');
     if (table != null)
-      this.attribute(
-        'table',
-        table == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('table', table == true ? 'true' : 'false');
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -19850,24 +14564,9 @@ extension S_CT_TableStyleElement_Builder on _i1.XmlBuilder {
     int? size,
     String? dxfId,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (size != null)
-      this.attribute(
-        'size',
-        size.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dxfId != null)
-      this.attribute(
-        'dxfId',
-        dxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (size != null) this.attribute('size', size.toString());
+    if (dxfId != null) this.attribute('dxfId', dxfId);
     children?.call(this);
   }
 }
@@ -19894,12 +14593,7 @@ extension S_CT_BooleanProperty_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -19926,12 +14620,7 @@ extension S_CT_FontSize_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, double? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -19958,12 +14647,7 @@ extension S_CT_IntProperty_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -19990,12 +14674,7 @@ extension S_CT_FontName_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -20025,12 +14704,7 @@ extension S_CT_VerticalAlignFontProperty_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     ST_VerticalAlignRun? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -20057,12 +14731,7 @@ extension S_CT_FontScheme_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, S_ST_FontScheme? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -20092,12 +14761,7 @@ extension S_CT_UnderlineProperty_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     S_ST_UnderlineValues? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -20149,12 +14813,7 @@ extension S_CT_FontFamily_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -20189,6 +14848,7 @@ extension S_CT_ExternalBook_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -20196,15 +14856,22 @@ extension S_CT_ExternalBook_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -20256,12 +14923,7 @@ extension S_CT_ExternalSheetName_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -20320,24 +14982,9 @@ extension S_CT_ExternalDefinedName_Builder on _i1.XmlBuilder {
     String? refersTo,
     int? sheetId,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (refersTo != null)
-      this.attribute(
-        'refersTo',
-        refersTo,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (refersTo != null) this.attribute('refersTo', refersTo);
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
     children?.call(this);
   }
 }
@@ -20394,18 +15041,9 @@ extension S_CT_ExternalSheetData_Builder on _i1.XmlBuilder {
     int? sheetId,
     bool? refreshError,
   ) {
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
     if (refreshError != null)
-      this.attribute(
-        'refreshError',
-        refreshError == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('refreshError', refreshError == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -20432,12 +15070,7 @@ extension S_CT_ExternalRow_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? r) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r.toString());
     children?.call(this);
   }
 }
@@ -20471,24 +15104,9 @@ extension S_CT_ExternalCell_Builder on _i1.XmlBuilder {
     S_ST_CellType? t,
     int? vm,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (vm != null)
-      this.attribute(
-        'vm',
-        vm.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
+    if (t != null) this.attribute('t', t!.value);
+    if (vm != null) this.attribute('vm', vm.toString());
     children?.call(this);
   }
 }
@@ -20520,18 +15138,8 @@ extension S_CT_DdeLink_Builder on _i1.XmlBuilder {
     String? ddeService,
     String? ddeTopic,
   ) {
-    if (ddeService != null)
-      this.attribute(
-        'ddeService',
-        ddeService,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ddeTopic != null)
-      this.attribute(
-        'ddeTopic',
-        ddeTopic,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ddeService != null) this.attribute('ddeService', ddeService);
+    if (ddeTopic != null) this.attribute('ddeTopic', ddeTopic);
     children?.call(this);
   }
 }
@@ -20592,30 +15200,12 @@ extension S_CT_DdeItem_Builder on _i1.XmlBuilder {
     bool? advise,
     bool? preferPic,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ole != null)
-      this.attribute(
-        'ole',
-        ole == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (ole != null) this.attribute('ole', ole == true ? 'true' : 'false');
     if (advise != null)
-      this.attribute(
-        'advise',
-        advise == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('advise', advise == true ? 'true' : 'false');
     if (preferPic != null)
-      this.attribute(
-        'preferPic',
-        preferPic == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('preferPic', preferPic == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -20643,18 +15233,8 @@ extension S_CT_DdeValues_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? rows, int? cols) {
-    if (rows != null)
-      this.attribute(
-        'rows',
-        rows.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (cols != null)
-      this.attribute(
-        'cols',
-        cols.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (rows != null) this.attribute('rows', rows.toString());
+    if (cols != null) this.attribute('cols', cols.toString());
     children?.call(this);
   }
 }
@@ -20681,12 +15261,7 @@ extension S_CT_DdeValue_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, S_ST_DdeValueType? t) {
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (t != null) this.attribute('t', t!.value);
     children?.call(this);
   }
 }
@@ -20696,6 +15271,7 @@ extension S_CT_OleLink_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     String? progId,
     void Function(XmlBuilder)? children,
   }) {
@@ -20704,21 +15280,27 @@ extension S_CT_OleLink_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, progId);
+          _buildBody(children, r_id, progId);
         },
       );
     } else {
-      _buildBody(children, progId);
+      _buildBody(children, r_id, progId);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? progId) {
-    if (progId != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_id,
+    String? progId,
+  ) {
+    if (r_id != null)
       this.attribute(
-        'progId',
-        progId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
+    if (progId != null) this.attribute('progId', progId);
     children?.call(this);
   }
 }
@@ -20779,30 +15361,12 @@ extension S_CT_OleItem_Builder on _i1.XmlBuilder {
     bool? advise,
     bool? preferPic,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (icon != null)
-      this.attribute(
-        'icon',
-        icon == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (icon != null) this.attribute('icon', icon == true ? 'true' : 'false');
     if (advise != null)
-      this.attribute(
-        'advise',
-        advise == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('advise', advise == true ? 'true' : 'false');
     if (preferPic != null)
-      this.attribute(
-        'preferPic',
-        preferPic == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('preferPic', preferPic == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -20922,138 +15486,48 @@ extension S_CT_Table_Builder on _i1.XmlBuilder {
     String? totalsRowCellStyle,
     int? connectionId,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (displayName != null)
-      this.attribute(
-        'displayName',
-        displayName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (comment != null)
-      this.attribute(
-        'comment',
-        comment,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tableType != null)
-      this.attribute(
-        'tableType',
-        tableType!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (name != null) this.attribute('name', name);
+    if (displayName != null) this.attribute('displayName', displayName);
+    if (comment != null) this.attribute('comment', comment);
+    if (ref != null) this.attribute('ref', ref);
+    if (tableType != null) this.attribute('tableType', tableType!.value);
     if (headerRowCount != null)
-      this.attribute(
-        'headerRowCount',
-        headerRowCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowCount', headerRowCount.toString());
     if (insertRow != null)
-      this.attribute(
-        'insertRow',
-        insertRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('insertRow', insertRow == true ? 'true' : 'false');
     if (insertRowShift != null)
       this.attribute(
         'insertRowShift',
         insertRowShift == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (totalsRowCount != null)
-      this.attribute(
-        'totalsRowCount',
-        totalsRowCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowCount', totalsRowCount.toString());
     if (totalsRowShown != null)
       this.attribute(
         'totalsRowShown',
         totalsRowShown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (published != null)
-      this.attribute(
-        'published',
-        published == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('published', published == true ? 'true' : 'false');
     if (headerRowDxfId != null)
-      this.attribute(
-        'headerRowDxfId',
-        headerRowDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dataDxfId != null)
-      this.attribute(
-        'dataDxfId',
-        dataDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowDxfId', headerRowDxfId);
+    if (dataDxfId != null) this.attribute('dataDxfId', dataDxfId);
     if (totalsRowDxfId != null)
-      this.attribute(
-        'totalsRowDxfId',
-        totalsRowDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowDxfId', totalsRowDxfId);
     if (headerRowBorderDxfId != null)
-      this.attribute(
-        'headerRowBorderDxfId',
-        headerRowBorderDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowBorderDxfId', headerRowBorderDxfId);
     if (tableBorderDxfId != null)
-      this.attribute(
-        'tableBorderDxfId',
-        tableBorderDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('tableBorderDxfId', tableBorderDxfId);
     if (totalsRowBorderDxfId != null)
-      this.attribute(
-        'totalsRowBorderDxfId',
-        totalsRowBorderDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowBorderDxfId', totalsRowBorderDxfId);
     if (headerRowCellStyle != null)
-      this.attribute(
-        'headerRowCellStyle',
-        headerRowCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dataCellStyle != null)
-      this.attribute(
-        'dataCellStyle',
-        dataCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowCellStyle', headerRowCellStyle);
+    if (dataCellStyle != null) this.attribute('dataCellStyle', dataCellStyle);
     if (totalsRowCellStyle != null)
-      this.attribute(
-        'totalsRowCellStyle',
-        totalsRowCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowCellStyle', totalsRowCellStyle);
     if (connectionId != null)
-      this.attribute(
-        'connectionId',
-        connectionId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('connectionId', connectionId.toString());
     children?.call(this);
   }
 }
@@ -21105,35 +15579,26 @@ extension S_CT_TableStyleInfo_Builder on _i1.XmlBuilder {
     bool? showRowStripes,
     bool? showColumnStripes,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     if (showFirstColumn != null)
       this.attribute(
         'showFirstColumn',
         showFirstColumn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showLastColumn != null)
       this.attribute(
         'showLastColumn',
         showLastColumn == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showRowStripes != null)
       this.attribute(
         'showRowStripes',
         showRowStripes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showColumnStripes != null)
       this.attribute(
         'showColumnStripes',
         showColumnStripes == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -21161,12 +15626,7 @@ extension S_CT_TableColumns_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -21246,78 +15706,25 @@ extension S_CT_TableColumn_Builder on _i1.XmlBuilder {
     String? dataCellStyle,
     String? totalsRowCellStyle,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (uniqueName != null)
-      this.attribute(
-        'uniqueName',
-        uniqueName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (uniqueName != null) this.attribute('uniqueName', uniqueName);
+    if (name != null) this.attribute('name', name);
     if (totalsRowFunction != null)
-      this.attribute(
-        'totalsRowFunction',
-        totalsRowFunction!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowFunction', totalsRowFunction!.value);
     if (totalsRowLabel != null)
-      this.attribute(
-        'totalsRowLabel',
-        totalsRowLabel,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowLabel', totalsRowLabel);
     if (queryTableFieldId != null)
-      this.attribute(
-        'queryTableFieldId',
-        queryTableFieldId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('queryTableFieldId', queryTableFieldId.toString());
     if (headerRowDxfId != null)
-      this.attribute(
-        'headerRowDxfId',
-        headerRowDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dataDxfId != null)
-      this.attribute(
-        'dataDxfId',
-        dataDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowDxfId', headerRowDxfId);
+    if (dataDxfId != null) this.attribute('dataDxfId', dataDxfId);
     if (totalsRowDxfId != null)
-      this.attribute(
-        'totalsRowDxfId',
-        totalsRowDxfId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowDxfId', totalsRowDxfId);
     if (headerRowCellStyle != null)
-      this.attribute(
-        'headerRowCellStyle',
-        headerRowCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dataCellStyle != null)
-      this.attribute(
-        'dataCellStyle',
-        dataCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('headerRowCellStyle', headerRowCellStyle);
+    if (dataCellStyle != null) this.attribute('dataCellStyle', dataCellStyle);
     if (totalsRowCellStyle != null)
-      this.attribute(
-        'totalsRowCellStyle',
-        totalsRowCellStyle,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('totalsRowCellStyle', totalsRowCellStyle);
     children?.call(this);
   }
 }
@@ -21345,11 +15752,7 @@ extension S_CT_TableFormula_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? array) {
     if (array != null)
-      this.attribute(
-        'array',
-        array == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('array', array == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -21385,30 +15788,11 @@ extension S_CT_XmlColumnPr_Builder on _i1.XmlBuilder {
     bool? denormalized,
     String? xmlDataType,
   ) {
-    if (mapId != null)
-      this.attribute(
-        'mapId',
-        mapId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xpath != null)
-      this.attribute(
-        'xpath',
-        xpath,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (mapId != null) this.attribute('mapId', mapId.toString());
+    if (xpath != null) this.attribute('xpath', xpath);
     if (denormalized != null)
-      this.attribute(
-        'denormalized',
-        denormalized == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xmlDataType != null)
-      this.attribute(
-        'xmlDataType',
-        xmlDataType,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('denormalized', denormalized == true ? 'true' : 'false');
+    if (xmlDataType != null) this.attribute('xmlDataType', xmlDataType);
     children?.call(this);
   }
 }
@@ -21460,12 +15844,7 @@ extension S_CT_VolType_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, S_ST_VolDepType? type) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
     children?.call(this);
   }
 }
@@ -21492,12 +15871,7 @@ extension S_CT_VolMain_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? first) {
-    if (first != null)
-      this.attribute(
-        'first',
-        first,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (first != null) this.attribute('first', first);
     children?.call(this);
   }
 }
@@ -21524,12 +15898,7 @@ extension S_CT_VolTopic_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, S_ST_VolValueType? t) {
-    if (t != null)
-      this.attribute(
-        't',
-        t!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (t != null) this.attribute('t', t!.value);
     children?.call(this);
   }
 }
@@ -21557,18 +15926,8 @@ extension S_CT_VolTopicRef_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? r, int? s) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (s != null)
-      this.attribute(
-        's',
-        s.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
+    if (s != null) this.attribute('s', s.toString());
     children?.call(this);
   }
 }
@@ -21598,12 +15957,7 @@ extension S_CT_Workbook_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     ST_ConformanceClass? conformance,
   ) {
-    if (conformance != null)
-      this.attribute(
-        'conformance',
-        conformance!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (conformance != null) this.attribute('conformance', conformance!.value);
     children?.call(this);
   }
 }
@@ -21655,36 +16009,11 @@ extension S_CT_FileVersion_Builder on _i1.XmlBuilder {
     String? rupBuild,
     String? codeName,
   ) {
-    if (appName != null)
-      this.attribute(
-        'appName',
-        appName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lastEdited != null)
-      this.attribute(
-        'lastEdited',
-        lastEdited,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (lowestEdited != null)
-      this.attribute(
-        'lowestEdited',
-        lowestEdited,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (rupBuild != null)
-      this.attribute(
-        'rupBuild',
-        rupBuild,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codeName != null)
-      this.attribute(
-        'codeName',
-        codeName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (appName != null) this.attribute('appName', appName);
+    if (lastEdited != null) this.attribute('lastEdited', lastEdited);
+    if (lowestEdited != null) this.attribute('lowestEdited', lowestEdited);
+    if (rupBuild != null) this.attribute('rupBuild', rupBuild);
+    if (codeName != null) this.attribute('codeName', codeName);
     children?.call(this);
   }
 }
@@ -21793,83 +16122,34 @@ extension S_CT_BookView_Builder on _i1.XmlBuilder {
     int? activeTab,
     bool? autoFilterDateGrouping,
   ) {
-    if (visibility != null)
-      this.attribute(
-        'visibility',
-        visibility!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (visibility != null) this.attribute('visibility', visibility!.value);
     if (minimized != null)
-      this.attribute(
-        'minimized',
-        minimized == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minimized', minimized == true ? 'true' : 'false');
     if (showHorizontalScroll != null)
       this.attribute(
         'showHorizontalScroll',
         showHorizontalScroll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showVerticalScroll != null)
       this.attribute(
         'showVerticalScroll',
         showVerticalScroll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showSheetTabs != null)
-      this.attribute(
-        'showSheetTabs',
-        showSheetTabs == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xWindow != null)
-      this.attribute(
-        'xWindow',
-        xWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (yWindow != null)
-      this.attribute(
-        'yWindow',
-        yWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showSheetTabs', showSheetTabs == true ? 'true' : 'false');
+    if (xWindow != null) this.attribute('xWindow', xWindow.toString());
+    if (yWindow != null) this.attribute('yWindow', yWindow.toString());
     if (windowWidth != null)
-      this.attribute(
-        'windowWidth',
-        windowWidth.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('windowWidth', windowWidth.toString());
     if (windowHeight != null)
-      this.attribute(
-        'windowHeight',
-        windowHeight.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tabRatio != null)
-      this.attribute(
-        'tabRatio',
-        tabRatio.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (firstSheet != null)
-      this.attribute(
-        'firstSheet',
-        firstSheet.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (activeTab != null)
-      this.attribute(
-        'activeTab',
-        activeTab.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('windowHeight', windowHeight.toString());
+    if (tabRatio != null) this.attribute('tabRatio', tabRatio.toString());
+    if (firstSheet != null) this.attribute('firstSheet', firstSheet.toString());
+    if (activeTab != null) this.attribute('activeTab', activeTab.toString());
     if (autoFilterDateGrouping != null)
       this.attribute(
         'autoFilterDateGrouping',
         autoFilterDateGrouping == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -22023,150 +16303,66 @@ extension S_CT_CustomWorkbookView_Builder on _i1.XmlBuilder {
     S_ST_Comments? showComments,
     S_ST_Objects? showObjects,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (guid != null)
-      this.attribute(
-        'guid',
-        guid,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (guid != null) this.attribute('guid', guid);
     if (autoUpdate != null)
-      this.attribute(
-        'autoUpdate',
-        autoUpdate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoUpdate', autoUpdate == true ? 'true' : 'false');
     if (mergeInterval != null)
-      this.attribute(
-        'mergeInterval',
-        mergeInterval.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('mergeInterval', mergeInterval.toString());
     if (changesSavedWin != null)
       this.attribute(
         'changesSavedWin',
         changesSavedWin == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (onlySync != null)
-      this.attribute(
-        'onlySync',
-        onlySync == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('onlySync', onlySync == true ? 'true' : 'false');
     if (personalView != null)
-      this.attribute(
-        'personalView',
-        personalView == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('personalView', personalView == true ? 'true' : 'false');
     if (includePrintSettings != null)
       this.attribute(
         'includePrintSettings',
         includePrintSettings == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (includeHiddenRowCol != null)
       this.attribute(
         'includeHiddenRowCol',
         includeHiddenRowCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (maximized != null)
-      this.attribute(
-        'maximized',
-        maximized == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('maximized', maximized == true ? 'true' : 'false');
     if (minimized != null)
-      this.attribute(
-        'minimized',
-        minimized == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('minimized', minimized == true ? 'true' : 'false');
     if (showHorizontalScroll != null)
       this.attribute(
         'showHorizontalScroll',
         showHorizontalScroll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showVerticalScroll != null)
       this.attribute(
         'showVerticalScroll',
         showVerticalScroll == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showSheetTabs != null)
-      this.attribute(
-        'showSheetTabs',
-        showSheetTabs == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xWindow != null)
-      this.attribute(
-        'xWindow',
-        xWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (yWindow != null)
-      this.attribute(
-        'yWindow',
-        yWindow.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showSheetTabs', showSheetTabs == true ? 'true' : 'false');
+    if (xWindow != null) this.attribute('xWindow', xWindow.toString());
+    if (yWindow != null) this.attribute('yWindow', yWindow.toString());
     if (windowWidth != null)
-      this.attribute(
-        'windowWidth',
-        windowWidth.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('windowWidth', windowWidth.toString());
     if (windowHeight != null)
-      this.attribute(
-        'windowHeight',
-        windowHeight.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (tabRatio != null)
-      this.attribute(
-        'tabRatio',
-        tabRatio.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('windowHeight', windowHeight.toString());
+    if (tabRatio != null) this.attribute('tabRatio', tabRatio.toString());
     if (activeSheetId != null)
-      this.attribute(
-        'activeSheetId',
-        activeSheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('activeSheetId', activeSheetId.toString());
     if (showFormulaBar != null)
       this.attribute(
         'showFormulaBar',
         showFormulaBar == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showStatusbar != null)
-      this.attribute(
-        'showStatusbar',
-        showStatusbar == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showStatusbar', showStatusbar == true ? 'true' : 'false');
     if (showComments != null)
-      this.attribute(
-        'showComments',
-        showComments!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (showObjects != null)
-      this.attribute(
-        'showObjects',
-        showObjects!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('showComments', showComments!.value);
+    if (showObjects != null) this.attribute('showObjects', showObjects!.value);
     children?.call(this);
   }
 }
@@ -22204,6 +16400,7 @@ extension S_CT_Sheet_Builder on _i1.XmlBuilder {
     String? name,
     int? sheetId,
     S_ST_SheetState? state,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -22211,11 +16408,11 @@ extension S_CT_Sheet_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, name, sheetId, state);
+          _buildBody(children, name, sheetId, state, r_id);
         },
       );
     } else {
-      _buildBody(children, name, sheetId, state);
+      _buildBody(children, name, sheetId, state, r_id);
     }
   }
 
@@ -22224,24 +16421,17 @@ extension S_CT_Sheet_Builder on _i1.XmlBuilder {
     String? name,
     int? sheetId,
     S_ST_SheetState? state,
+    String? r_id,
   ) {
-    if (name != null)
+    if (name != null) this.attribute('name', name);
+    if (sheetId != null) this.attribute('sheetId', sheetId.toString());
+    if (state != null) this.attribute('state', state!.value);
+    if (r_id != null)
       this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sheetId != null)
-      this.attribute(
-        'sheetId',
-        sheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (state != null)
-      this.attribute(
-        'state',
-        state!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -22347,113 +16537,68 @@ extension S_CT_WorkbookPr_Builder on _i1.XmlBuilder {
     int? defaultThemeVersion,
   ) {
     if (date1904 != null)
-      this.attribute(
-        'date1904',
-        date1904 == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (showObjects != null)
-      this.attribute(
-        'showObjects',
-        showObjects!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('date1904', date1904 == true ? 'true' : 'false');
+    if (showObjects != null) this.attribute('showObjects', showObjects!.value);
     if (showBorderUnselectedTables != null)
       this.attribute(
         'showBorderUnselectedTables',
         showBorderUnselectedTables == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (filterPrivacy != null)
-      this.attribute(
-        'filterPrivacy',
-        filterPrivacy == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('filterPrivacy', filterPrivacy == true ? 'true' : 'false');
     if (promptedSolutions != null)
       this.attribute(
         'promptedSolutions',
         promptedSolutions == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showInkAnnotation != null)
       this.attribute(
         'showInkAnnotation',
         showInkAnnotation == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (backupFile != null)
-      this.attribute(
-        'backupFile',
-        backupFile == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('backupFile', backupFile == true ? 'true' : 'false');
     if (saveExternalLinkValues != null)
       this.attribute(
         'saveExternalLinkValues',
         saveExternalLinkValues == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (updateLinks != null)
-      this.attribute(
-        'updateLinks',
-        updateLinks!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codeName != null)
-      this.attribute(
-        'codeName',
-        codeName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (updateLinks != null) this.attribute('updateLinks', updateLinks!.value);
+    if (codeName != null) this.attribute('codeName', codeName);
     if (hidePivotFieldList != null)
       this.attribute(
         'hidePivotFieldList',
         hidePivotFieldList == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (showPivotChartFilter != null)
       this.attribute(
         'showPivotChartFilter',
         showPivotChartFilter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (allowRefreshQuery != null)
       this.attribute(
         'allowRefreshQuery',
         allowRefreshQuery == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (publishItems != null)
-      this.attribute(
-        'publishItems',
-        publishItems == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('publishItems', publishItems == true ? 'true' : 'false');
     if (checkCompatibility != null)
       this.attribute(
         'checkCompatibility',
         checkCompatibility == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (autoCompressPictures != null)
       this.attribute(
         'autoCompressPictures',
         autoCompressPictures == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (refreshAllConnections != null)
       this.attribute(
         'refreshAllConnections',
         refreshAllConnections == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (defaultThemeVersion != null)
-      this.attribute(
-        'defaultThemeVersion',
-        defaultThemeVersion.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('defaultThemeVersion', defaultThemeVersion.toString());
     children?.call(this);
   }
 }
@@ -22486,17 +16631,8 @@ extension S_CT_SmartTagPr_Builder on _i1.XmlBuilder {
     S_ST_SmartTagShow? show_,
   ) {
     if (embed != null)
-      this.attribute(
-        'embed',
-        embed == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (show_ != null)
-      this.attribute(
-        'show',
-        show_!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('embed', embed == true ? 'true' : 'false');
+    if (show_ != null) this.attribute('show', show_!.value);
     children?.call(this);
   }
 }
@@ -22555,24 +16691,9 @@ extension S_CT_SmartTagType_Builder on _i1.XmlBuilder {
     String? name,
     String? url,
   ) {
-    if (namespaceUri != null)
-      this.attribute(
-        'namespaceUri',
-        namespaceUri,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (url != null)
-      this.attribute(
-        'url',
-        url,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (namespaceUri != null) this.attribute('namespaceUri', namespaceUri);
+    if (name != null) this.attribute('name', name);
+    if (url != null) this.attribute('url', url);
     children?.call(this);
   }
 }
@@ -22615,29 +16736,16 @@ extension S_CT_FileRecoveryPr_Builder on _i1.XmlBuilder {
     bool? repairLoad,
   ) {
     if (autoRecover != null)
-      this.attribute(
-        'autoRecover',
-        autoRecover == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoRecover', autoRecover == true ? 'true' : 'false');
     if (crashSave != null)
-      this.attribute(
-        'crashSave',
-        crashSave == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('crashSave', crashSave == true ? 'true' : 'false');
     if (dataExtractLoad != null)
       this.attribute(
         'dataExtractLoad',
         dataExtractLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (repairLoad != null)
-      this.attribute(
-        'repairLoad',
-        repairLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('repairLoad', repairLoad == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -22721,84 +16829,35 @@ extension S_CT_CalcPr_Builder on _i1.XmlBuilder {
     int? concurrentManualCount,
     bool? forceFullCalc,
   ) {
-    if (calcId != null)
-      this.attribute(
-        'calcId',
-        calcId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (calcMode != null)
-      this.attribute(
-        'calcMode',
-        calcMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (calcId != null) this.attribute('calcId', calcId.toString());
+    if (calcMode != null) this.attribute('calcMode', calcMode!.value);
     if (fullCalcOnLoad != null)
       this.attribute(
         'fullCalcOnLoad',
         fullCalcOnLoad == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (refMode != null)
-      this.attribute(
-        'refMode',
-        refMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (refMode != null) this.attribute('refMode', refMode!.value);
     if (iterate != null)
-      this.attribute(
-        'iterate',
-        iterate == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('iterate', iterate == true ? 'true' : 'false');
     if (iterateCount != null)
-      this.attribute(
-        'iterateCount',
-        iterateCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('iterateCount', iterateCount.toString());
     if (iterateDelta != null)
-      this.attribute(
-        'iterateDelta',
-        iterateDelta.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('iterateDelta', iterateDelta.toString());
     if (fullPrecision != null)
-      this.attribute(
-        'fullPrecision',
-        fullPrecision == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('fullPrecision', fullPrecision == true ? 'true' : 'false');
     if (calcCompleted != null)
-      this.attribute(
-        'calcCompleted',
-        calcCompleted == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('calcCompleted', calcCompleted == true ? 'true' : 'false');
     if (calcOnSave != null)
-      this.attribute(
-        'calcOnSave',
-        calcOnSave == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('calcOnSave', calcOnSave == true ? 'true' : 'false');
     if (concurrentCalc != null)
       this.attribute(
         'concurrentCalc',
         concurrentCalc == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (concurrentManualCount != null)
-      this.attribute(
-        'concurrentManualCount',
-        concurrentManualCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('concurrentManualCount', concurrentManualCount.toString());
     if (forceFullCalc != null)
-      this.attribute(
-        'forceFullCalc',
-        forceFullCalc == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('forceFullCalc', forceFullCalc == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -22915,95 +16974,33 @@ extension S_CT_DefinedName_Builder on _i1.XmlBuilder {
     bool? publishToServer,
     bool? workbookParameter,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (comment != null)
-      this.attribute(
-        'comment',
-        comment,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (customMenu != null)
-      this.attribute(
-        'customMenu',
-        customMenu,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (description != null)
-      this.attribute(
-        'description',
-        description,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (help != null)
-      this.attribute(
-        'help',
-        help,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (statusBar != null)
-      this.attribute(
-        'statusBar',
-        statusBar,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (comment != null) this.attribute('comment', comment);
+    if (customMenu != null) this.attribute('customMenu', customMenu);
+    if (description != null) this.attribute('description', description);
+    if (help != null) this.attribute('help', help);
+    if (statusBar != null) this.attribute('statusBar', statusBar);
     if (localSheetId != null)
-      this.attribute(
-        'localSheetId',
-        localSheetId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('localSheetId', localSheetId.toString());
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (function_ != null)
-      this.attribute(
-        'function',
-        function_ == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('function', function_ == true ? 'true' : 'false');
     if (vbProcedure != null)
-      this.attribute(
-        'vbProcedure',
-        vbProcedure == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (xlm != null)
-      this.attribute(
-        'xlm',
-        xlm == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('vbProcedure', vbProcedure == true ? 'true' : 'false');
+    if (xlm != null) this.attribute('xlm', xlm == true ? 'true' : 'false');
     if (functionGroupId != null)
-      this.attribute(
-        'functionGroupId',
-        functionGroupId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (shortcutKey != null)
-      this.attribute(
-        'shortcutKey',
-        shortcutKey,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('functionGroupId', functionGroupId.toString());
+    if (shortcutKey != null) this.attribute('shortcutKey', shortcutKey);
     if (publishToServer != null)
       this.attribute(
         'publishToServer',
         publishToServer == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (workbookParameter != null)
       this.attribute(
         'workbookParameter',
         workbookParameter == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     children?.call(this);
   }
@@ -23039,6 +17036,7 @@ extension S_CT_ExternalReference_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -23046,15 +17044,22 @@ extension S_CT_ExternalReference_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -23064,6 +17069,7 @@ extension S_CT_SheetBackgroundPicture_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -23071,15 +17077,22 @@ extension S_CT_SheetBackgroundPicture_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -23115,6 +17128,7 @@ extension S_CT_PivotCache_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
     int? cacheId,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -23122,20 +17136,26 @@ extension S_CT_PivotCache_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, cacheId);
+          _buildBody(children, cacheId, r_id);
         },
       );
     } else {
-      _buildBody(children, cacheId);
+      _buildBody(children, cacheId, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, int? cacheId) {
-    if (cacheId != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    int? cacheId,
+    String? r_id,
+  ) {
+    if (cacheId != null) this.attribute('cacheId', cacheId.toString());
+    if (r_id != null)
       this.attribute(
-        'cacheId',
-        cacheId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -23200,44 +17220,14 @@ extension S_CT_FileSharing_Builder on _i1.XmlBuilder {
       this.attribute(
         'readOnlyRecommended',
         readOnlyRecommended == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
-    if (userName != null)
-      this.attribute(
-        'userName',
-        userName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (userName != null) this.attribute('userName', userName);
     if (reservationPassword != null)
-      this.attribute(
-        'reservationPassword',
-        reservationPassword,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (algorithmName != null)
-      this.attribute(
-        'algorithmName',
-        algorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (hashValue != null)
-      this.attribute(
-        'hashValue',
-        hashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (saltValue != null)
-      this.attribute(
-        'saltValue',
-        saltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (spinCount != null)
-      this.attribute(
-        'spinCount',
-        spinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('reservationPassword', reservationPassword);
+    if (algorithmName != null) this.attribute('algorithmName', algorithmName);
+    if (hashValue != null) this.attribute('hashValue', hashValue);
+    if (saltValue != null) this.attribute('saltValue', saltValue);
+    if (spinCount != null) this.attribute('spinCount', spinCount.toString());
     children?.call(this);
   }
 }
@@ -23264,12 +17254,7 @@ extension S_CT_OleSize_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? ref) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -23362,95 +17347,41 @@ extension S_CT_WorkbookProtection_Builder on _i1.XmlBuilder {
     int? workbookSpinCount,
   ) {
     if (workbookPassword != null)
-      this.attribute(
-        'workbookPassword',
-        workbookPassword,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookPassword', workbookPassword);
     if (workbookPasswordCharacterSet != null)
       this.attribute(
         'workbookPasswordCharacterSet',
         workbookPasswordCharacterSet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (revisionsPassword != null)
-      this.attribute(
-        'revisionsPassword',
-        revisionsPassword,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('revisionsPassword', revisionsPassword);
     if (revisionsPasswordCharacterSet != null)
       this.attribute(
         'revisionsPasswordCharacterSet',
         revisionsPasswordCharacterSet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
       );
     if (lockStructure != null)
-      this.attribute(
-        'lockStructure',
-        lockStructure == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('lockStructure', lockStructure == true ? 'true' : 'false');
     if (lockWindows != null)
-      this.attribute(
-        'lockWindows',
-        lockWindows == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('lockWindows', lockWindows == true ? 'true' : 'false');
     if (lockRevision != null)
-      this.attribute(
-        'lockRevision',
-        lockRevision == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('lockRevision', lockRevision == true ? 'true' : 'false');
     if (revisionsAlgorithmName != null)
-      this.attribute(
-        'revisionsAlgorithmName',
-        revisionsAlgorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('revisionsAlgorithmName', revisionsAlgorithmName);
     if (revisionsHashValue != null)
-      this.attribute(
-        'revisionsHashValue',
-        revisionsHashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('revisionsHashValue', revisionsHashValue);
     if (revisionsSaltValue != null)
-      this.attribute(
-        'revisionsSaltValue',
-        revisionsSaltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('revisionsSaltValue', revisionsSaltValue);
     if (revisionsSpinCount != null)
-      this.attribute(
-        'revisionsSpinCount',
-        revisionsSpinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('revisionsSpinCount', revisionsSpinCount.toString());
     if (workbookAlgorithmName != null)
-      this.attribute(
-        'workbookAlgorithmName',
-        workbookAlgorithmName,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookAlgorithmName', workbookAlgorithmName);
     if (workbookHashValue != null)
-      this.attribute(
-        'workbookHashValue',
-        workbookHashValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookHashValue', workbookHashValue);
     if (workbookSaltValue != null)
-      this.attribute(
-        'workbookSaltValue',
-        workbookSaltValue,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookSaltValue', workbookSaltValue);
     if (workbookSpinCount != null)
-      this.attribute(
-        'workbookSpinCount',
-        workbookSpinCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('workbookSpinCount', workbookSpinCount.toString());
     children?.call(this);
   }
 }
@@ -23518,60 +17449,19 @@ extension S_CT_WebPublishing_Builder on _i1.XmlBuilder {
     int? codePage,
     String? characterSet,
   ) {
-    if (css != null)
-      this.attribute(
-        'css',
-        css == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (css != null) this.attribute('css', css == true ? 'true' : 'false');
     if (thicket != null)
-      this.attribute(
-        'thicket',
-        thicket == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('thicket', thicket == true ? 'true' : 'false');
     if (longFileNames != null)
-      this.attribute(
-        'longFileNames',
-        longFileNames == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (vml != null)
-      this.attribute(
-        'vml',
-        vml == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('longFileNames', longFileNames == true ? 'true' : 'false');
+    if (vml != null) this.attribute('vml', vml == true ? 'true' : 'false');
     if (allowPng != null)
-      this.attribute(
-        'allowPng',
-        allowPng == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('allowPng', allowPng == true ? 'true' : 'false');
     if (targetScreenSize != null)
-      this.attribute(
-        'targetScreenSize',
-        targetScreenSize!.value,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (dpi != null)
-      this.attribute(
-        'dpi',
-        dpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (codePage != null)
-      this.attribute(
-        'codePage',
-        codePage.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (characterSet != null)
-      this.attribute(
-        'characterSet',
-        characterSet,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('targetScreenSize', targetScreenSize!.value);
+    if (dpi != null) this.attribute('dpi', dpi.toString());
+    if (codePage != null) this.attribute('codePage', codePage.toString());
+    if (characterSet != null) this.attribute('characterSet', characterSet);
     children?.call(this);
   }
 }
@@ -23599,11 +17489,7 @@ extension S_CT_FunctionGroups_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, int? builtInGroupCount) {
     if (builtInGroupCount != null)
-      this.attribute(
-        'builtInGroupCount',
-        builtInGroupCount.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('builtInGroupCount', builtInGroupCount.toString());
     children?.call(this);
   }
 }
@@ -23630,12 +17516,7 @@ extension S_CT_FunctionGroup_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -23662,12 +17543,7 @@ extension S_CT_WebPublishObjects_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? count) {
-    if (count != null)
-      this.attribute(
-        'count',
-        count.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (count != null) this.attribute('count', count.toString());
     children?.call(this);
   }
 }
@@ -23723,42 +17599,14 @@ extension S_CT_WebPublishObject_Builder on _i1.XmlBuilder {
     String? title,
     bool? autoRepublish,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (divId != null)
-      this.attribute(
-        'divId',
-        divId,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (sourceObject != null)
-      this.attribute(
-        'sourceObject',
-        sourceObject,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (divId != null) this.attribute('divId', divId);
+    if (sourceObject != null) this.attribute('sourceObject', sourceObject);
     if (destinationFile != null)
-      this.attribute(
-        'destinationFile',
-        destinationFile,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
-    if (title != null)
-      this.attribute(
-        'title',
-        title,
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('destinationFile', destinationFile);
+    if (title != null) this.attribute('title', title);
     if (autoRepublish != null)
-      this.attribute(
-        'autoRepublish',
-        autoRepublish == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/spreadsheetml/2006/main',
-      );
+      this.attribute('autoRepublish', autoRepublish == true ? 'true' : 'false');
     children?.call(this);
   }
 }

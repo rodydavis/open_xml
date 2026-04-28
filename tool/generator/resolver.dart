@@ -92,11 +92,21 @@ class TypeResolver {
     final node = type.definitionNode;
     if (node == null) return;
 
+    bool qualified = false;
+    var root = node;
+    while (root.parent != null && root.parent is XmlElement) {
+      root = root.parent as XmlElement;
+    }
+    if (root.getAttribute('attributeFormDefault') == 'qualified') {
+      qualified = true;
+    }
+
     // Attributes
     for (final attr in node.findAllElements('xsd:attribute')) {
       final name = attr.getAttribute('name');
       final typeName = attr.getAttribute('type');
       final use = attr.getAttribute('use');
+      final ref = attr.getAttribute('ref');
 
       if (name != null) {
         // If typeName is null, it might be an inline simpleType. Skipping for now.
@@ -106,14 +116,36 @@ class TypeResolver {
             type.attributes.add(
               Attribute(
                 name,
-                name,
-                type.namespaceUri,
+                name, // xmlName is same as name
+                qualified ? type.namespaceUri : '',
                 resolvedType,
                 use == 'required',
               ),
             );
           }
         }
+      } else if (ref != null) {
+        final parts = ref.split(':');
+        final localRef = parts.last;
+        final prefix = parts.length > 1 ? parts.first : null;
+        final ns = _lookupNamespaceUri(attr, prefix) ?? '';
+        
+        final resolvedType = SimpleType('String', 'http://www.w3.org/2001/XMLSchema', null, 'string');
+        
+        var dartName = localRef;
+        if (prefix != null) {
+          dartName = '${prefix}_$localRef'; // e.g. r_id
+        }
+        
+        type.attributes.add(
+          Attribute(
+            dartName,
+            localRef,
+            ns,
+            resolvedType,
+            use == 'required',
+          ),
+        );
       }
     }
 

@@ -8,6 +8,7 @@ class OoxmlPackage {
   final Directory _tempDir;
   final FileSystem _fs;
   FileSystem get fileSystem => _fs;
+  Directory get directory => _tempDir;
   final List<String> _parts = [];
   final _log = Logger('OoxmlPackage');
 

@@ -164,6 +164,70 @@ class Emitter {
         for (final child in type.children) {
           _emitChild(e, child, generatedMembers);
         }
+
+        // Validate Method
+        _emitValidateMethod(e, type);
+      }),
+    );
+  }
+
+  void _emitValidateMethod(ExtensionTypeBuilder e, ComplexType type) {
+    e.methods.add(
+      Method((m) {
+        m.name = 'validate';
+        m.returns = refer('List<String>');
+
+        final bodyBuffer = StringBuffer();
+        bodyBuffer.writeln('final errors = <String>[];');
+
+        for (final attr in type.attributes) {
+          final attrName = attr.xmlName;
+          final ns = attr.namespace;
+          final nsArg = ns.isEmpty ? "" : ", namespace: '$ns'";
+
+          if (attr.isRequired) {
+            bodyBuffer.writeln(
+              "if (node.getAttribute('$attrName'$nsArg) == null) {",
+            );
+            bodyBuffer.writeln(
+              "  errors.add(\"Missing required attribute '$attrName' in \${node.name.qualified}\");",
+            );
+            bodyBuffer.writeln("}");
+          }
+
+          final typeRef = _referType(attr.type);
+          if (attr.type is SimpleType && (attr.type as SimpleType).isEnum) {
+            final symbol = typeRef.symbol;
+            bodyBuffer.writeln(
+              "final v_${attr.name} = node.getAttribute('$attrName'$nsArg);",
+            );
+            bodyBuffer.writeln(
+              "if (v_${attr.name} != null && $symbol.fromValue(v_${attr.name}) == null) {",
+            );
+            bodyBuffer.writeln(
+              "  errors.add(\"Invalid enum value for attribute '$attrName' in \${node.name.qualified}: \$v_${attr.name}\");",
+            );
+            bodyBuffer.writeln("}");
+          }
+        }
+
+        // Recursively validate children
+        for (final child in type.children) {
+          if (child.type is ComplexType) {
+            final typeRef = _referType(child.type);
+            final symbol = typeRef.symbol;
+            bodyBuffer.writeln(
+              "for (final childNode in node.findElements('${child.xmlName}', namespace: '${child.namespace}')) {",
+            );
+            bodyBuffer.writeln(
+              "  errors.addAll($symbol(childNode).validate());",
+            );
+            bodyBuffer.writeln("}");
+          }
+        }
+
+        bodyBuffer.writeln('return errors;');
+        m.body = Code(bodyBuffer.toString());
       }),
     );
   }
@@ -195,8 +259,9 @@ class Emitter {
   Code _buildAttributeBody(Attribute attr, Reference typeRef) {
     final attrName = attr.xmlName;
     final ns = attr.namespace;
+    final nsArg = ns.isEmpty ? "" : ", namespace: '$ns'";
     // node.getAttribute returns String?
-    final raw = "node.getAttribute('$attrName', namespace: '$ns')";
+    final raw = "node.getAttribute('$attrName'$nsArg)";
     String conversion = raw;
 
     final symbol = typeRef.symbol;
@@ -478,8 +543,9 @@ class Emitter {
                 }
               }
 
+              final nsArg = attrNs.isEmpty ? "" : ", namespace: '$attrNs'";
               bodyBuffer.writeln(
-                "if ($paramName != null) this.attribute('$attrName', $valueExp, namespace: '$attrNs');",
+                "if ($paramName != null) this.attribute('$attrName', $valueExp$nsArg);",
               );
             }
 

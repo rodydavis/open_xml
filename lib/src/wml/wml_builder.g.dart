@@ -2749,8 +2749,8 @@ extension W_CT_TextboxTightWrap_Builder on _i1.XmlBuilder {
   }
 }
 
-extension W_CT_PPr_Builder on _i1.XmlBuilder {
-  void w_ct_ppr({
+extension W_CT_PPrBase_Builder on _i1.XmlBuilder {
+  void w_ct_pprbase({
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
@@ -2774,8 +2774,8 @@ extension W_CT_PPr_Builder on _i1.XmlBuilder {
   }
 }
 
-extension W_CT_PPrBase_Builder on _i1.XmlBuilder {
-  void w_ct_pprbase({
+extension W_CT_PPr_Builder on _i1.XmlBuilder {
+  void w_ct_ppr({
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
@@ -2831,6 +2831,7 @@ extension W_CT_Control_Builder on _i1.XmlBuilder {
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     String? name,
     String? shapeid,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2838,11 +2839,11 @@ extension W_CT_Control_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, name, shapeid);
+          _buildBody(children, name, shapeid, r_id);
         },
       );
     } else {
-      _buildBody(children, name, shapeid);
+      _buildBody(children, name, shapeid, r_id);
     }
   }
 
@@ -2850,6 +2851,7 @@ extension W_CT_Control_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     String? name,
     String? shapeid,
+    String? r_id,
   ) {
     if (name != null)
       this.attribute(
@@ -2864,6 +2866,13 @@ extension W_CT_Control_Builder on _i1.XmlBuilder {
         shapeid,
         namespace:
             'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+      );
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -2928,6 +2937,7 @@ extension W_CT_Rel_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -2935,15 +2945,22 @@ extension W_CT_Rel_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3004,6 +3021,7 @@ extension W_CT_ObjectEmbed_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     W_ST_ObjectDrawAspect? drawAspect,
+    String? r_id,
     String? progId,
     String? shapeId,
     String? fieldCodes,
@@ -3014,17 +3032,18 @@ extension W_CT_ObjectEmbed_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, drawAspect, progId, shapeId, fieldCodes);
+          _buildBody(children, drawAspect, r_id, progId, shapeId, fieldCodes);
         },
       );
     } else {
-      _buildBody(children, drawAspect, progId, shapeId, fieldCodes);
+      _buildBody(children, drawAspect, r_id, progId, shapeId, fieldCodes);
     }
   }
 
   void _buildBody(
     void Function(XmlBuilder)? children,
     W_ST_ObjectDrawAspect? drawAspect,
+    String? r_id,
     String? progId,
     String? shapeId,
     String? fieldCodes,
@@ -3035,6 +3054,13 @@ extension W_CT_ObjectEmbed_Builder on _i1.XmlBuilder {
         drawAspect!.value,
         namespace:
             'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+      );
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     if (progId != null)
       this.attribute(
@@ -3266,6 +3292,7 @@ extension W_CT_Hyperlink_Builder on _i1.XmlBuilder {
     String? tooltip,
     String? docLocation,
     String? anchor,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3273,11 +3300,11 @@ extension W_CT_Hyperlink_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, tgtFrame, tooltip, docLocation, anchor);
+          _buildBody(children, tgtFrame, tooltip, docLocation, anchor, r_id);
         },
       );
     } else {
-      _buildBody(children, tgtFrame, tooltip, docLocation, anchor);
+      _buildBody(children, tgtFrame, tooltip, docLocation, anchor, r_id);
     }
   }
 
@@ -3287,6 +3314,7 @@ extension W_CT_Hyperlink_Builder on _i1.XmlBuilder {
     String? tooltip,
     String? docLocation,
     String? anchor,
+    String? r_id,
   ) {
     if (tgtFrame != null)
       this.attribute(
@@ -3315,6 +3343,13 @@ extension W_CT_Hyperlink_Builder on _i1.XmlBuilder {
         anchor,
         namespace:
             'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+      );
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -3717,6 +3752,7 @@ extension W_CT_PageBorder_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3724,15 +3760,22 @@ extension W_CT_PageBorder_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3742,6 +3785,8 @@ extension W_CT_BottomPageBorder_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_bottomLeft,
+    String? r_bottomRight,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3749,15 +3794,33 @@ extension W_CT_BottomPageBorder_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_bottomLeft, r_bottomRight);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_bottomLeft, r_bottomRight);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_bottomLeft,
+    String? r_bottomRight,
+  ) {
+    if (r_bottomLeft != null)
+      this.attribute(
+        'bottomLeft',
+        r_bottomLeft,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
+    if (r_bottomRight != null)
+      this.attribute(
+        'bottomRight',
+        r_bottomRight,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -3767,6 +3830,8 @@ extension W_CT_TopPageBorder_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_topLeft,
+    String? r_topRight,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -3774,15 +3839,33 @@ extension W_CT_TopPageBorder_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_topLeft, r_topRight);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_topLeft, r_topRight);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_topLeft,
+    String? r_topRight,
+  ) {
+    if (r_topLeft != null)
+      this.attribute(
+        'topLeft',
+        r_topLeft,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
+    if (r_topRight != null)
+      this.attribute(
+        'topRight',
+        r_topRight,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -4447,6 +4530,7 @@ extension W_CT_Text_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? xml_space,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -4454,15 +4538,16 @@ extension W_CT_Text_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, xml_space);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, xml_space);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? xml_space) {
+    if (xml_space != null) this.attribute('space', xml_space);
     children?.call(this);
   }
 }
@@ -4806,6 +4891,7 @@ extension W_CT_AltChunk_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -4813,15 +4899,22 @@ extension W_CT_AltChunk_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -7730,6 +7823,7 @@ extension W_CT_SaveThroughXslt_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+    String? r_id,
     String? solutionID,
     void Function(XmlBuilder)? children,
   }) {
@@ -7738,15 +7832,26 @@ extension W_CT_SaveThroughXslt_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, solutionID);
+          _buildBody(children, r_id, solutionID);
         },
       );
     } else {
-      _buildBody(children, solutionID);
+      _buildBody(children, r_id, solutionID);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? solutionID) {
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_id,
+    String? solutionID,
+  ) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     if (solutionID != null)
       this.attribute(
         'solutionID',
@@ -9924,6 +10029,7 @@ extension W_CT_Document_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
     ST_ConformanceClass? conformance,
+    String? mc_Ignorable,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -9931,17 +10037,18 @@ extension W_CT_Document_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, conformance);
+          _buildBody(children, conformance, mc_Ignorable);
         },
       );
     } else {
-      _buildBody(children, conformance);
+      _buildBody(children, conformance, mc_Ignorable);
     }
   }
 
   void _buildBody(
     void Function(XmlBuilder)? children,
     ST_ConformanceClass? conformance,
+    String? mc_Ignorable,
   ) {
     if (conformance != null)
       this.attribute(
@@ -9949,6 +10056,13 @@ extension W_CT_Document_Builder on _i1.XmlBuilder {
         conformance!.value,
         namespace:
             'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+      );
+    if (mc_Ignorable != null)
+      this.attribute(
+        'Ignorable',
+        mc_Ignorable,
+        namespace:
+            'http://schemas.openxmlformats.org/markup-compatibility/2006',
       );
     children?.call(this);
   }

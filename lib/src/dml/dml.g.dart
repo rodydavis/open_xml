@@ -10,38 +10,28 @@ import 'package:open_xml/src/opc/opc.g.dart';
 import 'package:open_xml/src/shared/shared.g.dart';
 
 extension type D_CT_EffectExtent(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_Inline(_i1.XmlElement node) implements _i1.XmlElement {
   String? get distT {
-    return node.getAttribute(
-      'distT',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distT');
   }
 
   String? get distB {
-    return node.getAttribute(
-      'distB',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distB');
   }
 
   String? get distL {
-    return node.getAttribute(
-      'distL',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distL');
   }
 
   String? get distR {
-    return node.getAttribute(
-      'distR',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distR');
   }
 
   D_CT_PositiveSize2D? get extent {
@@ -79,27 +69,46 @@ extension type D_CT_Inline(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_NonVisualGraphicFrameProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectExtent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_EffectExtent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGraphicFrameProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WrapPath(_i1.XmlElement node) implements _i1.XmlElement {
   bool? get edited {
-    return node.getAttribute(
-              'edited',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'edited',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'edited',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('edited') == '1' ||
+        node.getAttribute('edited') == 'true' ||
+        node.getAttribute('edited') == 'on';
   }
 
   D_CT_Point2D? get start {
@@ -120,49 +129,53 @@ extension type D_CT_WrapPath(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Point2D.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'start',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lineTo',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_WrapNone(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_WrapNone(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_WrapSquare(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_WrapText get wrapText {
-    return D_ST_WrapText.fromValue(
-      node.getAttribute(
-        'wrapText',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    )!;
+    return D_ST_WrapText.fromValue(node.getAttribute('wrapText')!)!;
   }
 
   String? get distT {
-    return node.getAttribute(
-      'distT',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distT');
   }
 
   String? get distB {
-    return node.getAttribute(
-      'distB',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distB');
   }
 
   String? get distL {
-    return node.getAttribute(
-      'distL',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distL');
   }
 
   String? get distR {
-    return node.getAttribute(
-      'distR',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distR');
   }
 
   D_CT_EffectExtent? get effectExtent {
@@ -173,32 +186,42 @@ extension type D_CT_WrapSquare(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_EffectExtent(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('wrapText') == null) {
+      errors.add(
+        "Missing required attribute 'wrapText' in ${node.name.qualified}",
+      );
+    }
+    final v_wrapText = node.getAttribute('wrapText');
+    if (v_wrapText != null && D_ST_WrapText.fromValue(v_wrapText) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'wrapText' in ${node.name.qualified}: $v_wrapText",
+      );
+    }
+    for (final childNode in node.findElements(
+      'effectExtent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_EffectExtent(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WrapTight(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_WrapText get wrapText {
-    return D_ST_WrapText.fromValue(
-      node.getAttribute(
-        'wrapText',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    )!;
+    return D_ST_WrapText.fromValue(node.getAttribute('wrapText')!)!;
   }
 
   String? get distL {
-    return node.getAttribute(
-      'distL',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distL');
   }
 
   String? get distR {
-    return node.getAttribute(
-      'distR',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distR');
   }
 
   D_CT_WrapPath? get wrapPolygon {
@@ -209,32 +232,42 @@ extension type D_CT_WrapTight(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_WrapPath(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('wrapText') == null) {
+      errors.add(
+        "Missing required attribute 'wrapText' in ${node.name.qualified}",
+      );
+    }
+    final v_wrapText = node.getAttribute('wrapText');
+    if (v_wrapText != null && D_ST_WrapText.fromValue(v_wrapText) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'wrapText' in ${node.name.qualified}: $v_wrapText",
+      );
+    }
+    for (final childNode in node.findElements(
+      'wrapPolygon',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapPath(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WrapThrough(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_WrapText get wrapText {
-    return D_ST_WrapText.fromValue(
-      node.getAttribute(
-        'wrapText',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    )!;
+    return D_ST_WrapText.fromValue(node.getAttribute('wrapText')!)!;
   }
 
   String? get distL {
-    return node.getAttribute(
-      'distL',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distL');
   }
 
   String? get distR {
-    return node.getAttribute(
-      'distR',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distR');
   }
 
   D_CT_WrapPath? get wrapPolygon {
@@ -245,23 +278,39 @@ extension type D_CT_WrapThrough(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_WrapPath(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('wrapText') == null) {
+      errors.add(
+        "Missing required attribute 'wrapText' in ${node.name.qualified}",
+      );
+    }
+    final v_wrapText = node.getAttribute('wrapText');
+    if (v_wrapText != null && D_ST_WrapText.fromValue(v_wrapText) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'wrapText' in ${node.name.qualified}: $v_wrapText",
+      );
+    }
+    for (final childNode in node.findElements(
+      'wrapPolygon',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapPath(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WrapTopBottom(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get distT {
-    return node.getAttribute(
-      'distT',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distT');
   }
 
   String? get distB {
-    return node.getAttribute(
-      'distB',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distB');
   }
 
   D_CT_EffectExtent? get effectExtent {
@@ -272,16 +321,23 @@ extension type D_CT_WrapTopBottom(_i1.XmlElement node)
     );
     return e != null ? D_CT_EffectExtent(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'effectExtent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_EffectExtent(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PosH(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_RelFromH get relativeFrom {
-    return D_ST_RelFromH.fromValue(
-      node.getAttribute(
-        'relativeFrom',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    )!;
+    return D_ST_RelFromH.fromValue(node.getAttribute('relativeFrom')!)!;
   }
 
   D_ST_AlignH? get align {
@@ -301,16 +357,28 @@ extension type D_CT_PosH(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('relativeFrom') == null) {
+      errors.add(
+        "Missing required attribute 'relativeFrom' in ${node.name.qualified}",
+      );
+    }
+    final v_relativeFrom = node.getAttribute('relativeFrom');
+    if (v_relativeFrom != null &&
+        D_ST_RelFromH.fromValue(v_relativeFrom) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'relativeFrom' in ${node.name.qualified}: $v_relativeFrom",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PosV(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_RelFromV get relativeFrom {
-    return D_ST_RelFromV.fromValue(
-      node.getAttribute(
-        'relativeFrom',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    )!;
+    return D_ST_RelFromV.fromValue(node.getAttribute('relativeFrom')!)!;
   }
 
   D_ST_AlignV? get align {
@@ -330,174 +398,80 @@ extension type D_CT_PosV(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('relativeFrom') == null) {
+      errors.add(
+        "Missing required attribute 'relativeFrom' in ${node.name.qualified}",
+      );
+    }
+    final v_relativeFrom = node.getAttribute('relativeFrom');
+    if (v_relativeFrom != null &&
+        D_ST_RelFromV.fromValue(v_relativeFrom) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'relativeFrom' in ${node.name.qualified}: $v_relativeFrom",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Anchor(_i1.XmlElement node) implements _i1.XmlElement {
   String? get distT {
-    return node.getAttribute(
-      'distT',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distT');
   }
 
   String? get distB {
-    return node.getAttribute(
-      'distB',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distB');
   }
 
   String? get distL {
-    return node.getAttribute(
-      'distL',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distL');
   }
 
   String? get distR {
-    return node.getAttribute(
-      'distR',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-    );
+    return node.getAttribute('distR');
   }
 
   bool? get simplePos {
-    return node.getAttribute(
-              'simplePos',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'simplePos',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'simplePos',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('simplePos') == '1' ||
+        node.getAttribute('simplePos') == 'true' ||
+        node.getAttribute('simplePos') == 'on';
   }
 
   int get relativeHeight {
-    return int.parse(
-      node.getAttribute(
-        'relativeHeight',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    );
+    return int.parse(node.getAttribute('relativeHeight')!);
   }
 
   bool get behindDoc {
-    return node.getAttribute(
-              'behindDoc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'behindDoc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'behindDoc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('behindDoc') == '1' ||
+        node.getAttribute('behindDoc') == 'true' ||
+        node.getAttribute('behindDoc') == 'on';
   }
 
   bool get locked {
-    return node.getAttribute(
-              'locked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'locked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'locked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('locked') == '1' ||
+        node.getAttribute('locked') == 'true' ||
+        node.getAttribute('locked') == 'on';
   }
 
   bool get layoutInCell {
-    return node.getAttribute(
-              'layoutInCell',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'layoutInCell',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'layoutInCell',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('layoutInCell') == '1' ||
+        node.getAttribute('layoutInCell') == 'true' ||
+        node.getAttribute('layoutInCell') == 'on';
   }
 
   bool? get hidden {
-    return node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('hidden') == '1' ||
+        node.getAttribute('hidden') == 'true' ||
+        node.getAttribute('hidden') == 'on';
   }
 
   bool get allowOverlap {
-    return node.getAttribute(
-              'allowOverlap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'allowOverlap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'allowOverlap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('allowOverlap') == '1' ||
+        node.getAttribute('allowOverlap') == 'true' ||
+        node.getAttribute('allowOverlap') == 'on';
   }
 
   D_CT_PosH? get positionH {
@@ -598,7 +572,122 @@ extension type D_CT_Anchor(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_NonVisualGraphicFrameProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('relativeHeight') == null) {
+      errors.add(
+        "Missing required attribute 'relativeHeight' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('behindDoc') == null) {
+      errors.add(
+        "Missing required attribute 'behindDoc' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('locked') == null) {
+      errors.add(
+        "Missing required attribute 'locked' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('layoutInCell') == null) {
+      errors.add(
+        "Missing required attribute 'layoutInCell' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('allowOverlap') == null) {
+      errors.add(
+        "Missing required attribute 'allowOverlap' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'simplePos',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'positionH',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_PosH(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'positionV',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_PosV(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectExtent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_EffectExtent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapNone',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapNone(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapSquare',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapSquare(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapTight',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapTight(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapThrough',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapThrough(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapTopAndBottom',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WrapTopBottom(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'docPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGraphicFrameProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TxbxContent(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<W_CT_CustomXmlBlock> get customXml {
     return node
@@ -879,22 +968,213 @@ extension type D_CT_TxbxContent(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_AltChunk.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_CustomXmlBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_SdtBlock(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_P(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tbl',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Tbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'altChunk',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(W_CT_AltChunk(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextboxInfo(_i1.XmlElement node) implements _i1.XmlElement {
   int? get id {
-    return node.getAttribute(
-              'id',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'id',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            )!,
-          )
+    return node.getAttribute('id') != null
+        ? int.tryParse(node.getAttribute('id')!)
         : null;
   }
 
@@ -915,27 +1195,35 @@ extension type D_CT_TextboxInfo(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'txbxContent',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_TxbxContent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LinkedTextboxInformation(_i1.XmlElement node)
     implements _i1.XmlElement {
   int get id {
-    return int.parse(
-      node.getAttribute(
-        'id',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    );
+    return int.parse(node.getAttribute('id')!);
   }
 
   int get seq {
-    return int.parse(
-      node.getAttribute(
-        'seq',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      )!,
-    );
+    return int.parse(node.getAttribute('seq')!);
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -946,28 +1234,32 @@ extension type D_CT_LinkedTextboxInformation(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('id') == null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('seq') == null) {
+      errors.add("Missing required attribute 'seq' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WordprocessingShape(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get normalEastAsianFlow {
-    return node.getAttribute(
-              'normalEastAsianFlow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'normalEastAsianFlow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'normalEastAsianFlow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('normalEastAsianFlow') == '1' ||
+        node.getAttribute('normalEastAsianFlow') == 'true' ||
+        node.getAttribute('normalEastAsianFlow') == 'on';
   }
 
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -1050,36 +1342,86 @@ extension type D_CT_WordprocessingShape(_i1.XmlElement node)
     );
     return e != null ? D_CT_TextBodyProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingShapeProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvCnPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualConnectorProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txbx',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_TextboxInfo(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'linkedTxbx',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_LinkedTextboxInformation(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bodyPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_TextBodyProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GraphicFrame(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get macro {
-    return node.getAttribute(
-      'macro',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-    );
+    return node.getAttribute('macro');
   }
 
   bool? get fPublished {
-    return node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPublished') == '1' ||
+        node.getAttribute('fPublished') == 'true' ||
+        node.getAttribute('fPublished') == 'on';
   }
 
   D_CT_GraphicFrameNonVisual? get nvGraphicFramePr {
@@ -1099,7 +1441,27 @@ extension type D_CT_GraphicFrame(_i1.XmlElement node)
     );
     return e != null ? D_CT_Transform2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicFrameNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WordprocessingContentPartNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -1119,24 +1481,41 @@ extension type D_CT_WordprocessingContentPartNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualContentPartProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvContentPartPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualContentPartProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WordprocessingContentPart(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_BlackWhiteMode? get bwMode {
-    return node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            ) !=
-            null
-        ? D_ST_BlackWhiteMode.fromValue(
-            node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-            )!,
-          )
+    return node.getAttribute('bwMode') != null
+        ? D_ST_BlackWhiteMode.fromValue(node.getAttribute('bwMode')!)
         : null;
+  }
+
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
   }
 
   D_CT_WordprocessingContentPartNonVisual? get nvContentPartPr {
@@ -1165,7 +1544,50 @@ extension type D_CT_WordprocessingContentPart(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_bwMode = node.getAttribute('bwMode');
+    if (v_bwMode != null && D_ST_BlackWhiteMode.fromValue(v_bwMode) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bwMode' in ${node.name.qualified}: $v_bwMode",
+      );
+    }
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'nvContentPartPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(
+        D_CT_WordprocessingContentPartNonVisual(childNode).validate(),
+      );
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WordprocessingGroup(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -1233,7 +1655,62 @@ extension type D_CT_WordprocessingGroup(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGrpSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGroupDrawingShapeProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WordprocessingGroup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WordprocessingContentPart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WordprocessingCanvas(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_BackgroundFormatting? get bg {
@@ -1281,6 +1758,46 @@ extension type D_CT_WordprocessingCanvas(_i1.XmlElement node)
           'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'bg',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_BackgroundFormatting(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'whole',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WholeE2oFormatting(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_WordprocessingContentPart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
 
@@ -1385,11 +1902,16 @@ enum D_ST_RelFromV {
 }
 
 extension type D_CT_AudioFile(_i1.XmlElement node) implements _i1.XmlElement {
-  String? get contentType {
+  String get r_link {
     return node.getAttribute(
-      'contentType',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+      'link',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String? get contentType {
+    return node.getAttribute('contentType');
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -1399,13 +1921,38 @@ extension type D_CT_AudioFile(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'link',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'link' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_VideoFile(_i1.XmlElement node) implements _i1.XmlElement {
-  String? get contentType {
+  String get r_link {
     return node.getAttribute(
-      'contentType',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+      'link',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String? get contentType {
+    return node.getAttribute('contentType');
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -1415,9 +1962,37 @@ extension type D_CT_VideoFile(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'link',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'link' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_QuickTimeFile(_i1.XmlElement node)
     implements _i1.XmlElement {
+  String get r_link {
+    return node.getAttribute(
+      'link',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
   D_CT_OfficeArtExtensionList? get extLst {
     final e = node.getElement(
       'extLst',
@@ -1425,34 +2000,49 @@ extension type D_CT_QuickTimeFile(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'link',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'link' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AudioCDTime(_i1.XmlElement node) implements _i1.XmlElement {
   int get track {
-    return int.parse(
-      node.getAttribute(
-        'track',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    );
+    return int.parse(node.getAttribute('track')!);
   }
 
   int? get time {
-    return node.getAttribute(
-              'time',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'time',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('time') != null
+        ? int.tryParse(node.getAttribute('time')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('track') == null) {
+      errors.add(
+        "Missing required attribute 'track' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AudioCD(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_AudioCDTime? get st {
     final e = node.getElement(
@@ -1477,13 +2067,34 @@ extension type D_CT_AudioCD(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'st',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AudioCDTime(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'end',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AudioCDTime(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorScheme(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   D_CT_Color? get dk1 {
@@ -1589,13 +2200,97 @@ extension type D_CT_ColorScheme(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'dk1',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lt1',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dk2',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lt2',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent1',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent2',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent3',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent4',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent5',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'accent6',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hlink',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'folHlink',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_CustomColor(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('name');
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -1645,23 +2340,75 @@ extension type D_CT_CustomColor(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SupplementalFont(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get script {
-    return node.getAttribute(
-      'script',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('script')!;
   }
 
   String get typeface {
-    return node.getAttribute(
-      'typeface',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('typeface')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('script') == null) {
+      errors.add(
+        "Missing required attribute 'script' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('typeface') == null) {
+      errors.add(
+        "Missing required attribute 'typeface' in ${node.name.qualified}",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_CustomColorList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_CustomColor> get custClr {
@@ -1672,7 +2419,19 @@ extension type D_CT_CustomColorList(_i1.XmlElement node)
         )
         .map(D_CT_CustomColor.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'custClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_CustomColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FontCollection(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextFont? get latin {
@@ -1715,7 +2474,43 @@ extension type D_CT_FontCollection(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'latin',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ea',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'font',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SupplementalFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EffectStyleItem(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_EffectList? get effectLst {
@@ -1749,13 +2544,40 @@ extension type D_CT_EffectStyleItem(_i1.XmlElement node)
     );
     return e != null ? D_CT_Shape3D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Shape3D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FontScheme(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   D_CT_FontCollection? get majorFont {
@@ -1781,7 +2603,34 @@ extension type D_CT_FontScheme(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'majorFont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontCollection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorFont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontCollection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FillStyleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_NoFillProperties> get noFill {
@@ -1837,7 +2686,49 @@ extension type D_CT_FillStyleList(_i1.XmlElement node)
         )
         .map(D_CT_GroupFillProperties.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineStyleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_LineProperties> get ln {
@@ -1848,7 +2739,19 @@ extension type D_CT_LineStyleList(_i1.XmlElement node)
         )
         .map(D_CT_LineProperties.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ln',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EffectStyleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_EffectStyleItem> get effectStyle {
@@ -1859,7 +2762,19 @@ extension type D_CT_EffectStyleList(_i1.XmlElement node)
         )
         .map(D_CT_EffectStyleItem.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'effectStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectStyleItem(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BackgroundFillStyleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_NoFillProperties> get noFill {
@@ -1915,13 +2830,52 @@ extension type D_CT_BackgroundFillStyleList(_i1.XmlElement node)
         )
         .map(D_CT_GroupFillProperties.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleMatrix(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('name');
   }
 
   D_CT_FillStyleList? get fillStyleLst {
@@ -1955,7 +2909,37 @@ extension type D_CT_StyleMatrix(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_BackgroundFillStyleList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'fillStyleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillStyleList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnStyleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineStyleList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectStyleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectStyleList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bgFillStyleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BackgroundFillStyleList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BaseStyles(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ColorScheme? get clrScheme {
     final e = node.getElement(
@@ -1988,134 +2972,241 @@ extension type D_CT_BaseStyles(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'clrScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorScheme(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fontScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontScheme(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fmtScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrix(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_OfficeArtExtension(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get uri {
-    return node.getAttribute(
-      'uri',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('uri')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('uri') == null) {
+      errors.add("Missing required attribute 'uri' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Angle(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_PositiveFixedAngle(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Percentage(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_PositivePercentage(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_FixedPercentage(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_PositiveFixedPercentage(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Ratio(_i1.XmlElement node) implements _i1.XmlElement {
   int get n {
-    return int.parse(
-      node.getAttribute(
-        'n',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    );
+    return int.parse(node.getAttribute('n')!);
   }
 
   int get d {
-    return int.parse(
-      node.getAttribute(
-        'd',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    );
+    return int.parse(node.getAttribute('d')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('n') == null) {
+      errors.add("Missing required attribute 'n' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('d') == null) {
+      errors.add("Missing required attribute 'd' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
-extension type D_CT_Point2D(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_Point2D(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_PositiveSize2D(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get cx {
-    return node.getAttribute(
-      'cx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('cx')!;
   }
 
   String get cy {
-    return node.getAttribute(
-      'cy',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('cy')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('cx') == null) {
+      errors.add("Missing required attribute 'cx' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('cy') == null) {
+      errors.add("Missing required attribute 'cy' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_ComplementTransform(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_InverseTransform(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_GrayscaleTransform(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_GammaTransform(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_InverseGammaTransform(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_ScRgbColor(_i1.XmlElement node) implements _i1.XmlElement {
   String get r {
-    return node.getAttribute(
-      'r',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('r')!;
   }
 
   String get g {
-    return node.getAttribute(
-      'g',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('g')!;
   }
 
   String get b {
-    return node.getAttribute(
-      'b',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('b')!;
   }
 
   Iterable<D_CT_PositiveFixedPercentage> get tint {
@@ -2369,287 +3460,635 @@ extension type D_CT_ScRgbColor(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_InverseGammaTransform.new);
   }
-}
-extension type D_CT_SRgbColor(_i1.XmlElement node) implements _i1.XmlElement {
-  String get val {
-    return node.getAttribute(
-      'val',
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('r') == null) {
+      errors.add("Missing required attribute 'r' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('g') == null) {
+      errors.add("Missing required attribute 'g' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('b') == null) {
+      errors.add("Missing required attribute 'b' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'tint',
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
-  }
-
-  Iterable<D_CT_PositiveFixedPercentage> get tint {
-    return node
-        .findElements(
-          'tint',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositiveFixedPercentage.new);
-  }
-
-  Iterable<D_CT_PositiveFixedPercentage> get shade {
-    return node
-        .findElements(
-          'shade',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositiveFixedPercentage.new);
-  }
-
-  Iterable<D_CT_ComplementTransform> get comp {
-    return node
-        .findElements(
-          'comp',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_ComplementTransform.new);
-  }
-
-  Iterable<D_CT_InverseTransform> get inv {
-    return node
-        .findElements(
-          'inv',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_InverseTransform.new);
-  }
-
-  Iterable<D_CT_GrayscaleTransform> get gray {
-    return node
-        .findElements(
-          'gray',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_GrayscaleTransform.new);
-  }
-
-  Iterable<D_CT_PositiveFixedPercentage> get alpha {
-    return node
-        .findElements(
-          'alpha',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositiveFixedPercentage.new);
-  }
-
-  Iterable<D_CT_FixedPercentage> get alphaOff {
-    return node
-        .findElements(
-          'alphaOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_FixedPercentage.new);
-  }
-
-  Iterable<D_CT_PositivePercentage> get alphaMod {
-    return node
-        .findElements(
-          'alphaMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositivePercentage.new);
-  }
-
-  Iterable<D_CT_PositiveFixedAngle> get hue {
-    return node
-        .findElements(
-          'hue',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositiveFixedAngle.new);
-  }
-
-  Iterable<D_CT_Angle> get hueOff {
-    return node
-        .findElements(
-          'hueOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Angle.new);
-  }
-
-  Iterable<D_CT_PositivePercentage> get hueMod {
-    return node
-        .findElements(
-          'hueMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_PositivePercentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get sat {
-    return node
-        .findElements(
-          'sat',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get satOff {
-    return node
-        .findElements(
-          'satOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get satMod {
-    return node
-        .findElements(
-          'satMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get lum {
-    return node
-        .findElements(
-          'lum',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get lumOff {
-    return node
-        .findElements(
-          'lumOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get lumMod {
-    return node
-        .findElements(
-          'lumMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get red {
-    return node
-        .findElements(
-          'red',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get redOff {
-    return node
-        .findElements(
-          'redOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get redMod {
-    return node
-        .findElements(
-          'redMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get green {
-    return node
-        .findElements(
-          'green',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get greenOff {
-    return node
-        .findElements(
-          'greenOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get greenMod {
-    return node
-        .findElements(
-          'greenMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get blue {
-    return node
-        .findElements(
-          'blue',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get blueOff {
-    return node
-        .findElements(
-          'blueOff',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_Percentage> get blueMod {
-    return node
-        .findElements(
-          'blueMod',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_Percentage.new);
-  }
-
-  Iterable<D_CT_GammaTransform> get gamma {
-    return node
-        .findElements(
-          'gamma',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_GammaTransform.new);
-  }
-
-  Iterable<D_CT_InverseGammaTransform> get invGamma {
-    return node
-        .findElements(
-          'invGamma',
-          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-        )
-        .map(D_CT_InverseGammaTransform.new);
-  }
-}
-extension type D_CT_HslColor(_i1.XmlElement node) implements _i1.XmlElement {
-  String get hue {
-    return node.getAttribute(
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
       'hue',
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
+}
+
+extension type D_CT_SRgbColor(_i1.XmlElement node) implements _i1.XmlElement {
+  String get val {
+    return node.getAttribute('val')!;
+  }
+
+  Iterable<D_CT_PositiveFixedPercentage> get tint {
+    return node
+        .findElements(
+          'tint',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositiveFixedPercentage.new);
+  }
+
+  Iterable<D_CT_PositiveFixedPercentage> get shade {
+    return node
+        .findElements(
+          'shade',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositiveFixedPercentage.new);
+  }
+
+  Iterable<D_CT_ComplementTransform> get comp {
+    return node
+        .findElements(
+          'comp',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_ComplementTransform.new);
+  }
+
+  Iterable<D_CT_InverseTransform> get inv {
+    return node
+        .findElements(
+          'inv',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_InverseTransform.new);
+  }
+
+  Iterable<D_CT_GrayscaleTransform> get gray {
+    return node
+        .findElements(
+          'gray',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_GrayscaleTransform.new);
+  }
+
+  Iterable<D_CT_PositiveFixedPercentage> get alpha {
+    return node
+        .findElements(
+          'alpha',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositiveFixedPercentage.new);
+  }
+
+  Iterable<D_CT_FixedPercentage> get alphaOff {
+    return node
+        .findElements(
+          'alphaOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_FixedPercentage.new);
+  }
+
+  Iterable<D_CT_PositivePercentage> get alphaMod {
+    return node
+        .findElements(
+          'alphaMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositivePercentage.new);
+  }
+
+  Iterable<D_CT_PositiveFixedAngle> get hue {
+    return node
+        .findElements(
+          'hue',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositiveFixedAngle.new);
+  }
+
+  Iterable<D_CT_Angle> get hueOff {
+    return node
+        .findElements(
+          'hueOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Angle.new);
+  }
+
+  Iterable<D_CT_PositivePercentage> get hueMod {
+    return node
+        .findElements(
+          'hueMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_PositivePercentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get sat {
+    return node
+        .findElements(
+          'sat',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get satOff {
+    return node
+        .findElements(
+          'satOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get satMod {
+    return node
+        .findElements(
+          'satMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get lum {
+    return node
+        .findElements(
+          'lum',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get lumOff {
+    return node
+        .findElements(
+          'lumOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get lumMod {
+    return node
+        .findElements(
+          'lumMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get red {
+    return node
+        .findElements(
+          'red',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get redOff {
+    return node
+        .findElements(
+          'redOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get redMod {
+    return node
+        .findElements(
+          'redMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get green {
+    return node
+        .findElements(
+          'green',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get greenOff {
+    return node
+        .findElements(
+          'greenOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get greenMod {
+    return node
+        .findElements(
+          'greenMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get blue {
+    return node
+        .findElements(
+          'blue',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get blueOff {
+    return node
+        .findElements(
+          'blueOff',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_Percentage> get blueMod {
+    return node
+        .findElements(
+          'blueMod',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_Percentage.new);
+  }
+
+  Iterable<D_CT_GammaTransform> get gamma {
+    return node
+        .findElements(
+          'gamma',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_GammaTransform.new);
+  }
+
+  Iterable<D_CT_InverseGammaTransform> get invGamma {
+    return node
+        .findElements(
+          'invGamma',
+          namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        )
+        .map(D_CT_InverseGammaTransform.new);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
+}
+
+extension type D_CT_HslColor(_i1.XmlElement node) implements _i1.XmlElement {
+  String get hue {
+    return node.getAttribute('hue')!;
   }
 
   String get sat {
-    return node.getAttribute(
-      'sat',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('sat')!;
   }
 
   String get lum {
-    return node.getAttribute(
-      'lum',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('lum')!;
   }
 
   Iterable<D_CT_PositiveFixedPercentage> get tint {
@@ -2876,22 +4315,197 @@ extension type D_CT_HslColor(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_InverseGammaTransform.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('hue') == null) {
+      errors.add("Missing required attribute 'hue' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('sat') == null) {
+      errors.add("Missing required attribute 'sat' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('lum') == null) {
+      errors.add("Missing required attribute 'lum' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SystemColor(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_SystemColorVal get val {
-    return D_ST_SystemColorVal.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_SystemColorVal.fromValue(node.getAttribute('val')!)!;
   }
 
   String? get lastClr {
-    return node.getAttribute(
-      'lastClr',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('lastClr');
   }
 
   Iterable<D_CT_PositiveFixedPercentage> get tint {
@@ -3145,15 +4759,193 @@ extension type D_CT_SystemColor(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_InverseGammaTransform.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_SystemColorVal.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SchemeColor(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_SchemeColorVal get val {
-    return D_ST_SchemeColorVal.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_SchemeColorVal.fromValue(node.getAttribute('val')!)!;
   }
 
   Iterable<D_CT_PositiveFixedPercentage> get tint {
@@ -3407,15 +5199,193 @@ extension type D_CT_SchemeColor(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_InverseGammaTransform.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_SchemeColorVal.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PresetColor(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_PresetColorVal get val {
-    return D_ST_PresetColorVal.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_PresetColorVal.fromValue(node.getAttribute('val')!)!;
   }
 
   Iterable<D_CT_PositiveFixedPercentage> get tint {
@@ -3669,7 +5639,190 @@ extension type D_CT_PresetColor(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_InverseGammaTransform.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_PresetColorVal.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shade',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'comp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ComplementTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'inv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gray',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alpha',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FixedPercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveFixedAngle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Angle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositivePercentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'satMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lumMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'red',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'redMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'green',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'greenMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blue',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blueMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Percentage(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GammaTransform(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invGamma',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InverseGammaTransform(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_OfficeArtExtensionList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_OfficeArtExtension> get ext {
@@ -3680,7 +5833,19 @@ extension type D_CT_OfficeArtExtensionList(_i1.XmlElement node)
         )
         .map(D_CT_OfficeArtExtension.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ext',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtension(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Scale2D(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Ratio? get sx {
     final e = node.getElement(
@@ -3697,55 +5862,40 @@ extension type D_CT_Scale2D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_Ratio(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Ratio(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sy',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Ratio(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Transform2D(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rot {
-    return node.getAttribute(
-      'rot',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('rot');
   }
 
   bool? get flipH {
-    return node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('flipH') == '1' ||
+        node.getAttribute('flipH') == 'true' ||
+        node.getAttribute('flipH') == 'on';
   }
 
   bool? get flipV {
-    return node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('flipV') == '1' ||
+        node.getAttribute('flipV') == 'true' ||
+        node.getAttribute('flipV') == 'on';
   }
 
   D_CT_Point2D? get off {
@@ -3763,56 +5913,41 @@ extension type D_CT_Transform2D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_PositiveSize2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'off',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ext',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupTransform2D(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get rot {
-    return node.getAttribute(
-      'rot',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('rot');
   }
 
   bool? get flipH {
-    return node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'flipH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('flipH') == '1' ||
+        node.getAttribute('flipH') == 'true' ||
+        node.getAttribute('flipH') == 'on';
   }
 
   bool? get flipV {
-    return node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'flipV',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('flipV') == '1' ||
+        node.getAttribute('flipV') == 'true' ||
+        node.getAttribute('flipV') == 'on';
   }
 
   D_CT_Point2D? get off {
@@ -3846,62 +5981,104 @@ extension type D_CT_GroupTransform2D(_i1.XmlElement node)
     );
     return e != null ? D_CT_PositiveSize2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'off',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ext',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chExt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_Point3D(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type D_CT_Vector3D(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_Point3D(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type D_CT_Vector3D(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_SphereCoords(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get lat {
-    return node.getAttribute(
-      'lat',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('lat')!;
   }
 
   String get lon {
-    return node.getAttribute(
-      'lon',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('lon')!;
   }
 
   String get rev {
-    return node.getAttribute(
-      'rev',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('rev')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('lat') == null) {
+      errors.add("Missing required attribute 'lat' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('lon') == null) {
+      errors.add("Missing required attribute 'lon' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('rev') == null) {
+      errors.add("Missing required attribute 'rev' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_RelativeRect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get l {
-    return node.getAttribute(
-      'l',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('l');
   }
 
   String? get t {
-    return node.getAttribute(
-      't',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('t');
   }
 
   String? get r {
-    return node.getAttribute(
-      'r',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('r');
   }
 
   String? get b {
-    return node.getAttribute(
-      'b',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('b');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_Color(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ScRgbColor? get scrgbClr {
     final e = node.getElement(
@@ -3950,7 +6127,49 @@ extension type D_CT_Color(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorMRU(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_ScRgbColor> get scrgbClr {
     return node
@@ -4005,106 +6224,120 @@ extension type D_CT_ColorMRU(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_PresetColor.new);
   }
-}
-extension type D_CT_EmbeddedWAVAudioFile(_i1.XmlElement node)
-    implements _i1.XmlElement {
-  String? get name {
-    return node.getAttribute(
-      'name',
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
   }
 }
-extension type D_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
-  String? get invalidUrl {
+
+extension type D_CT_EmbeddedWAVAudioFile(_i1.XmlElement node)
+    implements _i1.XmlElement {
+  String get r_embed {
     return node.getAttribute(
-      'invalidUrl',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+      'embed',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String? get name {
+    return node.getAttribute('name');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'embed',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add(
+        "Missing required attribute 'embed' in ${node.name.qualified}",
+      );
+    }
+    return errors;
+  }
+}
+
+extension type D_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
     );
+  }
+
+  String? get invalidUrl {
+    return node.getAttribute('invalidUrl');
   }
 
   String? get action {
-    return node.getAttribute(
-      'action',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('action');
   }
 
   String? get tgtFrame {
-    return node.getAttribute(
-      'tgtFrame',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('tgtFrame');
   }
 
   String? get tooltip {
-    return node.getAttribute(
-      'tooltip',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('tooltip');
   }
 
   bool? get history {
-    return node.getAttribute(
-              'history',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'history',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'history',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('history') == '1' ||
+        node.getAttribute('history') == 'true' ||
+        node.getAttribute('history') == 'on';
   }
 
   bool? get highlightClick {
-    return node.getAttribute(
-              'highlightClick',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'highlightClick',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'highlightClick',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('highlightClick') == '1' ||
+        node.getAttribute('highlightClick') == 'true' ||
+        node.getAttribute('highlightClick') == 'on';
   }
 
   bool? get endSnd {
-    return node.getAttribute(
-              'endSnd',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'endSnd',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'endSnd',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('endSnd') == '1' ||
+        node.getAttribute('endSnd') == 'true' ||
+        node.getAttribute('endSnd') == 'on';
   }
 
   D_CT_EmbeddedWAVAudioFile? get snd {
@@ -4122,7 +6355,25 @@ extension type D_CT_Hyperlink(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'snd',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EmbeddedWAVAudioFile(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ConnectorLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4132,28 +6383,25 @@ extension type D_CT_ConnectorLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ShapeLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get noTextEdit {
-    return node.getAttribute(
-              'noTextEdit',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noTextEdit',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noTextEdit',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noTextEdit') == '1' ||
+        node.getAttribute('noTextEdit') == 'true' ||
+        node.getAttribute('noTextEdit') == 'on';
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4163,28 +6411,25 @@ extension type D_CT_ShapeLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PictureLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get noCrop {
-    return node.getAttribute(
-              'noCrop',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noCrop',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noCrop',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noCrop') == '1' ||
+        node.getAttribute('noCrop') == 'true' ||
+        node.getAttribute('noCrop') == 'on';
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4194,154 +6439,61 @@ extension type D_CT_PictureLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get noGrp {
-    return node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noGrp') == '1' ||
+        node.getAttribute('noGrp') == 'true' ||
+        node.getAttribute('noGrp') == 'on';
   }
 
   bool? get noUngrp {
-    return node.getAttribute(
-              'noUngrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noUngrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noUngrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noUngrp') == '1' ||
+        node.getAttribute('noUngrp') == 'true' ||
+        node.getAttribute('noUngrp') == 'on';
   }
 
   bool? get noSelect {
-    return node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noSelect') == '1' ||
+        node.getAttribute('noSelect') == 'true' ||
+        node.getAttribute('noSelect') == 'on';
   }
 
   bool? get noRot {
-    return node.getAttribute(
-              'noRot',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noRot',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noRot',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noRot') == '1' ||
+        node.getAttribute('noRot') == 'true' ||
+        node.getAttribute('noRot') == 'on';
   }
 
   bool? get noChangeAspect {
-    return node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noChangeAspect') == '1' ||
+        node.getAttribute('noChangeAspect') == 'true' ||
+        node.getAttribute('noChangeAspect') == 'on';
   }
 
   bool? get noMove {
-    return node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noMove') == '1' ||
+        node.getAttribute('noMove') == 'true' ||
+        node.getAttribute('noMove') == 'on';
   }
 
   bool? get noResize {
-    return node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noResize') == '1' ||
+        node.getAttribute('noResize') == 'true' ||
+        node.getAttribute('noResize') == 'on';
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4351,133 +6503,55 @@ extension type D_CT_GroupLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GraphicalObjectFrameLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get noGrp {
-    return node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noGrp',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noGrp') == '1' ||
+        node.getAttribute('noGrp') == 'true' ||
+        node.getAttribute('noGrp') == 'on';
   }
 
   bool? get noDrilldown {
-    return node.getAttribute(
-              'noDrilldown',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noDrilldown',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noDrilldown',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noDrilldown') == '1' ||
+        node.getAttribute('noDrilldown') == 'true' ||
+        node.getAttribute('noDrilldown') == 'on';
   }
 
   bool? get noSelect {
-    return node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noSelect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noSelect') == '1' ||
+        node.getAttribute('noSelect') == 'true' ||
+        node.getAttribute('noSelect') == 'on';
   }
 
   bool? get noChangeAspect {
-    return node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noChangeAspect',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noChangeAspect') == '1' ||
+        node.getAttribute('noChangeAspect') == 'true' ||
+        node.getAttribute('noChangeAspect') == 'on';
   }
 
   bool? get noMove {
-    return node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noMove',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noMove') == '1' ||
+        node.getAttribute('noMove') == 'true' ||
+        node.getAttribute('noMove') == 'on';
   }
 
   bool? get noResize {
-    return node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noResize') == '1' ||
+        node.getAttribute('noResize') == 'true' ||
+        node.getAttribute('noResize') == 'on';
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4487,7 +6561,19 @@ extension type D_CT_GraphicalObjectFrameLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ContentPartLocking(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_OfficeArtExtensionList? get extLst {
@@ -4497,56 +6583,41 @@ extension type D_CT_ContentPartLocking(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualDrawingProps(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get id {
-    return node.getAttribute(
-      'id',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('id')!;
   }
 
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   String? get descr {
-    return node.getAttribute(
-      'descr',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('descr');
   }
 
   bool? get hidden {
-    return node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'hidden',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('hidden') == '1' ||
+        node.getAttribute('hidden') == 'true' ||
+        node.getAttribute('hidden') == 'on';
   }
 
   String? get title {
-    return node.getAttribute(
-      'title',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('title');
   }
 
   D_CT_Hyperlink? get hlinkClick {
@@ -4572,28 +6643,43 @@ extension type D_CT_NonVisualDrawingProps(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('id') == null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'hlinkClick',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hlinkHover',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualDrawingShapeProps(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get txBox {
-    return node.getAttribute(
-              'txBox',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'txBox',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'txBox',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('txBox') == '1' ||
+        node.getAttribute('txBox') == 'true' ||
+        node.getAttribute('txBox') == 'on';
   }
 
   D_CT_ShapeLocking? get spLocks {
@@ -4611,7 +6697,25 @@ extension type D_CT_NonVisualDrawingShapeProps(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualConnectorProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ConnectorLocking? get cxnSpLocks {
@@ -4645,28 +6749,43 @@ extension type D_CT_NonVisualConnectorProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cxnSpLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ConnectorLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'stCxn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Connection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endCxn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Connection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualPictureProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get preferRelativeResize {
-    return node.getAttribute(
-              'preferRelativeResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'preferRelativeResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'preferRelativeResize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('preferRelativeResize') == '1' ||
+        node.getAttribute('preferRelativeResize') == 'true' ||
+        node.getAttribute('preferRelativeResize') == 'on';
   }
 
   D_CT_PictureLocking? get picLocks {
@@ -4684,7 +6803,25 @@ extension type D_CT_NonVisualPictureProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'picLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PictureLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualGroupDrawingShapeProps(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GroupLocking? get grpSpLocks {
@@ -4702,7 +6839,25 @@ extension type D_CT_NonVisualGroupDrawingShapeProps(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'grpSpLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualGraphicFrameProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GraphicalObjectFrameLocking? get graphicFrameLocks {
@@ -4720,28 +6875,31 @@ extension type D_CT_NonVisualGraphicFrameProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'graphicFrameLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrameLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NonVisualContentPartProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get isComment {
-    return node.getAttribute(
-              'isComment',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'isComment',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'isComment',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('isComment') == '1' ||
+        node.getAttribute('isComment') == 'true' ||
+        node.getAttribute('isComment') == 'on';
   }
 
   D_CT_ContentPartLocking? get cpLocks {
@@ -4759,16 +6917,40 @@ extension type D_CT_NonVisualContentPartProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cpLocks',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ContentPartLocking(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GraphicalObjectData(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get uri {
-    return node.getAttribute(
-      'uri',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('uri')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('uri') == null) {
+      errors.add("Missing required attribute 'uri' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_GraphicalObject(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GraphicalObjectData? get graphicData {
@@ -4778,78 +6960,78 @@ extension type D_CT_GraphicalObject(_i1.XmlElement node)
     );
     return e != null ? D_CT_GraphicalObjectData(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'graphicData',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnimationDgmElement(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get id {
-    return node.getAttribute(
-      'id',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('id');
   }
 
   D_ST_DgmBuildStep? get bldStep {
-    return node.getAttribute(
-              'bldStep',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_DgmBuildStep.fromValue(
-            node.getAttribute(
-              'bldStep',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('bldStep') != null
+        ? D_ST_DgmBuildStep.fromValue(node.getAttribute('bldStep')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_bldStep = node.getAttribute('bldStep');
+    if (v_bldStep != null && D_ST_DgmBuildStep.fromValue(v_bldStep) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bldStep' in ${node.name.qualified}: $v_bldStep",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnimationChartElement(_i1.XmlElement node)
     implements _i1.XmlElement {
   int? get seriesIdx {
-    return node.getAttribute(
-              'seriesIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'seriesIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('seriesIdx') != null
+        ? int.tryParse(node.getAttribute('seriesIdx')!)
         : null;
   }
 
   int? get categoryIdx {
-    return node.getAttribute(
-              'categoryIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'categoryIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('categoryIdx') != null
+        ? int.tryParse(node.getAttribute('categoryIdx')!)
         : null;
   }
 
   D_ST_ChartBuildStep get bldStep {
-    return D_ST_ChartBuildStep.fromValue(
-      node.getAttribute(
-        'bldStep',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ChartBuildStep.fromValue(node.getAttribute('bldStep')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('bldStep') == null) {
+      errors.add(
+        "Missing required attribute 'bldStep' in ${node.name.qualified}",
+      );
+    }
+    final v_bldStep = node.getAttribute('bldStep');
+    if (v_bldStep != null && D_ST_ChartBuildStep.fromValue(v_bldStep) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bldStep' in ${node.name.qualified}: $v_bldStep",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_AnimationElementChoice(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_AnimationDgmElement? get dgm {
@@ -4867,53 +7049,53 @@ extension type D_CT_AnimationElementChoice(_i1.XmlElement node)
     );
     return e != null ? D_CT_AnimationChartElement(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'dgm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AnimationDgmElement(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AnimationChartElement(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnimationDgmBuildProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get rev {
-    return node.getAttribute(
-              'rev',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rev',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rev',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rev') == '1' ||
+        node.getAttribute('rev') == 'true' ||
+        node.getAttribute('rev') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_AnimationChartBuildProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get animBg {
-    return node.getAttribute(
-              'animBg',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'animBg',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'animBg',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('animBg') == '1' ||
+        node.getAttribute('animBg') == 'true' ||
+        node.getAttribute('animBg') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_AnimationGraphicalObjectBuildProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_AnimationDgmBuildProperties? get bldDgm {
@@ -4931,7 +7113,25 @@ extension type D_CT_AnimationGraphicalObjectBuildProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_AnimationChartBuildProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'bldDgm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AnimationDgmBuildProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bldChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AnimationChartBuildProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BackgroundFormatting(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NoFillProperties? get noFill {
@@ -4997,7 +7197,61 @@ extension type D_CT_BackgroundFormatting(_i1.XmlElement node)
     );
     return e != null ? D_CT_EffectContainer(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_WholeE2oFormatting(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_LineProperties? get ln {
@@ -5023,9 +7277,39 @@ extension type D_CT_WholeE2oFormatting(_i1.XmlElement node)
     );
     return e != null ? D_CT_EffectContainer(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ln',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlUseShapeRectangle(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_GvmlTextShape(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextBody? get txBody {
@@ -5059,7 +7343,37 @@ extension type D_CT_GvmlTextShape(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'txBody',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'useSpRect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlUseShapeRectangle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlShapeNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -5077,7 +7391,25 @@ extension type D_CT_GvmlShapeNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualDrawingShapeProps(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingShapeProps(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlShape(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_GvmlShapeNonVisual? get nvSpPr {
     final e = node.getElement(
@@ -5118,7 +7450,43 @@ extension type D_CT_GvmlShape(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlShapeNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txSp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlTextShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlConnectorNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -5136,7 +7504,25 @@ extension type D_CT_GvmlConnectorNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualConnectorProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvCxnSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualConnectorProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlConnector(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GvmlConnectorNonVisual? get nvCxnSpPr {
@@ -5170,7 +7556,37 @@ extension type D_CT_GvmlConnector(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvCxnSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlConnectorNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlPictureNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -5188,7 +7604,25 @@ extension type D_CT_GvmlPictureNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualPictureProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvPicPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualPictureProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlPicture(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_GvmlPictureNonVisual? get nvPicPr {
     final e = node.getElement(
@@ -5229,7 +7663,43 @@ extension type D_CT_GvmlPicture(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvPicPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlPictureNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlGraphicFrameNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -5247,7 +7717,25 @@ extension type D_CT_GvmlGraphicFrameNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualGraphicFrameProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGraphicFramePr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualGraphicFrameProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlGraphicalObjectFrame(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GvmlGraphicFrameNonVisual? get nvGraphicFramePr {
@@ -5273,7 +7761,31 @@ extension type D_CT_GvmlGraphicalObjectFrame(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvGraphicFramePr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlGraphicFrameNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlGroupShapeNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -5291,7 +7803,25 @@ extension type D_CT_GvmlGroupShapeNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualGroupDrawingShapeProps(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGrpSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NonVisualGroupDrawingShapeProps(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GvmlGroupShape(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GvmlGroupShapeNonVisual? get nvGrpSpPr {
@@ -5371,29 +7901,78 @@ extension type D_CT_GvmlGroupShape(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvGrpSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlGroupShapeNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSpPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txSp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlTextShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlConnector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlPicture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlGraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GvmlGroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Camera(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_PresetCameraType get prst {
-    return D_ST_PresetCameraType.fromValue(
-      node.getAttribute(
-        'prst',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_PresetCameraType.fromValue(node.getAttribute('prst')!)!;
   }
 
   String? get fov {
-    return node.getAttribute(
-      'fov',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('fov');
   }
 
   String? get zoom {
-    return node.getAttribute(
-      'zoom',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('zoom');
   }
 
   D_CT_SphereCoords? get rot {
@@ -5403,24 +7982,35 @@ extension type D_CT_Camera(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_SphereCoords(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('prst') == null) {
+      errors.add("Missing required attribute 'prst' in ${node.name.qualified}");
+    }
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_PresetCameraType.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    for (final childNode in node.findElements(
+      'rot',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SphereCoords(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LightRig(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_LightRigType get rig {
-    return D_ST_LightRigType.fromValue(
-      node.getAttribute(
-        'rig',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_LightRigType.fromValue(node.getAttribute('rig')!)!;
   }
 
   D_ST_LightRigDirection get dir {
-    return D_ST_LightRigDirection.fromValue(
-      node.getAttribute(
-        'dir',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_LightRigDirection.fromValue(node.getAttribute('dir')!)!;
   }
 
   D_CT_SphereCoords? get rot {
@@ -5430,7 +8020,37 @@ extension type D_CT_LightRig(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_SphereCoords(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('rig') == null) {
+      errors.add("Missing required attribute 'rig' in ${node.name.qualified}");
+    }
+    final v_rig = node.getAttribute('rig');
+    if (v_rig != null && D_ST_LightRigType.fromValue(v_rig) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'rig' in ${node.name.qualified}: $v_rig",
+      );
+    }
+    if (node.getAttribute('dir') == null) {
+      errors.add("Missing required attribute 'dir' in ${node.name.qualified}");
+    }
+    final v_dir = node.getAttribute('dir');
+    if (v_dir != null && D_ST_LightRigDirection.fromValue(v_dir) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'dir' in ${node.name.qualified}: $v_dir",
+      );
+    }
+    for (final childNode in node.findElements(
+      'rot',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SphereCoords(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Scene3D(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Camera? get camera {
     final e = node.getElement(
@@ -5463,7 +8083,37 @@ extension type D_CT_Scene3D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'camera',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Camera(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lightRig',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LightRig(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'backdrop',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Backdrop(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Backdrop(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Point3D? get anchor {
     final e = node.getElement(
@@ -5496,68 +8146,76 @@ extension type D_CT_Backdrop(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'anchor',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Point3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'norm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Vector3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'up',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Vector3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Bevel(_i1.XmlElement node) implements _i1.XmlElement {
   String? get w {
-    return node.getAttribute(
-      'w',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('w');
   }
 
   String? get h {
-    return node.getAttribute(
-      'h',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('h');
   }
 
   D_ST_BevelPresetType? get prst {
-    return node.getAttribute(
-              'prst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_BevelPresetType.fromValue(
-            node.getAttribute(
-              'prst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('prst') != null
+        ? D_ST_BevelPresetType.fromValue(node.getAttribute('prst')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_BevelPresetType.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Shape3D(_i1.XmlElement node) implements _i1.XmlElement {
   String? get extrusionH {
-    return node.getAttribute(
-      'extrusionH',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('extrusionH');
   }
 
   String? get contourW {
-    return node.getAttribute(
-      'contourW',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('contourW');
   }
 
   D_ST_PresetMaterialType? get prstMaterial {
-    return node.getAttribute(
-              'prstMaterial',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PresetMaterialType.fromValue(
-            node.getAttribute(
-              'prstMaterial',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('prstMaterial') != null
+        ? D_ST_PresetMaterialType.fromValue(node.getAttribute('prstMaterial')!)
         : null;
   }
 
@@ -5600,21 +8258,90 @@ extension type D_CT_Shape3D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_prstMaterial = node.getAttribute('prstMaterial');
+    if (v_prstMaterial != null &&
+        D_ST_PresetMaterialType.fromValue(v_prstMaterial) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prstMaterial' in ${node.name.qualified}: $v_prstMaterial",
+      );
+    }
+    for (final childNode in node.findElements(
+      'bevelT',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Bevel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bevelB',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Bevel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extrusionClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contourClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_FlatText(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_FlatText(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_AlphaBiLevelEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get thresh {
-    return node.getAttribute(
-      'thresh',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('thresh')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('thresh') == null) {
+      errors.add(
+        "Missing required attribute 'thresh' in ${node.name.qualified}",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_AlphaCeilingEffect(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_AlphaFloorEffect(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_AlphaInverseEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ScRgbColor? get scrgbClr {
@@ -5664,86 +8391,124 @@ extension type D_CT_AlphaInverseEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AlphaModulateFixedEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get amt {
-    return node.getAttribute(
-      'amt',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('amt');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_AlphaOutsetEffect(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_AlphaReplaceEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get a {
-    return node.getAttribute(
-      'a',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('a')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('a') == null) {
+      errors.add("Missing required attribute 'a' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_BiLevelEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get thresh {
-    return node.getAttribute(
-      'thresh',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('thresh')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('thresh') == null) {
+      errors.add(
+        "Missing required attribute 'thresh' in ${node.name.qualified}",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_BlurEffect(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rad {
-    return node.getAttribute(
-      'rad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('rad');
   }
 
   bool? get grow {
-    return node.getAttribute(
-              'grow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'grow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'grow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('grow') == '1' ||
+        node.getAttribute('grow') == 'true' ||
+        node.getAttribute('grow') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_ColorChangeEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get useA {
-    return node.getAttribute(
-              'useA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'useA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'useA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('useA') == '1' ||
+        node.getAttribute('useA') == 'true' ||
+        node.getAttribute('useA') == 'on';
   }
 
   D_CT_Color? get clrFrom {
@@ -5761,7 +8526,25 @@ extension type D_CT_ColorChangeEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_Color(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'clrFrom',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorReplaceEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ScRgbColor? get scrgbClr {
@@ -5811,7 +8594,49 @@ extension type D_CT_ColorReplaceEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DuotoneEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_ScRgbColor> get scrgbClr {
@@ -5867,13 +8692,52 @@ extension type D_CT_DuotoneEffect(_i1.XmlElement node)
         )
         .map(D_CT_PresetColor.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GlowEffect(_i1.XmlElement node) implements _i1.XmlElement {
   String? get rad {
-    return node.getAttribute(
-      'rad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('rad');
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -5923,52 +8787,88 @@ extension type D_CT_GlowEffect(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GrayscaleEffect(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_HSLEffect(_i1.XmlElement node) implements _i1.XmlElement {
   String? get hue {
-    return node.getAttribute(
-      'hue',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('hue');
   }
 
   String? get sat {
-    return node.getAttribute(
-      'sat',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sat');
   }
 
   String? get lum {
-    return node.getAttribute(
-      'lum',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('lum');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_InnerShadowEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get blurRad {
-    return node.getAttribute(
-      'blurRad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('blurRad');
   }
 
   String? get dist {
-    return node.getAttribute(
-      'dist',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dist');
   }
 
   String? get dir {
-    return node.getAttribute(
-      'dir',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dir');
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -6018,110 +8918,105 @@ extension type D_CT_InnerShadowEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LuminanceEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get bright {
-    return node.getAttribute(
-      'bright',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('bright');
   }
 
   String? get contrast {
-    return node.getAttribute(
-      'contrast',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('contrast');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_OuterShadowEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get blurRad {
-    return node.getAttribute(
-      'blurRad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('blurRad');
   }
 
   String? get dist {
-    return node.getAttribute(
-      'dist',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dist');
   }
 
   String? get dir {
-    return node.getAttribute(
-      'dir',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dir');
   }
 
   String? get sx {
-    return node.getAttribute(
-      'sx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sx');
   }
 
   String? get sy {
-    return node.getAttribute(
-      'sy',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sy');
   }
 
   String? get kx {
-    return node.getAttribute(
-      'kx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('kx');
   }
 
   String? get ky {
-    return node.getAttribute(
-      'ky',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('ky');
   }
 
   D_ST_RectAlignment? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_RectAlignment.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_RectAlignment.fromValue(node.getAttribute('algn')!)
         : null;
   }
 
   bool? get rotWithShape {
-    return node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rotWithShape') == '1' ||
+        node.getAttribute('rotWithShape') == 'true' ||
+        node.getAttribute('rotWithShape') == 'on';
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -6171,30 +9066,67 @@ extension type D_CT_OuterShadowEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_RectAlignment.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PresetShadowEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_PresetShadowVal get prst {
-    return D_ST_PresetShadowVal.fromValue(
-      node.getAttribute(
-        'prst',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_PresetShadowVal.fromValue(node.getAttribute('prst')!)!;
   }
 
   String? get dist {
-    return node.getAttribute(
-      'dist',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dist');
   }
 
   String? get dir {
-    return node.getAttribute(
-      'dir',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dir');
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -6244,203 +9176,210 @@ extension type D_CT_PresetShadowEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('prst') == null) {
+      errors.add("Missing required attribute 'prst' in ${node.name.qualified}");
+    }
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_PresetShadowVal.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ReflectionEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get blurRad {
-    return node.getAttribute(
-      'blurRad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('blurRad');
   }
 
   String? get stA {
-    return node.getAttribute(
-      'stA',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('stA');
   }
 
   String? get stPos {
-    return node.getAttribute(
-      'stPos',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('stPos');
   }
 
   String? get endA {
-    return node.getAttribute(
-      'endA',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('endA');
   }
 
   String? get endPos {
-    return node.getAttribute(
-      'endPos',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('endPos');
   }
 
   String? get dist {
-    return node.getAttribute(
-      'dist',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dist');
   }
 
   String? get dir {
-    return node.getAttribute(
-      'dir',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('dir');
   }
 
   String? get fadeDir {
-    return node.getAttribute(
-      'fadeDir',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('fadeDir');
   }
 
   String? get sx {
-    return node.getAttribute(
-      'sx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sx');
   }
 
   String? get sy {
-    return node.getAttribute(
-      'sy',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sy');
   }
 
   String? get kx {
-    return node.getAttribute(
-      'kx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('kx');
   }
 
   String? get ky {
-    return node.getAttribute(
-      'ky',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('ky');
   }
 
   D_ST_RectAlignment? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_RectAlignment.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_RectAlignment.fromValue(node.getAttribute('algn')!)
         : null;
   }
 
   bool? get rotWithShape {
-    return node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rotWithShape') == '1' ||
+        node.getAttribute('rotWithShape') == 'true' ||
+        node.getAttribute('rotWithShape') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_RectAlignment.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_RelativeOffsetEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get tx {
-    return node.getAttribute(
-      'tx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('tx');
   }
 
   String? get ty {
-    return node.getAttribute(
-      'ty',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('ty');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_SoftEdgesEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get rad {
-    return node.getAttribute(
-      'rad',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('rad')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('rad') == null) {
+      errors.add("Missing required attribute 'rad' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TintEffect(_i1.XmlElement node) implements _i1.XmlElement {
   String? get hue {
-    return node.getAttribute(
-      'hue',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('hue');
   }
 
   String? get amt {
-    return node.getAttribute(
-      'amt',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('amt');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_TransformEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get sx {
-    return node.getAttribute(
-      'sx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sx');
   }
 
   String? get sy {
-    return node.getAttribute(
-      'sy',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sy');
   }
 
   String? get kx {
-    return node.getAttribute(
-      'kx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('kx');
   }
 
   String? get ky {
-    return node.getAttribute(
-      'ky',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('ky');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_NoFillProperties(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_SolidColorFillProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ScRgbColor? get scrgbClr {
@@ -6490,53 +9429,72 @@ extension type D_CT_SolidColorFillProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LinearShadeProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get ang {
-    return node.getAttribute(
-      'ang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('ang');
   }
 
   bool? get scaled {
-    return node.getAttribute(
-              'scaled',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'scaled',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'scaled',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('scaled') == '1' ||
+        node.getAttribute('scaled') == 'true' ||
+        node.getAttribute('scaled') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_PathShadeProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_PathShadeType? get path {
-    return node.getAttribute(
-              'path',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PathShadeType.fromValue(
-            node.getAttribute(
-              'path',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('path') != null
+        ? D_ST_PathShadeType.fromValue(node.getAttribute('path')!)
         : null;
   }
 
@@ -6547,14 +9505,29 @@ extension type D_CT_PathShadeProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_RelativeRect(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_path = node.getAttribute('path');
+    if (v_path != null && D_ST_PathShadeType.fromValue(v_path) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'path' in ${node.name.qualified}: $v_path",
+      );
+    }
+    for (final childNode in node.findElements(
+      'fillToRect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RelativeRect(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GradientStop(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get pos {
-    return node.getAttribute(
-      'pos',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('pos')!;
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -6604,7 +9577,52 @@ extension type D_CT_GradientStop(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('pos') == null) {
+      errors.add("Missing required attribute 'pos' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GradientStopList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_GradientStop> get gs {
@@ -6615,45 +9633,31 @@ extension type D_CT_GradientStopList(_i1.XmlElement node)
         )
         .map(D_CT_GradientStop.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'gs',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientStop(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GradientFillProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_TileFlipMode? get flip {
-    return node.getAttribute(
-              'flip',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TileFlipMode.fromValue(
-            node.getAttribute(
-              'flip',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('flip') != null
+        ? D_ST_TileFlipMode.fromValue(node.getAttribute('flip')!)
         : null;
   }
 
   bool? get rotWithShape {
-    return node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rotWithShape') == '1' ||
+        node.getAttribute('rotWithShape') == 'true' ||
+        node.getAttribute('rotWithShape') == 'on';
   }
 
   D_CT_GradientStopList? get gsLst {
@@ -6687,57 +9691,83 @@ extension type D_CT_GradientFillProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_RelativeRect(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_flip = node.getAttribute('flip');
+    if (v_flip != null && D_ST_TileFlipMode.fromValue(v_flip) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'flip' in ${node.name.qualified}: $v_flip",
+      );
+    }
+    for (final childNode in node.findElements(
+      'gsLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientStopList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lin',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LinearShadeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'path',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PathShadeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tileRect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RelativeRect(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TileInfoProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get sx {
-    return node.getAttribute(
-      'sx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sx');
   }
 
   String? get sy {
-    return node.getAttribute(
-      'sy',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sy');
   }
 
   D_ST_TileFlipMode? get flip {
-    return node.getAttribute(
-              'flip',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TileFlipMode.fromValue(
-            node.getAttribute(
-              'flip',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('flip') != null
+        ? D_ST_TileFlipMode.fromValue(node.getAttribute('flip')!)
         : null;
   }
 
   D_ST_RectAlignment? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_RectAlignment.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_RectAlignment.fromValue(node.getAttribute('algn')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_flip = node.getAttribute('flip');
+    if (v_flip != null && D_ST_TileFlipMode.fromValue(v_flip) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'flip' in ${node.name.qualified}: $v_flip",
+      );
+    }
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_RectAlignment.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StretchInfoProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_RelativeRect? get fillRect {
@@ -6747,22 +9777,23 @@ extension type D_CT_StretchInfoProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_RelativeRect(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'fillRect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RelativeRect(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Blip(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BlipCompression? get cstate {
-    return node.getAttribute(
-              'cstate',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_BlipCompression.fromValue(
-            node.getAttribute(
-              'cstate',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('cstate') != null
+        ? D_ST_BlipCompression.fromValue(node.getAttribute('cstate')!)
         : null;
   }
 
@@ -6926,45 +9957,139 @@ extension type D_CT_Blip(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_cstate = node.getAttribute('cstate');
+    if (v_cstate != null && D_ST_BlipCompression.fromValue(v_cstate) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'cstate' in ${node.name.qualified}: $v_cstate",
+      );
+    }
+    for (final childNode in node.findElements(
+      'alphaBiLevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaBiLevelEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaCeiling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaCeilingEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaFloor',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaFloorEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaInv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaInverseEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaModulateEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaModFix',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaModulateFixedEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaRepl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaReplaceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'biLevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BiLevelEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blur',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlurEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrChange',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorChangeEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrRepl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorReplaceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'duotone',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DuotoneEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillOverlay',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillOverlayEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grayscl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hsl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HSLEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LuminanceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TintEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BlipFillProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   int? get dpi {
-    return node.getAttribute(
-              'dpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'dpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('dpi') != null
+        ? int.tryParse(node.getAttribute('dpi')!)
         : null;
   }
 
   bool? get rotWithShape {
-    return node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rotWithShape',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rotWithShape') == '1' ||
+        node.getAttribute('rotWithShape') == 'true' ||
+        node.getAttribute('rotWithShape') == 'on';
   }
 
   D_CT_Blip? get blip {
@@ -6998,23 +10123,42 @@ extension type D_CT_BlipFillProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_StretchInfoProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'blip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Blip(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srcRect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RelativeRect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tile',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TileInfoProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'stretch',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StretchInfoProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PatternFillProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_PresetPatternVal? get prst {
-    return node.getAttribute(
-              'prst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PresetPatternVal.fromValue(
-            node.getAttribute(
-              'prst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('prst') != null
+        ? D_ST_PresetPatternVal.fromValue(node.getAttribute('prst')!)
         : null;
   }
 
@@ -7033,9 +10177,39 @@ extension type D_CT_PatternFillProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_Color(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_PresetPatternVal.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    for (final childNode in node.findElements(
+      'fgClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bgClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupFillProperties(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_FillProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NoFillProperties? get noFill {
@@ -7085,7 +10259,49 @@ extension type D_CT_FillProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_GroupFillProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FillEffect(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_NoFillProperties? get noFill {
     final e = node.getElement(
@@ -7134,16 +10350,53 @@ extension type D_CT_FillEffect(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_GroupFillProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FillOverlayEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_BlendMode get blend {
-    return D_ST_BlendMode.fromValue(
-      node.getAttribute(
-        'blend',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_BlendMode.fromValue(node.getAttribute('blend')!)!;
   }
 
   D_CT_NoFillProperties? get noFill {
@@ -7193,40 +10446,85 @@ extension type D_CT_FillOverlayEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_GroupFillProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('blend') == null) {
+      errors.add(
+        "Missing required attribute 'blend' in ${node.name.qualified}",
+      );
+    }
+    final v_blend = node.getAttribute('blend');
+    if (v_blend != null && D_ST_BlendMode.fromValue(v_blend) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'blend' in ${node.name.qualified}: $v_blend",
+      );
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EffectReference(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get ref {
-    return node.getAttribute(
-      'ref',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('ref')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('ref') == null) {
+      errors.add("Missing required attribute 'ref' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_EffectContainer(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_EffectContainerType? get type {
-    return node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_EffectContainerType.fromValue(
-            node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('type') != null
+        ? D_ST_EffectContainerType.fromValue(node.getAttribute('type')!)
         : null;
   }
 
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('name');
   }
 
   Iterable<D_CT_EffectContainer> get cont {
@@ -7498,7 +10796,199 @@ extension type D_CT_EffectContainer(_i1.XmlElement node)
         )
         .map(D_CT_TransformEffect.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_EffectContainerType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    for (final childNode in node.findElements(
+      'cont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaBiLevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaBiLevelEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaCeiling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaCeilingEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaFloor',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaFloorEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaInv',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaInverseEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaMod',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaModulateEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaModFix',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaModulateFixedEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaOutset',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaOutsetEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'alphaRepl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AlphaReplaceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'biLevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BiLevelEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blend',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlendEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blur',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlurEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrChange',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorChangeEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrRepl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorReplaceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'duotone',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DuotoneEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillOverlay',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillOverlayEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'glow',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GlowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grayscl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GrayscaleEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hsl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HSLEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'innerShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InnerShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LuminanceEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outerShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OuterShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'reflection',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ReflectionEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'relOff',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RelativeOffsetEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'softEdge',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SoftEdgesEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tint',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TintEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TransformEffect(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AlphaModulateEffect(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_EffectContainer? get cont {
@@ -7508,15 +10998,22 @@ extension type D_CT_AlphaModulateEffect(_i1.XmlElement node)
     );
     return e != null ? D_CT_EffectContainer(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BlendEffect(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BlendMode get blend {
-    return D_ST_BlendMode.fromValue(
-      node.getAttribute(
-        'blend',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_BlendMode.fromValue(node.getAttribute('blend')!)!;
   }
 
   D_CT_EffectContainer? get cont {
@@ -7526,7 +11023,30 @@ extension type D_CT_BlendEffect(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_EffectContainer(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('blend') == null) {
+      errors.add(
+        "Missing required attribute 'blend' in ${node.name.qualified}",
+      );
+    }
+    final v_blend = node.getAttribute('blend');
+    if (v_blend != null && D_ST_BlendMode.fromValue(v_blend) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'blend' in ${node.name.qualified}: $v_blend",
+      );
+    }
+    for (final childNode in node.findElements(
+      'cont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EffectList(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_BlurEffect? get blur {
     final e = node.getElement(
@@ -7591,7 +11111,61 @@ extension type D_CT_EffectList(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_SoftEdgesEffect(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'blur',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlurEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillOverlay',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillOverlayEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'glow',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GlowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'innerShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_InnerShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'outerShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OuterShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstShdw',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetShadowEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'reflection',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ReflectionEffect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'softEdge',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SoftEdgesEffect(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EffectProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_EffectList? get effectLst {
@@ -7609,22 +11183,46 @@ extension type D_CT_EffectProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_EffectContainer(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GeomGuide(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   String get fmla {
-    return node.getAttribute(
-      'fmla',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('fmla')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('fmla') == null) {
+      errors.add("Missing required attribute 'fmla' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_GeomGuideList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_GeomGuide> get gd {
@@ -7635,23 +11233,41 @@ extension type D_CT_GeomGuideList(_i1.XmlElement node)
         )
         .map(D_CT_GeomGuide.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'gd',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomGuide(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_AdjPoint2D(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type D_CT_GeomRect(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_AdjPoint2D(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type D_CT_GeomRect(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_XYAdjustHandle(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get gdRefX {
-    return node.getAttribute(
-      'gdRefX',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('gdRefX');
   }
 
   String? get gdRefY {
-    return node.getAttribute(
-      'gdRefY',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('gdRefY');
   }
 
   D_CT_AdjPoint2D? get pos {
@@ -7661,21 +11277,27 @@ extension type D_CT_XYAdjustHandle(_i1.XmlElement node)
     );
     return e != null ? D_CT_AdjPoint2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PolarAdjustHandle(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get gdRefR {
-    return node.getAttribute(
-      'gdRefR',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('gdRefR');
   }
 
   String? get gdRefAng {
-    return node.getAttribute(
-      'gdRefAng',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('gdRefAng');
   }
 
   D_CT_AdjPoint2D? get pos {
@@ -7685,7 +11307,19 @@ extension type D_CT_PolarAdjustHandle(_i1.XmlElement node)
     );
     return e != null ? D_CT_AdjPoint2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ConnectionSite(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_AdjPoint2D? get pos {
@@ -7695,7 +11329,19 @@ extension type D_CT_ConnectionSite(_i1.XmlElement node)
     );
     return e != null ? D_CT_AdjPoint2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AdjustHandleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_XYAdjustHandle> get ahXY {
@@ -7715,7 +11361,25 @@ extension type D_CT_AdjustHandleList(_i1.XmlElement node)
         )
         .map(D_CT_PolarAdjustHandle.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ahXY',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_XYAdjustHandle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ahPolar',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PolarAdjustHandle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ConnectionSiteList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_ConnectionSite> get cxn {
@@ -7726,24 +11390,40 @@ extension type D_CT_ConnectionSiteList(_i1.XmlElement node)
         )
         .map(D_CT_ConnectionSite.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cxn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ConnectionSite(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Connection(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
-    return node.getAttribute(
-      'id',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('id')!;
   }
 
   int get idx {
-    return int.parse(
-      node.getAttribute(
-        'idx',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    );
+    return int.parse(node.getAttribute('idx')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('id') == null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Path2DMoveTo(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_AdjPoint2D? get pt {
@@ -7753,7 +11433,19 @@ extension type D_CT_Path2DMoveTo(_i1.XmlElement node)
     );
     return e != null ? D_CT_AdjPoint2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Path2DLineTo(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_AdjPoint2D? get pt {
@@ -7763,9 +11455,26 @@ extension type D_CT_Path2DLineTo(_i1.XmlElement node)
     );
     return e != null ? D_CT_AdjPoint2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_Path2DArcTo(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+
+extension type D_CT_Path2DArcTo(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_Path2DQuadBezierTo(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_AdjPoint2D> get pt {
@@ -7776,7 +11485,19 @@ extension type D_CT_Path2DQuadBezierTo(_i1.XmlElement node)
         )
         .map(D_CT_AdjPoint2D.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Path2DCubicBezierTo(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_AdjPoint2D> get pt {
@@ -7787,81 +11508,51 @@ extension type D_CT_Path2DCubicBezierTo(_i1.XmlElement node)
         )
         .map(D_CT_AdjPoint2D.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjPoint2D(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_Path2DClose(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+
+extension type D_CT_Path2DClose(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_Path2D(_i1.XmlElement node) implements _i1.XmlElement {
   String? get w {
-    return node.getAttribute(
-      'w',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('w');
   }
 
   String? get h {
-    return node.getAttribute(
-      'h',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('h');
   }
 
   D_ST_PathFillMode? get fill {
-    return node.getAttribute(
-              'fill',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PathFillMode.fromValue(
-            node.getAttribute(
-              'fill',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('fill') != null
+        ? D_ST_PathFillMode.fromValue(node.getAttribute('fill')!)
         : null;
   }
 
   bool? get stroke {
-    return node.getAttribute(
-              'stroke',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'stroke',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'stroke',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('stroke') == '1' ||
+        node.getAttribute('stroke') == 'true' ||
+        node.getAttribute('stroke') == 'on';
   }
 
   bool? get extrusionOk {
-    return node.getAttribute(
-              'extrusionOk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'extrusionOk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'extrusionOk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('extrusionOk') == '1' ||
+        node.getAttribute('extrusionOk') == 'true' ||
+        node.getAttribute('extrusionOk') == 'on';
   }
 
   Iterable<D_CT_Path2DClose> get close {
@@ -7917,7 +11608,55 @@ extension type D_CT_Path2D(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Path2DCubicBezierTo.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_fill = node.getAttribute('fill');
+    if (v_fill != null && D_ST_PathFillMode.fromValue(v_fill) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'fill' in ${node.name.qualified}: $v_fill",
+      );
+    }
+    for (final childNode in node.findElements(
+      'close',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DClose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DMoveTo(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DLineTo(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'arcTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DArcTo(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'quadBezTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DQuadBezierTo(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cubicBezTo',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DCubicBezierTo(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Path2DList(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Path2D> get path {
     return node
@@ -7927,16 +11666,23 @@ extension type D_CT_Path2DList(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Path2D.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'path',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PresetGeometry2D(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_ShapeType get prst {
-    return D_ST_ShapeType.fromValue(
-      node.getAttribute(
-        'prst',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ShapeType.fromValue(node.getAttribute('prst')!)!;
   }
 
   D_CT_GeomGuideList? get avLst {
@@ -7946,16 +11692,32 @@ extension type D_CT_PresetGeometry2D(_i1.XmlElement node)
     );
     return e != null ? D_CT_GeomGuideList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('prst') == null) {
+      errors.add("Missing required attribute 'prst' in ${node.name.qualified}");
+    }
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_ShapeType.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    for (final childNode in node.findElements(
+      'avLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomGuideList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PresetTextShape(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_TextShapeType get prst {
-    return D_ST_TextShapeType.fromValue(
-      node.getAttribute(
-        'prst',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_TextShapeType.fromValue(node.getAttribute('prst')!)!;
   }
 
   D_CT_GeomGuideList? get avLst {
@@ -7965,7 +11727,28 @@ extension type D_CT_PresetTextShape(_i1.XmlElement node)
     );
     return e != null ? D_CT_GeomGuideList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('prst') == null) {
+      errors.add("Missing required attribute 'prst' in ${node.name.qualified}");
+    }
+    final v_prst = node.getAttribute('prst');
+    if (v_prst != null && D_ST_TextShapeType.fromValue(v_prst) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prst' in ${node.name.qualified}: $v_prst",
+      );
+    }
+    for (final childNode in node.findElements(
+      'avLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomGuideList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_CustomGeometry2D(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_GeomGuideList? get avLst {
@@ -8015,107 +11798,162 @@ extension type D_CT_CustomGeometry2D(_i1.XmlElement node)
     );
     return e != null ? D_CT_Path2DList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'avLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomGuideList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gdLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomGuideList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ahLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_AdjustHandleList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ConnectionSiteList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GeomRect(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pathLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Path2DList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineEndProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_LineEndType? get type {
-    return node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_LineEndType.fromValue(
-            node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('type') != null
+        ? D_ST_LineEndType.fromValue(node.getAttribute('type')!)
         : null;
   }
 
   D_ST_LineEndWidth? get w {
-    return node.getAttribute(
-              'w',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_LineEndWidth.fromValue(
-            node.getAttribute(
-              'w',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('w') != null
+        ? D_ST_LineEndWidth.fromValue(node.getAttribute('w')!)
         : null;
   }
 
   D_ST_LineEndLength? get len {
-    return node.getAttribute(
-              'len',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_LineEndLength.fromValue(
-            node.getAttribute(
-              'len',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('len') != null
+        ? D_ST_LineEndLength.fromValue(node.getAttribute('len')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_LineEndType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    final v_w = node.getAttribute('w');
+    if (v_w != null && D_ST_LineEndWidth.fromValue(v_w) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'w' in ${node.name.qualified}: $v_w",
+      );
+    }
+    final v_len = node.getAttribute('len');
+    if (v_len != null && D_ST_LineEndLength.fromValue(v_len) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'len' in ${node.name.qualified}: $v_len",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineJoinBevel(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_LineJoinRound(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_LineJoinMiterProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get lim {
-    return node.getAttribute(
-      'lim',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('lim');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_PresetLineDashProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_PresetLineDashVal? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PresetLineDashVal.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_PresetLineDashVal.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_PresetLineDashVal.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DashStop(_i1.XmlElement node) implements _i1.XmlElement {
   String get d {
-    return node.getAttribute(
-      'd',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('d')!;
   }
 
   String get sp {
-    return node.getAttribute(
-      'sp',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('sp')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('d') == null) {
+      errors.add("Missing required attribute 'd' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('sp') == null) {
+      errors.add("Missing required attribute 'sp' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_DashStopList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_DashStop> get ds {
@@ -8126,64 +11964,40 @@ extension type D_CT_DashStopList(_i1.XmlElement node)
         )
         .map(D_CT_DashStop.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ds',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DashStop(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get w {
-    return node.getAttribute(
-      'w',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('w');
   }
 
   D_ST_LineCap? get cap {
-    return node.getAttribute(
-              'cap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_LineCap.fromValue(
-            node.getAttribute(
-              'cap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('cap') != null
+        ? D_ST_LineCap.fromValue(node.getAttribute('cap')!)
         : null;
   }
 
   D_ST_CompoundLine? get cmpd {
-    return node.getAttribute(
-              'cmpd',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_CompoundLine.fromValue(
-            node.getAttribute(
-              'cmpd',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('cmpd') != null
+        ? D_ST_CompoundLine.fromValue(node.getAttribute('cmpd')!)
         : null;
   }
 
   D_ST_PenAlignment? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PenAlignment.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_PenAlignment.fromValue(node.getAttribute('algn')!)
         : null;
   }
 
@@ -8282,23 +12096,108 @@ extension type D_CT_LineProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_cap = node.getAttribute('cap');
+    if (v_cap != null && D_ST_LineCap.fromValue(v_cap) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'cap' in ${node.name.qualified}: $v_cap",
+      );
+    }
+    final v_cmpd = node.getAttribute('cmpd');
+    if (v_cmpd != null && D_ST_CompoundLine.fromValue(v_cmpd) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'cmpd' in ${node.name.qualified}: $v_cmpd",
+      );
+    }
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_PenAlignment.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstDash',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetLineDashProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'custDash',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DashStopList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'round',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineJoinRound(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineJoinBevel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'miter',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineJoinMiterProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'headEnd',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineEndProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tailEnd',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineEndProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ShapeProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_BlackWhiteMode? get bwMode {
-    return node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_BlackWhiteMode.fromValue(
-            node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('bwMode') != null
+        ? D_ST_BlackWhiteMode.fromValue(node.getAttribute('bwMode')!)
         : null;
   }
 
@@ -8421,23 +12320,114 @@ extension type D_CT_ShapeProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_bwMode = node.getAttribute('bwMode');
+    if (v_bwMode != null && D_ST_BlackWhiteMode.fromValue(v_bwMode) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bwMode' in ${node.name.qualified}: $v_bwMode",
+      );
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'custGeom',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_CustomGeometry2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstGeom',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetGeometry2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ln',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Shape3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupShapeProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_BlackWhiteMode? get bwMode {
-    return node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_BlackWhiteMode.fromValue(
-            node.getAttribute(
-              'bwMode',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('bwMode') != null
+        ? D_ST_BlackWhiteMode.fromValue(node.getAttribute('bwMode')!)
         : null;
   }
 
@@ -8528,14 +12518,89 @@ extension type D_CT_GroupShapeProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_bwMode = node.getAttribute('bwMode');
+    if (v_bwMode != null && D_ST_BlackWhiteMode.fromValue(v_bwMode) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bwMode' in ${node.name.qualified}: $v_bwMode",
+      );
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupTransform2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleMatrixReference(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get idx {
-    return node.getAttribute(
-      'idx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('idx')!;
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -8585,16 +12650,56 @@ extension type D_CT_StyleMatrixReference(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FontReference(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_FontCollectionIndex get idx {
-    return D_ST_FontCollectionIndex.fromValue(
-      node.getAttribute(
-        'idx',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_FontCollectionIndex.fromValue(node.getAttribute('idx')!)!;
   }
 
   D_CT_ScRgbColor? get scrgbClr {
@@ -8644,7 +12749,58 @@ extension type D_CT_FontReference(_i1.XmlElement node)
     );
     return e != null ? D_CT_PresetColor(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    final v_idx = node.getAttribute('idx');
+    if (v_idx != null && D_ST_FontCollectionIndex.fromValue(v_idx) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'idx' in ${node.name.qualified}: $v_idx",
+      );
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ShapeStyle(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_StyleMatrixReference? get lnRef {
     final e = node.getElement(
@@ -8677,7 +12833,37 @@ extension type D_CT_ShapeStyle(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_FontReference(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'lnRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fontRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontReference(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DefaultShapeDefinition(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ShapeProperties? get spPr {
@@ -8719,7 +12905,43 @@ extension type D_CT_DefaultShapeDefinition(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bodyPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBodyProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lstStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextListStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ObjectStyleDefaults(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_DefaultShapeDefinition? get spDef {
@@ -8753,117 +12975,93 @@ extension type D_CT_ObjectStyleDefaults(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spDef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DefaultShapeDefinition(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnDef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DefaultShapeDefinition(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txDef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_DefaultShapeDefinition(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_EmptyElement(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_ColorMapping(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_ColorSchemeIndex get bg1 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'bg1',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('bg1')!)!;
   }
 
   D_ST_ColorSchemeIndex get tx1 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'tx1',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('tx1')!)!;
   }
 
   D_ST_ColorSchemeIndex get bg2 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'bg2',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('bg2')!)!;
   }
 
   D_ST_ColorSchemeIndex get tx2 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'tx2',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('tx2')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent1 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent1',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent1')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent2 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent2',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent2')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent3 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent3',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent3')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent4 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent4',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent4')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent5 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent5',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent5')!)!;
   }
 
   D_ST_ColorSchemeIndex get accent6 {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'accent6',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('accent6')!)!;
   }
 
   D_ST_ColorSchemeIndex get hlink {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'hlink',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('hlink')!)!;
   }
 
   D_ST_ColorSchemeIndex get folHlink {
-    return D_ST_ColorSchemeIndex.fromValue(
-      node.getAttribute(
-        'folHlink',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_ColorSchemeIndex.fromValue(node.getAttribute('folHlink')!)!;
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -8873,7 +13071,150 @@ extension type D_CT_ColorMapping(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('bg1') == null) {
+      errors.add("Missing required attribute 'bg1' in ${node.name.qualified}");
+    }
+    final v_bg1 = node.getAttribute('bg1');
+    if (v_bg1 != null && D_ST_ColorSchemeIndex.fromValue(v_bg1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bg1' in ${node.name.qualified}: $v_bg1",
+      );
+    }
+    if (node.getAttribute('tx1') == null) {
+      errors.add("Missing required attribute 'tx1' in ${node.name.qualified}");
+    }
+    final v_tx1 = node.getAttribute('tx1');
+    if (v_tx1 != null && D_ST_ColorSchemeIndex.fromValue(v_tx1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'tx1' in ${node.name.qualified}: $v_tx1",
+      );
+    }
+    if (node.getAttribute('bg2') == null) {
+      errors.add("Missing required attribute 'bg2' in ${node.name.qualified}");
+    }
+    final v_bg2 = node.getAttribute('bg2');
+    if (v_bg2 != null && D_ST_ColorSchemeIndex.fromValue(v_bg2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'bg2' in ${node.name.qualified}: $v_bg2",
+      );
+    }
+    if (node.getAttribute('tx2') == null) {
+      errors.add("Missing required attribute 'tx2' in ${node.name.qualified}");
+    }
+    final v_tx2 = node.getAttribute('tx2');
+    if (v_tx2 != null && D_ST_ColorSchemeIndex.fromValue(v_tx2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'tx2' in ${node.name.qualified}: $v_tx2",
+      );
+    }
+    if (node.getAttribute('accent1') == null) {
+      errors.add(
+        "Missing required attribute 'accent1' in ${node.name.qualified}",
+      );
+    }
+    final v_accent1 = node.getAttribute('accent1');
+    if (v_accent1 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent1) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent1' in ${node.name.qualified}: $v_accent1",
+      );
+    }
+    if (node.getAttribute('accent2') == null) {
+      errors.add(
+        "Missing required attribute 'accent2' in ${node.name.qualified}",
+      );
+    }
+    final v_accent2 = node.getAttribute('accent2');
+    if (v_accent2 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent2) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent2' in ${node.name.qualified}: $v_accent2",
+      );
+    }
+    if (node.getAttribute('accent3') == null) {
+      errors.add(
+        "Missing required attribute 'accent3' in ${node.name.qualified}",
+      );
+    }
+    final v_accent3 = node.getAttribute('accent3');
+    if (v_accent3 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent3) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent3' in ${node.name.qualified}: $v_accent3",
+      );
+    }
+    if (node.getAttribute('accent4') == null) {
+      errors.add(
+        "Missing required attribute 'accent4' in ${node.name.qualified}",
+      );
+    }
+    final v_accent4 = node.getAttribute('accent4');
+    if (v_accent4 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent4) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent4' in ${node.name.qualified}: $v_accent4",
+      );
+    }
+    if (node.getAttribute('accent5') == null) {
+      errors.add(
+        "Missing required attribute 'accent5' in ${node.name.qualified}",
+      );
+    }
+    final v_accent5 = node.getAttribute('accent5');
+    if (v_accent5 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent5) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent5' in ${node.name.qualified}: $v_accent5",
+      );
+    }
+    if (node.getAttribute('accent6') == null) {
+      errors.add(
+        "Missing required attribute 'accent6' in ${node.name.qualified}",
+      );
+    }
+    final v_accent6 = node.getAttribute('accent6');
+    if (v_accent6 != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_accent6) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'accent6' in ${node.name.qualified}: $v_accent6",
+      );
+    }
+    if (node.getAttribute('hlink') == null) {
+      errors.add(
+        "Missing required attribute 'hlink' in ${node.name.qualified}",
+      );
+    }
+    final v_hlink = node.getAttribute('hlink');
+    if (v_hlink != null && D_ST_ColorSchemeIndex.fromValue(v_hlink) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hlink' in ${node.name.qualified}: $v_hlink",
+      );
+    }
+    if (node.getAttribute('folHlink') == null) {
+      errors.add(
+        "Missing required attribute 'folHlink' in ${node.name.qualified}",
+      );
+    }
+    final v_folHlink = node.getAttribute('folHlink');
+    if (v_folHlink != null &&
+        D_ST_ColorSchemeIndex.fromValue(v_folHlink) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'folHlink' in ${node.name.qualified}: $v_folHlink",
+      );
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorMappingOverride(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_EmptyElement? get masterClrMapping {
@@ -8891,7 +13232,25 @@ extension type D_CT_ColorMappingOverride(_i1.XmlElement node)
     );
     return e != null ? D_CT_ColorMapping(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'masterClrMapping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EmptyElement(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'overrideClrMapping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorMapping(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorSchemeAndMapping(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ColorScheme? get clrScheme {
@@ -8909,7 +13268,25 @@ extension type D_CT_ColorSchemeAndMapping(_i1.XmlElement node)
     );
     return e != null ? D_CT_ColorMapping(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'clrScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorScheme(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrMap',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorMapping(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorSchemeList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_ColorSchemeAndMapping> get extraClrScheme {
@@ -8920,14 +13297,23 @@ extension type D_CT_ColorSchemeList(_i1.XmlElement node)
         )
         .map(D_CT_ColorSchemeAndMapping.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extraClrScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorSchemeAndMapping(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_OfficeStyleSheet(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('name');
   }
 
   D_CT_BaseStyles? get themeElements {
@@ -8969,7 +13355,43 @@ extension type D_CT_OfficeStyleSheet(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'themeElements',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BaseStyles(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'objectDefaults',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ObjectStyleDefaults(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extraClrSchemeLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorSchemeList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'custClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_CustomColorList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BaseStylesOverride(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ColorScheme? get clrScheme {
@@ -8995,7 +13417,31 @@ extension type D_CT_BaseStylesOverride(_i1.XmlElement node)
     );
     return e != null ? D_CT_StyleMatrix(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'clrScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorScheme(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fontScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontScheme(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fmtScheme',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrix(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ClipboardStyleSheet(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_BaseStyles? get themeElements {
@@ -9013,77 +13459,49 @@ extension type D_CT_ClipboardStyleSheet(_i1.XmlElement node)
     );
     return e != null ? D_CT_ColorMapping(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'themeElements',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BaseStyles(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrMap',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ColorMapping(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableCellProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_TextVerticalType? get vert {
-    return node.getAttribute(
-              'vert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextVerticalType.fromValue(
-            node.getAttribute(
-              'vert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('vert') != null
+        ? D_ST_TextVerticalType.fromValue(node.getAttribute('vert')!)
         : null;
   }
 
   D_ST_TextAnchoringType? get anchor {
-    return node.getAttribute(
-              'anchor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextAnchoringType.fromValue(
-            node.getAttribute(
-              'anchor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('anchor') != null
+        ? D_ST_TextAnchoringType.fromValue(node.getAttribute('anchor')!)
         : null;
   }
 
   bool? get anchorCtr {
-    return node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('anchorCtr') == '1' ||
+        node.getAttribute('anchorCtr') == 'true' ||
+        node.getAttribute('anchorCtr') == 'on';
   }
 
   D_ST_TextHorzOverflowType? get horzOverflow {
-    return node.getAttribute(
-              'horzOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
+    return node.getAttribute('horzOverflow') != null
         ? D_ST_TextHorzOverflowType.fromValue(
-            node.getAttribute(
-              'horzOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
+            node.getAttribute('horzOverflow')!,
           )
         : null;
   }
@@ -9207,7 +13625,123 @@ extension type D_CT_TableCellProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_vert = node.getAttribute('vert');
+    if (v_vert != null && D_ST_TextVerticalType.fromValue(v_vert) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vert' in ${node.name.qualified}: $v_vert",
+      );
+    }
+    final v_anchor = node.getAttribute('anchor');
+    if (v_anchor != null &&
+        D_ST_TextAnchoringType.fromValue(v_anchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'anchor' in ${node.name.qualified}: $v_anchor",
+      );
+    }
+    final v_horzOverflow = node.getAttribute('horzOverflow');
+    if (v_horzOverflow != null &&
+        D_ST_TextHorzOverflowType.fromValue(v_horzOverflow) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'horzOverflow' in ${node.name.qualified}: $v_horzOverflow",
+      );
+    }
+    for (final childNode in node.findElements(
+      'lnL',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnR',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnT',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnB',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnTlToBr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnBlToTr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cell3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Cell3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'headers',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Headers(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Headers(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<String> get header {
     return node
@@ -9217,7 +13751,13 @@ extension type D_CT_Headers(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map((e) => e.innerText);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type D_CT_TableCol(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_OfficeArtExtensionList? get extLst {
     final e = node.getElement(
@@ -9226,7 +13766,19 @@ extension type D_CT_TableCol(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableGrid(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_TableCol> get gridCol {
     return node
@@ -9236,89 +13788,46 @@ extension type D_CT_TableGrid(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_TableCol.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'gridCol',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableCol(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableCell(_i1.XmlElement node) implements _i1.XmlElement {
   int? get rowSpan {
-    return node.getAttribute(
-              'rowSpan',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'rowSpan',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('rowSpan') != null
+        ? int.tryParse(node.getAttribute('rowSpan')!)
         : null;
   }
 
   int? get gridSpan {
-    return node.getAttribute(
-              'gridSpan',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'gridSpan',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('gridSpan') != null
+        ? int.tryParse(node.getAttribute('gridSpan')!)
         : null;
   }
 
   bool? get hMerge {
-    return node.getAttribute(
-              'hMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'hMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'hMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('hMerge') == '1' ||
+        node.getAttribute('hMerge') == 'true' ||
+        node.getAttribute('hMerge') == 'on';
   }
 
   bool? get vMerge {
-    return node.getAttribute(
-              'vMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'vMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'vMerge',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('vMerge') == '1' ||
+        node.getAttribute('vMerge') == 'true' ||
+        node.getAttribute('vMerge') == 'on';
   }
 
   String? get id {
-    return node.getAttribute(
-      'id',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('id');
   }
 
   D_CT_TextBody? get txBody {
@@ -9344,7 +13853,31 @@ extension type D_CT_TableCell(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'txBody',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableCellProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableRow(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_TableCell> get tc {
     return node
@@ -9362,154 +13895,67 @@ extension type D_CT_TableRow(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableCell(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get rtl {
-    return node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rtl') == '1' ||
+        node.getAttribute('rtl') == 'true' ||
+        node.getAttribute('rtl') == 'on';
   }
 
   bool? get firstRow {
-    return node.getAttribute(
-              'firstRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'firstRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'firstRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('firstRow') == '1' ||
+        node.getAttribute('firstRow') == 'true' ||
+        node.getAttribute('firstRow') == 'on';
   }
 
   bool? get firstCol {
-    return node.getAttribute(
-              'firstCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'firstCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'firstCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('firstCol') == '1' ||
+        node.getAttribute('firstCol') == 'true' ||
+        node.getAttribute('firstCol') == 'on';
   }
 
   bool? get lastRow {
-    return node.getAttribute(
-              'lastRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'lastRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'lastRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('lastRow') == '1' ||
+        node.getAttribute('lastRow') == 'true' ||
+        node.getAttribute('lastRow') == 'on';
   }
 
   bool? get lastCol {
-    return node.getAttribute(
-              'lastCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'lastCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'lastCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('lastCol') == '1' ||
+        node.getAttribute('lastCol') == 'true' ||
+        node.getAttribute('lastCol') == 'on';
   }
 
   bool? get bandRow {
-    return node.getAttribute(
-              'bandRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'bandRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'bandRow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('bandRow') == '1' ||
+        node.getAttribute('bandRow') == 'true' ||
+        node.getAttribute('bandRow') == 'on';
   }
 
   bool? get bandCol {
-    return node.getAttribute(
-              'bandCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'bandCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'bandCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('bandCol') == '1' ||
+        node.getAttribute('bandCol') == 'true' ||
+        node.getAttribute('bandCol') == 'on';
   }
 
   D_CT_NoFillProperties? get noFill {
@@ -9599,7 +14045,73 @@ extension type D_CT_TableProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tableStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Table(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_TableProperties? get tblPr {
     final e = node.getElement(
@@ -9625,22 +14137,35 @@ extension type D_CT_Table(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_TableRow.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tblPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tblGrid',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableGrid(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableRow(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Cell3D(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_PresetMaterialType? get prstMaterial {
-    return node.getAttribute(
-              'prstMaterial',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PresetMaterialType.fromValue(
-            node.getAttribute(
-              'prstMaterial',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('prstMaterial') != null
+        ? D_ST_PresetMaterialType.fromValue(node.getAttribute('prstMaterial')!)
         : null;
   }
 
@@ -9667,7 +14192,38 @@ extension type D_CT_Cell3D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_prstMaterial = node.getAttribute('prstMaterial');
+    if (v_prstMaterial != null &&
+        D_ST_PresetMaterialType.fromValue(v_prstMaterial) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'prstMaterial' in ${node.name.qualified}: $v_prstMaterial",
+      );
+    }
+    for (final childNode in node.findElements(
+      'bevel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Bevel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lightRig',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LightRig(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ThemeableLineStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_LineProperties? get ln {
@@ -9685,40 +14241,36 @@ extension type D_CT_ThemeableLineStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_StyleMatrixReference(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ln',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lnRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableStyleTextStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_OnOffStyleType? get b {
-    return node.getAttribute(
-              'b',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_OnOffStyleType.fromValue(
-            node.getAttribute(
-              'b',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('b') != null
+        ? D_ST_OnOffStyleType.fromValue(node.getAttribute('b')!)
         : null;
   }
 
   D_ST_OnOffStyleType? get i {
-    return node.getAttribute(
-              'i',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_OnOffStyleType.fromValue(
-            node.getAttribute(
-              'i',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('i') != null
+        ? D_ST_OnOffStyleType.fromValue(node.getAttribute('i')!)
         : null;
   }
 
@@ -9793,7 +14345,79 @@ extension type D_CT_TableStyleTextStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_b = node.getAttribute('b');
+    if (v_b != null && D_ST_OnOffStyleType.fromValue(v_b) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'b' in ${node.name.qualified}: $v_b",
+      );
+    }
+    final v_i = node.getAttribute('i');
+    if (v_i != null && D_ST_OnOffStyleType.fromValue(v_i) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'i' in ${node.name.qualified}: $v_i",
+      );
+    }
+    for (final childNode in node.findElements(
+      'font',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontCollection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fontRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FontReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableCellBorderStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ThemeableLineStyle? get left {
@@ -9867,7 +14491,67 @@ extension type D_CT_TableCellBorderStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'left',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'right',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'top',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bottom',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideH',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'insideV',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tl2br',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tr2bl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_ThemeableLineStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableBackgroundStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_FillProperties? get fill {
@@ -9901,7 +14585,37 @@ extension type D_CT_TableBackgroundStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_StyleMatrixReference(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'fill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effect',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableStyleCellStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TableCellBorderStyle? get tcBdr {
@@ -9935,7 +14649,37 @@ extension type D_CT_TableStyleCellStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_Cell3D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tcBdr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableCellBorderStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fillRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_StyleMatrixReference(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cell3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Cell3D(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TablePartStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TableStyleTextStyle? get tcTxStyle {
@@ -9953,20 +14697,32 @@ extension type D_CT_TablePartStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_TableStyleCellStyle(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tcTxStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableStyleTextStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tcStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableStyleCellStyle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableStyle(_i1.XmlElement node) implements _i1.XmlElement {
   String get styleId {
-    return node.getAttribute(
-      'styleId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('styleId')!;
   }
 
   String get styleName {
-    return node.getAttribute(
-      'styleName',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('styleName')!;
   }
 
   D_CT_TableBackgroundStyle? get tblBg {
@@ -10088,14 +14844,117 @@ extension type D_CT_TableStyle(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('styleId') == null) {
+      errors.add(
+        "Missing required attribute 'styleId' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('styleName') == null) {
+      errors.add(
+        "Missing required attribute 'styleName' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'tblBg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableBackgroundStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wholeTbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'band1H',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'band2H',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'band1V',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'band2V',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lastCol',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'firstCol',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lastRow',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'seCell',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'swCell',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'firstRow',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'neCell',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'nwCell',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TablePartStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TableStyleList(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get def {
-    return node.getAttribute(
-      'def',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('def')!;
   }
 
   Iterable<D_CT_TableStyle> get tblStyle {
@@ -10106,7 +14965,22 @@ extension type D_CT_TableStyleList(_i1.XmlElement node)
         )
         .map(D_CT_TableStyle.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('def') == null) {
+      errors.add("Missing required attribute 'def' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'tblStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TableStyle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextParagraph(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextParagraphProperties? get pPr {
@@ -10151,7 +15025,43 @@ extension type D_CT_TextParagraph(_i1.XmlElement node)
     );
     return e != null ? D_CT_TextCharacterProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_RegularTextRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'br',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextLineBreak(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fld',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endParaRPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharacterProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextListStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextParagraphProperties? get defPPr {
@@ -10241,266 +15151,191 @@ extension type D_CT_TextListStyle(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'defPPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl1pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl2pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl3pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl4pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl5pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl6pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl7pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl8pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl9pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextNormalAutofit(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextShapeAutofit(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextNoAutofit(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextBodyProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get rot {
-    return node.getAttribute(
-      'rot',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('rot');
   }
 
   bool? get spcFirstLastPara {
-    return node.getAttribute(
-              'spcFirstLastPara',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'spcFirstLastPara',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'spcFirstLastPara',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('spcFirstLastPara') == '1' ||
+        node.getAttribute('spcFirstLastPara') == 'true' ||
+        node.getAttribute('spcFirstLastPara') == 'on';
   }
 
   D_ST_TextVertOverflowType? get vertOverflow {
-    return node.getAttribute(
-              'vertOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
+    return node.getAttribute('vertOverflow') != null
         ? D_ST_TextVertOverflowType.fromValue(
-            node.getAttribute(
-              'vertOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
+            node.getAttribute('vertOverflow')!,
           )
         : null;
   }
 
   D_ST_TextHorzOverflowType? get horzOverflow {
-    return node.getAttribute(
-              'horzOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
+    return node.getAttribute('horzOverflow') != null
         ? D_ST_TextHorzOverflowType.fromValue(
-            node.getAttribute(
-              'horzOverflow',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
+            node.getAttribute('horzOverflow')!,
           )
         : null;
   }
 
   D_ST_TextVerticalType? get vert {
-    return node.getAttribute(
-              'vert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextVerticalType.fromValue(
-            node.getAttribute(
-              'vert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('vert') != null
+        ? D_ST_TextVerticalType.fromValue(node.getAttribute('vert')!)
         : null;
   }
 
   D_ST_TextWrappingType? get wrap {
-    return node.getAttribute(
-              'wrap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextWrappingType.fromValue(
-            node.getAttribute(
-              'wrap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('wrap') != null
+        ? D_ST_TextWrappingType.fromValue(node.getAttribute('wrap')!)
         : null;
   }
 
   String? get numCol {
-    return node.getAttribute(
-      'numCol',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('numCol');
   }
 
   String? get spcCol {
-    return node.getAttribute(
-      'spcCol',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('spcCol');
   }
 
   bool? get rtlCol {
-    return node.getAttribute(
-              'rtlCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rtlCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rtlCol',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rtlCol') == '1' ||
+        node.getAttribute('rtlCol') == 'true' ||
+        node.getAttribute('rtlCol') == 'on';
   }
 
   bool? get fromWordArt {
-    return node.getAttribute(
-              'fromWordArt',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fromWordArt',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fromWordArt',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('fromWordArt') == '1' ||
+        node.getAttribute('fromWordArt') == 'true' ||
+        node.getAttribute('fromWordArt') == 'on';
   }
 
   D_ST_TextAnchoringType? get anchor {
-    return node.getAttribute(
-              'anchor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextAnchoringType.fromValue(
-            node.getAttribute(
-              'anchor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('anchor') != null
+        ? D_ST_TextAnchoringType.fromValue(node.getAttribute('anchor')!)
         : null;
   }
 
   bool? get anchorCtr {
-    return node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'anchorCtr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('anchorCtr') == '1' ||
+        node.getAttribute('anchorCtr') == 'true' ||
+        node.getAttribute('anchorCtr') == 'on';
   }
 
   bool? get forceAA {
-    return node.getAttribute(
-              'forceAA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'forceAA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'forceAA',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('forceAA') == '1' ||
+        node.getAttribute('forceAA') == 'true' ||
+        node.getAttribute('forceAA') == 'on';
   }
 
   bool? get upright {
-    return node.getAttribute(
-              'upright',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'upright',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'upright',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('upright') == '1' ||
+        node.getAttribute('upright') == 'true' ||
+        node.getAttribute('upright') == 'on';
   }
 
   bool? get compatLnSpc {
-    return node.getAttribute(
-              'compatLnSpc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'compatLnSpc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'compatLnSpc',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('compatLnSpc') == '1' ||
+        node.getAttribute('compatLnSpc') == 'true' ||
+        node.getAttribute('compatLnSpc') == 'on';
   }
 
   D_CT_PresetTextShape? get prstTxWarp {
@@ -10566,7 +15401,94 @@ extension type D_CT_TextBodyProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_vertOverflow = node.getAttribute('vertOverflow');
+    if (v_vertOverflow != null &&
+        D_ST_TextVertOverflowType.fromValue(v_vertOverflow) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vertOverflow' in ${node.name.qualified}: $v_vertOverflow",
+      );
+    }
+    final v_horzOverflow = node.getAttribute('horzOverflow');
+    if (v_horzOverflow != null &&
+        D_ST_TextHorzOverflowType.fromValue(v_horzOverflow) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'horzOverflow' in ${node.name.qualified}: $v_horzOverflow",
+      );
+    }
+    final v_vert = node.getAttribute('vert');
+    if (v_vert != null && D_ST_TextVerticalType.fromValue(v_vert) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'vert' in ${node.name.qualified}: $v_vert",
+      );
+    }
+    final v_wrap = node.getAttribute('wrap');
+    if (v_wrap != null && D_ST_TextWrappingType.fromValue(v_wrap) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'wrap' in ${node.name.qualified}: $v_wrap",
+      );
+    }
+    final v_anchor = node.getAttribute('anchor');
+    if (v_anchor != null &&
+        D_ST_TextAnchoringType.fromValue(v_anchor) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'anchor' in ${node.name.qualified}: $v_anchor",
+      );
+    }
+    for (final childNode in node.findElements(
+      'prstTxWarp',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PresetTextShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noAutofit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextNoAutofit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'normAutofit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextNormalAutofit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spAutoFit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextShapeAutofit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Shape3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'flatTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_FlatText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextBody(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_TextBodyProperties? get bodyPr {
     final e = node.getElement(
@@ -10592,58 +15514,125 @@ extension type D_CT_TextBody(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_TextParagraph.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'bodyPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBodyProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lstStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextListStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'p',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraph(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextBulletColorFollowText(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextBulletSizeFollowText(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextBulletSizePercent(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TextBulletSizePoint(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TextBulletTypefaceFollowText(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextAutonumberBullet(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_TextAutonumberScheme get type {
-    return D_ST_TextAutonumberScheme.fromValue(
-      node.getAttribute(
-        'type',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      )!,
-    )!;
+    return D_ST_TextAutonumberScheme.fromValue(node.getAttribute('type')!)!;
   }
 
   String? get startAt {
-    return node.getAttribute(
-      'startAt',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('startAt');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_TextAutonumberScheme.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TextCharBullet(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get char {
-    return node.getAttribute(
-      'char',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('char')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('char') == null) {
+      errors.add("Missing required attribute 'char' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TextBlipBullet(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Blip? get blip {
@@ -10653,62 +15642,82 @@ extension type D_CT_TextBlipBullet(_i1.XmlElement node)
     );
     return e != null ? D_CT_Blip(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'blip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Blip(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextNoBullet(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextFont(_i1.XmlElement node) implements _i1.XmlElement {
   String get typeface {
-    return node.getAttribute(
-      'typeface',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('typeface')!;
   }
 
   String? get panose {
-    return node.getAttribute(
-      'panose',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('panose');
   }
 
   D_ST_PitchFamily? get pitchFamily {
-    return node.getAttribute(
-              'pitchFamily',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_PitchFamily.fromValue(
-            node.getAttribute(
-              'pitchFamily',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('pitchFamily') != null
+        ? D_ST_PitchFamily.fromValue(node.getAttribute('pitchFamily')!)
         : null;
   }
 
   int? get charset {
-    return node.getAttribute(
-              'charset',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'charset',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('charset') != null
+        ? int.tryParse(node.getAttribute('charset')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('typeface') == null) {
+      errors.add(
+        "Missing required attribute 'typeface' in ${node.name.qualified}",
+      );
+    }
+    final v_pitchFamily = node.getAttribute('pitchFamily');
+    if (v_pitchFamily != null &&
+        D_ST_PitchFamily.fromValue(v_pitchFamily) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'pitchFamily' in ${node.name.qualified}: $v_pitchFamily",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextUnderlineLineFollowText(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextUnderlineFillFollowText(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextUnderlineFillGroupWrapper(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NoFillProperties? get noFill {
@@ -10758,285 +15767,145 @@ extension type D_CT_TextUnderlineFillGroupWrapper(_i1.XmlElement node)
     );
     return e != null ? D_CT_GroupFillProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextCharacterProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get kumimoji {
-    return node.getAttribute(
-              'kumimoji',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'kumimoji',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'kumimoji',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('kumimoji') == '1' ||
+        node.getAttribute('kumimoji') == 'true' ||
+        node.getAttribute('kumimoji') == 'on';
   }
 
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('lang');
   }
 
   String? get altLang {
-    return node.getAttribute(
-      'altLang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('altLang');
   }
 
   String? get sz {
-    return node.getAttribute(
-      'sz',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('sz');
   }
 
   bool? get b {
-    return node.getAttribute(
-              'b',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'b',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'b',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('b') == '1' ||
+        node.getAttribute('b') == 'true' ||
+        node.getAttribute('b') == 'on';
   }
 
   bool? get i {
-    return node.getAttribute(
-              'i',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'i',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'i',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('i') == '1' ||
+        node.getAttribute('i') == 'true' ||
+        node.getAttribute('i') == 'on';
   }
 
   D_ST_TextUnderlineType? get u {
-    return node.getAttribute(
-              'u',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextUnderlineType.fromValue(
-            node.getAttribute(
-              'u',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('u') != null
+        ? D_ST_TextUnderlineType.fromValue(node.getAttribute('u')!)
         : null;
   }
 
   D_ST_TextStrikeType? get strike {
-    return node.getAttribute(
-              'strike',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextStrikeType.fromValue(
-            node.getAttribute(
-              'strike',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('strike') != null
+        ? D_ST_TextStrikeType.fromValue(node.getAttribute('strike')!)
         : null;
   }
 
   String? get kern {
-    return node.getAttribute(
-      'kern',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('kern');
   }
 
   D_ST_TextCapsType? get cap {
-    return node.getAttribute(
-              'cap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextCapsType.fromValue(
-            node.getAttribute(
-              'cap',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('cap') != null
+        ? D_ST_TextCapsType.fromValue(node.getAttribute('cap')!)
         : null;
   }
 
   bool? get normalizeH {
-    return node.getAttribute(
-              'normalizeH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'normalizeH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'normalizeH',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('normalizeH') == '1' ||
+        node.getAttribute('normalizeH') == 'true' ||
+        node.getAttribute('normalizeH') == 'on';
   }
 
   String? get baseline {
-    return node.getAttribute(
-      'baseline',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('baseline');
   }
 
   bool? get noProof {
-    return node.getAttribute(
-              'noProof',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'noProof',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'noProof',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('noProof') == '1' ||
+        node.getAttribute('noProof') == 'true' ||
+        node.getAttribute('noProof') == 'on';
   }
 
   bool? get dirty {
-    return node.getAttribute(
-              'dirty',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'dirty',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'dirty',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('dirty') == '1' ||
+        node.getAttribute('dirty') == 'true' ||
+        node.getAttribute('dirty') == 'on';
   }
 
   bool? get err {
-    return node.getAttribute(
-              'err',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'err',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'err',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('err') == '1' ||
+        node.getAttribute('err') == 'true' ||
+        node.getAttribute('err') == 'on';
   }
 
   bool? get smtClean {
-    return node.getAttribute(
-              'smtClean',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'smtClean',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'smtClean',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('smtClean') == '1' ||
+        node.getAttribute('smtClean') == 'true' ||
+        node.getAttribute('smtClean') == 'on';
   }
 
   int? get smtId {
-    return node.getAttribute(
-              'smtId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'smtId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('smtId') != null
+        ? int.tryParse(node.getAttribute('smtId')!)
         : null;
   }
 
   String? get bmk {
-    return node.getAttribute(
-      'bmk',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('bmk');
   }
 
   D_CT_LineProperties? get ln {
@@ -11214,58 +16083,218 @@ extension type D_CT_TextCharacterProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
-}
-extension type D_CT_Boolean(_i1.XmlElement node) implements _i1.XmlElement {
-  bool? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_u = node.getAttribute('u');
+    if (v_u != null && D_ST_TextUnderlineType.fromValue(v_u) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'u' in ${node.name.qualified}: $v_u",
+      );
+    }
+    final v_strike = node.getAttribute('strike');
+    if (v_strike != null && D_ST_TextStrikeType.fromValue(v_strike) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'strike' in ${node.name.qualified}: $v_strike",
+      );
+    }
+    final v_cap = node.getAttribute('cap');
+    if (v_cap != null && D_ST_TextCapsType.fromValue(v_cap) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'cap' in ${node.name.qualified}: $v_cap",
+      );
+    }
+    for (final childNode in node.findElements(
+      'ln',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_NoFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'solidFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_SolidColorFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gradFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GradientFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pattFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_PatternFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_GroupFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectDag',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_EffectContainer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'highlight',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uLnTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextUnderlineLineFollowText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uLn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_LineProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uFillTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextUnderlineFillFollowText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'uFill',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextUnderlineFillGroupWrapper(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'latin',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ea',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cs',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sym',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hlinkClick',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hlinkMouseOver',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rtl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_Boolean(_i1.XmlElement node) implements _i1.XmlElement {
+  bool? get val {
+    return node.getAttribute('val') == '1' ||
+        node.getAttribute('val') == 'true' ||
+        node.getAttribute('val') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextSpacingPercent(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_TextSpacingPoint(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TextTabStop(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_TextTabAlignType? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextTabAlignType.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_TextTabAlignType.fromValue(node.getAttribute('algn')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_TextTabAlignType.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextTabStopList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_TextTabStop> get tab {
@@ -11276,7 +16305,19 @@ extension type D_CT_TextTabStopList(_i1.XmlElement node)
         )
         .map(D_CT_TextTabStop.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tab',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextTabStop(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextLineBreak(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextCharacterProperties? get rPr {
@@ -11286,7 +16327,19 @@ extension type D_CT_TextLineBreak(_i1.XmlElement node)
     );
     return e != null ? D_CT_TextCharacterProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharacterProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextSpacing(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_TextSpacingPercent? get spcPct {
     final e = node.getElement(
@@ -11303,153 +16356,77 @@ extension type D_CT_TextSpacing(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_TextSpacingPoint(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spcPct',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextSpacingPercent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spcPts',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextSpacingPoint(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextParagraphProperties(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get marL {
-    return node.getAttribute(
-      'marL',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('marL');
   }
 
   String? get marR {
-    return node.getAttribute(
-      'marR',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('marR');
   }
 
   String? get lvl {
-    return node.getAttribute(
-      'lvl',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('lvl');
   }
 
   String? get indent {
-    return node.getAttribute(
-      'indent',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('indent');
   }
 
   D_ST_TextAlignType? get algn {
-    return node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextAlignType.fromValue(
-            node.getAttribute(
-              'algn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('algn') != null
+        ? D_ST_TextAlignType.fromValue(node.getAttribute('algn')!)
         : null;
   }
 
   bool? get rtl {
-    return node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'rtl',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('rtl') == '1' ||
+        node.getAttribute('rtl') == 'true' ||
+        node.getAttribute('rtl') == 'on';
   }
 
   bool? get eaLnBrk {
-    return node.getAttribute(
-              'eaLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'eaLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'eaLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('eaLnBrk') == '1' ||
+        node.getAttribute('eaLnBrk') == 'true' ||
+        node.getAttribute('eaLnBrk') == 'on';
   }
 
   D_ST_TextFontAlignType? get fontAlgn {
-    return node.getAttribute(
-              'fontAlgn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) !=
-            null
-        ? D_ST_TextFontAlignType.fromValue(
-            node.getAttribute(
-              'fontAlgn',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            )!,
-          )
+    return node.getAttribute('fontAlgn') != null
+        ? D_ST_TextFontAlignType.fromValue(node.getAttribute('fontAlgn')!)
         : null;
   }
 
   bool? get latinLnBrk {
-    return node.getAttribute(
-              'latinLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'latinLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'latinLnBrk',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('latinLnBrk') == '1' ||
+        node.getAttribute('latinLnBrk') == 'true' ||
+        node.getAttribute('latinLnBrk') == 'on';
   }
 
   bool? get hangingPunct {
-    return node.getAttribute(
-              'hangingPunct',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'hangingPunct',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'hangingPunct',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/main',
-            ) ==
-            'on';
+    return node.getAttribute('hangingPunct') == '1' ||
+        node.getAttribute('hangingPunct') == 'true' ||
+        node.getAttribute('hangingPunct') == 'on';
   }
 
   D_CT_TextSpacing? get lnSpc {
@@ -11587,20 +16564,135 @@ extension type D_CT_TextParagraphProperties(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_algn = node.getAttribute('algn');
+    if (v_algn != null && D_ST_TextAlignType.fromValue(v_algn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'algn' in ${node.name.qualified}: $v_algn",
+      );
+    }
+    final v_fontAlgn = node.getAttribute('fontAlgn');
+    if (v_fontAlgn != null &&
+        D_ST_TextFontAlignType.fromValue(v_fontAlgn) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'fontAlgn' in ${node.name.qualified}: $v_fontAlgn",
+      );
+    }
+    for (final childNode in node.findElements(
+      'lnSpc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextSpacing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spcBef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextSpacing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spcAft',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextSpacing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buClrTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBulletColorFollowText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_Color(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buSzTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBulletSizeFollowText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buSzPct',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBulletSizePercent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buSzPts',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBulletSizePoint(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buFontTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBulletTypefaceFollowText(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buFont',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextFont(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buNone',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextNoBullet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buAutoNum',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextAutonumberBullet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buChar',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharBullet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'buBlip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextBlipBullet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tabLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextTabStopList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'defRPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharacterProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextField(_i1.XmlElement node) implements _i1.XmlElement {
   String get id {
-    return node.getAttribute(
-      'id',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    )!;
+    return node.getAttribute('id')!;
   }
 
   String? get type {
-    return node.getAttribute(
-      'type',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-    );
+    return node.getAttribute('type');
   }
 
   D_CT_TextCharacterProperties? get rPr {
@@ -11626,7 +16718,28 @@ extension type D_CT_TextField(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('id') == null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharacterProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextParagraphProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_RegularTextRun(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_TextCharacterProperties? get rPr {
@@ -11643,6 +16756,17 @@ extension type D_CT_RegularTextRun(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
     );
     return e != null ? e.innerText : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    )) {
+      errors.addAll(D_CT_TextCharacterProperties(childNode).validate());
+    }
+    return errors;
   }
 }
 
@@ -13213,52 +18337,62 @@ enum D_ST_TextFontAlignType {
 
 extension type D_CT_CTName(_i1.XmlElement node) implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_CTDescription(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_CTCategory(_i1.XmlElement node) implements _i1.XmlElement {
   String get type {
-    return node.getAttribute(
-      'type',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('type')!;
   }
 
   int get pri {
-    return int.parse(
-      node.getAttribute(
-        'pri',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return int.parse(node.getAttribute('pri')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('pri') == null) {
+      errors.add("Missing required attribute 'pri' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_CTCategories(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_CTCategory> get cat {
@@ -13269,39 +18403,29 @@ extension type D_CT_CTCategories(_i1.XmlElement node)
         )
         .map(D_CT_CTCategory.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTCategory(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Colors(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_ClrAppMethod? get meth {
-    return node.getAttribute(
-              'meth',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_ClrAppMethod.fromValue(
-            node.getAttribute(
-              'meth',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('meth') != null
+        ? D_ST_ClrAppMethod.fromValue(node.getAttribute('meth')!)
         : null;
   }
 
   D_ST_HueDir? get hueDir {
-    return node.getAttribute(
-              'hueDir',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_HueDir.fromValue(
-            node.getAttribute(
-              'hueDir',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('hueDir') != null
+        ? D_ST_HueDir.fromValue(node.getAttribute('hueDir')!)
         : null;
   }
 
@@ -13358,14 +18482,65 @@ extension type D_CT_Colors(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_PresetColor.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_meth = node.getAttribute('meth');
+    if (v_meth != null && D_ST_ClrAppMethod.fromValue(v_meth) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'meth' in ${node.name.qualified}: $v_meth",
+      );
+    }
+    final v_hueDir = node.getAttribute('hueDir');
+    if (v_hueDir != null && D_ST_HueDir.fromValue(v_hueDir) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'hueDir' in ${node.name.qualified}: $v_hueDir",
+      );
+    }
+    for (final childNode in node.findElements(
+      'scrgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ScRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'srgbClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SRgbColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hslClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_HslColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sysClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SystemColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'schemeClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SchemeColor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'prstClr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PresetColor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_CTStyleLabel(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   D_CT_Colors? get fillClrLst {
@@ -13423,21 +18598,66 @@ extension type D_CT_CTStyleLabel(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'fillClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'linClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'effectClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txLinClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txFillClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txEffectClrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Colors(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorTransform(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('uniqueId');
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   Iterable<D_CT_CTName> get title {
@@ -13482,37 +18702,56 @@ extension type D_CT_ColorTransform(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTDescription(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTCategories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTStyleLabel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorTransformHeader(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('uniqueId')!;
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   int? get resId {
-    return node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('resId') != null
+        ? int.tryParse(node.getAttribute('resId')!)
         : null;
   }
 
@@ -13549,7 +18788,42 @@ extension type D_CT_ColorTransformHeader(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('uniqueId') == null) {
+      errors.add(
+        "Missing required attribute 'uniqueId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTDescription(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CTCategories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ColorTransformHeaderLst(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_ColorTransformHeader> get colorsDefHdr {
@@ -13560,22 +18834,23 @@ extension type D_CT_ColorTransformHeaderLst(_i1.XmlElement node)
         )
         .map(D_CT_ColorTransformHeader.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'colorsDefHdr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ColorTransformHeader(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Pt(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_PtType? get type {
-    return node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_PtType.fromValue(
-            node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('type') != null
+        ? D_ST_PtType.fromValue(node.getAttribute('type')!)
         : null;
   }
 
@@ -13610,7 +18885,43 @@ extension type D_CT_Pt(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_PtType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    for (final childNode in node.findElements(
+      'prSet',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ElemPropSet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      't',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PtList(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Pt> get pt {
     return node
@@ -13620,48 +18931,36 @@ extension type D_CT_PtList(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Pt.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Pt(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Cxn(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_CxnType? get type {
-    return node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_CxnType.fromValue(
-            node.getAttribute(
-              'type',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('type') != null
+        ? D_ST_CxnType.fromValue(node.getAttribute('type')!)
         : null;
   }
 
   int get srcOrd {
-    return int.parse(
-      node.getAttribute(
-        'srcOrd',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return int.parse(node.getAttribute('srcOrd')!);
   }
 
   int get destOrd {
-    return int.parse(
-      node.getAttribute(
-        'destOrd',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return int.parse(node.getAttribute('destOrd')!);
   }
 
   String? get presId {
-    return node.getAttribute(
-      'presId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('presId');
   }
 
   D_CT_OfficeArtExtensionList? get extLst {
@@ -13671,7 +18970,35 @@ extension type D_CT_Cxn(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_CxnType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    if (node.getAttribute('srcOrd') == null) {
+      errors.add(
+        "Missing required attribute 'srcOrd' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('destOrd') == null) {
+      errors.add(
+        "Missing required attribute 'destOrd' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_CxnList(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Cxn> get cxn {
     return node
@@ -13681,7 +19008,19 @@ extension type D_CT_CxnList(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Cxn.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cxn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Cxn(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DataModel(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_PtList? get ptLst {
     final e = node.getElement(
@@ -13722,56 +19061,59 @@ extension type D_CT_DataModel(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ptLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PtList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_CxnList(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_BackgroundFormatting(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'whole',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_WholeE2oFormatting(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Constraint(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BoolOperator? get op {
-    return node.getAttribute(
-              'op',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_BoolOperator.fromValue(
-            node.getAttribute(
-              'op',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('op') != null
+        ? D_ST_BoolOperator.fromValue(node.getAttribute('op')!)
         : null;
   }
 
   double? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? double.tryParse(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? double.tryParse(node.getAttribute('val')!)
         : null;
   }
 
   double? get fact {
-    return node.getAttribute(
-              'fact',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? double.tryParse(
-            node.getAttribute(
-              'fact',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('fact') != null
+        ? double.tryParse(node.getAttribute('fact')!)
         : null;
   }
 
@@ -13782,7 +19124,25 @@ extension type D_CT_Constraint(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_op = node.getAttribute('op');
+    if (v_op != null && D_ST_BoolOperator.fromValue(v_op) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'op' in ${node.name.qualified}: $v_op",
+      );
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Constraints(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Constraint> get constr {
     return node
@@ -13792,56 +19152,35 @@ extension type D_CT_Constraints(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Constraint.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'constr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Constraint(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NumericRule(_i1.XmlElement node) implements _i1.XmlElement {
   double? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? double.tryParse(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? double.tryParse(node.getAttribute('val')!)
         : null;
   }
 
   double? get fact {
-    return node.getAttribute(
-              'fact',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? double.tryParse(
-            node.getAttribute(
-              'fact',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('fact') != null
+        ? double.tryParse(node.getAttribute('fact')!)
         : null;
   }
 
   double? get max {
-    return node.getAttribute(
-              'max',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? double.tryParse(
-            node.getAttribute(
-              'max',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('max') != null
+        ? double.tryParse(node.getAttribute('max')!)
         : null;
   }
 
@@ -13852,7 +19191,19 @@ extension type D_CT_NumericRule(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Rules(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_NumericRule> get rule {
     return node
@@ -13862,7 +19213,19 @@ extension type D_CT_Rules(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_NumericRule.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rule',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_NumericRule(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PresentationOf(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_OfficeArtExtensionList? get extLst {
@@ -13872,24 +19235,40 @@ extension type D_CT_PresentationOf(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Adj(_i1.XmlElement node) implements _i1.XmlElement {
   String get idx {
-    return node.getAttribute(
-      'idx',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('idx')!;
   }
 
   double get val {
-    return double.parse(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return double.parse(node.getAttribute('val')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_AdjLst(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Adj> get adj {
     return node
@@ -13899,64 +19278,38 @@ extension type D_CT_AdjLst(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Adj.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'adj',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Adj(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Shape(_i1.XmlElement node) implements _i1.XmlElement {
   String? get macro {
-    return node.getAttribute(
-      'macro',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-    );
+    return node.getAttribute('macro');
   }
 
   String? get textlink {
-    return node.getAttribute(
-      'textlink',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-    );
+    return node.getAttribute('textlink');
   }
 
   bool? get fLocksText {
-    return node.getAttribute(
-              'fLocksText',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fLocksText',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fLocksText',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fLocksText') == '1' ||
+        node.getAttribute('fLocksText') == 'true' ||
+        node.getAttribute('fLocksText') == 'on';
   }
 
   bool? get fPublished {
-    return node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPublished') == '1' ||
+        node.getAttribute('fPublished') == 'true' ||
+        node.getAttribute('fPublished') == 'on';
   }
 
   D_CT_ShapeNonVisual? get nvSpPr {
@@ -13994,41 +19347,69 @@ extension type D_CT_Shape(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_TextBody(e) : null;
   }
-}
-extension type D_CT_Parameter(_i1.XmlElement node) implements _i1.XmlElement {
-  D_ST_ParameterId get type {
-    return D_ST_ParameterId.fromValue(
-      node.getAttribute(
-        'type',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    )!;
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txBody',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_Parameter(_i1.XmlElement node) implements _i1.XmlElement {
+  D_ST_ParameterId get type {
+    return D_ST_ParameterId.fromValue(node.getAttribute('type')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_ParameterId.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_Algorithm(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_AlgorithmType get type {
-    return D_ST_AlgorithmType.fromValue(
-      node.getAttribute(
-        'type',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    )!;
+    return D_ST_AlgorithmType.fromValue(node.getAttribute('type')!)!;
   }
 
   int? get rev {
-    return node.getAttribute(
-              'rev',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'rev',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('rev') != null
+        ? int.tryParse(node.getAttribute('rev')!)
         : null;
   }
 
@@ -14048,44 +19429,51 @@ extension type D_CT_Algorithm(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    final v_type = node.getAttribute('type');
+    if (v_type != null && D_ST_AlgorithmType.fromValue(v_type) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'type' in ${node.name.qualified}: $v_type",
+      );
+    }
+    for (final childNode in node.findElements(
+      'param',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Parameter(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LayoutNode(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('name');
   }
 
   String? get styleLbl {
-    return node.getAttribute(
-      'styleLbl',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('styleLbl');
   }
 
   D_ST_ChildOrderType? get chOrder {
-    return node.getAttribute(
-              'chOrder',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_ChildOrderType.fromValue(
-            node.getAttribute(
-              'chOrder',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('chOrder') != null
+        ? D_ST_ChildOrderType.fromValue(node.getAttribute('chOrder')!)
         : null;
   }
 
   String? get moveWith {
-    return node.getAttribute(
-      'moveWith',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('moveWith');
   }
 
   Iterable<D_CT_Algorithm> get alg {
@@ -14177,20 +19565,86 @@ extension type D_CT_LayoutNode(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_OfficeArtExtensionList.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_chOrder = node.getAttribute('chOrder');
+    if (v_chOrder != null && D_ST_ChildOrderType.fromValue(v_chOrder) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'chOrder' in ${node.name.qualified}: $v_chOrder",
+      );
+    }
+    for (final childNode in node.findElements(
+      'alg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Algorithm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'presOf',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PresentationOf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'constrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Constraints(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Rules(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutVariablePropertySet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forEach',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ForEach(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutNode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutNode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'choose',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Choose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ForEach(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('name');
   }
 
   String? get ref {
-    return node.getAttribute(
-      'ref',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('ref');
   }
 
   Iterable<D_CT_Algorithm> get alg {
@@ -14273,31 +19727,78 @@ extension type D_CT_ForEach(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_OfficeArtExtensionList.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'alg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Algorithm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'presOf',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PresentationOf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'constrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Constraints(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Rules(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forEach',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ForEach(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutNode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutNode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'choose',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Choose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_When(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('name');
   }
 
   D_ST_FunctionType get func {
-    return D_ST_FunctionType.fromValue(
-      node.getAttribute(
-        'func',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    )!;
+    return D_ST_FunctionType.fromValue(node.getAttribute('func')!)!;
   }
 
   D_ST_FunctionOperator get op {
-    return D_ST_FunctionOperator.fromValue(
-      node.getAttribute(
-        'op',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    )!;
+    return D_ST_FunctionOperator.fromValue(node.getAttribute('op')!)!;
   }
 
   Iterable<D_CT_Algorithm> get alg {
@@ -14380,13 +19881,88 @@ extension type D_CT_When(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_OfficeArtExtensionList.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('func') == null) {
+      errors.add("Missing required attribute 'func' in ${node.name.qualified}");
+    }
+    final v_func = node.getAttribute('func');
+    if (v_func != null && D_ST_FunctionType.fromValue(v_func) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'func' in ${node.name.qualified}: $v_func",
+      );
+    }
+    if (node.getAttribute('op') == null) {
+      errors.add("Missing required attribute 'op' in ${node.name.qualified}");
+    }
+    final v_op = node.getAttribute('op');
+    if (v_op != null && D_ST_FunctionOperator.fromValue(v_op) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'op' in ${node.name.qualified}: $v_op",
+      );
+    }
+    for (final childNode in node.findElements(
+      'alg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Algorithm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'presOf',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PresentationOf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'constrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Constraints(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Rules(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forEach',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ForEach(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutNode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutNode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'choose',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Choose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Otherwise(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('name');
   }
 
   Iterable<D_CT_Algorithm> get alg {
@@ -14469,13 +20045,70 @@ extension type D_CT_Otherwise(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_OfficeArtExtensionList.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'alg',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Algorithm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'presOf',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_PresentationOf(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'constrLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Constraints(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruleLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Rules(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forEach',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ForEach(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutNode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutNode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'choose',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Choose(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Choose(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('name');
   }
 
   Iterable<D_CT_When> get if_ {
@@ -14494,27 +20127,30 @@ extension type D_CT_Choose(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_Otherwise(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'if',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_When(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'else',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Otherwise(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SampleData(_i1.XmlElement node) implements _i1.XmlElement {
   bool? get useDef {
-    return node.getAttribute(
-              'useDef',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'useDef',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'useDef',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('useDef') == '1' ||
+        node.getAttribute('useDef') == 'true' ||
+        node.getAttribute('useDef') == 'on';
   }
 
   D_CT_DataModel? get dataModel {
@@ -14524,24 +20160,40 @@ extension type D_CT_SampleData(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_DataModel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'dataModel',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_DataModel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Category(_i1.XmlElement node) implements _i1.XmlElement {
   String get type {
-    return node.getAttribute(
-      'type',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('type')!;
   }
 
   int get pri {
-    return int.parse(
-      node.getAttribute(
-        'pri',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return int.parse(node.getAttribute('pri')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('pri') == null) {
+      errors.add("Missing required attribute 'pri' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Categories(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_Category> get cat {
     return node
@@ -14551,58 +20203,67 @@ extension type D_CT_Categories(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Category.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Category(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Name(_i1.XmlElement node) implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Description(_i1.XmlElement node) implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_DiagramDefinition(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('uniqueId');
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   String? get defStyle {
-    return node.getAttribute(
-      'defStyle',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('defStyle');
   }
 
   Iterable<D_CT_Name> get title {
@@ -14670,44 +20331,78 @@ extension type D_CT_DiagramDefinition(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Name(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Description(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Categories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sampData',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SampleData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleData',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SampleData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrData',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SampleData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layoutNode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutNode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DiagramDefinitionHeader(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('uniqueId')!;
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   String? get defStyle {
-    return node.getAttribute(
-      'defStyle',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('defStyle');
   }
 
   int? get resId {
-    return node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('resId') != null
+        ? int.tryParse(node.getAttribute('resId')!)
         : null;
   }
 
@@ -14744,7 +20439,42 @@ extension type D_CT_DiagramDefinitionHeader(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('uniqueId') == null) {
+      errors.add(
+        "Missing required attribute 'uniqueId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Name(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Description(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Categories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DiagramDefinitionHeaderLst(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_DiagramDefinitionHeader> get layoutDefHdr {
@@ -14755,260 +20485,185 @@ extension type D_CT_DiagramDefinitionHeaderLst(_i1.XmlElement node)
         )
         .map(D_CT_DiagramDefinitionHeader.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'layoutDefHdr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_DiagramDefinitionHeader(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_RelIds(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_RelIds(_i1.XmlElement node) implements _i1.XmlElement {
+  String get r_dm {
+    return node.getAttribute(
+      'dm',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String get r_lo {
+    return node.getAttribute(
+      'lo',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String get r_qs {
+    return node.getAttribute(
+      'qs',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  String get r_cs {
+    return node.getAttribute(
+      'cs',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'dm',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'dm' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'lo',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'lo' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'qs',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'qs' in ${node.name.qualified}");
+    }
+    if (node.getAttribute(
+          'cs',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'cs' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_ElemPropSet(_i1.XmlElement node) implements _i1.XmlElement {
   String? get presName {
-    return node.getAttribute(
-      'presName',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('presName');
   }
 
   String? get presStyleLbl {
-    return node.getAttribute(
-      'presStyleLbl',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('presStyleLbl');
   }
 
   int? get presStyleIdx {
-    return node.getAttribute(
-              'presStyleIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'presStyleIdx',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('presStyleIdx') != null
+        ? int.tryParse(node.getAttribute('presStyleIdx')!)
         : null;
   }
 
   int? get presStyleCnt {
-    return node.getAttribute(
-              'presStyleCnt',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'presStyleCnt',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('presStyleCnt') != null
+        ? int.tryParse(node.getAttribute('presStyleCnt')!)
         : null;
   }
 
   String? get loTypeId {
-    return node.getAttribute(
-      'loTypeId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('loTypeId');
   }
 
   String? get loCatId {
-    return node.getAttribute(
-      'loCatId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('loCatId');
   }
 
   String? get qsTypeId {
-    return node.getAttribute(
-      'qsTypeId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('qsTypeId');
   }
 
   String? get qsCatId {
-    return node.getAttribute(
-      'qsCatId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('qsCatId');
   }
 
   String? get csTypeId {
-    return node.getAttribute(
-      'csTypeId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('csTypeId');
   }
 
   String? get csCatId {
-    return node.getAttribute(
-      'csCatId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('csCatId');
   }
 
   bool? get coherent3DOff {
-    return node.getAttribute(
-              'coherent3DOff',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'coherent3DOff',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'coherent3DOff',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('coherent3DOff') == '1' ||
+        node.getAttribute('coherent3DOff') == 'true' ||
+        node.getAttribute('coherent3DOff') == 'on';
   }
 
   String? get phldrT {
-    return node.getAttribute(
-      'phldrT',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('phldrT');
   }
 
   bool? get phldr {
-    return node.getAttribute(
-              'phldr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'phldr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'phldr',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('phldr') == '1' ||
+        node.getAttribute('phldr') == 'true' ||
+        node.getAttribute('phldr') == 'on';
   }
 
   int? get custAng {
-    return node.getAttribute(
-              'custAng',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'custAng',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('custAng') != null
+        ? int.tryParse(node.getAttribute('custAng')!)
         : null;
   }
 
   bool? get custFlipVert {
-    return node.getAttribute(
-              'custFlipVert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'custFlipVert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'custFlipVert',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('custFlipVert') == '1' ||
+        node.getAttribute('custFlipVert') == 'true' ||
+        node.getAttribute('custFlipVert') == 'on';
   }
 
   bool? get custFlipHor {
-    return node.getAttribute(
-              'custFlipHor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'custFlipHor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'custFlipHor',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('custFlipHor') == '1' ||
+        node.getAttribute('custFlipHor') == 'true' ||
+        node.getAttribute('custFlipHor') == 'on';
   }
 
   int? get custSzX {
-    return node.getAttribute(
-              'custSzX',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'custSzX',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('custSzX') != null
+        ? int.tryParse(node.getAttribute('custSzX')!)
         : null;
   }
 
   int? get custSzY {
-    return node.getAttribute(
-              'custSzY',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'custSzY',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('custSzY') != null
+        ? int.tryParse(node.getAttribute('custSzY')!)
         : null;
   }
 
   bool? get custT {
-    return node.getAttribute(
-              'custT',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'custT',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'custT',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('custT') == '1' ||
+        node.getAttribute('custT') == 'true' ||
+        node.getAttribute('custT') == 'on';
   }
 
   D_CT_LayoutVariablePropertySet? get presLayoutVars {
@@ -15026,160 +20681,171 @@ extension type D_CT_ElemPropSet(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeStyle(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'presLayoutVars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_LayoutVariablePropertySet(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_OrgChart(_i1.XmlElement node) implements _i1.XmlElement {
   bool? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('val') == '1' ||
+        node.getAttribute('val') == 'true' ||
+        node.getAttribute('val') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_ChildMax(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_ChildPref(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_BulletEnabled(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) ==
-            'on';
+    return node.getAttribute('val') == '1' ||
+        node.getAttribute('val') == 'true' ||
+        node.getAttribute('val') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_Direction(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_Direction? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_Direction.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_Direction.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_Direction.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_HierBranchStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_HierBranchStyle? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_HierBranchStyle.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_HierBranchStyle.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_HierBranchStyle.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnimOne(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_AnimOneStr? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_AnimOneStr.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_AnimOneStr.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_AnimOneStr.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnimLvl(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_AnimLvlStr? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_AnimLvlStr.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_AnimLvlStr.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_AnimLvlStr.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ResizeHandles(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_ResizeHandlesStr? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? D_ST_ResizeHandlesStr.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_ResizeHandlesStr.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_ResizeHandlesStr.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LayoutVariablePropertySet(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_OrgChart? get orgChart {
@@ -15253,55 +20919,125 @@ extension type D_CT_LayoutVariablePropertySet(_i1.XmlElement node)
     );
     return e != null ? D_CT_ResizeHandles(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'orgChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OrgChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chMax',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ChildMax(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chPref',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ChildPref(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bulletEnabled',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_BulletEnabled(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dir',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Direction(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hierBranch',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_HierBranchStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'animOne',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_AnimOne(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'animLvl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_AnimLvl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'resizeHandles',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ResizeHandles(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SDName(_i1.XmlElement node) implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_SDDescription(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get lang {
-    return node.getAttribute(
-      'lang',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('lang');
   }
 
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_SDCategory(_i1.XmlElement node) implements _i1.XmlElement {
   String get type {
-    return node.getAttribute(
-      'type',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('type')!;
   }
 
   int get pri {
-    return int.parse(
-      node.getAttribute(
-        'pri',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      )!,
-    );
+    return int.parse(node.getAttribute('pri')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('type') == null) {
+      errors.add("Missing required attribute 'type' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('pri') == null) {
+      errors.add("Missing required attribute 'pri' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_SDCategories(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_SDCategory> get cat {
@@ -15312,7 +21048,19 @@ extension type D_CT_SDCategories(_i1.XmlElement node)
         )
         .map(D_CT_SDCategory.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDCategory(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextProps(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Shape3D? get sp3d {
     final e = node.getElement(
@@ -15329,13 +21077,28 @@ extension type D_CT_TextProps(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_FlatText(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sp3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'flatTx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_FlatText(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleLabel(_i1.XmlElement node) implements _i1.XmlElement {
   String get name {
-    return node.getAttribute(
-      'name',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('name')!;
   }
 
   D_CT_Scene3D? get scene3d {
@@ -15377,21 +21140,54 @@ extension type D_CT_StyleLabel(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('name') == null) {
+      errors.add("Missing required attribute 'name' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Shape3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_TextProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleDefinition(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('uniqueId');
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   Iterable<D_CT_SDName> get title {
@@ -15444,37 +21240,62 @@ extension type D_CT_StyleDefinition(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDDescription(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDCategories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scene3d',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_Scene3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'styleLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_StyleLabel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleDefinitionHeader(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get uniqueId {
-    return node.getAttribute(
-      'uniqueId',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    )!;
+    return node.getAttribute('uniqueId')!;
   }
 
   String? get minVer {
-    return node.getAttribute(
-      'minVer',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-    );
+    return node.getAttribute('minVer');
   }
 
   int? get resId {
-    return node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'resId',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-            )!,
-          )
+    return node.getAttribute('resId') != null
+        ? int.tryParse(node.getAttribute('resId')!)
         : null;
   }
 
@@ -15511,7 +21332,42 @@ extension type D_CT_StyleDefinitionHeader(_i1.XmlElement node)
     );
     return e != null ? D_CT_OfficeArtExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('uniqueId') == null) {
+      errors.add(
+        "Missing required attribute 'uniqueId' in ${node.name.qualified}",
+      );
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDName(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'desc',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDDescription(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_SDCategories(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_OfficeArtExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StyleDefinitionHeaderLst(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_StyleDefinitionHeader> get styleDefHdr {
@@ -15521,6 +21377,17 @@ extension type D_CT_StyleDefinitionHeaderLst(_i1.XmlElement node)
           namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
         )
         .map(D_CT_StyleDefinitionHeader.new);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'styleDefHdr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    )) {
+      errors.addAll(D_CT_StyleDefinitionHeader(childNode).validate());
+    }
+    return errors;
   }
 }
 
@@ -16599,33 +22466,66 @@ enum D_ST_OutputShapeType {
 
 extension type D_CT_Double(_i1.XmlElement node) implements _i1.XmlElement {
   double get val {
-    return double.parse(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('val')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_UnsignedInt(_i1.XmlElement node) implements _i1.XmlElement {
   int get val {
-    return int.parse(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return int.parse(node.getAttribute('val')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
-extension type D_CT_RelId(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_RelId(_i1.XmlElement node) implements _i1.XmlElement {
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_Extension(_i1.XmlElement node) implements _i1.XmlElement {
   String? get uri {
-    return node.getAttribute(
-      'uri',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('uri');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_ExtensionList(_i1.XmlElement node)
     implements _i1.XmlElement {
   Iterable<D_CT_Extension> get ext {
@@ -16636,22 +22536,26 @@ extension type D_CT_ExtensionList(_i1.XmlElement node)
         )
         .map(D_CT_Extension.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ext',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Extension(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NumVal(_i1.XmlElement node) implements _i1.XmlElement {
   int get idx {
-    return int.parse(
-      node.getAttribute(
-        'idx',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return int.parse(node.getAttribute('idx')!);
   }
 
   String? get formatCode {
-    return node.getAttribute(
-      'formatCode',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('formatCode');
   }
 
   String? get v {
@@ -16661,7 +22565,16 @@ extension type D_CT_NumVal(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NumData(_i1.XmlElement node) implements _i1.XmlElement {
   String? get formatCode {
     final e = node.getElement(
@@ -16695,7 +22608,31 @@ extension type D_CT_NumData(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ptCount',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumVal(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NumRef(_i1.XmlElement node) implements _i1.XmlElement {
   String? get f {
     final e = node.getElement(
@@ -16720,7 +22657,25 @@ extension type D_CT_NumRef(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'numCache',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_NumDataSource(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NumRef? get numRef {
@@ -16738,15 +22693,28 @@ extension type D_CT_NumDataSource(_i1.XmlElement node)
     );
     return e != null ? D_CT_NumData(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'numRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numLit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StrVal(_i1.XmlElement node) implements _i1.XmlElement {
   int get idx {
-    return int.parse(
-      node.getAttribute(
-        'idx',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return int.parse(node.getAttribute('idx')!);
   }
 
   String? get v {
@@ -16756,7 +22724,16 @@ extension type D_CT_StrVal(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('idx') == null) {
+      errors.add("Missing required attribute 'idx' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StrData(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get ptCount {
     final e = node.getElement(
@@ -16782,7 +22759,31 @@ extension type D_CT_StrData(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ptCount',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrVal(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StrRef(_i1.XmlElement node) implements _i1.XmlElement {
   String? get f {
     final e = node.getElement(
@@ -16807,7 +22808,25 @@ extension type D_CT_StrRef(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'strCache',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Tx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_StrRef? get strRef {
     final e = node.getElement(
@@ -16824,16 +22843,40 @@ extension type D_CT_Tx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_TextBody(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'strRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rich',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TextLanguageID(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Lvl(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_StrVal> get pt {
     return node
@@ -16843,7 +22886,19 @@ extension type D_CT_Lvl(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_StrVal.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrVal(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_MultiLvlStrData(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_UnsignedInt? get ptCount {
@@ -16870,7 +22925,31 @@ extension type D_CT_MultiLvlStrData(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ptCount',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lvl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Lvl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_MultiLvlStrRef(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get f {
@@ -16896,7 +22975,25 @@ extension type D_CT_MultiLvlStrRef(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'multiLvlStrCache',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_MultiLvlStrData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AxDataSource(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_MultiLvlStrRef? get multiLvlStrRef {
@@ -16938,7 +23035,43 @@ extension type D_CT_AxDataSource(_i1.XmlElement node)
     );
     return e != null ? D_CT_StrData(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'multiLvlStrRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_MultiLvlStrRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numLit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strLit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SerTx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_StrRef? get strRef {
     final e = node.getElement(
@@ -16955,44 +23088,58 @@ extension type D_CT_SerTx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'strRef',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StrRef(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LayoutTarget(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_LayoutTarget? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_LayoutTarget.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_LayoutTarget.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_LayoutTarget.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LayoutMode(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_LayoutMode? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_LayoutMode.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_LayoutMode.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_LayoutMode.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ManualLayout(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_LayoutTarget? get layoutTarget {
@@ -17074,7 +23221,73 @@ extension type D_CT_ManualLayout(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'layoutTarget',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LayoutTarget(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xMode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LayoutMode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yMode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LayoutMode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wMode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LayoutMode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hMode',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LayoutMode(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'x',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'y',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'w',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'h',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Layout(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ManualLayout? get manualLayout {
     final e = node.getElement(
@@ -17091,7 +23304,25 @@ extension type D_CT_Layout(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'manualLayout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ManualLayout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Title(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Tx? get tx {
     final e = node.getElement(
@@ -17140,34 +23371,97 @@ extension type D_CT_Title(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Tx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'overlay',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_RotX(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
-extension type D_CT_HPercent(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_HPercent(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_RotY(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_DepthPercent(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_Perspective(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_View3D(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_RotX? get rotX {
     final e = node.getElement(
@@ -17224,7 +23518,55 @@ extension type D_CT_View3D(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rotX',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RotX(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hPercent',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_HPercent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rotY',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RotY(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'depthPercent',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DepthPercent(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rAngAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'perspective',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Perspective(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Surface(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Thickness? get thickness {
     final e = node.getElement(
@@ -17257,8 +23599,44 @@ extension type D_CT_Surface(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'thickness',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Thickness(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureOptions',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureOptions(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_Thickness(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_Thickness(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_DTable(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get showHorzBorder {
     final e = node.getElement(
@@ -17315,58 +23693,134 @@ extension type D_CT_DTable(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'showHorzBorder',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showVertBorder',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showOutline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showKeys',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_GapAmount(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type D_CT_Overlap(_i1.XmlElement node) implements _i1.XmlElement {}
-extension type D_CT_BubbleScale(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+
+extension type D_CT_GapAmount(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type D_CT_Overlap(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
+extension type D_CT_BubbleScale(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_SizeRepresents(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_SizeRepresents? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_SizeRepresents.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_SizeRepresents.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_SizeRepresents.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_FirstSliceAng(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
-extension type D_CT_HoleSize(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_HoleSize(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_SplitType(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_SplitType? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_SplitType.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_SplitType.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_SplitType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_CustSplit(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_UnsignedInt> get secondPiePt {
     return node
@@ -17376,58 +23830,89 @@ extension type D_CT_CustSplit(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_UnsignedInt.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'secondPiePt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SecondPieSize(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_NumFmt(_i1.XmlElement node) implements _i1.XmlElement {
   String get formatCode {
-    return node.getAttribute(
-      'formatCode',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    return node.getAttribute('formatCode')!;
   }
 
   bool? get sourceLinked {
-    return node.getAttribute(
-              'sourceLinked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'sourceLinked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'sourceLinked',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('sourceLinked') == '1' ||
+        node.getAttribute('sourceLinked') == 'true' ||
+        node.getAttribute('sourceLinked') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('formatCode') == null) {
+      errors.add(
+        "Missing required attribute 'formatCode' in ${node.name.qualified}",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_LblAlgn(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_LblAlgn get val {
-    return D_ST_LblAlgn.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_LblAlgn.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_LblAlgn.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_DLblPos(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_DLblPos get val {
-    return D_ST_DLblPos.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_DLblPos.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_DLblPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_DLbl(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -17556,7 +24041,103 @@ extension type D_CT_DLbl(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Tx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showLegendKey',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showCatName',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showSerName',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showPercent',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showBubbleSize',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DLbls(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_DLbl> get dLbl {
     return node
@@ -17686,25 +24267,134 @@ extension type D_CT_DLbls(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'dLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showLegendKey',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showCatName',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showSerName',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showPercent',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showBubbleSize',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showLeaderLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'leaderLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_MarkerStyle(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_MarkerStyle get val {
-    return D_ST_MarkerStyle.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_MarkerStyle.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_MarkerStyle.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_MarkerSize(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_Marker(_i1.XmlElement node) implements _i1.XmlElement {
   String? get col {
     final e = node.getElement(
@@ -17723,7 +24413,13 @@ extension type D_CT_Marker(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type D_CT_DPt(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -17788,42 +24484,103 @@ extension type D_CT_DPt(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invertIfNegative',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubble3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'explosion',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureOptions',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureOptions(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TrendlineType(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_TrendlineType? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_TrendlineType.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_TrendlineType.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_TrendlineType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Order(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_Period(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('val');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_TrendlineLbl(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Layout? get layout {
@@ -17873,7 +24630,49 @@ extension type D_CT_TrendlineLbl(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Tx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Trendline(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
     final e = node.getElement(
@@ -17970,53 +24769,137 @@ extension type D_CT_Trendline(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendlineType',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TrendlineType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Order(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'period',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Period(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'forward',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'backward',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'intercept',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispRSqr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispEq',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendlineLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TrendlineLbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ErrDir(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_ErrDir get val {
-    return D_ST_ErrDir.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_ErrDir.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_ErrDir.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_ErrBarType(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_ErrBarType? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_ErrBarType.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_ErrBarType.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_ErrBarType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ErrValType(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_ErrValType? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_ErrValType.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_ErrValType.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_ErrValType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ErrBars(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ErrDir? get errDir {
     final e = node.getElement(
@@ -18089,7 +24972,67 @@ extension type D_CT_ErrBars(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'errDir',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrDir(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBarType',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBarType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errValType',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrValType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noEndCap',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'plus',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minus',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_UpDownBar(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ShapeProperties? get spPr {
     final e = node.getElement(
@@ -18098,7 +25041,19 @@ extension type D_CT_UpDownBar(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_UpDownBars(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_GapAmount? get gapWidth {
     final e = node.getElement(
@@ -18131,7 +25086,37 @@ extension type D_CT_UpDownBars(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'gapWidth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'upBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UpDownBar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'downBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UpDownBar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18238,7 +25223,91 @@ extension type D_CT_LineSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Trendline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smooth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ScatterSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18346,7 +25415,91 @@ extension type D_CT_ScatterSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Trendline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smooth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_RadarSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18428,7 +25581,73 @@ extension type D_CT_RadarSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BarSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18543,7 +25762,97 @@ extension type D_CT_BarSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invertIfNegative',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureOptions',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureOptions(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Trendline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AreaSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18643,7 +25952,85 @@ extension type D_CT_AreaSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureOptions',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureOptions(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Trendline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PieSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18725,7 +26112,73 @@ extension type D_CT_PieSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'explosion',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BubbleSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18841,7 +26294,97 @@ extension type D_CT_BubbleSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'invertIfNegative',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dPt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DPt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'trendline',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Trendline(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'errBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ErrBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yVal',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubbleSize',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubble3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SurfaceSer(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -18898,25 +26441,74 @@ extension type D_CT_SurfaceSer(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
-}
-extension type D_CT_Grouping(_i1.XmlElement node) implements _i1.XmlElement {
-  D_ST_Grouping? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_Grouping.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
-        : null;
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'order',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerTx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumDataSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_Grouping(_i1.XmlElement node) implements _i1.XmlElement {
+  D_ST_Grouping? get val {
+    return node.getAttribute('val') != null
+        ? D_ST_Grouping.fromValue(node.getAttribute('val')!)
+        : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_Grouping.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_ChartLines(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_ShapeProperties? get spPr {
     final e = node.getElement(
@@ -18925,7 +26517,19 @@ extension type D_CT_ChartLines(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_LineChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Grouping? get grouping {
     final e = node.getElement(
@@ -19016,7 +26620,79 @@ extension type D_CT_LineChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Grouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LineSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hiLowLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'upDownBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UpDownBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smooth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Line3DChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Grouping? get grouping {
     final e = node.getElement(
@@ -19083,7 +26759,61 @@ extension type D_CT_Line3DChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Grouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LineSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapDepth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_StockChart(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_LineSer> get ser {
     return node
@@ -19142,26 +26872,75 @@ extension type D_CT_StockChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LineSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hiLowLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'upDownBars',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UpDownBars(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ScatterStyle(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_ScatterStyle? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_ScatterStyle.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_ScatterStyle.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_ScatterStyle.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ScatterChart(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_ScatterStyle? get scatterStyle {
@@ -19213,25 +26992,68 @@ extension type D_CT_ScatterChart(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
-}
-extension type D_CT_RadarStyle(_i1.XmlElement node) implements _i1.XmlElement {
-  D_ST_RadarStyle? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_RadarStyle.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
-        : null;
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'scatterStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ScatterStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ScatterSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_RadarStyle(_i1.XmlElement node) implements _i1.XmlElement {
+  D_ST_RadarStyle? get val {
+    return node.getAttribute('val') != null
+        ? D_ST_RadarStyle.fromValue(node.getAttribute('val')!)
+        : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_RadarStyle.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_RadarChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_RadarStyle? get radarStyle {
     final e = node.getElement(
@@ -19282,43 +27104,87 @@ extension type D_CT_RadarChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'radarStyle',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RadarStyle(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RadarSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BarGrouping(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BarGrouping? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_BarGrouping.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_BarGrouping.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_BarGrouping.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BarDir(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BarDir? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_BarDir.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_BarDir.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_BarDir.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BarChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_BarDir? get barDir {
     final e = node.getElement(
@@ -19402,7 +27268,73 @@ extension type D_CT_BarChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'barDir',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarDir(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarGrouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapWidth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'overlap',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Overlap(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'serLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Bar3DChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_BarDir? get barDir {
     final e = node.getElement(
@@ -19485,7 +27417,73 @@ extension type D_CT_Bar3DChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'barDir',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarDir(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarGrouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapWidth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapDepth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shape',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AreaChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Grouping? get grouping {
     final e = node.getElement(
@@ -19544,7 +27542,55 @@ extension type D_CT_AreaChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Grouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AreaSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Area3DChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Grouping? get grouping {
     final e = node.getElement(
@@ -19611,7 +27657,61 @@ extension type D_CT_Area3DChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'grouping',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Grouping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AreaSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dropLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapDepth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PieChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get varyColors {
     final e = node.getElement(
@@ -19653,7 +27753,43 @@ extension type D_CT_PieChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PieSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'firstSliceAng',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_FirstSliceAng(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Pie3DChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get varyColors {
     final e = node.getElement(
@@ -19687,7 +27823,37 @@ extension type D_CT_Pie3DChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PieSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DoughnutChart(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Boolean? get varyColors {
@@ -19738,25 +27904,68 @@ extension type D_CT_DoughnutChart(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
-}
-extension type D_CT_OfPieType(_i1.XmlElement node) implements _i1.XmlElement {
-  D_ST_OfPieType? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_OfPieType.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
-        : null;
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PieSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'firstSliceAng',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_FirstSliceAng(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'holeSize',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_HoleSize(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_OfPieType(_i1.XmlElement node) implements _i1.XmlElement {
+  D_ST_OfPieType? get val {
+    return node.getAttribute('val') != null
+        ? D_ST_OfPieType.fromValue(node.getAttribute('val')!)
+        : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_OfPieType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_OfPieChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_OfPieType? get ofPieType {
     final e = node.getElement(
@@ -19847,7 +28056,79 @@ extension type D_CT_OfPieChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ofPieType',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_OfPieType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PieSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'gapWidth',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_GapAmount(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'splitType',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SplitType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'splitPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'custSplit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_CustSplit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'secondPieSize',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SecondPieSize(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'serLines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BubbleChart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get varyColors {
     final e = node.getElement(
@@ -19922,7 +28203,67 @@ extension type D_CT_BubbleChart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'varyColors',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BubbleSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbls',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbls(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubble3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubbleScale',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BubbleScale(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showNegBubbles',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sizeRepresents',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SizeRepresents(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BandFmt(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -19939,7 +28280,25 @@ extension type D_CT_BandFmt(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_BandFmts(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_BandFmt> get bandFmt {
     return node
@@ -19949,7 +28308,19 @@ extension type D_CT_BandFmts(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_BandFmt.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'bandFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BandFmt(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SurfaceChart(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Boolean? get wireframe {
@@ -19993,7 +28364,43 @@ extension type D_CT_SurfaceChart(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'wireframe',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SurfaceSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bandFmts',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BandFmts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Surface3DChart(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Boolean? get wireframe {
@@ -20037,146 +28444,244 @@ extension type D_CT_Surface3DChart(_i1.XmlElement node)
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'wireframe',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ser',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SurfaceSer(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bandFmts',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BandFmts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AxPos(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_AxPos get val {
-    return D_ST_AxPos.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_AxPos.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_AxPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_Crosses(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_Crosses get val {
-    return D_ST_Crosses.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_Crosses.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_Crosses.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_CrossBetween(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_CrossBetween get val {
-    return D_ST_CrossBetween.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_CrossBetween.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_CrossBetween.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TickMark(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_TickMark? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_TickMark.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_TickMark.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_TickMark.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_TickLblPos(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_TickLblPos? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_TickLblPos.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_TickLblPos.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_TickLblPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Skip(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_TimeUnit(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_TimeUnit? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_TimeUnit.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_TimeUnit.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_TimeUnit.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AxisUnit(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_BuiltInUnit(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_BuiltInUnit? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_BuiltInUnit.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_BuiltInUnit.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_BuiltInUnit.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PictureFormat(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_PictureFormat get val {
-    return D_ST_PictureFormat.fromValue(
-      node.getAttribute(
-        'val',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    )!;
+    return D_ST_PictureFormat.fromValue(node.getAttribute('val')!)!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_PictureFormat.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_PictureStackUnit(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
   }
 }
+
 extension type D_CT_PictureOptions(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Boolean? get applyToFront {
@@ -20218,7 +28723,43 @@ extension type D_CT_PictureOptions(_i1.XmlElement node)
     );
     return e != null ? D_CT_PictureStackUnit(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'applyToFront',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'applyToSides',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'applyToEnd',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureFormat',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureFormat(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pictureStackUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PictureStackUnit(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DispUnitsLbl(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Layout? get layout {
@@ -20252,7 +28793,37 @@ extension type D_CT_DispUnitsLbl(_i1.XmlElement node)
     );
     return e != null ? D_CT_TextBody(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Tx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DispUnits(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Double? get custUnit {
     final e = node.getElement(
@@ -20285,33 +28856,70 @@ extension type D_CT_DispUnits(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'custUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'builtInUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BuiltInUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispUnitsLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DispUnitsLbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Orientation(_i1.XmlElement node) implements _i1.XmlElement {
   D_ST_Orientation? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_Orientation.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_Orientation.fromValue(node.getAttribute('val')!)
         : null;
   }
-}
-extension type D_CT_LogBase(_i1.XmlElement node) implements _i1.XmlElement {
-  String get val {
-    return node.getAttribute(
-      'val',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_Orientation.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
   }
 }
+
+extension type D_CT_LogBase(_i1.XmlElement node) implements _i1.XmlElement {
+  String get val {
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_Scaling(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_LogBase? get logBase {
     final e = node.getElement(
@@ -20352,8 +28960,50 @@ extension type D_CT_Scaling(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'logBase',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LogBase(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'orientation',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Orientation(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'max',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'min',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_LblOffset(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_LblOffset(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type D_CT_CatAx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get axId {
     final e = node.getElement(
@@ -20538,7 +29188,151 @@ extension type D_CT_CatAx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scaling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Scaling(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Title(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crosses',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Crosses(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossesAt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'auto',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lblAlgn',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LblAlgn(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lblOffset',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LblOffset(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblSkip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Skip(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickMarkSkip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Skip(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noMultiLvlLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DateAx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get axId {
     final e = node.getElement(
@@ -20731,7 +29525,157 @@ extension type D_CT_DateAx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scaling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Scaling(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Title(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crosses',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Crosses(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossesAt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'auto',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lblOffset',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LblOffset(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'baseTimeUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TimeUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxisUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorTimeUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TimeUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxisUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorTimeUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TimeUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_SerAx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get axId {
     final e = node.getElement(
@@ -20884,7 +29828,127 @@ extension type D_CT_SerAx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scaling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Scaling(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Title(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crosses',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Crosses(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossesAt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblSkip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Skip(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickMarkSkip',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Skip(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ValAx(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get axId {
     final e = node.getElement(
@@ -21053,7 +30117,139 @@ extension type D_CT_ValAx(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'axId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scaling',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Scaling(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'axPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorGridlines',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ChartLines(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'title',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Title(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'numFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_NumFmt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorTickMark',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickMark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tickLblPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TickLblPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crosses',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Crosses(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossesAt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Double(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'crossBetween',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_CrossBetween(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'majorUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxisUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'minorUnit',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AxisUnit(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispUnits',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DispUnits(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PlotArea(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Layout? get layout {
     final e = node.getElement(
@@ -21266,7 +30462,157 @@ extension type D_CT_PlotArea(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'areaChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_AreaChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'area3DChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Area3DChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lineChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LineChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'line3DChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Line3DChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'stockChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_StockChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'radarChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RadarChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scatterChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ScatterChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pieChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PieChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pie3DChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Pie3DChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'doughnutChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DoughnutChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'barChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BarChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bar3DChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Bar3DChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ofPieChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_OfPieChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'surfaceChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SurfaceChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'surface3DChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Surface3DChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bubbleChart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_BubbleChart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'valAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ValAx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'catAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_CatAx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dateAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DateAx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'serAx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_SerAx(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dTable',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DTable(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PivotFmt(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -21315,7 +30661,49 @@ extension type D_CT_PivotFmt(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'marker',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dLbl',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DLbl(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PivotFmts(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_PivotFmt> get pivotFmt {
     return node
@@ -21325,25 +30713,38 @@ extension type D_CT_PivotFmts(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_PivotFmt.new);
   }
-}
-extension type D_CT_LegendPos(_i1.XmlElement node) implements _i1.XmlElement {
-  D_ST_LegendPos? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_LegendPos.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
-        : null;
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pivotFmt',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PivotFmt(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_LegendPos(_i1.XmlElement node) implements _i1.XmlElement {
+  D_ST_LegendPos? get val {
+    return node.getAttribute('val') != null
+        ? D_ST_LegendPos.fromValue(node.getAttribute('val')!)
+        : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_LegendPos.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_LegendEntry(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_UnsignedInt? get idx {
     final e = node.getElement(
@@ -21376,7 +30777,37 @@ extension type D_CT_LegendEntry(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'idx',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delete',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Legend(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_LegendPos? get legendPos {
     final e = node.getElement(
@@ -21434,26 +30865,75 @@ extension type D_CT_Legend(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'legendPos',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LegendPos(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'legendEntry',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_LegendEntry(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'layout',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Layout(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'overlay',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_DispBlanksAs(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_DispBlanksAs? get val {
-    return node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_DispBlanksAs.fromValue(
-            node.getAttribute(
-              'val',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('val') != null
+        ? D_ST_DispBlanksAs.fromValue(node.getAttribute('val')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute('val');
+    if (v_val != null && D_ST_DispBlanksAs.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Chart(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Title? get title {
     final e = node.getElement(
@@ -21558,15 +31038,105 @@ extension type D_CT_Chart(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ExtensionList(e) : null;
   }
-}
-extension type D_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
-  String get val {
-    return node.getAttribute(
-      'val',
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'title',
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    )!;
+    )) {
+      errors.addAll(D_CT_Title(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'autoTitleDeleted',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pivotFmts',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PivotFmts(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'view3D',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_View3D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'floor',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Surface(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sideWall',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Surface(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'backWall',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Surface(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'plotArea',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PlotArea(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'legend',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Legend(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'plotVisOnly',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispBlanksAs',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_DispBlanksAs(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'showDLblsOverMax',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
+
+extension type D_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
+  String get val {
+    return node.getAttribute('val')!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('val') == null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_PivotSource(_i1.XmlElement node) implements _i1.XmlElement {
   String? get name {
     final e = node.getElement(
@@ -21592,7 +31162,25 @@ extension type D_CT_PivotSource(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_ExtensionList.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'fmtId',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_UnsignedInt(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Protection(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get chartObject {
     final e = node.getElement(
@@ -21633,70 +31221,61 @@ extension type D_CT_Protection(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_Boolean(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'chartObject',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'data',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'formatting',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'selection',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'userInterface',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_HeaderFooter(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get alignWithMargins {
-    return node.getAttribute(
-              'alignWithMargins',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'alignWithMargins',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'alignWithMargins',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('alignWithMargins') == '1' ||
+        node.getAttribute('alignWithMargins') == 'true' ||
+        node.getAttribute('alignWithMargins') == 'on';
   }
 
   bool? get differentOddEven {
-    return node.getAttribute(
-              'differentOddEven',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'differentOddEven',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'differentOddEven',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('differentOddEven') == '1' ||
+        node.getAttribute('differentOddEven') == 'true' ||
+        node.getAttribute('differentOddEven') == 'on';
   }
 
   bool? get differentFirst {
-    return node.getAttribute(
-              'differentFirst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'differentFirst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'differentFirst',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('differentFirst') == '1' ||
+        node.getAttribute('differentFirst') == 'true' ||
+        node.getAttribute('differentFirst') == 'on';
   }
 
   String? get oddHeader {
@@ -21746,64 +31325,76 @@ extension type D_CT_HeaderFooter(_i1.XmlElement node)
     );
     return e != null ? e.innerText : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type D_CT_PageMargins(_i1.XmlElement node) implements _i1.XmlElement {
   double get l {
-    return double.parse(
-      node.getAttribute(
-        'l',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('l')!);
   }
 
   double get r {
-    return double.parse(
-      node.getAttribute(
-        'r',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('r')!);
   }
 
   double get t {
-    return double.parse(
-      node.getAttribute(
-        't',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('t')!);
   }
 
   double get b {
-    return double.parse(
-      node.getAttribute(
-        'b',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('b')!);
   }
 
   double get header {
-    return double.parse(
-      node.getAttribute(
-        'header',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('header')!);
   }
 
   double get footer {
-    return double.parse(
-      node.getAttribute(
-        'footer',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      )!,
-    );
+    return double.parse(node.getAttribute('footer')!);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute('l') == null) {
+      errors.add("Missing required attribute 'l' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('r') == null) {
+      errors.add("Missing required attribute 'r' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('t') == null) {
+      errors.add("Missing required attribute 't' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('b') == null) {
+      errors.add("Missing required attribute 'b' in ${node.name.qualified}");
+    }
+    if (node.getAttribute('header') == null) {
+      errors.add(
+        "Missing required attribute 'header' in ${node.name.qualified}",
+      );
+    }
+    if (node.getAttribute('footer') == null) {
+      errors.add(
+        "Missing required attribute 'footer' in ${node.name.qualified}",
+      );
+    }
+    return errors;
   }
 }
+
 extension type D_CT_ExternalData(_i1.XmlElement node)
     implements _i1.XmlElement {
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
   D_CT_Boolean? get autoUpdate {
     final e = node.getElement(
       'autoUpdate',
@@ -21811,187 +31402,103 @@ extension type D_CT_ExternalData(_i1.XmlElement node)
     );
     return e != null ? D_CT_Boolean(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    for (final childNode in node.findElements(
+      'autoUpdate',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PageSetup(_i1.XmlElement node) implements _i1.XmlElement {
   int? get paperSize {
-    return node.getAttribute(
-              'paperSize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'paperSize',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('paperSize') != null
+        ? int.tryParse(node.getAttribute('paperSize')!)
         : null;
   }
 
   String? get paperHeight {
-    return node.getAttribute(
-      'paperHeight',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('paperHeight');
   }
 
   String? get paperWidth {
-    return node.getAttribute(
-      'paperWidth',
-      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-    );
+    return node.getAttribute('paperWidth');
   }
 
   int? get firstPageNumber {
-    return node.getAttribute(
-              'firstPageNumber',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'firstPageNumber',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('firstPageNumber') != null
+        ? int.tryParse(node.getAttribute('firstPageNumber')!)
         : null;
   }
 
   D_ST_PageSetupOrientation? get orientation {
-    return node.getAttribute(
-              'orientation',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? D_ST_PageSetupOrientation.fromValue(
-            node.getAttribute(
-              'orientation',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('orientation') != null
+        ? D_ST_PageSetupOrientation.fromValue(node.getAttribute('orientation')!)
         : null;
   }
 
   bool? get blackAndWhite {
-    return node.getAttribute(
-              'blackAndWhite',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'blackAndWhite',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'blackAndWhite',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('blackAndWhite') == '1' ||
+        node.getAttribute('blackAndWhite') == 'true' ||
+        node.getAttribute('blackAndWhite') == 'on';
   }
 
   bool? get draft {
-    return node.getAttribute(
-              'draft',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'draft',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'draft',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('draft') == '1' ||
+        node.getAttribute('draft') == 'true' ||
+        node.getAttribute('draft') == 'on';
   }
 
   bool? get useFirstPageNumber {
-    return node.getAttribute(
-              'useFirstPageNumber',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'useFirstPageNumber',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'useFirstPageNumber',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) ==
-            'on';
+    return node.getAttribute('useFirstPageNumber') == '1' ||
+        node.getAttribute('useFirstPageNumber') == 'true' ||
+        node.getAttribute('useFirstPageNumber') == 'on';
   }
 
   int? get horizontalDpi {
-    return node.getAttribute(
-              'horizontalDpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'horizontalDpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('horizontalDpi') != null
+        ? int.tryParse(node.getAttribute('horizontalDpi')!)
         : null;
   }
 
   int? get verticalDpi {
-    return node.getAttribute(
-              'verticalDpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'verticalDpi',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('verticalDpi') != null
+        ? int.tryParse(node.getAttribute('verticalDpi')!)
         : null;
   }
 
   int? get copies {
-    return node.getAttribute(
-              'copies',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            ) !=
-            null
-        ? int.tryParse(
-            node.getAttribute(
-              'copies',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/chart',
-            )!,
-          )
+    return node.getAttribute('copies') != null
+        ? int.tryParse(node.getAttribute('copies')!)
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_orientation = node.getAttribute('orientation');
+    if (v_orientation != null &&
+        D_ST_PageSetupOrientation.fromValue(v_orientation) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'orientation' in ${node.name.qualified}: $v_orientation",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PrintSettings(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_HeaderFooter? get headerFooter {
@@ -22025,7 +31532,37 @@ extension type D_CT_PrintSettings(_i1.XmlElement node)
     );
     return e != null ? D_CT_RelId(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'headerFooter',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_HeaderFooter(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pageMargins',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PageMargins(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pageSetup',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PageSetup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'legacyDrawingHF',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RelId(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ChartSpace(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_Boolean? get date1904 {
     final e = node.getElement(
@@ -22137,6 +31674,95 @@ extension type D_CT_ChartSpace(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
     );
     return e != null ? D_CT_ExtensionList(e) : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'date1904',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lang',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextLanguageID(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'roundedCorners',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Boolean(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Style(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clrMapOvr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ColorMapping(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pivotSource',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PivotSource(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'protection',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Protection(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'chart',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_Chart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'txPr',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_TextBody(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'externalData',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExternalData(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'printSettings',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_PrintSettings(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'userShapes',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_RelId(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'extLst',
+      namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    )) {
+      errors.addAll(D_CT_ExtensionList(childNode).validate());
+    }
+    return errors;
   }
 }
 
@@ -22701,7 +32327,27 @@ extension type D_CT_ShapeNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualDrawingShapeProps(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingShapeProps(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_ConnectorNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -22721,35 +32367,36 @@ extension type D_CT_ConnectorNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualConnectorProperties(e) : null;
   }
-}
-extension type D_CT_Connector(_i1.XmlElement node) implements _i1.XmlElement {
-  String? get macro {
-    return node.getAttribute(
-      'macro',
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
       namespace:
           'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-    );
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvCxnSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualConnectorProperties(childNode).validate());
+    }
+    return errors;
+  }
+}
+
+extension type D_CT_Connector(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get macro {
+    return node.getAttribute('macro');
   }
 
   bool? get fPublished {
-    return node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPublished') == '1' ||
+        node.getAttribute('fPublished') == 'true' ||
+        node.getAttribute('fPublished') == 'on';
   }
 
   D_CT_ConnectorNonVisual? get nvCxnSpPr {
@@ -22778,7 +32425,34 @@ extension type D_CT_Connector(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeStyle(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvCxnSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ConnectorNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_PictureNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -22798,35 +32472,36 @@ extension type D_CT_PictureNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualPictureProperties(e) : null;
   }
-}
-extension type D_CT_Picture(_i1.XmlElement node) implements _i1.XmlElement {
-  String? get macro {
-    return node.getAttribute(
-      'macro',
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
       namespace:
           'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-    );
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvPicPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualPictureProperties(childNode).validate());
+    }
+    return errors;
+  }
+}
+
+extension type D_CT_Picture(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get macro {
+    return node.getAttribute('macro');
   }
 
   bool? get fPublished {
-    return node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPublished') == '1' ||
+        node.getAttribute('fPublished') == 'true' ||
+        node.getAttribute('fPublished') == 'on';
   }
 
   D_CT_PictureNonVisual? get nvPicPr {
@@ -22864,7 +32539,41 @@ extension type D_CT_Picture(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? D_CT_ShapeStyle(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvPicPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_PictureNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'blipFill',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_BlipFillProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'spPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'style',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_ShapeStyle(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GraphicFrameNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -22884,7 +32593,27 @@ extension type D_CT_GraphicFrameNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualGraphicFrameProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGraphicFrameProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupShapeNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -22904,7 +32633,27 @@ extension type D_CT_GroupShapeNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualGroupDrawingShapeProps(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGrpSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGroupDrawingShapeProps(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GroupShape(_i1.XmlElement node) implements _i1.XmlElement {
   D_CT_GroupShapeNonVisual? get nvGrpSpPr {
     final e = node.getElement(
@@ -22973,7 +32722,62 @@ extension type D_CT_GroupShape(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_Picture.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvGrpSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShapeNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSpPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShapeProperties(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_RelSizeAnchor(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Marker? get from {
@@ -23047,7 +32851,69 @@ extension type D_CT_RelSizeAnchor(_i1.XmlElement node)
     );
     return e != null ? D_CT_Rel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'from',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'to',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AbsSizeAnchor(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Marker? get from {
@@ -23121,7 +32987,69 @@ extension type D_CT_AbsSizeAnchor(_i1.XmlElement node)
     );
     return e != null ? D_CT_Rel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'from',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ext',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
+    )) {
+      errors.addAll(D_CT_Rel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_Drawing(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<D_CT_TwoCellAnchor> get twoCellAnchor {
     return node
@@ -23152,51 +33080,54 @@ extension type D_CT_Drawing(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(D_CT_AbsoluteAnchor.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'twoCellAnchor',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_TwoCellAnchor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oneCellAnchor',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_OneCellAnchor(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'absoluteAnchor',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_AbsoluteAnchor(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AnchorClientData(_i1.XmlElement node)
     implements _i1.XmlElement {
   bool? get fLocksWithSheet {
-    return node.getAttribute(
-              'fLocksWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fLocksWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fLocksWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fLocksWithSheet') == '1' ||
+        node.getAttribute('fLocksWithSheet') == 'true' ||
+        node.getAttribute('fLocksWithSheet') == 'on';
   }
 
   bool? get fPrintsWithSheet {
-    return node.getAttribute(
-              'fPrintsWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPrintsWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPrintsWithSheet',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPrintsWithSheet') == '1' ||
+        node.getAttribute('fPrintsWithSheet') == 'true' ||
+        node.getAttribute('fPrintsWithSheet') == 'on';
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
   }
 }
+
 extension type D_CT_GraphicalObjectFrameNonVisual(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_NonVisualDrawingProps? get cNvPr {
@@ -23216,36 +33147,37 @@ extension type D_CT_GraphicalObjectFrameNonVisual(_i1.XmlElement node)
     );
     return e != null ? D_CT_NonVisualGraphicFrameProperties(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'cNvPr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualDrawingProps(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cNvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_NonVisualGraphicFrameProperties(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_GraphicalObjectFrame(_i1.XmlElement node)
     implements _i1.XmlElement {
   String? get macro {
-    return node.getAttribute(
-      'macro',
-      namespace:
-          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-    );
+    return node.getAttribute('macro');
   }
 
   bool? get fPublished {
-    return node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            '1' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'true' ||
-        node.getAttribute(
-              'fPublished',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) ==
-            'on';
+    return node.getAttribute('fPublished') == '1' ||
+        node.getAttribute('fPublished') == 'true' ||
+        node.getAttribute('fPublished') == 'on';
   }
 
   D_CT_GraphicalObjectFrameNonVisual? get nvGraphicFramePr {
@@ -23265,24 +33197,55 @@ extension type D_CT_GraphicalObjectFrame(_i1.XmlElement node)
     );
     return e != null ? D_CT_Transform2D(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'nvGraphicFramePr',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrameNonVisual(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'xfrm',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Transform2D(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type D_CT_Rel(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type D_CT_Rel(_i1.XmlElement node) implements _i1.XmlElement {
+  String get r_id {
+    return node.getAttribute(
+      'id',
+      namespace:
+          'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+    )!;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'id',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'id' in ${node.name.qualified}");
+    }
+    return errors;
+  }
+}
+
 extension type D_CT_TwoCellAnchor(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_ST_EditAs? get editAs {
-    return node.getAttribute(
-              'editAs',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            ) !=
-            null
-        ? D_ST_EditAs.fromValue(
-            node.getAttribute(
-              'editAs',
-              namespace:
-                  'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-            )!,
-          )
+    return node.getAttribute('editAs') != null
+        ? D_ST_EditAs.fromValue(node.getAttribute('editAs')!)
         : null;
   }
 
@@ -23366,7 +33329,82 @@ extension type D_CT_TwoCellAnchor(_i1.XmlElement node)
     );
     return e != null ? D_CT_AnchorClientData(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_editAs = node.getAttribute('editAs');
+    if (v_editAs != null && D_ST_EditAs.fromValue(v_editAs) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'editAs' in ${node.name.qualified}: $v_editAs",
+      );
+    }
+    for (final childNode in node.findElements(
+      'from',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'to',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clientData',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_AnchorClientData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_OneCellAnchor(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Marker? get from {
@@ -23449,7 +33487,76 @@ extension type D_CT_OneCellAnchor(_i1.XmlElement node)
     );
     return e != null ? D_CT_AnchorClientData(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'from',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Marker(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ext',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clientData',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_AnchorClientData(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type D_CT_AbsoluteAnchor(_i1.XmlElement node)
     implements _i1.XmlElement {
   D_CT_Point2D? get pos {
@@ -23531,6 +33638,74 @@ extension type D_CT_AbsoluteAnchor(_i1.XmlElement node)
           'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
     );
     return e != null ? D_CT_AnchorClientData(e) : null;
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Point2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ext',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_PositiveSize2D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Shape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grpSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GroupShape(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'graphicFrame',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_GraphicalObjectFrame(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cxnSp',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Connector(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pic',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'clientData',
+      namespace:
+          'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    )) {
+      errors.addAll(D_CT_AnchorClientData(childNode).validate());
+    }
+    return errors;
   }
 }
 

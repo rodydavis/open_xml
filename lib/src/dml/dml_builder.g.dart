@@ -63,34 +63,10 @@ extension D_CT_Inline_Builder on _i1.XmlBuilder {
     String? distL,
     String? distR,
   ) {
-    if (distT != null)
-      this.attribute(
-        'distT',
-        distT,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distB != null)
-      this.attribute(
-        'distB',
-        distB,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distL != null)
-      this.attribute(
-        'distL',
-        distL,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distR != null)
-      this.attribute(
-        'distR',
-        distR,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (distT != null) this.attribute('distT', distT);
+    if (distB != null) this.attribute('distB', distB);
+    if (distL != null) this.attribute('distL', distL);
+    if (distR != null) this.attribute('distR', distR);
     children?.call(this);
   }
 }
@@ -118,12 +94,7 @@ extension D_CT_WrapPath_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? edited) {
     if (edited != null)
-      this.attribute(
-        'edited',
-        edited == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('edited', edited == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -186,41 +157,11 @@ extension D_CT_WrapSquare_Builder on _i1.XmlBuilder {
     String? distL,
     String? distR,
   ) {
-    if (wrapText != null)
-      this.attribute(
-        'wrapText',
-        wrapText!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distT != null)
-      this.attribute(
-        'distT',
-        distT,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distB != null)
-      this.attribute(
-        'distB',
-        distB,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distL != null)
-      this.attribute(
-        'distL',
-        distL,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distR != null)
-      this.attribute(
-        'distR',
-        distR,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (wrapText != null) this.attribute('wrapText', wrapText!.value);
+    if (distT != null) this.attribute('distT', distT);
+    if (distB != null) this.attribute('distB', distB);
+    if (distL != null) this.attribute('distL', distL);
+    if (distR != null) this.attribute('distR', distR);
     children?.call(this);
   }
 }
@@ -254,27 +195,9 @@ extension D_CT_WrapTight_Builder on _i1.XmlBuilder {
     String? distL,
     String? distR,
   ) {
-    if (wrapText != null)
-      this.attribute(
-        'wrapText',
-        wrapText!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distL != null)
-      this.attribute(
-        'distL',
-        distL,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distR != null)
-      this.attribute(
-        'distR',
-        distR,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (wrapText != null) this.attribute('wrapText', wrapText!.value);
+    if (distL != null) this.attribute('distL', distL);
+    if (distR != null) this.attribute('distR', distR);
     children?.call(this);
   }
 }
@@ -308,27 +231,9 @@ extension D_CT_WrapThrough_Builder on _i1.XmlBuilder {
     String? distL,
     String? distR,
   ) {
-    if (wrapText != null)
-      this.attribute(
-        'wrapText',
-        wrapText!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distL != null)
-      this.attribute(
-        'distL',
-        distL,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distR != null)
-      this.attribute(
-        'distR',
-        distR,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (wrapText != null) this.attribute('wrapText', wrapText!.value);
+    if (distL != null) this.attribute('distL', distL);
+    if (distR != null) this.attribute('distR', distR);
     children?.call(this);
   }
 }
@@ -360,20 +265,8 @@ extension D_CT_WrapTopBottom_Builder on _i1.XmlBuilder {
     String? distT,
     String? distB,
   ) {
-    if (distT != null)
-      this.attribute(
-        'distT',
-        distT,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distB != null)
-      this.attribute(
-        'distB',
-        distB,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (distT != null) this.attribute('distT', distT);
+    if (distB != null) this.attribute('distB', distB);
     children?.call(this);
   }
 }
@@ -404,12 +297,7 @@ extension D_CT_PosH_Builder on _i1.XmlBuilder {
     D_ST_RelFromH? relativeFrom,
   ) {
     if (relativeFrom != null)
-      this.attribute(
-        'relativeFrom',
-        relativeFrom!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('relativeFrom', relativeFrom!.value);
     children?.call(this);
   }
 }
@@ -440,12 +328,7 @@ extension D_CT_PosV_Builder on _i1.XmlBuilder {
     D_ST_RelFromV? relativeFrom,
   ) {
     if (relativeFrom != null)
-      this.attribute(
-        'relativeFrom',
-        relativeFrom!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('relativeFrom', relativeFrom!.value);
     children?.call(this);
   }
 }
@@ -521,83 +404,24 @@ extension D_CT_Anchor_Builder on _i1.XmlBuilder {
     bool? hidden,
     bool? allowOverlap,
   ) {
-    if (distT != null)
-      this.attribute(
-        'distT',
-        distT,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distB != null)
-      this.attribute(
-        'distB',
-        distB,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distL != null)
-      this.attribute(
-        'distL',
-        distL,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (distR != null)
-      this.attribute(
-        'distR',
-        distR,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (distT != null) this.attribute('distT', distT);
+    if (distB != null) this.attribute('distB', distB);
+    if (distL != null) this.attribute('distL', distL);
+    if (distR != null) this.attribute('distR', distR);
     if (simplePos != null)
-      this.attribute(
-        'simplePos',
-        simplePos == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('simplePos', simplePos == true ? 'true' : 'false');
     if (relativeHeight != null)
-      this.attribute(
-        'relativeHeight',
-        relativeHeight.toString(),
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('relativeHeight', relativeHeight.toString());
     if (behindDoc != null)
-      this.attribute(
-        'behindDoc',
-        behindDoc == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('behindDoc', behindDoc == true ? 'true' : 'false');
     if (locked != null)
-      this.attribute(
-        'locked',
-        locked == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('locked', locked == true ? 'true' : 'false');
     if (layoutInCell != null)
-      this.attribute(
-        'layoutInCell',
-        layoutInCell == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('layoutInCell', layoutInCell == true ? 'true' : 'false');
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
     if (allowOverlap != null)
-      this.attribute(
-        'allowOverlap',
-        allowOverlap == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+      this.attribute('allowOverlap', allowOverlap == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -649,13 +473,7 @@ extension D_CT_TextboxInfo_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? id) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (id != null) this.attribute('id', id.toString());
     children?.call(this);
   }
 }
@@ -683,20 +501,8 @@ extension D_CT_LinkedTextboxInformation_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? id, int? seq) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id.toString(),
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
-    if (seq != null)
-      this.attribute(
-        'seq',
-        seq.toString(),
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
-      );
+    if (id != null) this.attribute('id', id.toString());
+    if (seq != null) this.attribute('seq', seq.toString());
     children?.call(this);
   }
 }
@@ -730,8 +536,6 @@ extension D_CT_WordprocessingShape_Builder on _i1.XmlBuilder {
       this.attribute(
         'normalEastAsianFlow',
         normalEastAsianFlow == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
       );
     children?.call(this);
   }
@@ -764,20 +568,9 @@ extension D_CT_GraphicFrame_Builder on _i1.XmlBuilder {
     String? macro,
     bool? fPublished,
   ) {
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-      );
+    if (macro != null) this.attribute('macro', macro);
     if (fPublished != null)
-      this.attribute(
-        'fPublished',
-        fPublished == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/chartDrawing',
-      );
+      this.attribute('fPublished', fPublished == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -813,6 +606,7 @@ extension D_CT_WordprocessingContentPart_Builder on _i1.XmlBuilder {
     String? namespace =
         'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
     D_ST_BlackWhiteMode? bwMode,
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -820,24 +614,26 @@ extension D_CT_WordprocessingContentPart_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, bwMode);
+          _buildBody(children, bwMode, r_id);
         },
       );
     } else {
-      _buildBody(children, bwMode);
+      _buildBody(children, bwMode, r_id);
     }
   }
 
   void _buildBody(
     void Function(XmlBuilder)? children,
     D_ST_BlackWhiteMode? bwMode,
+    String? r_id,
   ) {
-    if (bwMode != null)
+    if (bwMode != null) this.attribute('bwMode', bwMode!.value);
+    if (r_id != null)
       this.attribute(
-        'bwMode',
-        bwMode!.value,
+        'id',
+        r_id,
         namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing',
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
     children?.call(this);
   }
@@ -897,6 +693,7 @@ extension D_CT_AudioFile_Builder on _i1.XmlBuilder {
   void d_ct_audiofile({
     String? tagName,
     String? namespace = 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    String? r_link,
     String? contentType,
     void Function(XmlBuilder)? children,
   }) {
@@ -905,21 +702,27 @@ extension D_CT_AudioFile_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, contentType);
+          _buildBody(children, r_link, contentType);
         },
       );
     } else {
-      _buildBody(children, contentType);
+      _buildBody(children, r_link, contentType);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? contentType) {
-    if (contentType != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_link,
+    String? contentType,
+  ) {
+    if (r_link != null)
       this.attribute(
-        'contentType',
-        contentType,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        'link',
+        r_link,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
+    if (contentType != null) this.attribute('contentType', contentType);
     children?.call(this);
   }
 }
@@ -928,6 +731,7 @@ extension D_CT_VideoFile_Builder on _i1.XmlBuilder {
   void d_ct_videofile({
     String? tagName,
     String? namespace = 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    String? r_link,
     String? contentType,
     void Function(XmlBuilder)? children,
   }) {
@@ -936,21 +740,27 @@ extension D_CT_VideoFile_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, contentType);
+          _buildBody(children, r_link, contentType);
         },
       );
     } else {
-      _buildBody(children, contentType);
+      _buildBody(children, r_link, contentType);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? contentType) {
-    if (contentType != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_link,
+    String? contentType,
+  ) {
+    if (r_link != null)
       this.attribute(
-        'contentType',
-        contentType,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        'link',
+        r_link,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
+    if (contentType != null) this.attribute('contentType', contentType);
     children?.call(this);
   }
 }
@@ -959,6 +769,7 @@ extension D_CT_QuickTimeFile_Builder on _i1.XmlBuilder {
   void d_ct_quicktimefile({
     String? tagName,
     String? namespace = 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    String? r_link,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -966,15 +777,22 @@ extension D_CT_QuickTimeFile_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_link);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_link);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_link) {
+    if (r_link != null)
+      this.attribute(
+        'link',
+        r_link,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -1001,18 +819,8 @@ extension D_CT_AudioCDTime_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? track, int? time) {
-    if (track != null)
-      this.attribute(
-        'track',
-        track.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (time != null)
-      this.attribute(
-        'time',
-        time.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (track != null) this.attribute('track', track.toString());
+    if (time != null) this.attribute('time', time.toString());
     children?.call(this);
   }
 }
@@ -1062,12 +870,7 @@ extension D_CT_ColorScheme_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -1093,12 +896,7 @@ extension D_CT_CustomColor_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -1129,18 +927,8 @@ extension D_CT_SupplementalFont_Builder on _i1.XmlBuilder {
     String? script,
     String? typeface,
   ) {
-    if (script != null)
-      this.attribute(
-        'script',
-        script,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (typeface != null)
-      this.attribute(
-        'typeface',
-        typeface,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (script != null) this.attribute('script', script);
+    if (typeface != null) this.attribute('typeface', typeface);
     children?.call(this);
   }
 }
@@ -1238,12 +1026,7 @@ extension D_CT_FontScheme_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -1365,12 +1148,7 @@ extension D_CT_StyleMatrix_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -1420,12 +1198,7 @@ extension D_CT_OfficeArtExtension_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? uri) {
-    if (uri != null)
-      this.attribute(
-        'uri',
-        uri,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (uri != null) this.attribute('uri', uri);
     children?.call(this);
   }
 }
@@ -1451,12 +1224,7 @@ extension D_CT_Angle_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1482,12 +1250,7 @@ extension D_CT_PositiveFixedAngle_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1513,12 +1276,7 @@ extension D_CT_Percentage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1544,12 +1302,7 @@ extension D_CT_PositivePercentage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1575,12 +1328,7 @@ extension D_CT_FixedPercentage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1606,12 +1354,7 @@ extension D_CT_PositiveFixedPercentage_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1638,18 +1381,8 @@ extension D_CT_Ratio_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? n, int? d) {
-    if (n != null)
-      this.attribute(
-        'n',
-        n.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (d != null)
-      this.attribute(
-        'd',
-        d.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (n != null) this.attribute('n', n.toString());
+    if (d != null) this.attribute('d', d.toString());
     children?.call(this);
   }
 }
@@ -1700,18 +1433,8 @@ extension D_CT_PositiveSize2D_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? cx, String? cy) {
-    if (cx != null)
-      this.attribute(
-        'cx',
-        cx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (cy != null)
-      this.attribute(
-        'cy',
-        cy,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (cx != null) this.attribute('cx', cx);
+    if (cy != null) this.attribute('cy', cy);
     children?.call(this);
   }
 }
@@ -1864,24 +1587,9 @@ extension D_CT_ScRgbColor_Builder on _i1.XmlBuilder {
     String? g,
     String? b,
   ) {
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (g != null)
-      this.attribute(
-        'g',
-        g,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (r != null) this.attribute('r', r);
+    if (g != null) this.attribute('g', g);
+    if (b != null) this.attribute('b', b);
     children?.call(this);
   }
 }
@@ -1907,12 +1615,7 @@ extension D_CT_SRgbColor_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -1945,24 +1648,9 @@ extension D_CT_HslColor_Builder on _i1.XmlBuilder {
     String? sat,
     String? lum,
   ) {
-    if (hue != null)
-      this.attribute(
-        'hue',
-        hue,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sat != null)
-      this.attribute(
-        'sat',
-        sat,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lum != null)
-      this.attribute(
-        'lum',
-        lum,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (hue != null) this.attribute('hue', hue);
+    if (sat != null) this.attribute('sat', sat);
+    if (lum != null) this.attribute('lum', lum);
     children?.call(this);
   }
 }
@@ -1993,18 +1681,8 @@ extension D_CT_SystemColor_Builder on _i1.XmlBuilder {
     D_ST_SystemColorVal? val,
     String? lastClr,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lastClr != null)
-      this.attribute(
-        'lastClr',
-        lastClr,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
+    if (lastClr != null) this.attribute('lastClr', lastClr);
     children?.call(this);
   }
 }
@@ -2033,12 +1711,7 @@ extension D_CT_SchemeColor_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_SchemeColorVal? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -2067,12 +1740,7 @@ extension D_CT_PresetColor_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_PresetColorVal? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -2153,24 +1821,11 @@ extension D_CT_Transform2D_Builder on _i1.XmlBuilder {
     bool? flipH,
     bool? flipV,
   ) {
-    if (rot != null)
-      this.attribute(
-        'rot',
-        rot,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rot != null) this.attribute('rot', rot);
     if (flipH != null)
-      this.attribute(
-        'flipH',
-        flipH == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('flipH', flipH == true ? 'true' : 'false');
     if (flipV != null)
-      this.attribute(
-        'flipV',
-        flipV == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('flipV', flipV == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2203,24 +1858,11 @@ extension D_CT_GroupTransform2D_Builder on _i1.XmlBuilder {
     bool? flipH,
     bool? flipV,
   ) {
-    if (rot != null)
-      this.attribute(
-        'rot',
-        rot,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rot != null) this.attribute('rot', rot);
     if (flipH != null)
-      this.attribute(
-        'flipH',
-        flipH == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('flipH', flipH == true ? 'true' : 'false');
     if (flipV != null)
-      this.attribute(
-        'flipV',
-        flipV == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('flipV', flipV == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2301,24 +1943,9 @@ extension D_CT_SphereCoords_Builder on _i1.XmlBuilder {
     String? lon,
     String? rev,
   ) {
-    if (lat != null)
-      this.attribute(
-        'lat',
-        lat,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lon != null)
-      this.attribute(
-        'lon',
-        lon,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (rev != null)
-      this.attribute(
-        'rev',
-        rev,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (lat != null) this.attribute('lat', lat);
+    if (lon != null) this.attribute('lon', lon);
+    if (rev != null) this.attribute('rev', rev);
     children?.call(this);
   }
 }
@@ -2353,30 +1980,10 @@ extension D_CT_RelativeRect_Builder on _i1.XmlBuilder {
     String? r,
     String? b,
   ) {
-    if (l != null)
-      this.attribute(
-        'l',
-        l,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (r != null)
-      this.attribute(
-        'r',
-        r,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (l != null) this.attribute('l', l);
+    if (t != null) this.attribute('t', t);
+    if (r != null) this.attribute('r', r);
+    if (b != null) this.attribute('b', b);
     children?.call(this);
   }
 }
@@ -2433,6 +2040,7 @@ extension D_CT_EmbeddedWAVAudioFile_Builder on _i1.XmlBuilder {
   void d_ct_embeddedwavaudiofile({
     String? tagName,
     String? namespace = 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    String? r_embed,
     String? name,
     void Function(XmlBuilder)? children,
   }) {
@@ -2441,21 +2049,27 @@ extension D_CT_EmbeddedWAVAudioFile_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children, name);
+          _buildBody(children, r_embed, name);
         },
       );
     } else {
-      _buildBody(children, name);
+      _buildBody(children, r_embed, name);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_embed,
+    String? name,
+  ) {
+    if (r_embed != null)
       this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        'embed',
+        r_embed,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -2464,6 +2078,7 @@ extension D_CT_Hyperlink_Builder on _i1.XmlBuilder {
   void d_ct_hyperlink({
     String? tagName,
     String? namespace = 'http://schemas.openxmlformats.org/drawingml/2006/main',
+    String? r_id,
     String? invalidUrl,
     String? action,
     String? tgtFrame,
@@ -2480,6 +2095,7 @@ extension D_CT_Hyperlink_Builder on _i1.XmlBuilder {
         nest: () {
           _buildBody(
             children,
+            r_id,
             invalidUrl,
             action,
             tgtFrame,
@@ -2493,6 +2109,7 @@ extension D_CT_Hyperlink_Builder on _i1.XmlBuilder {
     } else {
       _buildBody(
         children,
+        r_id,
         invalidUrl,
         action,
         tgtFrame,
@@ -2506,6 +2123,7 @@ extension D_CT_Hyperlink_Builder on _i1.XmlBuilder {
 
   void _buildBody(
     void Function(XmlBuilder)? children,
+    String? r_id,
     String? invalidUrl,
     String? action,
     String? tgtFrame,
@@ -2514,48 +2132,26 @@ extension D_CT_Hyperlink_Builder on _i1.XmlBuilder {
     bool? highlightClick,
     bool? endSnd,
   ) {
-    if (invalidUrl != null)
+    if (r_id != null)
       this.attribute(
-        'invalidUrl',
-        invalidUrl,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
       );
-    if (action != null)
-      this.attribute(
-        'action',
-        action,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (tgtFrame != null)
-      this.attribute(
-        'tgtFrame',
-        tgtFrame,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (tooltip != null)
-      this.attribute(
-        'tooltip',
-        tooltip,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (invalidUrl != null) this.attribute('invalidUrl', invalidUrl);
+    if (action != null) this.attribute('action', action);
+    if (tgtFrame != null) this.attribute('tgtFrame', tgtFrame);
+    if (tooltip != null) this.attribute('tooltip', tooltip);
     if (history != null)
-      this.attribute(
-        'history',
-        history == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('history', history == true ? 'true' : 'false');
     if (highlightClick != null)
       this.attribute(
         'highlightClick',
         highlightClick == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
       );
     if (endSnd != null)
-      this.attribute(
-        'endSnd',
-        endSnd == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('endSnd', endSnd == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2606,11 +2202,7 @@ extension D_CT_ShapeLocking_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? noTextEdit) {
     if (noTextEdit != null)
-      this.attribute(
-        'noTextEdit',
-        noTextEdit == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noTextEdit', noTextEdit == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2637,11 +2229,7 @@ extension D_CT_PictureLocking_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? noCrop) {
     if (noCrop != null)
-      this.attribute(
-        'noCrop',
-        noCrop == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noCrop', noCrop == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2701,47 +2289,22 @@ extension D_CT_GroupLocking_Builder on _i1.XmlBuilder {
     bool? noResize,
   ) {
     if (noGrp != null)
-      this.attribute(
-        'noGrp',
-        noGrp == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noGrp', noGrp == true ? 'true' : 'false');
     if (noUngrp != null)
-      this.attribute(
-        'noUngrp',
-        noUngrp == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noUngrp', noUngrp == true ? 'true' : 'false');
     if (noSelect != null)
-      this.attribute(
-        'noSelect',
-        noSelect == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noSelect', noSelect == true ? 'true' : 'false');
     if (noRot != null)
-      this.attribute(
-        'noRot',
-        noRot == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noRot', noRot == true ? 'true' : 'false');
     if (noChangeAspect != null)
       this.attribute(
         'noChangeAspect',
         noChangeAspect == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
       );
     if (noMove != null)
-      this.attribute(
-        'noMove',
-        noMove == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noMove', noMove == true ? 'true' : 'false');
     if (noResize != null)
-      this.attribute(
-        'noResize',
-        noResize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noResize', noResize == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2797,41 +2360,20 @@ extension D_CT_GraphicalObjectFrameLocking_Builder on _i1.XmlBuilder {
     bool? noResize,
   ) {
     if (noGrp != null)
-      this.attribute(
-        'noGrp',
-        noGrp == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noGrp', noGrp == true ? 'true' : 'false');
     if (noDrilldown != null)
-      this.attribute(
-        'noDrilldown',
-        noDrilldown == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noDrilldown', noDrilldown == true ? 'true' : 'false');
     if (noSelect != null)
-      this.attribute(
-        'noSelect',
-        noSelect == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noSelect', noSelect == true ? 'true' : 'false');
     if (noChangeAspect != null)
       this.attribute(
         'noChangeAspect',
         noChangeAspect == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
       );
     if (noMove != null)
-      this.attribute(
-        'noMove',
-        noMove == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noMove', noMove == true ? 'true' : 'false');
     if (noResize != null)
-      this.attribute(
-        'noResize',
-        noResize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noResize', noResize == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -2892,36 +2434,12 @@ extension D_CT_NonVisualDrawingProps_Builder on _i1.XmlBuilder {
     bool? hidden,
     String? title,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (descr != null)
-      this.attribute(
-        'descr',
-        descr,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (id != null) this.attribute('id', id);
+    if (name != null) this.attribute('name', name);
+    if (descr != null) this.attribute('descr', descr);
     if (hidden != null)
-      this.attribute(
-        'hidden',
-        hidden == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (title != null)
-      this.attribute(
-        'title',
-        title,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('hidden', hidden == true ? 'true' : 'false');
+    if (title != null) this.attribute('title', title);
     children?.call(this);
   }
 }
@@ -2948,11 +2466,7 @@ extension D_CT_NonVisualDrawingShapeProps_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? txBox) {
     if (txBox != null)
-      this.attribute(
-        'txBox',
-        txBox == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('txBox', txBox == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3009,7 +2523,6 @@ extension D_CT_NonVisualPictureProperties_Builder on _i1.XmlBuilder {
       this.attribute(
         'preferRelativeResize',
         preferRelativeResize == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
       );
     children?.call(this);
   }
@@ -3085,11 +2598,7 @@ extension D_CT_NonVisualContentPartProperties_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? isComment) {
     if (isComment != null)
-      this.attribute(
-        'isComment',
-        isComment == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('isComment', isComment == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3115,12 +2624,7 @@ extension D_CT_GraphicalObjectData_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? uri) {
-    if (uri != null)
-      this.attribute(
-        'uri',
-        uri,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (uri != null) this.attribute('uri', uri);
     children?.call(this);
   }
 }
@@ -3175,18 +2679,8 @@ extension D_CT_AnimationDgmElement_Builder on _i1.XmlBuilder {
     String? id,
     D_ST_DgmBuildStep? bldStep,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (bldStep != null)
-      this.attribute(
-        'bldStep',
-        bldStep!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (id != null) this.attribute('id', id);
+    if (bldStep != null) this.attribute('bldStep', bldStep!.value);
     children?.call(this);
   }
 }
@@ -3219,24 +2713,10 @@ extension D_CT_AnimationChartElement_Builder on _i1.XmlBuilder {
     int? categoryIdx,
     D_ST_ChartBuildStep? bldStep,
   ) {
-    if (seriesIdx != null)
-      this.attribute(
-        'seriesIdx',
-        seriesIdx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (seriesIdx != null) this.attribute('seriesIdx', seriesIdx.toString());
     if (categoryIdx != null)
-      this.attribute(
-        'categoryIdx',
-        categoryIdx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (bldStep != null)
-      this.attribute(
-        'bldStep',
-        bldStep!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('categoryIdx', categoryIdx.toString());
+    if (bldStep != null) this.attribute('bldStep', bldStep!.value);
     children?.call(this);
   }
 }
@@ -3286,12 +2766,7 @@ extension D_CT_AnimationDgmBuildProperties_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? rev) {
-    if (rev != null)
-      this.attribute(
-        'rev',
-        rev == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rev != null) this.attribute('rev', rev == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3318,11 +2793,7 @@ extension D_CT_AnimationChartBuildProperties_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? animBg) {
     if (animBg != null)
-      this.attribute(
-        'animBg',
-        animBg == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('animBg', animBg == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -3716,24 +3187,9 @@ extension D_CT_Camera_Builder on _i1.XmlBuilder {
     String? fov,
     String? zoom,
   ) {
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (fov != null)
-      this.attribute(
-        'fov',
-        fov,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (zoom != null)
-      this.attribute(
-        'zoom',
-        zoom,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (prst != null) this.attribute('prst', prst!.value);
+    if (fov != null) this.attribute('fov', fov);
+    if (zoom != null) this.attribute('zoom', zoom);
     children?.call(this);
   }
 }
@@ -3764,18 +3220,8 @@ extension D_CT_LightRig_Builder on _i1.XmlBuilder {
     D_ST_LightRigType? rig,
     D_ST_LightRigDirection? dir,
   ) {
-    if (rig != null)
-      this.attribute(
-        'rig',
-        rig!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rig != null) this.attribute('rig', rig!.value);
+    if (dir != null) this.attribute('dir', dir!.value);
     children?.call(this);
   }
 }
@@ -3856,24 +3302,9 @@ extension D_CT_Bevel_Builder on _i1.XmlBuilder {
     String? h,
     D_ST_BevelPresetType? prst,
   ) {
-    if (w != null)
-      this.attribute(
-        'w',
-        w,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (h != null)
-      this.attribute(
-        'h',
-        h,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (w != null) this.attribute('w', w);
+    if (h != null) this.attribute('h', h);
+    if (prst != null) this.attribute('prst', prst!.value);
     children?.call(this);
   }
 }
@@ -3906,24 +3337,10 @@ extension D_CT_Shape3D_Builder on _i1.XmlBuilder {
     String? contourW,
     D_ST_PresetMaterialType? prstMaterial,
   ) {
-    if (extrusionH != null)
-      this.attribute(
-        'extrusionH',
-        extrusionH,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (contourW != null)
-      this.attribute(
-        'contourW',
-        contourW,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (extrusionH != null) this.attribute('extrusionH', extrusionH);
+    if (contourW != null) this.attribute('contourW', contourW);
     if (prstMaterial != null)
-      this.attribute(
-        'prstMaterial',
-        prstMaterial!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('prstMaterial', prstMaterial!.value);
     children?.call(this);
   }
 }
@@ -3973,12 +3390,7 @@ extension D_CT_AlphaBiLevelEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? thresh) {
-    if (thresh != null)
-      this.attribute(
-        'thresh',
-        thresh,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (thresh != null) this.attribute('thresh', thresh);
     children?.call(this);
   }
 }
@@ -4076,12 +3488,7 @@ extension D_CT_AlphaModulateFixedEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? amt) {
-    if (amt != null)
-      this.attribute(
-        'amt',
-        amt,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (amt != null) this.attribute('amt', amt);
     children?.call(this);
   }
 }
@@ -4131,12 +3538,7 @@ extension D_CT_AlphaReplaceEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? a) {
-    if (a != null)
-      this.attribute(
-        'a',
-        a,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (a != null) this.attribute('a', a);
     children?.call(this);
   }
 }
@@ -4162,12 +3564,7 @@ extension D_CT_BiLevelEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? thresh) {
-    if (thresh != null)
-      this.attribute(
-        'thresh',
-        thresh,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (thresh != null) this.attribute('thresh', thresh);
     children?.call(this);
   }
 }
@@ -4198,18 +3595,8 @@ extension D_CT_BlurEffect_Builder on _i1.XmlBuilder {
     String? rad,
     bool? grow,
   ) {
-    if (rad != null)
-      this.attribute(
-        'rad',
-        rad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (grow != null)
-      this.attribute(
-        'grow',
-        grow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rad != null) this.attribute('rad', rad);
+    if (grow != null) this.attribute('grow', grow == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4235,12 +3622,7 @@ extension D_CT_ColorChangeEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? useA) {
-    if (useA != null)
-      this.attribute(
-        'useA',
-        useA == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (useA != null) this.attribute('useA', useA == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4314,12 +3696,7 @@ extension D_CT_GlowEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? rad) {
-    if (rad != null)
-      this.attribute(
-        'rad',
-        rad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rad != null) this.attribute('rad', rad);
     children?.call(this);
   }
 }
@@ -4376,24 +3753,9 @@ extension D_CT_HSLEffect_Builder on _i1.XmlBuilder {
     String? sat,
     String? lum,
   ) {
-    if (hue != null)
-      this.attribute(
-        'hue',
-        hue,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sat != null)
-      this.attribute(
-        'sat',
-        sat,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lum != null)
-      this.attribute(
-        'lum',
-        lum,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (hue != null) this.attribute('hue', hue);
+    if (sat != null) this.attribute('sat', sat);
+    if (lum != null) this.attribute('lum', lum);
     children?.call(this);
   }
 }
@@ -4426,24 +3788,9 @@ extension D_CT_InnerShadowEffect_Builder on _i1.XmlBuilder {
     String? dist,
     String? dir,
   ) {
-    if (blurRad != null)
-      this.attribute(
-        'blurRad',
-        blurRad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dist != null)
-      this.attribute(
-        'dist',
-        dist,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (blurRad != null) this.attribute('blurRad', blurRad);
+    if (dist != null) this.attribute('dist', dist);
+    if (dir != null) this.attribute('dir', dir);
     children?.call(this);
   }
 }
@@ -4474,18 +3821,8 @@ extension D_CT_LuminanceEffect_Builder on _i1.XmlBuilder {
     String? bright,
     String? contrast,
   ) {
-    if (bright != null)
-      this.attribute(
-        'bright',
-        bright,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (contrast != null)
-      this.attribute(
-        'contrast',
-        contrast,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (bright != null) this.attribute('bright', bright);
+    if (contrast != null) this.attribute('contrast', contrast);
     children?.call(this);
   }
 }
@@ -4552,60 +3889,16 @@ extension D_CT_OuterShadowEffect_Builder on _i1.XmlBuilder {
     D_ST_RectAlignment? algn,
     bool? rotWithShape,
   ) {
-    if (blurRad != null)
-      this.attribute(
-        'blurRad',
-        blurRad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dist != null)
-      this.attribute(
-        'dist',
-        dist,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sx != null)
-      this.attribute(
-        'sx',
-        sx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sy != null)
-      this.attribute(
-        'sy',
-        sy,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (kx != null)
-      this.attribute(
-        'kx',
-        kx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (ky != null)
-      this.attribute(
-        'ky',
-        ky,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (blurRad != null) this.attribute('blurRad', blurRad);
+    if (dist != null) this.attribute('dist', dist);
+    if (dir != null) this.attribute('dir', dir);
+    if (sx != null) this.attribute('sx', sx);
+    if (sy != null) this.attribute('sy', sy);
+    if (kx != null) this.attribute('kx', kx);
+    if (ky != null) this.attribute('ky', ky);
+    if (algn != null) this.attribute('algn', algn!.value);
     if (rotWithShape != null)
-      this.attribute(
-        'rotWithShape',
-        rotWithShape == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('rotWithShape', rotWithShape == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4638,24 +3931,9 @@ extension D_CT_PresetShadowEffect_Builder on _i1.XmlBuilder {
     String? dist,
     String? dir,
   ) {
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dist != null)
-      this.attribute(
-        'dist',
-        dist,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (prst != null) this.attribute('prst', prst!.value);
+    if (dist != null) this.attribute('dist', dist);
+    if (dir != null) this.attribute('dir', dir);
     children?.call(this);
   }
 }
@@ -4742,90 +4020,21 @@ extension D_CT_ReflectionEffect_Builder on _i1.XmlBuilder {
     D_ST_RectAlignment? algn,
     bool? rotWithShape,
   ) {
-    if (blurRad != null)
-      this.attribute(
-        'blurRad',
-        blurRad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (stA != null)
-      this.attribute(
-        'stA',
-        stA,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (stPos != null)
-      this.attribute(
-        'stPos',
-        stPos,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (endA != null)
-      this.attribute(
-        'endA',
-        endA,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (endPos != null)
-      this.attribute(
-        'endPos',
-        endPos,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dist != null)
-      this.attribute(
-        'dist',
-        dist,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (dir != null)
-      this.attribute(
-        'dir',
-        dir,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (fadeDir != null)
-      this.attribute(
-        'fadeDir',
-        fadeDir,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sx != null)
-      this.attribute(
-        'sx',
-        sx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sy != null)
-      this.attribute(
-        'sy',
-        sy,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (kx != null)
-      this.attribute(
-        'kx',
-        kx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (ky != null)
-      this.attribute(
-        'ky',
-        ky,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (blurRad != null) this.attribute('blurRad', blurRad);
+    if (stA != null) this.attribute('stA', stA);
+    if (stPos != null) this.attribute('stPos', stPos);
+    if (endA != null) this.attribute('endA', endA);
+    if (endPos != null) this.attribute('endPos', endPos);
+    if (dist != null) this.attribute('dist', dist);
+    if (dir != null) this.attribute('dir', dir);
+    if (fadeDir != null) this.attribute('fadeDir', fadeDir);
+    if (sx != null) this.attribute('sx', sx);
+    if (sy != null) this.attribute('sy', sy);
+    if (kx != null) this.attribute('kx', kx);
+    if (ky != null) this.attribute('ky', ky);
+    if (algn != null) this.attribute('algn', algn!.value);
     if (rotWithShape != null)
-      this.attribute(
-        'rotWithShape',
-        rotWithShape == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('rotWithShape', rotWithShape == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -4852,18 +4061,8 @@ extension D_CT_RelativeOffsetEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? tx, String? ty) {
-    if (tx != null)
-      this.attribute(
-        'tx',
-        tx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (ty != null)
-      this.attribute(
-        'ty',
-        ty,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (tx != null) this.attribute('tx', tx);
+    if (ty != null) this.attribute('ty', ty);
     children?.call(this);
   }
 }
@@ -4889,12 +4088,7 @@ extension D_CT_SoftEdgesEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? rad) {
-    if (rad != null)
-      this.attribute(
-        'rad',
-        rad,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rad != null) this.attribute('rad', rad);
     children?.call(this);
   }
 }
@@ -4925,18 +4119,8 @@ extension D_CT_TintEffect_Builder on _i1.XmlBuilder {
     String? hue,
     String? amt,
   ) {
-    if (hue != null)
-      this.attribute(
-        'hue',
-        hue,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (amt != null)
-      this.attribute(
-        'amt',
-        amt,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (hue != null) this.attribute('hue', hue);
+    if (amt != null) this.attribute('amt', amt);
     children?.call(this);
   }
 }
@@ -4971,30 +4155,10 @@ extension D_CT_TransformEffect_Builder on _i1.XmlBuilder {
     String? kx,
     String? ky,
   ) {
-    if (sx != null)
-      this.attribute(
-        'sx',
-        sx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sy != null)
-      this.attribute(
-        'sy',
-        sy,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (kx != null)
-      this.attribute(
-        'kx',
-        kx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (ky != null)
-      this.attribute(
-        'ky',
-        ky,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (sx != null) this.attribute('sx', sx);
+    if (sy != null) this.attribute('sy', sy);
+    if (kx != null) this.attribute('kx', kx);
+    if (ky != null) this.attribute('ky', ky);
     children?.call(this);
   }
 }
@@ -5073,18 +4237,9 @@ extension D_CT_LinearShadeProperties_Builder on _i1.XmlBuilder {
     String? ang,
     bool? scaled,
   ) {
-    if (ang != null)
-      this.attribute(
-        'ang',
-        ang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (ang != null) this.attribute('ang', ang);
     if (scaled != null)
-      this.attribute(
-        'scaled',
-        scaled == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('scaled', scaled == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5113,12 +4268,7 @@ extension D_CT_PathShadeProperties_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_PathShadeType? path,
   ) {
-    if (path != null)
-      this.attribute(
-        'path',
-        path!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (path != null) this.attribute('path', path!.value);
     children?.call(this);
   }
 }
@@ -5144,12 +4294,7 @@ extension D_CT_GradientStop_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? pos) {
-    if (pos != null)
-      this.attribute(
-        'pos',
-        pos,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (pos != null) this.attribute('pos', pos);
     children?.call(this);
   }
 }
@@ -5204,18 +4349,9 @@ extension D_CT_GradientFillProperties_Builder on _i1.XmlBuilder {
     D_ST_TileFlipMode? flip,
     bool? rotWithShape,
   ) {
-    if (flip != null)
-      this.attribute(
-        'flip',
-        flip!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (flip != null) this.attribute('flip', flip!.value);
     if (rotWithShape != null)
-      this.attribute(
-        'rotWithShape',
-        rotWithShape == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('rotWithShape', rotWithShape == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5250,30 +4386,10 @@ extension D_CT_TileInfoProperties_Builder on _i1.XmlBuilder {
     D_ST_TileFlipMode? flip,
     D_ST_RectAlignment? algn,
   ) {
-    if (sx != null)
-      this.attribute(
-        'sx',
-        sx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sy != null)
-      this.attribute(
-        'sy',
-        sy,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (flip != null)
-      this.attribute(
-        'flip',
-        flip!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (sx != null) this.attribute('sx', sx);
+    if (sy != null) this.attribute('sy', sy);
+    if (flip != null) this.attribute('flip', flip!.value);
+    if (algn != null) this.attribute('algn', algn!.value);
     children?.call(this);
   }
 }
@@ -5326,12 +4442,7 @@ extension D_CT_Blip_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_BlipCompression? cstate,
   ) {
-    if (cstate != null)
-      this.attribute(
-        'cstate',
-        cstate!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (cstate != null) this.attribute('cstate', cstate!.value);
     children?.call(this);
   }
 }
@@ -5362,18 +4473,9 @@ extension D_CT_BlipFillProperties_Builder on _i1.XmlBuilder {
     int? dpi,
     bool? rotWithShape,
   ) {
-    if (dpi != null)
-      this.attribute(
-        'dpi',
-        dpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (dpi != null) this.attribute('dpi', dpi.toString());
     if (rotWithShape != null)
-      this.attribute(
-        'rotWithShape',
-        rotWithShape == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('rotWithShape', rotWithShape == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -5402,12 +4504,7 @@ extension D_CT_PatternFillProperties_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_PresetPatternVal? prst,
   ) {
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (prst != null) this.attribute('prst', prst!.value);
     children?.call(this);
   }
 }
@@ -5505,12 +4602,7 @@ extension D_CT_FillOverlayEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_BlendMode? blend) {
-    if (blend != null)
-      this.attribute(
-        'blend',
-        blend!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (blend != null) this.attribute('blend', blend!.value);
     children?.call(this);
   }
 }
@@ -5536,12 +4628,7 @@ extension D_CT_EffectReference_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? ref) {
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -5572,18 +4659,8 @@ extension D_CT_EffectContainer_Builder on _i1.XmlBuilder {
     D_ST_EffectContainerType? type,
     String? name,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -5633,12 +4710,7 @@ extension D_CT_BlendEffect_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_BlendMode? blend) {
-    if (blend != null)
-      this.attribute(
-        'blend',
-        blend!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (blend != null) this.attribute('blend', blend!.value);
     children?.call(this);
   }
 }
@@ -5717,18 +4789,8 @@ extension D_CT_GeomGuide_Builder on _i1.XmlBuilder {
     String? name,
     String? fmla,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (fmla != null)
-      this.attribute(
-        'fmla',
-        fmla,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
+    if (fmla != null) this.attribute('fmla', fmla);
     children?.call(this);
   }
 }
@@ -5831,18 +4893,8 @@ extension D_CT_XYAdjustHandle_Builder on _i1.XmlBuilder {
     String? gdRefX,
     String? gdRefY,
   ) {
-    if (gdRefX != null)
-      this.attribute(
-        'gdRefX',
-        gdRefX,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (gdRefY != null)
-      this.attribute(
-        'gdRefY',
-        gdRefY,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (gdRefX != null) this.attribute('gdRefX', gdRefX);
+    if (gdRefY != null) this.attribute('gdRefY', gdRefY);
     children?.call(this);
   }
 }
@@ -5873,18 +4925,8 @@ extension D_CT_PolarAdjustHandle_Builder on _i1.XmlBuilder {
     String? gdRefR,
     String? gdRefAng,
   ) {
-    if (gdRefR != null)
-      this.attribute(
-        'gdRefR',
-        gdRefR,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (gdRefAng != null)
-      this.attribute(
-        'gdRefAng',
-        gdRefAng,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (gdRefR != null) this.attribute('gdRefR', gdRefR);
+    if (gdRefAng != null) this.attribute('gdRefAng', gdRefAng);
     children?.call(this);
   }
 }
@@ -5983,18 +5025,8 @@ extension D_CT_Connection_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? id, int? idx) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (id != null) this.attribute('id', id);
+    if (idx != null) this.attribute('idx', idx.toString());
     children?.call(this);
   }
 }
@@ -6175,36 +5207,13 @@ extension D_CT_Path2D_Builder on _i1.XmlBuilder {
     bool? stroke,
     bool? extrusionOk,
   ) {
-    if (w != null)
-      this.attribute(
-        'w',
-        w,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (h != null)
-      this.attribute(
-        'h',
-        h,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (fill != null)
-      this.attribute(
-        'fill',
-        fill!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (w != null) this.attribute('w', w);
+    if (h != null) this.attribute('h', h);
+    if (fill != null) this.attribute('fill', fill!.value);
     if (stroke != null)
-      this.attribute(
-        'stroke',
-        stroke == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('stroke', stroke == true ? 'true' : 'false');
     if (extrusionOk != null)
-      this.attribute(
-        'extrusionOk',
-        extrusionOk == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('extrusionOk', extrusionOk == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -6254,12 +5263,7 @@ extension D_CT_PresetGeometry2D_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ShapeType? prst) {
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (prst != null) this.attribute('prst', prst!.value);
     children?.call(this);
   }
 }
@@ -6288,12 +5292,7 @@ extension D_CT_PresetTextShape_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_TextShapeType? prst,
   ) {
-    if (prst != null)
-      this.attribute(
-        'prst',
-        prst!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (prst != null) this.attribute('prst', prst!.value);
     children?.call(this);
   }
 }
@@ -6350,24 +5349,9 @@ extension D_CT_LineEndProperties_Builder on _i1.XmlBuilder {
     D_ST_LineEndWidth? w,
     D_ST_LineEndLength? len,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (w != null)
-      this.attribute(
-        'w',
-        w!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (len != null)
-      this.attribute(
-        'len',
-        len!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (w != null) this.attribute('w', w!.value);
+    if (len != null) this.attribute('len', len!.value);
     children?.call(this);
   }
 }
@@ -6441,12 +5425,7 @@ extension D_CT_LineJoinMiterProperties_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? lim) {
-    if (lim != null)
-      this.attribute(
-        'lim',
-        lim,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (lim != null) this.attribute('lim', lim);
     children?.call(this);
   }
 }
@@ -6475,12 +5454,7 @@ extension D_CT_PresetLineDashProperties_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_PresetLineDashVal? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -6507,18 +5481,8 @@ extension D_CT_DashStop_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? d, String? sp) {
-    if (d != null)
-      this.attribute(
-        'd',
-        d,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sp != null)
-      this.attribute(
-        'sp',
-        sp,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (d != null) this.attribute('d', d);
+    if (sp != null) this.attribute('sp', sp);
     children?.call(this);
   }
 }
@@ -6577,30 +5541,10 @@ extension D_CT_LineProperties_Builder on _i1.XmlBuilder {
     D_ST_CompoundLine? cmpd,
     D_ST_PenAlignment? algn,
   ) {
-    if (w != null)
-      this.attribute(
-        'w',
-        w,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (cap != null)
-      this.attribute(
-        'cap',
-        cap!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (cmpd != null)
-      this.attribute(
-        'cmpd',
-        cmpd!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (w != null) this.attribute('w', w);
+    if (cap != null) this.attribute('cap', cap!.value);
+    if (cmpd != null) this.attribute('cmpd', cmpd!.value);
+    if (algn != null) this.attribute('algn', algn!.value);
     children?.call(this);
   }
 }
@@ -6629,12 +5573,7 @@ extension D_CT_ShapeProperties_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_BlackWhiteMode? bwMode,
   ) {
-    if (bwMode != null)
-      this.attribute(
-        'bwMode',
-        bwMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (bwMode != null) this.attribute('bwMode', bwMode!.value);
     children?.call(this);
   }
 }
@@ -6663,12 +5602,7 @@ extension D_CT_GroupShapeProperties_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_BlackWhiteMode? bwMode,
   ) {
-    if (bwMode != null)
-      this.attribute(
-        'bwMode',
-        bwMode!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (bwMode != null) this.attribute('bwMode', bwMode!.value);
     children?.call(this);
   }
 }
@@ -6694,12 +5628,7 @@ extension D_CT_StyleMatrixReference_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? idx) {
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (idx != null) this.attribute('idx', idx);
     children?.call(this);
   }
 }
@@ -6728,12 +5657,7 @@ extension D_CT_FontReference_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_FontCollectionIndex? idx,
   ) {
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (idx != null) this.attribute('idx', idx!.value);
     children?.call(this);
   }
 }
@@ -6908,78 +5832,18 @@ extension D_CT_ColorMapping_Builder on _i1.XmlBuilder {
     D_ST_ColorSchemeIndex? hlink,
     D_ST_ColorSchemeIndex? folHlink,
   ) {
-    if (bg1 != null)
-      this.attribute(
-        'bg1',
-        bg1!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (tx1 != null)
-      this.attribute(
-        'tx1',
-        tx1!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (bg2 != null)
-      this.attribute(
-        'bg2',
-        bg2!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (tx2 != null)
-      this.attribute(
-        'tx2',
-        tx2!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent1 != null)
-      this.attribute(
-        'accent1',
-        accent1!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent2 != null)
-      this.attribute(
-        'accent2',
-        accent2!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent3 != null)
-      this.attribute(
-        'accent3',
-        accent3!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent4 != null)
-      this.attribute(
-        'accent4',
-        accent4!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent5 != null)
-      this.attribute(
-        'accent5',
-        accent5!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (accent6 != null)
-      this.attribute(
-        'accent6',
-        accent6!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (hlink != null)
-      this.attribute(
-        'hlink',
-        hlink!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (folHlink != null)
-      this.attribute(
-        'folHlink',
-        folHlink!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (bg1 != null) this.attribute('bg1', bg1!.value);
+    if (tx1 != null) this.attribute('tx1', tx1!.value);
+    if (bg2 != null) this.attribute('bg2', bg2!.value);
+    if (tx2 != null) this.attribute('tx2', tx2!.value);
+    if (accent1 != null) this.attribute('accent1', accent1!.value);
+    if (accent2 != null) this.attribute('accent2', accent2!.value);
+    if (accent3 != null) this.attribute('accent3', accent3!.value);
+    if (accent4 != null) this.attribute('accent4', accent4!.value);
+    if (accent5 != null) this.attribute('accent5', accent5!.value);
+    if (accent6 != null) this.attribute('accent6', accent6!.value);
+    if (hlink != null) this.attribute('hlink', hlink!.value);
+    if (folHlink != null) this.attribute('folHlink', folHlink!.value);
     children?.call(this);
   }
 }
@@ -7077,12 +5941,7 @@ extension D_CT_OfficeStyleSheet_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -7165,30 +6024,12 @@ extension D_CT_TableCellProperties_Builder on _i1.XmlBuilder {
     bool? anchorCtr,
     D_ST_TextHorzOverflowType? horzOverflow,
   ) {
-    if (vert != null)
-      this.attribute(
-        'vert',
-        vert!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (anchor != null)
-      this.attribute(
-        'anchor',
-        anchor!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (vert != null) this.attribute('vert', vert!.value);
+    if (anchor != null) this.attribute('anchor', anchor!.value);
     if (anchorCtr != null)
-      this.attribute(
-        'anchorCtr',
-        anchorCtr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('anchorCtr', anchorCtr == true ? 'true' : 'false');
     if (horzOverflow != null)
-      this.attribute(
-        'horzOverflow',
-        horzOverflow!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('horzOverflow', horzOverflow!.value);
     children?.call(this);
   }
 }
@@ -7297,36 +6138,13 @@ extension D_CT_TableCell_Builder on _i1.XmlBuilder {
     bool? vMerge,
     String? id,
   ) {
-    if (rowSpan != null)
-      this.attribute(
-        'rowSpan',
-        rowSpan.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (gridSpan != null)
-      this.attribute(
-        'gridSpan',
-        gridSpan.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rowSpan != null) this.attribute('rowSpan', rowSpan.toString());
+    if (gridSpan != null) this.attribute('gridSpan', gridSpan.toString());
     if (hMerge != null)
-      this.attribute(
-        'hMerge',
-        hMerge == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('hMerge', hMerge == true ? 'true' : 'false');
     if (vMerge != null)
-      this.attribute(
-        'vMerge',
-        vMerge == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('vMerge', vMerge == true ? 'true' : 'false');
+    if (id != null) this.attribute('id', id);
     children?.call(this);
   }
 }
@@ -7409,48 +6227,19 @@ extension D_CT_TableProperties_Builder on _i1.XmlBuilder {
     bool? bandRow,
     bool? bandCol,
   ) {
-    if (rtl != null)
-      this.attribute(
-        'rtl',
-        rtl == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rtl != null) this.attribute('rtl', rtl == true ? 'true' : 'false');
     if (firstRow != null)
-      this.attribute(
-        'firstRow',
-        firstRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('firstRow', firstRow == true ? 'true' : 'false');
     if (firstCol != null)
-      this.attribute(
-        'firstCol',
-        firstCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('firstCol', firstCol == true ? 'true' : 'false');
     if (lastRow != null)
-      this.attribute(
-        'lastRow',
-        lastRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('lastRow', lastRow == true ? 'true' : 'false');
     if (lastCol != null)
-      this.attribute(
-        'lastCol',
-        lastCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('lastCol', lastCol == true ? 'true' : 'false');
     if (bandRow != null)
-      this.attribute(
-        'bandRow',
-        bandRow == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('bandRow', bandRow == true ? 'true' : 'false');
     if (bandCol != null)
-      this.attribute(
-        'bandCol',
-        bandCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('bandCol', bandCol == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -7504,11 +6293,7 @@ extension D_CT_Cell3D_Builder on _i1.XmlBuilder {
     D_ST_PresetMaterialType? prstMaterial,
   ) {
     if (prstMaterial != null)
-      this.attribute(
-        'prstMaterial',
-        prstMaterial!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('prstMaterial', prstMaterial!.value);
     children?.call(this);
   }
 }
@@ -7563,18 +6348,8 @@ extension D_CT_TableStyleTextStyle_Builder on _i1.XmlBuilder {
     D_ST_OnOffStyleType? b,
     D_ST_OnOffStyleType? i,
   ) {
-    if (b != null)
-      this.attribute(
-        'b',
-        b!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (b != null) this.attribute('b', b!.value);
+    if (i != null) this.attribute('i', i!.value);
     children?.call(this);
   }
 }
@@ -7701,18 +6476,8 @@ extension D_CT_TableStyle_Builder on _i1.XmlBuilder {
     String? styleId,
     String? styleName,
   ) {
-    if (styleId != null)
-      this.attribute(
-        'styleId',
-        styleId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (styleName != null)
-      this.attribute(
-        'styleName',
-        styleName,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (styleId != null) this.attribute('styleId', styleId);
+    if (styleName != null) this.attribute('styleName', styleName);
     children?.call(this);
   }
 }
@@ -7738,12 +6503,7 @@ extension D_CT_TableStyleList_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? def) {
-    if (def != null)
-      this.attribute(
-        'def',
-        def,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (def != null) this.attribute('def', def);
     children?.call(this);
   }
 }
@@ -7954,96 +6714,33 @@ extension D_CT_TextBodyProperties_Builder on _i1.XmlBuilder {
     bool? upright,
     bool? compatLnSpc,
   ) {
-    if (rot != null)
-      this.attribute(
-        'rot',
-        rot,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (rot != null) this.attribute('rot', rot);
     if (spcFirstLastPara != null)
       this.attribute(
         'spcFirstLastPara',
         spcFirstLastPara == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
       );
     if (vertOverflow != null)
-      this.attribute(
-        'vertOverflow',
-        vertOverflow!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('vertOverflow', vertOverflow!.value);
     if (horzOverflow != null)
-      this.attribute(
-        'horzOverflow',
-        horzOverflow!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (vert != null)
-      this.attribute(
-        'vert',
-        vert!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (wrap != null)
-      this.attribute(
-        'wrap',
-        wrap!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (numCol != null)
-      this.attribute(
-        'numCol',
-        numCol,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (spcCol != null)
-      this.attribute(
-        'spcCol',
-        spcCol,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('horzOverflow', horzOverflow!.value);
+    if (vert != null) this.attribute('vert', vert!.value);
+    if (wrap != null) this.attribute('wrap', wrap!.value);
+    if (numCol != null) this.attribute('numCol', numCol);
+    if (spcCol != null) this.attribute('spcCol', spcCol);
     if (rtlCol != null)
-      this.attribute(
-        'rtlCol',
-        rtlCol == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('rtlCol', rtlCol == true ? 'true' : 'false');
     if (fromWordArt != null)
-      this.attribute(
-        'fromWordArt',
-        fromWordArt == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (anchor != null)
-      this.attribute(
-        'anchor',
-        anchor!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('fromWordArt', fromWordArt == true ? 'true' : 'false');
+    if (anchor != null) this.attribute('anchor', anchor!.value);
     if (anchorCtr != null)
-      this.attribute(
-        'anchorCtr',
-        anchorCtr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('anchorCtr', anchorCtr == true ? 'true' : 'false');
     if (forceAA != null)
-      this.attribute(
-        'forceAA',
-        forceAA == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('forceAA', forceAA == true ? 'true' : 'false');
     if (upright != null)
-      this.attribute(
-        'upright',
-        upright == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('upright', upright == true ? 'true' : 'false');
     if (compatLnSpc != null)
-      this.attribute(
-        'compatLnSpc',
-        compatLnSpc == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('compatLnSpc', compatLnSpc == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -8141,12 +6838,7 @@ extension D_CT_TextBulletSizePercent_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -8172,12 +6864,7 @@ extension D_CT_TextBulletSizePoint_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -8232,18 +6919,8 @@ extension D_CT_TextAutonumberBullet_Builder on _i1.XmlBuilder {
     D_ST_TextAutonumberScheme? type,
     String? startAt,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (startAt != null)
-      this.attribute(
-        'startAt',
-        startAt,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (startAt != null) this.attribute('startAt', startAt);
     children?.call(this);
   }
 }
@@ -8269,12 +6946,7 @@ extension D_CT_TextCharBullet_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? char) {
-    if (char != null)
-      this.attribute(
-        'char',
-        char,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (char != null) this.attribute('char', char);
     children?.call(this);
   }
 }
@@ -8357,30 +7029,10 @@ extension D_CT_TextFont_Builder on _i1.XmlBuilder {
     D_ST_PitchFamily? pitchFamily,
     int? charset,
   ) {
-    if (typeface != null)
-      this.attribute(
-        'typeface',
-        typeface,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (panose != null)
-      this.attribute(
-        'panose',
-        panose,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (pitchFamily != null)
-      this.attribute(
-        'pitchFamily',
-        pitchFamily!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (charset != null)
-      this.attribute(
-        'charset',
-        charset.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (typeface != null) this.attribute('typeface', typeface);
+    if (panose != null) this.attribute('panose', panose);
+    if (pitchFamily != null) this.attribute('pitchFamily', pitchFamily!.value);
+    if (charset != null) this.attribute('charset', charset.toString());
     children?.call(this);
   }
 }
@@ -8556,113 +7208,28 @@ extension D_CT_TextCharacterProperties_Builder on _i1.XmlBuilder {
     String? bmk,
   ) {
     if (kumimoji != null)
-      this.attribute(
-        'kumimoji',
-        kumimoji == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (altLang != null)
-      this.attribute(
-        'altLang',
-        altLang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (sz != null)
-      this.attribute(
-        'sz',
-        sz,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (i != null)
-      this.attribute(
-        'i',
-        i == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (u != null)
-      this.attribute(
-        'u',
-        u!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (strike != null)
-      this.attribute(
-        'strike',
-        strike!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (kern != null)
-      this.attribute(
-        'kern',
-        kern,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (cap != null)
-      this.attribute(
-        'cap',
-        cap!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('kumimoji', kumimoji == true ? 'true' : 'false');
+    if (lang != null) this.attribute('lang', lang);
+    if (altLang != null) this.attribute('altLang', altLang);
+    if (sz != null) this.attribute('sz', sz);
+    if (b != null) this.attribute('b', b == true ? 'true' : 'false');
+    if (i != null) this.attribute('i', i == true ? 'true' : 'false');
+    if (u != null) this.attribute('u', u!.value);
+    if (strike != null) this.attribute('strike', strike!.value);
+    if (kern != null) this.attribute('kern', kern);
+    if (cap != null) this.attribute('cap', cap!.value);
     if (normalizeH != null)
-      this.attribute(
-        'normalizeH',
-        normalizeH == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (baseline != null)
-      this.attribute(
-        'baseline',
-        baseline,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('normalizeH', normalizeH == true ? 'true' : 'false');
+    if (baseline != null) this.attribute('baseline', baseline);
     if (noProof != null)
-      this.attribute(
-        'noProof',
-        noProof == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('noProof', noProof == true ? 'true' : 'false');
     if (dirty != null)
-      this.attribute(
-        'dirty',
-        dirty == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (err != null)
-      this.attribute(
-        'err',
-        err == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('dirty', dirty == true ? 'true' : 'false');
+    if (err != null) this.attribute('err', err == true ? 'true' : 'false');
     if (smtClean != null)
-      this.attribute(
-        'smtClean',
-        smtClean == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (smtId != null)
-      this.attribute(
-        'smtId',
-        smtId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (bmk != null)
-      this.attribute(
-        'bmk',
-        bmk,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('smtClean', smtClean == true ? 'true' : 'false');
+    if (smtId != null) this.attribute('smtId', smtId.toString());
+    if (bmk != null) this.attribute('bmk', bmk);
     children?.call(this);
   }
 }
@@ -8689,12 +7256,7 @@ extension D_CT_Boolean_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -8744,12 +7306,7 @@ extension D_CT_TextSpacingPoint_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -8778,12 +7335,7 @@ extension D_CT_TextTabStop_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_TextTabAlignType? algn,
   ) {
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (algn != null) this.attribute('algn', algn!.value);
     children?.call(this);
   }
 }
@@ -8926,66 +7478,19 @@ extension D_CT_TextParagraphProperties_Builder on _i1.XmlBuilder {
     bool? latinLnBrk,
     bool? hangingPunct,
   ) {
-    if (marL != null)
-      this.attribute(
-        'marL',
-        marL,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (marR != null)
-      this.attribute(
-        'marR',
-        marR,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (lvl != null)
-      this.attribute(
-        'lvl',
-        lvl,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (indent != null)
-      this.attribute(
-        'indent',
-        indent,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (algn != null)
-      this.attribute(
-        'algn',
-        algn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (rtl != null)
-      this.attribute(
-        'rtl',
-        rtl == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (marL != null) this.attribute('marL', marL);
+    if (marR != null) this.attribute('marR', marR);
+    if (lvl != null) this.attribute('lvl', lvl);
+    if (indent != null) this.attribute('indent', indent);
+    if (algn != null) this.attribute('algn', algn!.value);
+    if (rtl != null) this.attribute('rtl', rtl == true ? 'true' : 'false');
     if (eaLnBrk != null)
-      this.attribute(
-        'eaLnBrk',
-        eaLnBrk == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (fontAlgn != null)
-      this.attribute(
-        'fontAlgn',
-        fontAlgn!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('eaLnBrk', eaLnBrk == true ? 'true' : 'false');
+    if (fontAlgn != null) this.attribute('fontAlgn', fontAlgn!.value);
     if (latinLnBrk != null)
-      this.attribute(
-        'latinLnBrk',
-        latinLnBrk == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('latinLnBrk', latinLnBrk == true ? 'true' : 'false');
     if (hangingPunct != null)
-      this.attribute(
-        'hangingPunct',
-        hangingPunct == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+      this.attribute('hangingPunct', hangingPunct == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -9016,18 +7521,8 @@ extension D_CT_TextField_Builder on _i1.XmlBuilder {
     String? id,
     String? type,
   ) {
-    if (id != null)
-      this.attribute(
-        'id',
-        id,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
-    if (type != null)
-      this.attribute(
-        'type',
-        type,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/main',
-      );
+    if (id != null) this.attribute('id', id);
+    if (type != null) this.attribute('type', type);
     children?.call(this);
   }
 }
@@ -9083,18 +7578,8 @@ extension D_CT_CTName_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -9126,18 +7611,8 @@ extension D_CT_CTDescription_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -9165,18 +7640,8 @@ extension D_CT_CTCategory_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? type, int? pri) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (pri != null)
-      this.attribute(
-        'pri',
-        pri.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type);
+    if (pri != null) this.attribute('pri', pri.toString());
     children?.call(this);
   }
 }
@@ -9233,18 +7698,8 @@ extension D_CT_Colors_Builder on _i1.XmlBuilder {
     D_ST_ClrAppMethod? meth,
     D_ST_HueDir? hueDir,
   ) {
-    if (meth != null)
-      this.attribute(
-        'meth',
-        meth!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (hueDir != null)
-      this.attribute(
-        'hueDir',
-        hueDir!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (meth != null) this.attribute('meth', meth!.value);
+    if (hueDir != null) this.attribute('hueDir', hueDir!.value);
     children?.call(this);
   }
 }
@@ -9271,12 +7726,7 @@ extension D_CT_CTStyleLabel_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -9308,18 +7758,8 @@ extension D_CT_ColorTransform_Builder on _i1.XmlBuilder {
     String? uniqueId,
     String? minVer,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
     children?.call(this);
   }
 }
@@ -9353,24 +7793,9 @@ extension D_CT_ColorTransformHeader_Builder on _i1.XmlBuilder {
     String? minVer,
     int? resId,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (resId != null)
-      this.attribute(
-        'resId',
-        resId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
+    if (resId != null) this.attribute('resId', resId.toString());
     children?.call(this);
   }
 }
@@ -9422,12 +7847,7 @@ extension D_CT_Pt_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_PtType? type) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type!.value);
     children?.call(this);
   }
 }
@@ -9488,30 +7908,10 @@ extension D_CT_Cxn_Builder on _i1.XmlBuilder {
     int? destOrd,
     String? presId,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (srcOrd != null)
-      this.attribute(
-        'srcOrd',
-        srcOrd.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (destOrd != null)
-      this.attribute(
-        'destOrd',
-        destOrd.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (presId != null)
-      this.attribute(
-        'presId',
-        presId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (srcOrd != null) this.attribute('srcOrd', srcOrd.toString());
+    if (destOrd != null) this.attribute('destOrd', destOrd.toString());
+    if (presId != null) this.attribute('presId', presId);
     children?.call(this);
   }
 }
@@ -9595,24 +7995,9 @@ extension D_CT_Constraint_Builder on _i1.XmlBuilder {
     double? val,
     double? fact,
   ) {
-    if (op != null)
-      this.attribute(
-        'op',
-        op!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (fact != null)
-      this.attribute(
-        'fact',
-        fact.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (op != null) this.attribute('op', op!.value);
+    if (val != null) this.attribute('val', val.toString());
+    if (fact != null) this.attribute('fact', fact.toString());
     children?.call(this);
   }
 }
@@ -9671,24 +8056,9 @@ extension D_CT_NumericRule_Builder on _i1.XmlBuilder {
     double? fact,
     double? max,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (fact != null)
-      this.attribute(
-        'fact',
-        fact.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (max != null)
-      this.attribute(
-        'max',
-        max.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val.toString());
+    if (fact != null) this.attribute('fact', fact.toString());
+    if (max != null) this.attribute('max', max.toString());
     children?.call(this);
   }
 }
@@ -9770,18 +8140,8 @@ extension D_CT_Adj_Builder on _i1.XmlBuilder {
     String? idx,
     double? val,
   ) {
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (idx != null) this.attribute('idx', idx);
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -9842,34 +8202,12 @@ extension D_CT_Shape_Builder on _i1.XmlBuilder {
     bool? fLocksText,
     bool? fPublished,
   ) {
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
-    if (textlink != null)
-      this.attribute(
-        'textlink',
-        textlink,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+    if (macro != null) this.attribute('macro', macro);
+    if (textlink != null) this.attribute('textlink', textlink);
     if (fLocksText != null)
-      this.attribute(
-        'fLocksText',
-        fLocksText == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+      this.attribute('fLocksText', fLocksText == true ? 'true' : 'false');
     if (fPublished != null)
-      this.attribute(
-        'fPublished',
-        fPublished == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+      this.attribute('fPublished', fPublished == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -9896,12 +8234,7 @@ extension D_CT_Parameter_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ParameterId? type) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type!.value);
     children?.call(this);
   }
 }
@@ -9933,18 +8266,8 @@ extension D_CT_Algorithm_Builder on _i1.XmlBuilder {
     D_ST_AlgorithmType? type,
     int? rev,
   ) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (rev != null)
-      this.attribute(
-        'rev',
-        rev.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type!.value);
+    if (rev != null) this.attribute('rev', rev.toString());
     children?.call(this);
   }
 }
@@ -9980,30 +8303,10 @@ extension D_CT_LayoutNode_Builder on _i1.XmlBuilder {
     D_ST_ChildOrderType? chOrder,
     String? moveWith,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (styleLbl != null)
-      this.attribute(
-        'styleLbl',
-        styleLbl,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (chOrder != null)
-      this.attribute(
-        'chOrder',
-        chOrder!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (moveWith != null)
-      this.attribute(
-        'moveWith',
-        moveWith,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
+    if (styleLbl != null) this.attribute('styleLbl', styleLbl);
+    if (chOrder != null) this.attribute('chOrder', chOrder!.value);
+    if (moveWith != null) this.attribute('moveWith', moveWith);
     children?.call(this);
   }
 }
@@ -10035,18 +8338,8 @@ extension D_CT_ForEach_Builder on _i1.XmlBuilder {
     String? name,
     String? ref,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (ref != null)
-      this.attribute(
-        'ref',
-        ref,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
+    if (ref != null) this.attribute('ref', ref);
     children?.call(this);
   }
 }
@@ -10080,24 +8373,9 @@ extension D_CT_When_Builder on _i1.XmlBuilder {
     D_ST_FunctionType? func,
     D_ST_FunctionOperator? op,
   ) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (func != null)
-      this.attribute(
-        'func',
-        func!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (op != null)
-      this.attribute(
-        'op',
-        op!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
+    if (func != null) this.attribute('func', func!.value);
+    if (op != null) this.attribute('op', op!.value);
     children?.call(this);
   }
 }
@@ -10124,12 +8402,7 @@ extension D_CT_Otherwise_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -10156,12 +8429,7 @@ extension D_CT_Choose_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -10189,11 +8457,7 @@ extension D_CT_SampleData_Builder on _i1.XmlBuilder {
 
   void _buildBody(void Function(XmlBuilder)? children, bool? useDef) {
     if (useDef != null)
-      this.attribute(
-        'useDef',
-        useDef == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('useDef', useDef == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -10221,18 +8485,8 @@ extension D_CT_Category_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? type, int? pri) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (pri != null)
-      this.attribute(
-        'pri',
-        pri.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type);
+    if (pri != null) this.attribute('pri', pri.toString());
     children?.call(this);
   }
 }
@@ -10289,18 +8543,8 @@ extension D_CT_Name_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -10332,18 +8576,8 @@ extension D_CT_Description_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -10377,24 +8611,9 @@ extension D_CT_DiagramDefinition_Builder on _i1.XmlBuilder {
     String? minVer,
     String? defStyle,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (defStyle != null)
-      this.attribute(
-        'defStyle',
-        defStyle,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
+    if (defStyle != null) this.attribute('defStyle', defStyle);
     children?.call(this);
   }
 }
@@ -10430,30 +8649,10 @@ extension D_CT_DiagramDefinitionHeader_Builder on _i1.XmlBuilder {
     String? defStyle,
     int? resId,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (defStyle != null)
-      this.attribute(
-        'defStyle',
-        defStyle,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (resId != null)
-      this.attribute(
-        'resId',
-        resId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
+    if (defStyle != null) this.attribute('defStyle', defStyle);
+    if (resId != null) this.attribute('resId', resId.toString());
     children?.call(this);
   }
 }
@@ -10488,6 +8687,10 @@ extension D_CT_RelIds_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/drawingml/2006/diagram',
+    String? r_dm,
+    String? r_lo,
+    String? r_qs,
+    String? r_cs,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -10495,15 +8698,49 @@ extension D_CT_RelIds_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_dm, r_lo, r_qs, r_cs);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_dm, r_lo, r_qs, r_cs);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(
+    void Function(XmlBuilder)? children,
+    String? r_dm,
+    String? r_lo,
+    String? r_qs,
+    String? r_cs,
+  ) {
+    if (r_dm != null)
+      this.attribute(
+        'dm',
+        r_dm,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
+    if (r_lo != null)
+      this.attribute(
+        'lo',
+        r_lo,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
+    if (r_qs != null)
+      this.attribute(
+        'qs',
+        r_qs,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
+    if (r_cs != null)
+      this.attribute(
+        'cs',
+        r_cs,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -10611,120 +8848,32 @@ extension D_CT_ElemPropSet_Builder on _i1.XmlBuilder {
     int? custSzY,
     bool? custT,
   ) {
-    if (presName != null)
-      this.attribute(
-        'presName',
-        presName,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (presStyleLbl != null)
-      this.attribute(
-        'presStyleLbl',
-        presStyleLbl,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (presName != null) this.attribute('presName', presName);
+    if (presStyleLbl != null) this.attribute('presStyleLbl', presStyleLbl);
     if (presStyleIdx != null)
-      this.attribute(
-        'presStyleIdx',
-        presStyleIdx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('presStyleIdx', presStyleIdx.toString());
     if (presStyleCnt != null)
-      this.attribute(
-        'presStyleCnt',
-        presStyleCnt.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (loTypeId != null)
-      this.attribute(
-        'loTypeId',
-        loTypeId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (loCatId != null)
-      this.attribute(
-        'loCatId',
-        loCatId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (qsTypeId != null)
-      this.attribute(
-        'qsTypeId',
-        qsTypeId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (qsCatId != null)
-      this.attribute(
-        'qsCatId',
-        qsCatId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (csTypeId != null)
-      this.attribute(
-        'csTypeId',
-        csTypeId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (csCatId != null)
-      this.attribute(
-        'csCatId',
-        csCatId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('presStyleCnt', presStyleCnt.toString());
+    if (loTypeId != null) this.attribute('loTypeId', loTypeId);
+    if (loCatId != null) this.attribute('loCatId', loCatId);
+    if (qsTypeId != null) this.attribute('qsTypeId', qsTypeId);
+    if (qsCatId != null) this.attribute('qsCatId', qsCatId);
+    if (csTypeId != null) this.attribute('csTypeId', csTypeId);
+    if (csCatId != null) this.attribute('csCatId', csCatId);
     if (coherent3DOff != null)
-      this.attribute(
-        'coherent3DOff',
-        coherent3DOff == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (phldrT != null)
-      this.attribute(
-        'phldrT',
-        phldrT,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('coherent3DOff', coherent3DOff == true ? 'true' : 'false');
+    if (phldrT != null) this.attribute('phldrT', phldrT);
     if (phldr != null)
-      this.attribute(
-        'phldr',
-        phldr == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (custAng != null)
-      this.attribute(
-        'custAng',
-        custAng.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('phldr', phldr == true ? 'true' : 'false');
+    if (custAng != null) this.attribute('custAng', custAng.toString());
     if (custFlipVert != null)
-      this.attribute(
-        'custFlipVert',
-        custFlipVert == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('custFlipVert', custFlipVert == true ? 'true' : 'false');
     if (custFlipHor != null)
-      this.attribute(
-        'custFlipHor',
-        custFlipHor == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (custSzX != null)
-      this.attribute(
-        'custSzX',
-        custSzX.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (custSzY != null)
-      this.attribute(
-        'custSzY',
-        custSzY.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('custFlipHor', custFlipHor == true ? 'true' : 'false');
+    if (custSzX != null) this.attribute('custSzX', custSzX.toString());
+    if (custSzY != null) this.attribute('custSzY', custSzY.toString());
     if (custT != null)
-      this.attribute(
-        'custT',
-        custT == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+      this.attribute('custT', custT == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -10751,12 +8900,7 @@ extension D_CT_OrgChart_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -10783,12 +8927,7 @@ extension D_CT_ChildMax_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -10815,12 +8954,7 @@ extension D_CT_ChildPref_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -10847,12 +8981,7 @@ extension D_CT_BulletEnabled_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, bool? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -10879,12 +9008,7 @@ extension D_CT_Direction_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_Direction? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -10914,12 +9038,7 @@ extension D_CT_HierBranchStyle_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_HierBranchStyle? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -10946,12 +9065,7 @@ extension D_CT_AnimOne_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_AnimOneStr? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -10978,12 +9092,7 @@ extension D_CT_AnimLvl_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_AnimLvlStr? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -11013,12 +9122,7 @@ extension D_CT_ResizeHandles_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_ResizeHandlesStr? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -11075,18 +9179,8 @@ extension D_CT_SDName_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -11118,18 +9212,8 @@ extension D_CT_SDDescription_Builder on _i1.XmlBuilder {
     String? lang,
     String? val,
   ) {
-    if (lang != null)
-      this.attribute(
-        'lang',
-        lang,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (lang != null) this.attribute('lang', lang);
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -11157,18 +9241,8 @@ extension D_CT_SDCategory_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? type, int? pri) {
-    if (type != null)
-      this.attribute(
-        'type',
-        type,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (pri != null)
-      this.attribute(
-        'pri',
-        pri.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (type != null) this.attribute('type', type);
+    if (pri != null) this.attribute('pri', pri.toString());
     children?.call(this);
   }
 }
@@ -11245,12 +9319,7 @@ extension D_CT_StyleLabel_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? name) {
-    if (name != null)
-      this.attribute(
-        'name',
-        name,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (name != null) this.attribute('name', name);
     children?.call(this);
   }
 }
@@ -11282,18 +9351,8 @@ extension D_CT_StyleDefinition_Builder on _i1.XmlBuilder {
     String? uniqueId,
     String? minVer,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
     children?.call(this);
   }
 }
@@ -11327,24 +9386,9 @@ extension D_CT_StyleDefinitionHeader_Builder on _i1.XmlBuilder {
     String? minVer,
     int? resId,
   ) {
-    if (uniqueId != null)
-      this.attribute(
-        'uniqueId',
-        uniqueId,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (minVer != null)
-      this.attribute(
-        'minVer',
-        minVer,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
-    if (resId != null)
-      this.attribute(
-        'resId',
-        resId.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/diagram',
-      );
+    if (uniqueId != null) this.attribute('uniqueId', uniqueId);
+    if (minVer != null) this.attribute('minVer', minVer);
+    if (resId != null) this.attribute('resId', resId.toString());
     children?.call(this);
   }
 }
@@ -11396,12 +9440,7 @@ extension D_CT_Double_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, double? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -11428,12 +9467,7 @@ extension D_CT_UnsignedInt_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val.toString());
     children?.call(this);
   }
 }
@@ -11443,6 +9477,7 @@ extension D_CT_RelId_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -11450,15 +9485,22 @@ extension D_CT_RelId_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -11485,12 +9527,7 @@ extension D_CT_Extension_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? uri) {
-    if (uri != null)
-      this.attribute(
-        'uri',
-        uri,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (uri != null) this.attribute('uri', uri);
     children?.call(this);
   }
 }
@@ -11547,18 +9584,8 @@ extension D_CT_NumVal_Builder on _i1.XmlBuilder {
     int? idx,
     String? formatCode,
   ) {
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (formatCode != null)
-      this.attribute(
-        'formatCode',
-        formatCode,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (idx != null) this.attribute('idx', idx.toString());
+    if (formatCode != null) this.attribute('formatCode', formatCode);
     children?.call(this);
   }
 }
@@ -11660,12 +9687,7 @@ extension D_CT_StrVal_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, int? idx) {
-    if (idx != null)
-      this.attribute(
-        'idx',
-        idx.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (idx != null) this.attribute('idx', idx.toString());
     children?.call(this);
   }
 }
@@ -11767,12 +9789,7 @@ extension D_CT_TextLanguageID_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -11924,12 +9941,7 @@ extension D_CT_LayoutTarget_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_LayoutTarget? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -11956,12 +9968,7 @@ extension D_CT_LayoutMode_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_LayoutMode? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12063,12 +10070,7 @@ extension D_CT_RotX_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12120,12 +10122,7 @@ extension D_CT_RotY_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12177,12 +10174,7 @@ extension D_CT_Perspective_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12387,12 +10379,7 @@ extension D_CT_SizeRepresents_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_SizeRepresents? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12419,12 +10406,7 @@ extension D_CT_FirstSliceAng_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12476,12 +10458,7 @@ extension D_CT_SplitType_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_SplitType? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12563,18 +10540,9 @@ extension D_CT_NumFmt_Builder on _i1.XmlBuilder {
     String? formatCode,
     bool? sourceLinked,
   ) {
-    if (formatCode != null)
-      this.attribute(
-        'formatCode',
-        formatCode,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (formatCode != null) this.attribute('formatCode', formatCode);
     if (sourceLinked != null)
-      this.attribute(
-        'sourceLinked',
-        sourceLinked == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('sourceLinked', sourceLinked == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -12601,12 +10569,7 @@ extension D_CT_LblAlgn_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_LblAlgn? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12633,12 +10596,7 @@ extension D_CT_DLblPos_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_DLblPos? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12715,12 +10673,7 @@ extension D_CT_MarkerStyle_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_MarkerStyle? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12747,12 +10700,7 @@ extension D_CT_MarkerSize_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12832,12 +10780,7 @@ extension D_CT_TrendlineType_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_TrendlineType? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -12864,12 +10807,7 @@ extension D_CT_Order_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12896,12 +10834,7 @@ extension D_CT_Period_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -12978,12 +10911,7 @@ extension D_CT_ErrDir_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ErrDir? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13010,12 +10938,7 @@ extension D_CT_ErrBarType_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ErrBarType? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13042,12 +10965,7 @@ extension D_CT_ErrValType_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ErrValType? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13349,12 +11267,7 @@ extension D_CT_Grouping_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_Grouping? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13481,12 +11394,7 @@ extension D_CT_ScatterStyle_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_ScatterStyle? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13538,12 +11446,7 @@ extension D_CT_RadarStyle_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_RadarStyle? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13595,12 +11498,7 @@ extension D_CT_BarGrouping_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_BarGrouping? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13627,12 +11525,7 @@ extension D_CT_BarDir_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_BarDir? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -13834,12 +11727,7 @@ extension D_CT_OfPieType_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_OfPieType? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14016,12 +11904,7 @@ extension D_CT_AxPos_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_AxPos? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14048,12 +11931,7 @@ extension D_CT_Crosses_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_Crosses? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14080,12 +11958,7 @@ extension D_CT_CrossBetween_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_CrossBetween? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14112,12 +11985,7 @@ extension D_CT_TickMark_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_TickMark? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14144,12 +12012,7 @@ extension D_CT_TickLblPos_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_TickLblPos? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14176,12 +12039,7 @@ extension D_CT_Skip_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -14208,12 +12066,7 @@ extension D_CT_TimeUnit_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_TimeUnit? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14240,12 +12093,7 @@ extension D_CT_AxisUnit_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -14272,12 +12120,7 @@ extension D_CT_BuiltInUnit_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_BuiltInUnit? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14307,12 +12150,7 @@ extension D_CT_PictureFormat_Builder on _i1.XmlBuilder {
     void Function(XmlBuilder)? children,
     D_ST_PictureFormat? val,
   ) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14339,12 +12177,7 @@ extension D_CT_PictureStackUnit_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -14446,12 +12279,7 @@ extension D_CT_Orientation_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_Orientation? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14478,12 +12306,7 @@ extension D_CT_LogBase_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -14735,12 +12558,7 @@ extension D_CT_LegendPos_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_LegendPos? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14817,12 +12635,7 @@ extension D_CT_DispBlanksAs_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_DispBlanksAs? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val!.value);
     children?.call(this);
   }
 }
@@ -14874,12 +12687,7 @@ extension D_CT_Style_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, String? val) {
-    if (val != null)
-      this.attribute(
-        'val',
-        val,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (val != null) this.attribute('val', val);
     children?.call(this);
   }
 }
@@ -14972,19 +12780,16 @@ extension D_CT_HeaderFooter_Builder on _i1.XmlBuilder {
       this.attribute(
         'alignWithMargins',
         alignWithMargins == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
       );
     if (differentOddEven != null)
       this.attribute(
         'differentOddEven',
         differentOddEven == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
       );
     if (differentFirst != null)
       this.attribute(
         'differentFirst',
         differentFirst == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
       );
     children?.call(this);
   }
@@ -15025,42 +12830,12 @@ extension D_CT_PageMargins_Builder on _i1.XmlBuilder {
     double? header,
     double? footer,
   ) {
-    if (l != null)
-      this.attribute(
-        'l',
-        l.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (r != null)
-      this.attribute(
-        'r',
-        r.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (t != null)
-      this.attribute(
-        't',
-        t.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (b != null)
-      this.attribute(
-        'b',
-        b.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (header != null)
-      this.attribute(
-        'header',
-        header.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (footer != null)
-      this.attribute(
-        'footer',
-        footer.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (l != null) this.attribute('l', l.toString());
+    if (r != null) this.attribute('r', r.toString());
+    if (t != null) this.attribute('t', t.toString());
+    if (b != null) this.attribute('b', b.toString());
+    if (header != null) this.attribute('header', header.toString());
+    if (footer != null) this.attribute('footer', footer.toString());
     children?.call(this);
   }
 }
@@ -15070,6 +12845,7 @@ extension D_CT_ExternalData_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/drawingml/2006/chart',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -15077,15 +12853,22 @@ extension D_CT_ExternalData_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -15161,72 +12944,26 @@ extension D_CT_PageSetup_Builder on _i1.XmlBuilder {
     int? verticalDpi,
     int? copies,
   ) {
-    if (paperSize != null)
-      this.attribute(
-        'paperSize',
-        paperSize.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (paperHeight != null)
-      this.attribute(
-        'paperHeight',
-        paperHeight,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (paperWidth != null)
-      this.attribute(
-        'paperWidth',
-        paperWidth,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+    if (paperSize != null) this.attribute('paperSize', paperSize.toString());
+    if (paperHeight != null) this.attribute('paperHeight', paperHeight);
+    if (paperWidth != null) this.attribute('paperWidth', paperWidth);
     if (firstPageNumber != null)
-      this.attribute(
-        'firstPageNumber',
-        firstPageNumber.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (orientation != null)
-      this.attribute(
-        'orientation',
-        orientation!.value,
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('firstPageNumber', firstPageNumber.toString());
+    if (orientation != null) this.attribute('orientation', orientation!.value);
     if (blackAndWhite != null)
-      this.attribute(
-        'blackAndWhite',
-        blackAndWhite == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('blackAndWhite', blackAndWhite == true ? 'true' : 'false');
     if (draft != null)
-      this.attribute(
-        'draft',
-        draft == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('draft', draft == true ? 'true' : 'false');
     if (useFirstPageNumber != null)
       this.attribute(
         'useFirstPageNumber',
         useFirstPageNumber == true ? 'true' : 'false',
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
       );
     if (horizontalDpi != null)
-      this.attribute(
-        'horizontalDpi',
-        horizontalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('horizontalDpi', horizontalDpi.toString());
     if (verticalDpi != null)
-      this.attribute(
-        'verticalDpi',
-        verticalDpi.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
-    if (copies != null)
-      this.attribute(
-        'copies',
-        copies.toString(),
-        namespace: 'http://schemas.openxmlformats.org/drawingml/2006/chart',
-      );
+      this.attribute('verticalDpi', verticalDpi.toString());
+    if (copies != null) this.attribute('copies', copies.toString());
     children?.call(this);
   }
 }
@@ -15358,20 +13095,9 @@ extension D_CT_Connector_Builder on _i1.XmlBuilder {
     String? macro,
     bool? fPublished,
   ) {
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+    if (macro != null) this.attribute('macro', macro);
     if (fPublished != null)
-      this.attribute(
-        'fPublished',
-        fPublished == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+      this.attribute('fPublished', fPublished == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -15428,20 +13154,9 @@ extension D_CT_Picture_Builder on _i1.XmlBuilder {
     String? macro,
     bool? fPublished,
   ) {
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+    if (macro != null) this.attribute('macro', macro);
     if (fPublished != null)
-      this.attribute(
-        'fPublished',
-        fPublished == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+      this.attribute('fPublished', fPublished == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -15627,15 +13342,11 @@ extension D_CT_AnchorClientData_Builder on _i1.XmlBuilder {
       this.attribute(
         'fLocksWithSheet',
         fLocksWithSheet == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
       );
     if (fPrintsWithSheet != null)
       this.attribute(
         'fPrintsWithSheet',
         fPrintsWithSheet == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
       );
     children?.call(this);
   }
@@ -15693,20 +13404,9 @@ extension D_CT_GraphicalObjectFrame_Builder on _i1.XmlBuilder {
     String? macro,
     bool? fPublished,
   ) {
-    if (macro != null)
-      this.attribute(
-        'macro',
-        macro,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+    if (macro != null) this.attribute('macro', macro);
     if (fPublished != null)
-      this.attribute(
-        'fPublished',
-        fPublished == true ? 'true' : 'false',
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+      this.attribute('fPublished', fPublished == true ? 'true' : 'false');
     children?.call(this);
   }
 }
@@ -15716,6 +13416,7 @@ extension D_CT_Rel_Builder on _i1.XmlBuilder {
     String? tagName,
     String? namespace =
         'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
+    String? r_id,
     void Function(XmlBuilder)? children,
   }) {
     if (tagName != null) {
@@ -15723,15 +13424,22 @@ extension D_CT_Rel_Builder on _i1.XmlBuilder {
         tagName,
         namespace: namespace,
         nest: () {
-          _buildBody(children);
+          _buildBody(children, r_id);
         },
       );
     } else {
-      _buildBody(children);
+      _buildBody(children, r_id);
     }
   }
 
-  void _buildBody(void Function(XmlBuilder)? children) {
+  void _buildBody(void Function(XmlBuilder)? children, String? r_id) {
+    if (r_id != null)
+      this.attribute(
+        'id',
+        r_id,
+        namespace:
+            'http://schemas.openxmlformats.org/officeDocument/2006/relationships',
+      );
     children?.call(this);
   }
 }
@@ -15758,13 +13466,7 @@ extension D_CT_TwoCellAnchor_Builder on _i1.XmlBuilder {
   }
 
   void _buildBody(void Function(XmlBuilder)? children, D_ST_EditAs? editAs) {
-    if (editAs != null)
-      this.attribute(
-        'editAs',
-        editAs!.value,
-        namespace:
-            'http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing',
-      );
+    if (editAs != null) this.attribute('editAs', editAs!.value);
     children?.call(this);
   }
 }

@@ -220,7 +220,21 @@ extension type M_CT_Integer255(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Integer2(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -228,7 +242,21 @@ extension type M_CT_Integer2(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SpacingRule(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -236,7 +264,21 @@ extension type M_CT_SpacingRule(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_UnSignedInteger(_i1.XmlElement node)
     implements _i1.XmlElement {
   String get val {
@@ -245,7 +287,21 @@ extension type M_CT_UnSignedInteger(_i1.XmlElement node)
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Char(_i1.XmlElement node) implements _i1.XmlElement {
   String get val {
     return node.getAttribute(
@@ -253,8 +309,28 @@ extension type M_CT_Char(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    return errors;
+  }
 }
-extension type M_CT_OnOff(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type M_CT_OnOff(_i1.XmlElement node) implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type M_CT_String(_i1.XmlElement node) implements _i1.XmlElement {
   String? get val {
     return node.getAttribute(
@@ -262,7 +338,13 @@ extension type M_CT_String(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type M_CT_XAlign(_i1.XmlElement node) implements _i1.XmlElement {
   ST_XAlign get val {
     return ST_XAlign.fromValue(
@@ -272,7 +354,30 @@ extension type M_CT_XAlign(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && ST_XAlign.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_YAlign(_i1.XmlElement node) implements _i1.XmlElement {
   ST_YAlign get val {
     return ST_YAlign.fromValue(
@@ -282,7 +387,30 @@ extension type M_CT_YAlign(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && ST_YAlign.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Shp(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_Shp get val {
     return M_ST_Shp.fromValue(
@@ -292,7 +420,30 @@ extension type M_CT_Shp(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_Shp.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_FType(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_FType get val {
     return M_ST_FType.fromValue(
@@ -302,7 +453,30 @@ extension type M_CT_FType(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_FType.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_LimLoc(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_LimLoc get val {
     return M_ST_LimLoc.fromValue(
@@ -312,7 +486,30 @@ extension type M_CT_LimLoc(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_LimLoc.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_TopBot(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_TopBot get val {
     return M_ST_TopBot.fromValue(
@@ -322,7 +519,30 @@ extension type M_CT_TopBot(_i1.XmlElement node) implements _i1.XmlElement {
       )!,
     )!;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    if (node.getAttribute(
+          'val',
+          namespace:
+              'http://schemas.openxmlformats.org/officeDocument/2006/math',
+        ) ==
+        null) {
+      errors.add("Missing required attribute 'val' in ${node.name.qualified}");
+    }
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_TopBot.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Script(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_Script? get val {
     return node.getAttribute(
@@ -340,7 +560,22 @@ extension type M_CT_Script(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_Script.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_Style? get val {
     return node.getAttribute(
@@ -358,7 +593,22 @@ extension type M_CT_Style(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_Style.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_ManualBreak(_i1.XmlElement node) implements _i1.XmlElement {
   String? get alnAt {
     return node.getAttribute(
@@ -366,7 +616,13 @@ extension type M_CT_ManualBreak(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type M_CT_RPR(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get lit {
     final e = node.getElement(
@@ -415,8 +671,60 @@ extension type M_CT_RPR(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OnOff(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'lit',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'nor',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'scr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Script(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sty',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Style(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'brk',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_ManualBreak(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'aln',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    return errors;
+  }
 }
-extension type M_CT_Text(_i1.XmlElement node) implements _i1.XmlElement {}
+
+extension type M_CT_Text(_i1.XmlElement node) implements _i1.XmlElement {
+  String? get xml_space {
+    return node.getAttribute('space');
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type M_CT_R(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_RPR? get rPr {
     final e = node.getElement(
@@ -755,7 +1063,229 @@ extension type M_CT_R(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_Empty.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_RPR(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'br',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Br(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      't',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'contentPart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Rel(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delText',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'instrText',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'delInstrText',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Text(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noBreakHyphen',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'softHyphen',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dayShort',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'monthShort',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yearShort',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dayLong',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'monthLong',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'yearLong',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'annotationRef',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnoteRef',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnoteRef',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'separator',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'continuationSeparator',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sym',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Sym(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pgNum',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'tab',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'object',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Object(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pict',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Picture(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldChar',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_FldChar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ruby',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Ruby(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'footnoteReference',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_FtnEdnRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endnoteReference',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_FtnEdnRef(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentReference',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'drawing',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Drawing(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ptab',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_PTab(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lastRenderedPageBreak',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Empty(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      't',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Text(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_CtrlPr(_i1.XmlElement node) implements _i1.XmlElement {
   W_CT_RPr? get rPr {
     final e = node.getElement(
@@ -780,7 +1310,31 @@ extension type M_CT_CtrlPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? W_CT_MathCtrlDel(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'rPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MathCtrlIns(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MathCtrlDel(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_AccPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Char? get chr {
     final e = node.getElement(
@@ -797,7 +1351,25 @@ extension type M_CT_AccPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'chr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Acc(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_AccPr? get accPr {
     final e = node.getElement(
@@ -814,7 +1386,25 @@ extension type M_CT_Acc(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'accPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_AccPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_BarPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_TopBot? get pos {
     final e = node.getElement(
@@ -831,7 +1421,25 @@ extension type M_CT_BarPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TopBot(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Bar(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_BarPr? get barPr {
     final e = node.getElement(
@@ -848,7 +1456,25 @@ extension type M_CT_Bar(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'barPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BarPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_BoxPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get opEmu {
     final e = node.getElement(
@@ -897,7 +1523,49 @@ extension type M_CT_BoxPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'opEmu',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'noBreak',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'diff',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'brk',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_ManualBreak(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'aln',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Box(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_BoxPr? get boxPr {
     final e = node.getElement(
@@ -914,7 +1582,25 @@ extension type M_CT_Box(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'boxPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BoxPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_BorderBoxPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get hideTop {
     final e = node.getElement(
@@ -987,7 +1673,67 @@ extension type M_CT_BorderBoxPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'hideTop',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideBot',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideLeft',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hideRight',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strikeH',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strikeV',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strikeBLTR',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'strikeTLBR',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_BorderBox(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_BorderBoxPr? get borderBoxPr {
     final e = node.getElement(
@@ -1004,7 +1750,25 @@ extension type M_CT_BorderBox(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'borderBoxPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BorderBoxPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_DPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Char? get begChr {
     final e = node.getElement(
@@ -1053,7 +1817,49 @@ extension type M_CT_DPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'begChr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sepChr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'endChr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grow',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'shp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Shp(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_D(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_DPr? get dPr {
     final e = node.getElement(
@@ -1072,7 +1878,25 @@ extension type M_CT_D(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_OMathArg.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'dPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_DPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_EqArrPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_YAlign? get baseJc {
     final e = node.getElement(
@@ -1121,7 +1945,49 @@ extension type M_CT_EqArrPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'baseJc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_YAlign(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'maxDist',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'objDist',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rSpRule',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SpacingRule(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_UnSignedInteger(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_EqArr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_EqArrPr? get eqArrPr {
     final e = node.getElement(
@@ -1140,7 +2006,25 @@ extension type M_CT_EqArr(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_OMathArg.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'eqArrPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_EqArrPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_FPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_FType? get type {
     final e = node.getElement(
@@ -1157,7 +2041,25 @@ extension type M_CT_FPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'type',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_FType(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_F(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_FPr? get fPr {
     final e = node.getElement(
@@ -1182,7 +2084,31 @@ extension type M_CT_F(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'fPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_FPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'num',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'den',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_FuncPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1191,7 +2117,19 @@ extension type M_CT_FuncPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Func(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_FuncPr? get funcPr {
     final e = node.getElement(
@@ -1216,7 +2154,31 @@ extension type M_CT_Func(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'funcPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_FuncPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fName',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_GroupChrPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Char? get chr {
     final e = node.getElement(
@@ -1249,7 +2211,37 @@ extension type M_CT_GroupChrPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'chr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'pos',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TopBot(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'vertJc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TopBot(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_GroupChr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_GroupChrPr? get groupChrPr {
     final e = node.getElement(
@@ -1266,7 +2258,25 @@ extension type M_CT_GroupChr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'groupChrPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_GroupChrPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_LimLowPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1275,7 +2285,19 @@ extension type M_CT_LimLowPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_LimLow(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_LimLowPr? get limLowPr {
     final e = node.getElement(
@@ -1300,7 +2322,31 @@ extension type M_CT_LimLow(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'limLowPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLowPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lim',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_LimUppPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1309,7 +2355,19 @@ extension type M_CT_LimUppPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_LimUpp(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_LimUppPr? get limUppPr {
     final e = node.getElement(
@@ -1334,7 +2392,31 @@ extension type M_CT_LimUpp(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'limUppPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimUppPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lim',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MCPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Integer255? get count {
     final e = node.getElement(
@@ -1351,7 +2433,25 @@ extension type M_CT_MCPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_XAlign(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'count',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Integer255(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mcJc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_XAlign(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MC(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_MCPr? get mcPr {
     final e = node.getElement(
@@ -1360,7 +2460,19 @@ extension type M_CT_MC(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_MCPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'mcPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_MCPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MCS(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<M_CT_MC> get mc {
     return node
@@ -1371,7 +2483,19 @@ extension type M_CT_MCS(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_MC.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'mc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_MC(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_YAlign? get baseJc {
     final e = node.getElement(
@@ -1444,7 +2568,67 @@ extension type M_CT_MPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'baseJc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_YAlign(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'plcHide',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rSpRule',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SpacingRule(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cGpRule',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SpacingRule(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_UnSignedInteger(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_UnSignedInteger(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'cGp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_UnSignedInteger(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mcs',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_MCS(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MR(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<M_CT_OMathArg> get e {
     return node
@@ -1455,7 +2639,19 @@ extension type M_CT_MR(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_OMathArg.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_M(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_MPr? get mPr {
     final e = node.getElement(
@@ -1474,7 +2670,25 @@ extension type M_CT_M(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_MR.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'mPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_MPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'mr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_MR(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_NaryPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Char? get chr {
     final e = node.getElement(
@@ -1523,7 +2737,49 @@ extension type M_CT_NaryPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'chr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Char(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'limLoc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLoc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'grow',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'subHide',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'supHide',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Nary(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_NaryPr? get naryPr {
     final e = node.getElement(
@@ -1556,7 +2812,37 @@ extension type M_CT_Nary(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'naryPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_NaryPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_PhantPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get show_ {
     final e = node.getElement(
@@ -1605,7 +2891,49 @@ extension type M_CT_PhantPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'show',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'zeroWid',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'zeroAsc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'zeroDesc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'transp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Phant(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_PhantPr? get phantPr {
     final e = node.getElement(
@@ -1622,7 +2950,25 @@ extension type M_CT_Phant(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'phantPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_PhantPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_RadPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get degHide {
     final e = node.getElement(
@@ -1639,7 +2985,25 @@ extension type M_CT_RadPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'degHide',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_Rad(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_RadPr? get radPr {
     final e = node.getElement(
@@ -1664,7 +3028,31 @@ extension type M_CT_Rad(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'radPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_RadPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'deg',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SPrePr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1673,7 +3061,19 @@ extension type M_CT_SPrePr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SPre(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_SPrePr? get sPrePr {
     final e = node.getElement(
@@ -1706,7 +3106,37 @@ extension type M_CT_SPre(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sPrePr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SPrePr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSubPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1715,7 +3145,19 @@ extension type M_CT_SSubPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSub(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_SSubPr? get sSubPr {
     final e = node.getElement(
@@ -1740,7 +3182,31 @@ extension type M_CT_SSub(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sSubPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSubPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSubSupPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OnOff? get alnScr {
     final e = node.getElement(
@@ -1757,7 +3223,25 @@ extension type M_CT_SSubSupPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'alnScr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSubSup(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_SSubSupPr? get sSubSupPr {
     final e = node.getElement(
@@ -1790,7 +3274,37 @@ extension type M_CT_SSubSup(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sSubSupPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSubSupPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSupPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_CtrlPr? get ctrlPr {
     final e = node.getElement(
@@ -1799,7 +3313,19 @@ extension type M_CT_SSupPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_SSup(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_SSupPr? get sSupPr {
     final e = node.getElement(
@@ -1824,7 +3350,31 @@ extension type M_CT_SSup(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathArg(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'sSupPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSupPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'e',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArg(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMathArgPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_Integer2? get argSz {
     final e = node.getElement(
@@ -1833,7 +3383,19 @@ extension type M_CT_OMathArgPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_Integer2(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'argSz',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Integer2(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMathArg(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OMathArgPr? get argPr {
     final e = node.getElement(
@@ -2330,7 +3892,313 @@ extension type M_CT_OMathArg(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_CtrlPr(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'argPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathArgPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'acc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Acc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bar',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Bar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'box',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Box(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'borderBox',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BorderBox(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eqArr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_EqArr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'f',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_F(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'func',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Func(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'groupChr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_GroupChr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'limLow',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'limUpp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimUpp(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'm',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_M(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'nary',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Nary(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'phant',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Phant(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rad',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Rad(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sPre',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SPre(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSub(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSubSup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSubSup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ctrlPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_CtrlPr(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMathJc(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_Jc? get val {
     return node.getAttribute(
@@ -2348,7 +4216,22 @@ extension type M_CT_OMathJc(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_Jc.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMathParaPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OMathJc? get jc {
     final e = node.getElement(
@@ -2357,9 +4240,27 @@ extension type M_CT_OMathParaPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_OMathJc(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'jc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathJc(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_TwipsMeasure(_i1.XmlElement node)
-    implements _i1.XmlElement {}
+    implements _i1.XmlElement {
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
+}
+
 extension type M_CT_BreakBin(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_BreakBin? get val {
     return node.getAttribute(
@@ -2377,7 +4278,22 @@ extension type M_CT_BreakBin(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_BreakBin.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_BreakBinSub(_i1.XmlElement node) implements _i1.XmlElement {
   M_ST_BreakBinSub? get val {
     return node.getAttribute(
@@ -2395,7 +4311,22 @@ extension type M_CT_BreakBinSub(_i1.XmlElement node) implements _i1.XmlElement {
           )
         : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    final v_val = node.getAttribute(
+      'val',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    );
+    if (v_val != null && M_ST_BreakBinSub.fromValue(v_val) == null) {
+      errors.add(
+        "Invalid enum value for attribute 'val' in ${node.name.qualified}: $v_val",
+      );
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_MathPr(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_String? get mathFont {
     final e = node.getElement(
@@ -2524,7 +4455,109 @@ extension type M_CT_MathPr(_i1.XmlElement node) implements _i1.XmlElement {
     );
     return e != null ? M_CT_LimLoc(e) : null;
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'mathFont',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_String(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'brkBin',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BreakBin(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'brkBinSub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BreakBinSub(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smallFrac',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'dispDef',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'lMargin',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rMargin',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'defJc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathJc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'preSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'postSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'interSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'intraSp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapIndent',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_TwipsMeasure(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'wrapRight',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OnOff(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'intLim',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLoc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'naryLim',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLoc(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMathPara(_i1.XmlElement node) implements _i1.XmlElement {
   M_CT_OMathParaPr? get oMathParaPr {
     final e = node.getElement(
@@ -2543,7 +4576,25 @@ extension type M_CT_OMathPara(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(M_CT_OMath.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'oMathParaPr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMathParaPr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'oMath',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_OMath(childNode).validate());
+    }
+    return errors;
+  }
 }
+
 extension type M_CT_OMath(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<M_CT_Acc> get acc {
     return node
@@ -3024,6 +5075,299 @@ extension type M_CT_OMath(_i1.XmlElement node) implements _i1.XmlElement {
         )
         .map(W_CT_RunTrackChange.new);
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'acc',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Acc(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bar',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Bar(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'box',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Box(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'borderBox',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_BorderBox(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_D(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'eqArr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_EqArr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'f',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_F(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'func',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Func(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'groupChr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_GroupChr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'limLow',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimLow(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'limUpp',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_LimUpp(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'm',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_M(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'nary',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Nary(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'phant',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Phant(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'rad',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_Rad(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sPre',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SPre(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSub',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSub(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSubSup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSubSup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sSup',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_SSup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'r',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(M_CT_R(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXml',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_CustomXmlRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'fldSimple',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SimpleField(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'hyperlink',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Hyperlink(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'smartTag',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SmartTagRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'sdt',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_SdtRun(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'proofErr',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_ProofErr(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_PermStart(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'permEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Perm(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Bookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'bookmarkEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MoveBookmark(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'commentRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_MarkupRange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlInsRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlDelRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveFromRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeStart',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_TrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'customXmlMoveToRangeEnd',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_Markup(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'ins',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'del',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveFrom',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    for (final childNode in node.findElements(
+      'moveTo',
+      namespace: 'http://schemas.openxmlformats.org/officeDocument/2006/math',
+    )) {
+      errors.addAll(W_CT_RunTrackChange(childNode).validate());
+    }
+    return errors;
+  }
 }
 
 enum M_ST_Shp {
@@ -3210,7 +5554,13 @@ extension type CT_Schema(_i1.XmlElement node) implements _i1.XmlElement {
       namespace: 'http://schemas.openxmlformats.org/schemaLibrary/2006/main',
     );
   }
+
+  List<String> validate() {
+    final errors = <String>[];
+    return errors;
+  }
 }
+
 extension type CT_SchemaLibrary(_i1.XmlElement node) implements _i1.XmlElement {
   Iterable<CT_Schema> get schema {
     return node
@@ -3220,5 +5570,16 @@ extension type CT_SchemaLibrary(_i1.XmlElement node) implements _i1.XmlElement {
               'http://schemas.openxmlformats.org/schemaLibrary/2006/main',
         )
         .map(CT_Schema.new);
+  }
+
+  List<String> validate() {
+    final errors = <String>[];
+    for (final childNode in node.findElements(
+      'schema',
+      namespace: 'http://schemas.openxmlformats.org/schemaLibrary/2006/main',
+    )) {
+      errors.addAll(CT_Schema(childNode).validate());
+    }
+    return errors;
   }
 }

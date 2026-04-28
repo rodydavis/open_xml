@@ -14,17 +14,18 @@ void main(List<String> args) async {
   final context = SchemaContext();
 
   // Load key schemas
+  // Load key schemas
   // Part 4 Transitional (Main compliance)
-  final part4Dir = p.join(schemaRoot, 'part_4/transitional');
+  final part4Dir = p.join(schemaRoot, 'ISO-IEC29500-4_2016');
   await context.load(p.join(part4Dir, 'wml.xsd')); // Word
   await context.load(p.join(part4Dir, 'sml.xsd')); // Excel
   await context.load(p.join(part4Dir, 'pml.xsd')); // PowerPoint
   await context.load(p.join(part4Dir, 'dml-main.xsd')); // Drawing
 
   // Part 1 Strict (Shared types / OPC)
-  final part1Dir = p.join(schemaRoot, 'part_1/strict');
-  await context.load(p.join(part1Dir, 'shared-commonSimpleTypes.xsd'));
-  await context.load(p.join(part1Dir, 'opc-relationships.xsd'));
+  await context.load(p.join(part4Dir, 'shared-commonSimpleTypes.xsd'));
+  final opcDir = p.join(schemaRoot, 'ecma', 'fouth-edition');
+  await context.load(p.join(opcDir, 'opc-relationships.xsd'));
 
   print('Loaded ${context.schemas.length} namespaces.');
 
