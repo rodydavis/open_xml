@@ -6,7 +6,7 @@ import 'package:xml/xml.dart';
 /// Pack a directory into a DOCX, PPTX, or XLSX file.
 ///
 /// Condenses XML formatting and creates the Office file.
-/// Note: XSD Schema validation is not fully supported natively in Dart 
+/// Note: XSD Schema validation is not fully supported natively in Dart
 /// without external tools, so validation is basic.
 ///
 /// Usage:
@@ -57,7 +57,7 @@ import 'package:xml/xml.dart';
     }
 
     final zipData = ZipEncoder().encode(archive);
-    
+
     outputPath.writeAsBytesSync(zipData);
     tempDir.deleteSync(recursive: true);
 
@@ -71,7 +71,9 @@ void _copyDirectorySync(Directory source, Directory destination) {
   destination.createSync(recursive: true);
   for (var entity in source.listSync(recursive: false)) {
     if (entity is Directory) {
-      var newDirectory = Directory(p.join(destination.absolute.path, p.basename(entity.path)));
+      var newDirectory = Directory(
+        p.join(destination.absolute.path, p.basename(entity.path)),
+      );
       newDirectory.createSync();
       _copyDirectorySync(entity.absolute, newDirectory);
     } else if (entity is File) {

@@ -295,13 +295,7 @@ void buildTextBox(
   );
 }
 
-void buildImage(
-  XmlBuilder b,
-  int id,
-  String rId,
-  SlideImage img,
-  int nameId,
-) {
+void buildImage(XmlBuilder b, int id, String rId, SlideImage img, int nameId) {
   b.element(
     'p:pic',
     nest: () {

@@ -5,7 +5,9 @@ import 'package:xml/xml.dart';
 Set<String> _getSlidesInSldIdLst(Directory unpackedDir) {
   final fs = unpackedDir.fileSystem;
   final presPath = fs.file(p.join(unpackedDir.path, 'ppt', 'presentation.xml'));
-  final presRelsPath = fs.file(p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'));
+  final presRelsPath = fs.file(
+    p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'),
+  );
 
   if (!presPath.existsSync() || !presRelsPath.existsSync()) {
     return {};
@@ -13,26 +15,29 @@ Set<String> _getSlidesInSldIdLst(Directory unpackedDir) {
 
   final relsDoc = XmlDocument.parse(presRelsPath.readAsStringSync());
   final ridToSlide = <String, String>{};
-  
+
   for (var rel in relsDoc.findAllElements('Relationship')) {
     final rid = rel.getAttribute('Id');
     final target = rel.getAttribute('Target');
     final relType = rel.getAttribute('Type');
-    
-    if (rid != null && target != null && relType != null && relType.contains('slide') && target.startsWith('slides/')) {
+
+    if (rid != null &&
+        target != null &&
+        relType != null &&
+        relType.contains('slide') &&
+        target.startsWith('slides/')) {
       ridToSlide[rid] = target.replaceFirst('slides/', '');
     }
   }
 
   final presContent = presPath.readAsStringSync();
-  final referencedRids = RegExp(r'<p:sldId[^>]*r:id="([^"]+)"')
-      .allMatches(presContent)
-      .map((m) => m.group(1)!)
-      .toSet();
+  final referencedRids = RegExp(
+    r'<p:sldId[^>]*r:id="([^"]+)"',
+  ).allMatches(presContent).map((m) => m.group(1)!).toSet();
 
   return {
     for (var rid in referencedRids)
-      if (ridToSlide.containsKey(rid)) ridToSlide[rid]!
+      if (ridToSlide.containsKey(rid)) ridToSlide[rid]!,
   };
 }
 
@@ -40,7 +45,9 @@ List<String> _removeOrphanedSlides(Directory unpackedDir) {
   final fs = unpackedDir.fileSystem;
   final slidesDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides'));
   final slidesRelsDir = fs.directory(p.join(slidesDir.path, '_rels'));
-  final presRelsPath = fs.file(p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'));
+  final presRelsPath = fs.file(
+    p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'),
+  );
 
   if (!slidesDir.existsSync()) {
     return [];
@@ -50,12 +57,16 @@ List<String> _removeOrphanedSlides(Directory unpackedDir) {
   final removed = <String>[];
 
   for (var entity in slidesDir.listSync()) {
-    if (entity is File && p.extension(entity.path) == '.xml' && p.basename(entity.path).startsWith('slide')) {
+    if (entity is File &&
+        p.extension(entity.path) == '.xml' &&
+        p.basename(entity.path).startsWith('slide')) {
       if (!referencedSlides.contains(p.basename(entity.path))) {
         removed.add(p.relative(entity.path, from: unpackedDir.path));
         entity.deleteSync();
 
-        final relsFile = fs.file(p.join(slidesRelsDir.path, '${p.basename(entity.path)}.rels'));
+        final relsFile = fs.file(
+          p.join(slidesRelsDir.path, '${p.basename(entity.path)}.rels'),
+        );
         if (relsFile.existsSync()) {
           removed.add(p.relative(relsFile.path, from: unpackedDir.path));
           relsFile.deleteSync();
@@ -109,7 +120,9 @@ List<String> _removeTrashDirectory(Directory unpackedDir) {
 Set<String> _getSlideReferencedFiles(Directory unpackedDir) {
   final fs = unpackedDir.fileSystem;
   final referenced = <String>{};
-  final slidesRelsDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides', '_rels'));
+  final slidesRelsDir = fs.directory(
+    p.join(unpackedDir.path, 'ppt', 'slides', '_rels'),
+  );
 
   if (!slidesRelsDir.existsSync()) {
     return referenced;
@@ -122,7 +135,9 @@ Set<String> _getSlideReferencedFiles(Directory unpackedDir) {
         for (var rel in doc.findAllElements('Relationship')) {
           final target = rel.getAttribute('Target');
           if (target != null) {
-            final targetPath = p.normalize(p.join(entity.parent.parent.path, target));
+            final targetPath = p.normalize(
+              p.join(entity.parent.parent.path, target),
+            );
             referenced.add(p.relative(targetPath, from: unpackedDir.path));
           }
         }
@@ -140,15 +155,23 @@ List<String> _removeOrphanedRelsFiles(Directory unpackedDir) {
   final slideReferenced = _getSlideReferencedFiles(unpackedDir);
 
   for (var dirName in resourceDirs) {
-    final relsDir = fs.directory(p.join(unpackedDir.path, 'ppt', dirName, '_rels'));
+    final relsDir = fs.directory(
+      p.join(unpackedDir.path, 'ppt', dirName, '_rels'),
+    );
     if (!relsDir.existsSync()) continue;
 
     for (var entity in relsDir.listSync()) {
       if (entity is File && p.extension(entity.path) == '.rels') {
-        final resourceFile = fs.file(p.join(relsDir.parent.path, p.basenameWithoutExtension(entity.path)));
-        final resourceRelPath = p.relative(resourceFile.path, from: unpackedDir.path);
+        final resourceFile = fs.file(
+          p.join(relsDir.parent.path, p.basenameWithoutExtension(entity.path)),
+        );
+        final resourceRelPath = p.relative(
+          resourceFile.path,
+          from: unpackedDir.path,
+        );
 
-        if (!resourceFile.existsSync() || !slideReferenced.contains(resourceRelPath)) {
+        if (!resourceFile.existsSync() ||
+            !slideReferenced.contains(resourceRelPath)) {
           removed.add(p.relative(entity.path, from: unpackedDir.path));
           entity.deleteSync();
         }
@@ -169,7 +192,9 @@ Set<String> _getReferencedFiles(Directory unpackedDir) {
         for (var rel in doc.findAllElements('Relationship')) {
           final target = rel.getAttribute('Target');
           if (target != null) {
-            final targetPath = p.normalize(p.join(entity.parent.parent.path, target));
+            final targetPath = p.normalize(
+              p.join(entity.parent.parent.path, target),
+            );
             referenced.add(p.relative(targetPath, from: unpackedDir.path));
           }
         }
@@ -180,9 +205,20 @@ Set<String> _getReferencedFiles(Directory unpackedDir) {
   return referenced;
 }
 
-List<String> _removeOrphanedFiles(Directory unpackedDir, Set<String> referenced) {
+List<String> _removeOrphanedFiles(
+  Directory unpackedDir,
+  Set<String> referenced,
+) {
   final fs = unpackedDir.fileSystem;
-  final resourceDirs = ['media', 'embeddings', 'charts', 'diagrams', 'tags', 'drawings', 'ink'];
+  final resourceDirs = [
+    'media',
+    'embeddings',
+    'charts',
+    'diagrams',
+    'tags',
+    'drawings',
+    'ink',
+  ];
   final removed = <String>[];
 
   for (var dirName in resourceDirs) {
@@ -208,7 +244,9 @@ List<String> _removeOrphanedFiles(Directory unpackedDir, Set<String> referenced)
         if (!referenced.contains(relPath)) {
           removed.add(relPath);
           entity.deleteSync();
-          final themeRels = fs.file(p.join(themeDir.path, '_rels', '${p.basename(entity.path)}.rels'));
+          final themeRels = fs.file(
+            p.join(themeDir.path, '_rels', '${p.basename(entity.path)}.rels'),
+          );
           if (themeRels.existsSync()) {
             removed.add(p.relative(themeRels.path, from: unpackedDir.path));
             themeRels.deleteSync();
@@ -234,7 +272,9 @@ List<String> _removeOrphanedFiles(Directory unpackedDir, Set<String> referenced)
     if (notesRelsDir.existsSync()) {
       for (var entity in notesRelsDir.listSync()) {
         if (entity is File && p.extension(entity.path) == '.rels') {
-          final notesFile = fs.file(p.join(notesDir.path, p.basenameWithoutExtension(entity.path)));
+          final notesFile = fs.file(
+            p.join(notesDir.path, p.basenameWithoutExtension(entity.path)),
+          );
           if (!notesFile.existsSync()) {
             removed.add(p.relative(entity.path, from: unpackedDir.path));
             entity.deleteSync();
@@ -275,7 +315,7 @@ void _updateContentTypes(Directory unpackedDir, List<String> removedFiles) {
 }
 
 /// Recursively cleans unused assets and media files from the unpacked presentation.
-/// 
+///
 /// Returns a list of the relative paths for all removed files.
 List<String> cleanUnusedFiles(Directory unpackedDir) {
   final allRemoved = <String>[];
@@ -300,4 +340,3 @@ List<String> cleanUnusedFiles(Directory unpackedDir) {
 
   return allRemoved;
 }
-

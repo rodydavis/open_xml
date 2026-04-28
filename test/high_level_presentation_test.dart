@@ -35,8 +35,15 @@ void main() {
       // Assuming getter exists or will be added
       expect(parsedPres.slides.length, 1);
       final slide = parsedPres.slides.first;
-      expect(slide.titles.first, 'Test Slide');
-      expect(slide.texts.first, 'Test Content');
+      final titleElem = slide.elements.whereType<SlideTextBox>().firstWhere(
+        (e) => e.placeholderType == 'ctrTitle' || e.placeholderType == 'title',
+      );
+      expect(titleElem.runs.map((r) => r.text).join(' '), 'Test Slide');
+
+      final textElem = slide.elements.whereType<SlideTextBox>().firstWhere(
+        (e) => e.placeholderType == 'body',
+      );
+      expect(textElem.runs.map((r) => r.text).join(' '), 'Test Content');
 
       // Cleanup
       if (file.existsSync()) file.deleteSync();

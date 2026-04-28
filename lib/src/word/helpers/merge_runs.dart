@@ -12,7 +12,7 @@ import 'package:xml/xml.dart';
 /// - Removes proofErr elements (spell/grammar markers that block merging)
 /// Merges adjacent runs in DOCX files with identical formatting.
 ///
-/// Looks for `<w:r>` elements inside `<w:p>` or `<w:ins>` and `<w:del>` 
+/// Looks for `<w:r>` elements inside `<w:p>` or `<w:ins>` and `<w:del>`
 /// and combines them if their `<w:rPr>` properties match exactly.
 /// Returns a tuple containing the number of merged runs and a status message.
 (int, String) mergeRuns(String inputDir) {

@@ -1,15 +1,15 @@
 import 'package:xml/xml.dart';
 import '../../package/package.dart';
 
-Future<void> generateNotesSlideRelationships(OoxmlPackage package, int index) async {
+Future<void> generateNotesSlideRelationships(
+  OoxmlPackage package,
+  int index,
+) async {
   final rels = await package.createPart(
     'ppt/notesSlides/_rels/notesSlide$index.xml.rels',
   );
   final builder = XmlBuilder();
-  builder.processing(
-    'xml',
-    'version="1.0" encoding="UTF-8" ',
-  );
+  builder.processing('xml', 'version="1.0" encoding="UTF-8" ');
   builder.element(
     'Relationships',
     namespaces: {

@@ -6,10 +6,7 @@ Future<void> generateNotesMasterRelationships(OoxmlPackage package) async {
     'ppt/notesMasters/_rels/notesMaster1.xml.rels',
   );
   final builder = XmlBuilder();
-  builder.processing(
-    'xml',
-    'version="1.0" encoding="UTF-8" ',
-  );
+  builder.processing('xml', 'version="1.0" encoding="UTF-8" ');
   builder.element(
     'Relationships',
     namespaces: {

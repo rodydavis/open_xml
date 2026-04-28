@@ -157,34 +157,159 @@ class Slide {
 
     final slide = Slide(index);
 
-    // Parsing logic for titles/texts remains same
+    // Parse Relationships to resolve image paths
+    final relsPartName = partName.replaceFirst(
+      RegExp(r'([^/]+)$'),
+      r'_rels/$1.rels',
+    );
+    final Map<String, String> relPaths = {};
+    if (await package.hasPart(relsPartName)) {
+      final relsXml = await package.readPartAsString(relsPartName);
+      final relDoc = XmlDocument.parse(relsXml);
+      for (final rel in relDoc.findAllElements('Relationship')) {
+        final id = rel.getAttribute('Id');
+        final target = rel.getAttribute('Target');
+        if (id != null && target != null) {
+          // target is usually relative, e.g., "../media/image1.png"
+          // We need to resolve it relative to 'ppt/slides'
+          var resolvedPath = target;
+          if (target.startsWith('../')) {
+            resolvedPath = 'ppt/${target.substring(3)}';
+          } else if (!target.startsWith('/')) {
+            resolvedPath = 'ppt/slides/$target';
+          } else {
+            resolvedPath = target.substring(1);
+          }
+          relPaths[id] = resolvedPath;
+        }
+      }
+    }
+
     final shapes = document.findAllElements('p:sp');
     for (final sp in shapes) {
       final txBody = sp.findAllElements('p:txBody').firstOrNull;
-      if (txBody != null) {
-        final buffer = StringBuffer();
-        for (final t in txBody.findAllElements('a:t')) {
-          buffer.write(t.innerText);
-        }
-        final text = buffer.toString();
 
-        bool isTitle = false;
-        final nvSpPr = sp.findAllElements('p:nvSpPr').firstOrNull;
-        if (nvSpPr != null) {
-          final ph = nvSpPr.findAllElements('p:ph').firstOrNull;
+      int? x, y, width, height;
+      String? phType;
+      int? phIdx;
+
+      final spPr = sp.findAllElements('p:spPr').firstOrNull;
+      if (spPr != null) {
+        final xfrm = spPr.findAllElements('a:xfrm').firstOrNull;
+        if (xfrm != null) {
+          final off = xfrm.findAllElements('a:off').firstOrNull;
+          if (off != null) {
+            x = int.tryParse(off.getAttribute('x') ?? '');
+            y = int.tryParse(off.getAttribute('y') ?? '');
+          }
+          final ext = xfrm.findAllElements('a:ext').firstOrNull;
+          if (ext != null) {
+            width = int.tryParse(ext.getAttribute('cx') ?? '');
+            height = int.tryParse(ext.getAttribute('cy') ?? '');
+          }
+        }
+      }
+
+      final nvSpPr = sp.findAllElements('p:nvSpPr').firstOrNull;
+      if (nvSpPr != null) {
+        final nvPr = nvSpPr.findAllElements('p:nvPr').firstOrNull;
+        if (nvPr != null) {
+          final ph = nvPr.findAllElements('p:ph').firstOrNull;
           if (ph != null) {
-            final type = ph.getAttribute('type');
-            if (type == 'title' || type == 'ctrTitle') {
-              isTitle = true;
+            phType = ph.getAttribute('type');
+            phIdx = int.tryParse(ph.getAttribute('idx') ?? '');
+          }
+        }
+      }
+
+      if (txBody != null) {
+        final textBox = SlideTextBox(
+          x: x,
+          y: y,
+          width: width,
+          height: height,
+          placeholderType: phType,
+          placeholderIdx: phIdx,
+        );
+        for (final p in txBody.findAllElements('a:p')) {
+          for (final r in p.findAllElements('a:r')) {
+            final t = r.findAllElements('a:t').firstOrNull;
+            if (t != null && t.innerText.isNotEmpty) {
+              textBox.addRun(TextRun(text: t.innerText));
             }
           }
         }
+        if (textBox.runs.isEmpty) {
+          final buffer = StringBuffer();
+          for (final t in txBody.findAllElements('a:t')) {
+            buffer.write(t.innerText);
+          }
+          final text = buffer.toString();
+          if (text.isNotEmpty) {
+            textBox.addRun(TextRun(text: text));
+          }
+        }
+        if (textBox.runs.isNotEmpty) {
+          slide._elements.add(textBox);
+        }
+      }
+    }
 
-        if (text.isNotEmpty) {
-          if (isTitle) {
-            slide._titles.add(text);
-          } else {
-            slide._texts.add(text);
+    final pics = document.findAllElements('p:pic');
+    for (final pic in pics) {
+      int? x, y, width, height;
+      String? phType;
+      int? phIdx;
+
+      final spPr = pic.findAllElements('p:spPr').firstOrNull;
+      if (spPr != null) {
+        final xfrm = spPr.findAllElements('a:xfrm').firstOrNull;
+        if (xfrm != null) {
+          final off = xfrm.findAllElements('a:off').firstOrNull;
+          if (off != null) {
+            x = int.tryParse(off.getAttribute('x') ?? '');
+            y = int.tryParse(off.getAttribute('y') ?? '');
+          }
+          final ext = xfrm.findAllElements('a:ext').firstOrNull;
+          if (ext != null) {
+            width = int.tryParse(ext.getAttribute('cx') ?? '');
+            height = int.tryParse(ext.getAttribute('cy') ?? '');
+          }
+        }
+      }
+
+      final nvPicPr = pic.findAllElements('p:nvPicPr').firstOrNull;
+      if (nvPicPr != null) {
+        final nvPr = nvPicPr.findAllElements('p:nvPr').firstOrNull;
+        if (nvPr != null) {
+          final ph = nvPr.findAllElements('p:ph').firstOrNull;
+          if (ph != null) {
+            phType = ph.getAttribute('type');
+            phIdx = int.tryParse(ph.getAttribute('idx') ?? '');
+          }
+        }
+      }
+
+      final blipFill = pic.findAllElements('p:blipFill').firstOrNull;
+      if (blipFill != null) {
+        final blip = blipFill.findAllElements('a:blip').firstOrNull;
+        if (blip != null) {
+          final rId = blip.getAttribute('r:embed');
+          if (rId != null) {
+            final imagePath = relPaths[rId];
+            if (imagePath != null) {
+              slide._elements.add(
+                SlideImage(
+                  path: imagePath,
+                  x: x,
+                  y: y,
+                  width: width,
+                  height: height,
+                  placeholderType: phType,
+                  placeholderIdx: phIdx,
+                ),
+              );
+            }
           }
         }
       }
@@ -490,5 +615,4 @@ class Slide {
       },
     );
   }
-
 }

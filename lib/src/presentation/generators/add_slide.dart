@@ -8,7 +8,7 @@ import 'package:path/path.dart' as p;
 int _getNextSlideNumber(Directory slidesDir) {
   int maxNum = 0;
   final regExp = RegExp(r'^slide(\d+)\.xml$');
-  
+
   if (slidesDir.existsSync()) {
     for (var entity in slidesDir.listSync()) {
       if (entity is File) {
@@ -29,7 +29,9 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   final fs = unpackedDir.fileSystem;
   final slidesDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides'));
   final relsDir = fs.directory(p.join(slidesDir.path, '_rels'));
-  final layoutsDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slideLayouts'));
+  final layoutsDir = fs.directory(
+    p.join(unpackedDir.path, 'ppt', 'slideLayouts'),
+  );
 
   final layoutPath = fs.file(p.join(layoutsDir.path, layoutFile));
   if (!layoutPath.existsSync()) {
@@ -69,7 +71,8 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   destSlide.writeAsStringSync(slideXml);
 
   relsDir.createSync(recursive: true);
-  final relsXml = '''<?xml version="1.0" encoding="UTF-8" ?>
+  final relsXml =
+      '''<?xml version="1.0" encoding="UTF-8" ?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/$layoutFile"/>
 </Relationships>''';
@@ -80,7 +83,9 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   final nextSlideId = _getNextSlideId(unpackedDir);
 
   print('Created $dest from $layoutFile');
-  print('Add to presentation.xml <p:sldIdLst>: <p:sldId id="$nextSlideId" r:id="$rid"/>');
+  print(
+    'Add to presentation.xml <p:sldIdLst>: <p:sldId id="$nextSlideId" r:id="$rid"/>',
+  );
 }
 
 void _duplicateSlide(Directory unpackedDir, String source) {
@@ -106,7 +111,10 @@ void _duplicateSlide(Directory unpackedDir, String source) {
   if (sourceRels.existsSync()) {
     sourceRels.copySync(destRels.path);
     String relsContent = destRels.readAsStringSync();
-    relsContent = relsContent.replaceAll(RegExp(r'\s*<Relationship[^>]*Type="[^"]*notesSlide"[^>]*/>\s*'), '\n');
+    relsContent = relsContent.replaceAll(
+      RegExp(r'\s*<Relationship[^>]*Type="[^"]*notesSlide"[^>]*/>\s*'),
+      '\n',
+    );
     destRels.writeAsStringSync(relsContent);
   }
 
@@ -115,37 +123,53 @@ void _duplicateSlide(Directory unpackedDir, String source) {
   final nextSlideId = _getNextSlideId(unpackedDir);
 
   print('Created $dest from $source');
-  print('Add to presentation.xml <p:sldIdLst>: <p:sldId id="$nextSlideId" r:id="$rid"/>');
+  print(
+    'Add to presentation.xml <p:sldIdLst>: <p:sldId id="$nextSlideId" r:id="$rid"/>',
+  );
 }
 
 void _addToContentTypes(Directory unpackedDir, String dest) {
   final fs = unpackedDir.fileSystem;
-  final contentTypesPath = fs.file(p.join(unpackedDir.path, '[Content_Types].xml'));
+  final contentTypesPath = fs.file(
+    p.join(unpackedDir.path, '[Content_Types].xml'),
+  );
   if (!contentTypesPath.existsSync()) return;
 
   String contentTypes = contentTypesPath.readAsStringSync();
-  final newOverride = '<Override PartName="/ppt/slides/$dest" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>';
+  final newOverride =
+      '<Override PartName="/ppt/slides/$dest" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>';
 
   if (!contentTypes.contains('/ppt/slides/$dest')) {
-    contentTypes = contentTypes.replaceFirst('</Types>', '  $newOverride\n</Types>');
+    contentTypes = contentTypes.replaceFirst(
+      '</Types>',
+      '  $newOverride\n</Types>',
+    );
     contentTypesPath.writeAsStringSync(contentTypes);
   }
 }
 
 String _addToPresentationRels(Directory unpackedDir, String dest) {
   final fs = unpackedDir.fileSystem;
-  final presRelsPath = fs.file(p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'));
+  final presRelsPath = fs.file(
+    p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'),
+  );
   if (!presRelsPath.existsSync()) return 'rId1';
 
   String presRels = presRelsPath.readAsStringSync();
-  final rids = RegExp(r'Id="rId(\d+)"').allMatches(presRels).map((m) => int.parse(m.group(1)!)).toList();
+  final rids = RegExp(
+    r'Id="rId(\d+)"',
+  ).allMatches(presRels).map((m) => int.parse(m.group(1)!)).toList();
   final nextRid = rids.isEmpty ? 1 : rids.reduce((a, b) => a > b ? a : b) + 1;
   final rid = 'rId$nextRid';
 
-  final newRel = '<Relationship Id="$rid" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/$dest"/>';
+  final newRel =
+      '<Relationship Id="$rid" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/$dest"/>';
 
   if (!presRels.contains('slides/$dest')) {
-    presRels = presRels.replaceFirst('</Relationships>', '  $newRel\n</Relationships>');
+    presRels = presRels.replaceFirst(
+      '</Relationships>',
+      '  $newRel\n</Relationships>',
+    );
     presRelsPath.writeAsStringSync(presRels);
   }
 
@@ -158,7 +182,9 @@ int _getNextSlideId(Directory unpackedDir) {
   if (!presPath.existsSync()) return 256;
 
   final presContent = presPath.readAsStringSync();
-  final slideIds = RegExp(r'<p:sldId[^>]*id="(\d+)"').allMatches(presContent).map((m) => int.parse(m.group(1)!)).toList();
+  final slideIds = RegExp(
+    r'<p:sldId[^>]*id="(\d+)"',
+  ).allMatches(presContent).map((m) => int.parse(m.group(1)!)).toList();
   return slideIds.isEmpty ? 256 : slideIds.reduce((a, b) => a > b ? a : b) + 1;
 }
 
@@ -170,7 +196,7 @@ int _getNextSlideId(Directory unpackedDir) {
 }
 
 /// Adds a new slide to the presentation.
-/// 
+///
 /// [source] can be a slide to duplicate (e.g., 'slide2.xml') or a layout to use (e.g., 'slideLayout2.xml').
 void addSlide(Directory unpackedDir, String source) {
   final (sourceType, layoutFile) = _parseSource(source);

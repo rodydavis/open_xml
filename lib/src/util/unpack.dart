@@ -114,7 +114,9 @@ void _escapeSmartQuotes(File xmlFile) {
 /// Command-line entry point for unpacking an Office file.
 void main(List<String> args) {
   if (args.length < 2) {
-    print('Usage: dart unpack.dart <input_file> <output_directory> [--merge-runs false] [--simplify-redlines false]');
+    print(
+      'Usage: dart unpack.dart <input_file> <output_directory> [--merge-runs false] [--simplify-redlines false]',
+    );
     exit(1);
   }
 

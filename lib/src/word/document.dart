@@ -7,7 +7,8 @@ import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/shared/comment.dart';
 import 'package:open_xml/src/wml/wml_builder.g.dart';
 import 'package:open_xml/src/word/paragraph.dart';
-import 'package:open_xml/src/word/helpers/simplify_redlines.dart' as simplify_redlines;
+import 'package:open_xml/src/word/helpers/simplify_redlines.dart'
+    as simplify_redlines;
 import 'package:open_xml/src/word/helpers/merge_runs.dart' as merge_runs;
 import 'package:open_xml/src/word/comment.dart' as office_comment;
 import 'package:xml/xml.dart';
@@ -17,7 +18,7 @@ class WordDocument {
   final List<Paragraph> _paragraphs = [];
   final List<Comment> _comments = [];
   final _log = Logger('WordDocument');
-  List<Paragraph> get paragraphs => List.unmodifiable(_paragraphs);
+  List<Paragraph> get paragraphs => _paragraphs;
 
   /// Returns the plain text content of the document.
   ///
@@ -68,30 +69,30 @@ class WordDocument {
   }
 
   /// Simplifies tracked changes in the document by merging adjacent redlines.
-  /// 
+  ///
   /// NOTE: This operates on the underlying raw XML inside the package directory.
-  /// Any changes made to the high-level API ([paragraphs], etc.) before calling 
-  /// this method without calling [save] will not be reflected, and any changes 
+  /// Any changes made to the high-level API ([paragraphs], etc.) before calling
+  /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
   (int, String) simplifyRedlines() {
     return simplify_redlines.simplifyRedlines(_package.directory.path);
   }
 
   /// Merges adjacent runs in the document with identical formatting.
-  /// 
+  ///
   /// NOTE: This operates on the underlying raw XML inside the package directory.
-  /// Any changes made to the high-level API ([paragraphs], etc.) before calling 
-  /// this method without calling [save] will not be reflected, and any changes 
+  /// Any changes made to the high-level API ([paragraphs], etc.) before calling
+  /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
   (int, String) mergeRuns() {
     return merge_runs.mergeRuns(_package.directory.path);
   }
 
   /// Injects a new comment or reply directly into the unpacked document XML.
-  /// 
+  ///
   /// NOTE: This operates on the underlying raw XML inside the package directory.
-  /// Any changes made to the high-level API ([paragraphs], etc.) before calling 
-  /// this method without calling [save] will not be reflected, and any changes 
+  /// Any changes made to the high-level API ([paragraphs], etc.) before calling
+  /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
   (String, String) injectComment({
     required int commentId,

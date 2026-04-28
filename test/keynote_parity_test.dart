@@ -41,7 +41,9 @@ void main() {
       final bytes = file.readAsBytesSync();
       final archive = ZipDecoder().decodeBytes(bytes);
 
-      final viewPropsEntry = archive.files.firstWhere((f) => f.name == 'ppt/viewProps.xml');
+      final viewPropsEntry = archive.files.firstWhere(
+        (f) => f.name == 'ppt/viewProps.xml',
+      );
       final content = String.fromCharCodes(viewPropsEntry.content as List<int>);
 
       final document = XmlDocument.parse(content);
@@ -66,12 +68,14 @@ void main() {
       final bytes = file.readAsBytesSync();
       final archive = ZipDecoder().decodeBytes(bytes);
 
-      final masterEntry = archive.files.firstWhere((f) => f.name == 'ppt/slideMasters/slideMaster1.xml');
+      final masterEntry = archive.files.firstWhere(
+        (f) => f.name == 'ppt/slideMasters/slideMaster1.xml',
+      );
       final content = String.fromCharCodes(masterEntry.content as List<int>);
 
       final document = XmlDocument.parse(content);
       final master = document.findElements('p:sldMaster').first;
-      
+
       // Should have namespaces
       expect(master.getAttribute('xmlns:m'), isNotNull);
       expect(master.getAttribute('xmlns:a14'), isNotNull);
@@ -103,15 +107,17 @@ void main() {
       final bytes = file.readAsBytesSync();
       final archive = ZipDecoder().decodeBytes(bytes);
 
-      final slideEntry = archive.files.firstWhere((f) => f.name == 'ppt/slides/slide1.xml');
+      final slideEntry = archive.files.firstWhere(
+        (f) => f.name == 'ppt/slides/slide1.xml',
+      );
       final content = String.fromCharCodes(slideEntry.content as List<int>);
 
       final document = XmlDocument.parse(content);
-      
+
       // Look for a:r elements. Since no custom font size or color is passed, a:rPr should be absent.
       final runs = document.findAllElements('a:r');
       expect(runs, isNotEmpty);
-      
+
       for (final run in runs) {
         // Because addTitle uses default properties, a:rPr should NOT be present.
         expect(run.findElements('a:rPr').isEmpty, isTrue);

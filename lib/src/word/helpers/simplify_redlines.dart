@@ -191,9 +191,9 @@ Map<String, int> _getAuthorsFromDocx(String docxPath) {
   }
 }
 
-/// Infers the author of the most recent tracked changes by comparing the current unpacked 
+/// Infers the author of the most recent tracked changes by comparing the current unpacked
 /// XML directory with the original packed `.docx` file.
-/// 
+///
 /// Returns the name of the author who has the highest difference in change count.
 String inferAuthor(
   String modifiedDir,

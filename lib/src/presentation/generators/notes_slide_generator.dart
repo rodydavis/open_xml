@@ -1,15 +1,16 @@
 import 'package:xml/xml.dart';
 import '../../package/package.dart';
 
-Future<void> generateNotesSlide(OoxmlPackage package, int index, String notes) async {
+Future<void> generateNotesSlide(
+  OoxmlPackage package,
+  int index,
+  String notes,
+) async {
   final notesSlide = await package.createPart(
     'ppt/notesSlides/notesSlide$index.xml',
   );
   final builder = XmlBuilder();
-  builder.processing(
-    'xml',
-    'version="1.0" encoding="UTF-8" ',
-  );
+  builder.processing('xml', 'version="1.0" encoding="UTF-8" ');
   builder.element(
     'p:notes',
     namespaces: {

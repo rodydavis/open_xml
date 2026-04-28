@@ -129,22 +129,21 @@ class TypeResolver {
         final localRef = parts.last;
         final prefix = parts.length > 1 ? parts.first : null;
         final ns = _lookupNamespaceUri(attr, prefix) ?? '';
-        
-        final resolvedType = SimpleType('String', 'http://www.w3.org/2001/XMLSchema', null, 'string');
-        
+
+        final resolvedType = SimpleType(
+          'String',
+          'http://www.w3.org/2001/XMLSchema',
+          null,
+          'string',
+        );
+
         var dartName = localRef;
         if (prefix != null) {
           dartName = '${prefix}_$localRef'; // e.g. r_id
         }
-        
+
         type.attributes.add(
-          Attribute(
-            dartName,
-            localRef,
-            ns,
-            resolvedType,
-            use == 'required',
-          ),
+          Attribute(dartName, localRef, ns, resolvedType, use == 'required'),
         );
       }
     }

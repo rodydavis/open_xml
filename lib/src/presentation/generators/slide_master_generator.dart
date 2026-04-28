@@ -7,11 +7,15 @@ const String _slideMasterXml = '''
 ''';
 
 Future<void> generateSlideMaster(OoxmlPackage package) async {
-  final slideMaster = await package.createPart('ppt/slideMasters/slideMaster1.xml');
+  final slideMaster = await package.createPart(
+    'ppt/slideMasters/slideMaster1.xml',
+  );
   slideMaster.write(_slideMasterXml);
   await slideMaster.close();
 
-  final slideMasterRels = await package.createPart('ppt/slideMasters/_rels/slideMaster1.xml.rels');
+  final slideMasterRels = await package.createPart(
+    'ppt/slideMasters/_rels/slideMaster1.xml.rels',
+  );
   slideMasterRels.write("""<?xml version="1.0" encoding="UTF-8"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="../theme/theme1.xml"/>

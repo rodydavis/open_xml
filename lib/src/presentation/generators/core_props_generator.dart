@@ -4,10 +4,7 @@ import 'package:xml/xml.dart';
 Future<void> generateCoreProps(OoxmlPackage package) async {
   final core = await package.createPart('docProps/core.xml');
   final builder = XmlBuilder();
-  builder.processing(
-    'xml',
-    'version="1.0" encoding="UTF-8"',
-  );
+  builder.processing('xml', 'version="1.0" encoding="UTF-8"');
   builder.element(
     'cp:coreProperties',
     namespaces: {

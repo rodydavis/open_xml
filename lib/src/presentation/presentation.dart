@@ -54,15 +54,23 @@ enum PresentationAspectRatio {
   const PresentationAspectRatio(this.width, this.height);
 }
 
+class SlideRect {
+  final int x;
+  final int y;
+  final int width;
+  final int height;
+  SlideRect(this.x, this.y, this.width, this.height);
+}
+
 class Presentation {
   final OoxmlPackage _package;
   final List<Slide> _slides = [];
   final _log = Logger('Presentation');
-  final Map<int, String> _slideLayouts =
-      {}; // slideIndex (0-based) -> layoutName or filename
-  final Map<String, String> _layoutNames = {}; // layoutName -> layoutFilename
-  final Map<String, String> _layoutFilenames =
-      {}; // layoutFilename -> layoutName
+  final Map<int, String> _slideLayouts = {}; // slide index -> layout path
+  final Map<String, String> _layoutNames = {}; // layout name -> filename
+  final Map<String, String> _layoutFilenames = {}; // layout filename -> name
+  final Map<String, Map<String, SlideRect>> _layoutPlaceholders =
+      {}; // filename -> placeholders
 
   List<Slide> get slides => _slides;
 
@@ -203,25 +211,116 @@ class Presentation {
   }
 
   Future<void> _parseLayouts() async {
-    // Basic implementation: iterate known pattern or check slideLayouts directory
-    // Since we don't have full relationships graph parsed always, we can scan the directory
     final parts = await _package.listParts('ppt/slideLayouts');
     for (final part in parts) {
       if (!part.endsWith('.xml')) continue;
       final filename = part.split('/').last;
 
       final xml = await _package.readPartAsString(part);
-      // <p:cSld name="Title Slide">
-      final match = RegExp(r'<p:cSld[^>]*name="([^"]+)"').firstMatch(xml);
-      if (match != null) {
-        final name = match.group(1)!;
-        _layoutNames[name] = filename;
-        _layoutFilenames[filename] = name;
-      } else {
-        // Fallback
-        _layoutFilenames[filename] = filename;
+      final document = XmlDocument.parse(xml);
+
+      final cSld = document.findAllElements('p:cSld').firstOrNull;
+      if (cSld != null) {
+        final name = cSld.getAttribute('name');
+        if (name != null) {
+          _layoutNames[name] = filename;
+          _layoutFilenames[filename] = name;
+        } else {
+          _layoutFilenames[filename] = filename;
+        }
+      }
+
+      final Map<String, SlideRect> placeholders = {};
+
+      for (final sp in document.findAllElements('p:sp')) {
+        String? phType;
+        int? phIdx;
+
+        final nvSpPr = sp.findAllElements('p:nvSpPr').firstOrNull;
+        if (nvSpPr != null) {
+          final nvPr = nvSpPr.findAllElements('p:nvPr').firstOrNull;
+          if (nvPr != null) {
+            final ph = nvPr.findAllElements('p:ph').firstOrNull;
+            if (ph != null) {
+              phType = ph.getAttribute('type');
+              phIdx = int.tryParse(ph.getAttribute('idx') ?? '');
+            }
+          }
+        }
+
+        if (phType != null || phIdx != null) {
+          int? x, y, width, height;
+          final spPr = sp.findAllElements('p:spPr').firstOrNull;
+          if (spPr != null) {
+            final xfrm = spPr.findAllElements('a:xfrm').firstOrNull;
+            if (xfrm != null) {
+              final off = xfrm.findAllElements('a:off').firstOrNull;
+              if (off != null) {
+                x = int.tryParse(off.getAttribute('x') ?? '');
+                y = int.tryParse(off.getAttribute('y') ?? '');
+              }
+              final ext = xfrm.findAllElements('a:ext').firstOrNull;
+              if (ext != null) {
+                width = int.tryParse(ext.getAttribute('cx') ?? '');
+                height = int.tryParse(ext.getAttribute('cy') ?? '');
+              }
+            }
+          }
+
+          if (x != null && y != null && width != null && height != null) {
+            final key = '${phType ?? ""}_${phIdx ?? ""}';
+            placeholders[key] = SlideRect(x, y, width, height);
+          }
+        }
+      }
+
+      _layoutPlaceholders[filename] = placeholders;
+    }
+  }
+
+  /// Resolves the actual bounding box of a slide element.
+  /// If the element does not provide its own coordinates, it falls back
+  /// to the matching placeholder from its slide layout.
+  SlideRect resolveElementBounds(Slide slide, SlideElement element) {
+    if (element.x != null &&
+        element.y != null &&
+        element.width != null &&
+        element.height != null) {
+      return SlideRect(element.x!, element.y!, element.width!, element.height!);
+    }
+
+    // Try to resolve from layout
+    final layoutFilename = _slideLayouts[slide.index - 1] ?? 'slideLayout1.xml';
+    final placeholders = _layoutPlaceholders[layoutFilename];
+
+    if (placeholders != null) {
+      final type = element.placeholderType ?? '';
+      final idx = element.placeholderIdx ?? '';
+
+      // Try exact match
+      var rect = placeholders['${type}_${idx}'];
+      // Try just type match if idx doesn't match
+      rect ??= placeholders['${type}_'];
+      // Try just idx match
+      rect ??= placeholders['_$idx'];
+
+      if (rect != null) {
+        return SlideRect(
+          element.x ?? rect.x,
+          element.y ?? rect.y,
+          element.width ?? rect.width,
+          element.height ?? rect.height,
+        );
       }
     }
+
+    // Ultimate fallback if layout doesn't resolve it
+    return SlideRect(
+      element.x ?? 0,
+      element.y ?? 0,
+      element.width ?? 1000000,
+      element.height ?? 1000000,
+    );
   }
 
   /// Validates the presentation based on the current internal state.
@@ -240,6 +339,11 @@ class Presentation {
       _slideLayouts[_slides.length - 1] = filename;
     }
     return slide;
+  }
+
+  /// Reads media bytes from the package
+  Future<List<int>> readMediaBytes(String path) {
+    return _package.readPartAsBytes(path);
   }
 
   /// Saves the presentation to the specified [outputFile].
