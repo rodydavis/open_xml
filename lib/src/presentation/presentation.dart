@@ -20,10 +20,11 @@ import 'generators/slide_master_generator.dart';
 import 'generators/table_styles_generator.dart';
 import 'generators/theme_generator.dart';
 import 'generators/view_props_generator.dart';
-
-
-import 'package:open_xml/src/presentation/add_slide.dart' as add_slide;
-import 'package:open_xml/src/presentation/clean.dart' as clean;
+import 'generators/notes_slide_generator.dart';
+import 'generators/notes_slide_rels_generator.dart';
+import 'generators/notes_master_rels_generator.dart';
+import 'generators/add_slide.dart' as add_slide;
+import 'generators/clean.dart' as clean;
 
 class _CommentAuthor {
   final int id;
@@ -86,7 +87,7 @@ class Presentation {
   }
 
   /// Recursively cleans unused assets and media files from the unpacked presentation.
-  /// 
+  ///
   /// Returns a list of the relative paths for all removed files.
   /// NOTE: This operates on the underlying raw XML inside the package directory.
   List<String> cleanUnusedFiles() {
@@ -94,7 +95,7 @@ class Presentation {
   }
 
   /// Adds a new slide to the presentation.
-  /// 
+  ///
   /// [source] can be a slide to duplicate (e.g., 'slide2.xml') or a layout to use (e.g., 'slideLayout2.xml').
   /// NOTE: This operates on the underlying raw XML inside the package directory.
   void addSlideFromSource(String source) {
@@ -254,7 +255,7 @@ class Presentation {
     final hasNotes = _slides.any((s) => s.notes != null);
     if (hasNotes) {
       await generateNotesMaster(_package);
-      await _writeNotesMasterRelationships();
+      await generateNotesMasterRelationships(_package);
     }
 
     // Pre-check for existence of optional parts to avoid async in builder
@@ -306,10 +307,7 @@ class Presentation {
     // 1. [Content_Types].xml
     final contentTypes = await _package.createPart('[Content_Types].xml');
     final ctBuilder = XmlBuilder();
-    ctBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
+    ctBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
     ctBuilder.element(
       'Types',
       namespaces: {
@@ -676,18 +674,15 @@ class Presentation {
     for (var i = 0; i < _slides.length; i++) {
       final slide = _slides[i];
       if (slide.notes != null) {
-        await _writeNotesSlide(i + 1, slide.notes!);
-        await _writeNotesSlideRelationships(i + 1);
+        await generateNotesSlide(_package, i + 1, slide.notes!);
+        await generateNotesSlideRelationships(_package, i + 1);
       }
     }
 
     // 2. _rels/.rels
     final rels = await _package.createPart('_rels/.rels');
     final relsBuilder = XmlBuilder();
-    relsBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
+    relsBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
     relsBuilder.element(
       'Relationships',
       namespaces: {
@@ -763,10 +758,7 @@ class Presentation {
     }
 
     final pRelsBuilder = XmlBuilder();
-    pRelsBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
+    pRelsBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
     pRelsBuilder.element(
       'Relationships',
       namespaces: {
@@ -948,10 +940,7 @@ class Presentation {
     // 4. ppt/presentation.xml (Using resolved IDs)
     final presentation = await _package.createPart('ppt/presentation.xml');
     final pBuilder = XmlBuilder();
-    pBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
+    pBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
     pBuilder.element(
       'p:presentation',
       namespaces: {
@@ -1143,10 +1132,7 @@ class Presentation {
     if (hasGeneratedComments) {
       final caPart = await _package.createPart('ppt/commentAuthors.xml');
       final caBuilder = XmlBuilder();
-      caBuilder.processing(
-        'xml',
-        'version="1.0" encoding="UTF-8" ',
-      );
+      caBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
       caBuilder.element(
         'p:cmAuthorLst',
         namespaces: {
@@ -1311,10 +1297,7 @@ class Presentation {
       );
 
       final slideRelsXml = XmlBuilder();
-      slideRelsXml.processing(
-        'xml',
-        'version="1.0" encoding="UTF-8" ',
-      );
+      slideRelsXml.processing('xml', 'version="1.0" encoding="UTF-8" ');
       final imageRelIds = <String, String>{}; // originalPath -> rId
 
       slideRelsXml.element(
@@ -1454,10 +1437,7 @@ class Presentation {
           'ppt/comments/comment${i + 1}.xml',
         );
         final cBuilder = XmlBuilder();
-        cBuilder.processing(
-          'xml',
-          'version="1.0" encoding="UTF-8" ',
-        );
+        cBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
         cBuilder.element(
           'p:cmLst',
           namespaces: {
@@ -1507,10 +1487,7 @@ class Presentation {
 
       // Build Slide XML
       final sBuilder = XmlBuilder();
-      sBuilder.processing(
-        'xml',
-        'version="1.0" encoding="UTF-8" ',
-      );
+      sBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
       slide.build(
         sBuilder,
         relIds: imageRelIds,
@@ -1538,288 +1515,5 @@ class Presentation {
   Future<void> close() async {
     await _package.close();
     _log.info('Presentation closed successfully');
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  Future<void> _writeNotesSlide(int index, String notes) async {
-    final notesSlide = await _package.createPart(
-      'ppt/notesSlides/notesSlide$index.xml',
-    );
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
-    builder.element(
-      'p:notes',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        builder.element(
-          'p:cSld',
-          nest: () {
-            builder.element(
-              'p:spTree',
-              nest: () {
-                builder.element(
-                  'p:nvGrpSpPr',
-                  nest: () {
-                    builder.element(
-                      'p:cNvPr',
-                      nest: () {
-                        builder.attribute('id', '1');
-                        builder.attribute('name', '');
-                      },
-                    );
-                    builder.element('p:cNvGrpSpPr');
-                    builder.element(
-                      'p:nvPr',
-                      nest: () {
-                        builder.element('p:ph');
-                      },
-                    );
-                  },
-                );
-                builder.element(
-                  'p:grpSpPr',
-                  nest: () {
-                    builder.element(
-                      'a:xfrm',
-                      nest: () {
-                        builder.element(
-                          'a:off',
-                          nest: () {
-                            builder.attribute('x', '0');
-                            builder.attribute('y', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:ext',
-                          nest: () {
-                            builder.attribute('cx', '0');
-                            builder.attribute('cy', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:chOff',
-                          nest: () {
-                            builder.attribute('x', '0');
-                            builder.attribute('y', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:chExt',
-                          nest: () {
-                            builder.attribute('cx', '0');
-                            builder.attribute('cy', '0');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-                // Body placeholder logic matching master
-                builder.element(
-                  'p:sp',
-                  nest: () {
-                    builder.element(
-                      'p:nvSpPr',
-                      nest: () {
-                        builder.element(
-                          'p:cNvPr',
-                          nest: () {
-                            builder.attribute('id', '2');
-                            builder.attribute('name', 'Notes Placeholder 2');
-                          },
-                        );
-                        builder.element(
-                          'p:cNvSpPr',
-                          nest: () {
-                            builder.element(
-                              'a:spLocks',
-                              nest: () => builder.attribute('noGrp', '1'),
-                            );
-                          },
-                        );
-                        builder.element(
-                          'p:nvPr',
-                          nest: () {
-                            builder.element(
-                              'p:ph',
-                              nest: () {
-                                builder.attribute('type', 'body');
-                                builder.attribute('idx', '1');
-                              },
-                            );
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:spPr',
-                      nest: () => builder.element(
-                        'a:xfrm',
-                        nest: () {
-                          builder.element(
-                            'a:off',
-                            nest: () {
-                              builder.attribute('x', '457200');
-                              builder.attribute('y', '6858000');
-                            },
-                          );
-                          builder.element(
-                            'a:ext',
-                            nest: () {
-                              builder.attribute('cx', '5943600');
-                              builder.attribute('cy', '0');
-                            },
-                          );
-                        },
-                      ),
-                    );
-                    builder.element(
-                      'p:txBody',
-                      nest: () {
-                        builder.element(
-                          'a:bodyPr',
-                          nest: () {
-                            builder.attribute('vert', 'horz');
-                          },
-                        );
-                        builder.element('a:lstStyle');
-                        builder.element(
-                          'a:p',
-                          nest: () {
-                            builder.element(
-                              'a:r',
-                              nest: () {
-                                builder.element(
-                                  'a:rPr',
-                                  nest: () {
-                                    builder.attribute('lang', 'en-US');
-                                    builder.attribute('dirty', '0');
-                                  },
-                                );
-                                builder.element(
-                                  'a:t',
-                                  nest: () => builder.text(notes),
-                                );
-                              },
-                            );
-                            builder.element('a:endParaRPr');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            );
-          },
-        );
-        builder.element(
-          'p:clrMapOvr',
-          nest: () {
-            builder.element(
-              'a:masterClrMapping',
-              nest: () {
-                // ... color mapping
-              },
-            );
-          },
-        );
-      },
-    );
-    notesSlide.write(builder.buildDocument().toXmlString());
-    await notesSlide.close();
-  }
-
-  Future<void> _writeNotesSlideRelationships(int index) async {
-    final rels = await _package.createPart(
-      'ppt/notesSlides/_rels/notesSlide$index.xml.rels',
-    );
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
-    builder.element(
-      'Relationships',
-      namespaces: {
-        'http://schemas.openxmlformats.org/package/2006/relationships': '',
-      },
-      nest: () {
-        builder.element(
-          'Relationship',
-          nest: () {
-            builder.attribute('Id', 'rId1');
-            builder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesMaster',
-            );
-            builder.attribute('Target', '../notesMasters/notesMaster1.xml');
-          },
-        );
-        builder.element(
-          'Relationship',
-          nest: () {
-            builder.attribute('Id', 'rId2');
-            builder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide',
-            );
-            builder.attribute('Target', '../slides/slide$index.xml');
-          },
-        );
-      },
-    );
-    rels.write(builder.buildDocument().toXmlString());
-    await rels.close();
-  }
-
-  Future<void> _writeNotesMasterRelationships() async {
-    final rels = await _package.createPart(
-      'ppt/notesMasters/_rels/notesMaster1.xml.rels',
-    );
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" ',
-    );
-    builder.element(
-      'Relationships',
-      namespaces: {
-        'http://schemas.openxmlformats.org/package/2006/relationships': '',
-      },
-      nest: () {
-        builder.element(
-          'Relationship',
-          nest: () {
-            builder.attribute('Id', 'rId1');
-            builder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme',
-            );
-            builder.attribute('Target', '../theme/theme1.xml');
-          },
-        );
-      },
-    );
-    rels.write(builder.buildDocument().toXmlString());
-    await rels.close();
   }
 }
