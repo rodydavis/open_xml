@@ -208,11 +208,31 @@ class Slide {
   }
 
   void addTitle(String text) {
-    _titles.add(text);
+    _elements.add(
+      SlideTextBox(
+        text: text,
+        x: 0,
+        y: -1,
+        width: 9144000,
+        height: 1500002,
+        placeholderType: 'ctrTitle',
+        placeholderIdx: 4294967295,
+      ),
+    );
   }
 
   void addText(String text) {
-    _texts.add(text);
+    _elements.add(
+      SlideTextBox(
+        text: text,
+        x: 0,
+        y: 1500000,
+        width: 9144000,
+        height: 5358000,
+        placeholderType: 'body',
+        placeholderIdx: 1,
+      ),
+    );
   }
 
   /// Adds a text box to the slide.
@@ -324,11 +344,14 @@ class Slide {
     builder.element(
       'p:sld',
       namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
         'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
         'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
             'r',
+        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
+        'http://schemas.openxmlformats.org/officeDocument/2006/math': 'm',
+        'http://schemas.microsoft.com/office/drawing/2010/main': 'a14',
       },
+      attributes: {'showMasterSp': '1', 'showMasterPhAnim': '1'},
       nest: () {
         builder.p_ct_commonslidedata(
           tagName: 'cSld',
@@ -361,7 +384,23 @@ class Slide {
                     b.element('p:nvPr');
                   },
                 );
-                b.element('p:grpSpPr');
+                b.element(
+                  'p:grpSpPr',
+                  nest: () {
+                    b.element(
+                      'a:xfrm',
+                      nest: () {
+                        b.element('a:off', attributes: {'x': '0', 'y': '0'});
+                        b.element('a:ext', attributes: {'cx': '0', 'cy': '0'});
+                        b.element('a:chOff', attributes: {'x': '0', 'y': '0'});
+                        b.element(
+                          'a:chExt',
+                          attributes: {'cx': '0', 'cy': '0'},
+                        );
+                      },
+                    );
+                  },
+                );
 
                 var shapeId = 2;
 
@@ -422,9 +461,27 @@ class Slide {
           },
         );
 
+        // Add Color Map Override
+        builder.element(
+          'p:clrMapOvr',
+          nest: () {
+            builder.element('a:masterClrMapping');
+          },
+        );
+
         // Transition Element <p:transition> (Sibling of cSld)
         if (_transition != null) {
           _transition!.build(builder);
+        } else {
+          builder.element(
+            'p:transition',
+            attributes: {
+              'xmlns:p14':
+                  'http://schemas.microsoft.com/office/powerpoint/2010/main',
+              'spd': 'med',
+              'advClick': '1',
+            },
+          );
         }
       },
     );
@@ -437,51 +494,124 @@ class Slide {
     int? slideHeight,
     Map<String, ({int width, int height})>? imageDimensions,
   }) => b.element(
-      'p:bg',
-      nest: () {
-        b.element(
-          'p:bgPr',
-          nest: () {
-            final bg = _background;
-            if (bg is SolidColorBackground) {
-              b.element(
-                'a:solidFill',
-                nest: () {
+    'p:bg',
+    nest: () {
+      b.element(
+        'p:bgPr',
+        nest: () {
+          final bg = _background;
+          if (bg is SolidColorBackground) {
+            b.element(
+              'a:solidFill',
+              nest: () {
+                b.element(
+                  'a:srgbClr',
+                  nest: () {
+                    b.attribute('val', bg.color.value);
+                  },
+                );
+              },
+            );
+          } else if (bg is GradientBackground) {
+            b.element(
+              'a:gradFill',
+              nest: () {
+                if (bg.rotateWithShape != null) {
+                  b.attribute('rotWithShape', bg.rotateWithShape! ? '1' : '0');
+                }
+                if (bg.flip != null && bg.flip != D_ST_TileFlipMode.none) {
+                  b.attribute('flip', bg.flip!.value);
+                }
+
+                b.element(
+                  'a:gsLst',
+                  nest: () {
+                    for (final stop in bg.stops) {
+                      b.element(
+                        'a:gs',
+                        nest: () {
+                          b.attribute('pos', '${stop.position}');
+                          b.element(
+                            'a:srgbClr',
+                            nest: () {
+                              b.attribute('val', stop.color.value);
+                            },
+                          );
+                        },
+                      );
+                    }
+                  },
+                );
+
+                if (bg is LinearGradientBackground) {
                   b.element(
-                    'a:srgbClr',
+                    'a:lin',
                     nest: () {
-                      b.attribute('val', bg.color.value);
+                      // XML angle: 60000 * degrees.
+                      // Keynote/PPTX usually maps 45 deg to 315 deg (Counter-Clockwise?)
+                      // User fixed file: 45 deg visual -> 18900000 (315 deg).
+                      // Formula: (360 - angle) % 360.
+                      final angleMod = (360 - bg.angle) % 360;
+                      final angleVal = angleMod * 60000;
+                      b.attribute('ang', '$angleVal');
+                      b.attribute('scaled', bg.scaled ? '1' : '0');
                     },
                   );
-                },
-              );
-            } else if (bg is GradientBackground) {
-              b.element(
-                'a:gradFill',
-                nest: () {
-                  if (bg.rotateWithShape != null) {
-                    b.attribute(
-                      'rotWithShape',
-                      bg.rotateWithShape! ? '1' : '0',
-                    );
-                  }
-                  if (bg.flip != null && bg.flip != D_ST_TileFlipMode.none) {
-                    b.attribute('flip', bg.flip!.value);
-                  }
-
+                } else if (bg is RadialGradientBackground) {
                   b.element(
-                    'a:gsLst',
+                    'a:path',
                     nest: () {
-                      for (final stop in bg.stops) {
+                      b.attribute('path', bg.pathType.value);
+                      b.element(
+                        'a:fillToRect',
+                        nest: () {
+                          b.attribute('l', '50000');
+                          b.attribute('t', '50000');
+                          b.attribute('r', '50000');
+                          b.attribute('b', '50000');
+                        },
+                      );
+                    },
+                  );
+                }
+              },
+            );
+          } else if (bg is ImageBackground) {
+            final rId = imageRelIds?[bg.imagePath];
+            if (rId != null) {
+              b.element(
+                'a:blipFill',
+                nest: () {
+                  b.attribute('rotWithShape', '1');
+                  b.element(
+                    'a:blip',
+                    nest: () {
+                      b.attribute('r:embed', rId);
+
+                      // Transparency
+                      if (bg.alpha != null) {
                         b.element(
-                          'a:gs',
+                          'a:alphaModFix',
                           nest: () {
-                            b.attribute('pos', '${stop.position}');
+                            final amt = (bg.alpha! * 100000).round();
+                            b.attribute('amt', '$amt');
+                          },
+                        );
+                      }
+
+                      // Duotone
+                      if (bg.duotoneColor != null) {
+                        b.element(
+                          'a:duotone',
+                          nest: () {
+                            b.element(
+                              'a:prstClr',
+                              nest: () => b.attribute('val', 'black'),
+                            );
                             b.element(
                               'a:srgbClr',
-                              nest: () {
-                                b.attribute('val', stop.color.value);
-                              },
+                              nest: () =>
+                                  b.attribute('val', bg.duotoneColor!.value),
                             );
                           },
                         );
@@ -489,126 +619,61 @@ class Slide {
                     },
                   );
 
-                  if (bg is LinearGradientBackground) {
+                  // Crop (srcRect)
+                  if (bg.crop != null) {
                     b.element(
-                      'a:lin',
+                      'a:srcRect',
                       nest: () {
-                        // XML angle: 60000 * degrees.
-                        // Keynote/PPTX usually maps 45 deg to 315 deg (Counter-Clockwise?)
-                        // User fixed file: 45 deg visual -> 18900000 (315 deg).
-                        // Formula: (360 - angle) % 360.
-                        final angleMod = (360 - bg.angle) % 360;
-                        final angleVal = angleMod * 60000;
-                        b.attribute('ang', '$angleVal');
-                        b.attribute('scaled', bg.scaled ? '1' : '0');
+                        if (bg.crop!.l > 0) b.attribute('l', '${bg.crop!.l}');
+                        if (bg.crop!.t > 0) b.attribute('t', '${bg.crop!.t}');
+                        if (bg.crop!.r > 0) b.attribute('r', '${bg.crop!.r}');
+                        if (bg.crop!.b > 0) b.attribute('b', '${bg.crop!.b}');
                       },
                     );
-                  } else if (bg is RadialGradientBackground) {
+                  } else {
                     b.element(
-                      'a:path',
+                      'a:srcRect',
                       nest: () {
-                        b.attribute('path', bg.pathType.value);
-                        b.element(
-                          'a:fillToRect',
-                          nest: () {
-                            b.attribute('l', '50000');
-                            b.attribute('t', '50000');
-                            b.attribute('r', '50000');
-                            b.attribute('b', '50000');
-                          },
-                        );
+                        b.attribute('l', '0');
+                        b.attribute('t', '0');
+                        b.attribute('r', '0');
+                        b.attribute('b', '0');
+                      },
+                    );
+                  }
+
+                  // Mode: Stretch or Tile
+                  final mode = bg.mode;
+                  if (mode is ImageStretchMode) {
+                    b.element(
+                      'a:stretch',
+                      nest: () {
+                        b.element('a:fillRect');
+                      },
+                    );
+                  } else if (mode is ImageTileMode) {
+                    b.element(
+                      'a:tile',
+                      nest: () {
+                        b.attribute('tx', '${mode.tx}');
+                        b.attribute('ty', '${mode.ty}');
+                        b.attribute('sx', '${mode.sx}');
+                        b.attribute('sy', '${mode.sy}');
+                        b.attribute('algn', mode.align.value);
+                        if (mode.flip != D_ST_TileFlipMode.none) {
+                          b.attribute('flip', mode.flip.value);
+                        }
                       },
                     );
                   }
                 },
               );
-            } else if (bg is ImageBackground) {
-              final rId = imageRelIds?[bg.imagePath];
-              if (rId != null) {
-                b.element(
-                  'a:blipFill',
-                  nest: () {
-                    b.element(
-                      'a:blip',
-                      nest: () {
-                        b.attribute('r:embed', rId);
-
-                        // Transparency
-                        if (bg.alpha != null) {
-                          b.element(
-                            'a:alphaModFix',
-                            nest: () {
-                              final amt = (bg.alpha! * 100000).round();
-                              b.attribute('amt', '$amt');
-                            },
-                          );
-                        }
-
-                        // Duotone
-                        if (bg.duotoneColor != null) {
-                          b.element(
-                            'a:duotone',
-                            nest: () {
-                              b.element(
-                                'a:prstClr',
-                                nest: () => b.attribute('val', 'black'),
-                              );
-                              b.element(
-                                'a:srgbClr',
-                                nest: () =>
-                                    b.attribute('val', bg.duotoneColor!.value),
-                              );
-                            },
-                          );
-                        }
-                      },
-                    );
-
-                    // Crop (srcRect)
-                    if (bg.crop != null) {
-                      b.element(
-                        'a:srcRect',
-                        nest: () {
-                          if (bg.crop!.l > 0) b.attribute('l', '${bg.crop!.l}');
-                          if (bg.crop!.t > 0) b.attribute('t', '${bg.crop!.t}');
-                          if (bg.crop!.r > 0) b.attribute('r', '${bg.crop!.r}');
-                          if (bg.crop!.b > 0) b.attribute('b', '${bg.crop!.b}');
-                        },
-                      );
-                    }
-
-                    // Mode: Stretch or Tile
-                    final mode = bg.mode;
-                    if (mode is ImageStretchMode) {
-                      b.element(
-                        'a:stretch',
-                        nest: () {
-                          b.element('a:fillRect');
-                        },
-                      );
-                    } else if (mode is ImageTileMode) {
-                      b.element(
-                        'a:tile',
-                        nest: () {
-                          b.attribute('tx', '${mode.tx}');
-                          b.attribute('ty', '${mode.ty}');
-                          b.attribute('sx', '${mode.sx}');
-                          b.attribute('sy', '${mode.sy}');
-                          b.attribute('algn', mode.align.value);
-                          if (mode.flip != D_ST_TileFlipMode.none) {
-                            b.attribute('flip', mode.flip.value);
-                          }
-                        },
-                      );
-                    }
-                  },
-                );
-              }
             }
-          },
-        );
-      },
-    );
+          }
+        },
+      );
+    },
+  );
 
   void _buildLegacyShape(
     XmlBuilder b,
@@ -740,7 +805,12 @@ class Slide {
                 b.attribute('name', 'TextBox $id');
               },
             );
-            b.element('p:cNvSpPr');
+            b.element(
+              'p:cNvSpPr',
+              nest: () {
+                b.attribute('txBox', '1');
+              },
+            );
             b.element(
               'p:nvPr',
               nest: () {
@@ -801,54 +871,92 @@ class Slide {
         b.element(
           'p:txBody',
           nest: () {
-            b.element('a:bodyPr');
-            b.element('a:lstStyle');
+            b.element(
+              'a:bodyPr',
+              nest: () {
+                b.attribute('anchor', 't');
+                b.element(
+                  'a:normAutofit',
+                  nest: () {
+                    b.attribute('fontScale', '100000');
+                    b.attribute('lnSpcReduction', '0');
+                  },
+                );
+              },
+            );
+            b.element(
+              'a:lstStyle',
+              nest: () {
+                b.element(
+                  'a:lvl1pPr',
+                  nest: () {
+                    b.element(
+                      'a:defRPr',
+                      nest: () {
+                        b.attribute('sz', '4000');
+                      },
+                    );
+                  },
+                );
+              },
+            );
             b.element(
               'a:p',
               nest: () {
+                b.element('a:pPr');
                 for (final run in textBox.runs) {
                   b.element(
                     'a:r',
                     nest: () {
-                      b.element(
-                        'a:rPr',
-                        nest: () {
-                          if (run.fontSize != null) {
-                            b.attribute('sz', '${run.fontSize}');
-                          }
-                          b.attribute('dirty', '0');
-                          if (run.isBold) b.attribute('b', '1');
-                          if (run.isItalic) b.attribute('i', '1');
-                          b.element(
-                            'a:solidFill',
-                            nest: () {
+                      final hasStyles =
+                          run.fontSize != null ||
+                          run.isBold ||
+                          run.isItalic ||
+                          run.color != null ||
+                          run.url != null;
+                      if (hasStyles) {
+                        b.element(
+                          'a:rPr',
+                          nest: () {
+                            if (run.fontSize != null) {
+                              b.attribute('sz', '${run.fontSize}');
+                            }
+                            b.attribute('dirty', '0');
+                            if (run.isBold) b.attribute('b', '1');
+                            if (run.isItalic) b.attribute('i', '1');
+                            if (run.color != null) {
                               b.element(
-                                'a:srgbClr',
+                                'a:solidFill',
                                 nest: () {
-                                  b.attribute('val', run.color ?? '000000');
-                                },
-                              );
-                            },
-                          );
-                          if (run.url != null && relIds != null) {
-                            final rId = relIds[run.url];
-                            if (rId != null) {
-                              b.element(
-                                'a:hlinkClick',
-                                nest: () {
-                                  b.attribute('r:id', rId);
-                                  if (run.url!.startsWith('#slide')) {
-                                    b.attribute(
-                                      'action',
-                                      'ppaction://hlinksldjump',
-                                    );
-                                  }
+                                  b.element(
+                                    'a:srgbClr',
+                                    nest: () {
+                                      b.attribute('val', run.color!);
+                                    },
+                                  );
                                 },
                               );
                             }
-                          }
-                        },
-                      );
+                            if (run.url != null && relIds != null) {
+                              final rId = relIds[run.url];
+                              if (rId != null) {
+                                b.element(
+                                  'a:hlinkClick',
+                                  nest: () {
+                                    b.attribute('r:id', rId);
+                                    if (run.url!.startsWith('#slide')) {
+                                      b.attribute(
+                                        'action',
+                                        'ppaction://hlinksldjump',
+                                      );
+                                    }
+                                  },
+                                );
+                              }
+                            }
+                          },
+                        );
+                      }
                       b.element('a:t', nest: () => b.text(run.text));
                     },
                   );

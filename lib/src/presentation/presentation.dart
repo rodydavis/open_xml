@@ -11,6 +11,16 @@ import 'package:open_xml/src/pml/pml_builder.g.dart';
 import 'package:xml/xml.dart';
 
 import 'slide.dart';
+import 'generators/app_props_generator.dart';
+import 'generators/core_props_generator.dart';
+import 'generators/notes_master_generator.dart';
+import 'generators/pres_props_generator.dart';
+import 'generators/slide_layout_generator.dart';
+import 'generators/slide_master_generator.dart';
+import 'generators/table_styles_generator.dart';
+import 'generators/theme_generator.dart';
+import 'generators/view_props_generator.dart';
+
 
 import 'package:open_xml/src/presentation/add_slide.dart' as add_slide;
 import 'package:open_xml/src/presentation/clean.dart' as clean;
@@ -235,15 +245,15 @@ class Presentation {
   Future<void> save(File outputFile, {http.Client? httpClient}) async {
     _log.info('Saving presentation to ${outputFile.path}');
     // Generate missing boilerplate files
-    await _writeCoreProps();
-    await _writeAppProps();
-    await _writePresProps();
-    await _writeViewProps();
-    await _writeTableStyles();
+    await generateCoreProps(_package);
+    await generateAppProps(_package);
+    await generatePresProps(_package);
+    await generateViewProps(_package);
+    await generateTableStyles(_package);
 
     final hasNotes = _slides.any((s) => s.notes != null);
     if (hasNotes) {
-      await _writeNotesMaster();
+      await generateNotesMaster(_package);
       await _writeNotesMasterRelationships();
     }
 
@@ -298,7 +308,7 @@ class Presentation {
     final ctBuilder = XmlBuilder();
     ctBuilder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     ctBuilder.element(
       'Types',
@@ -676,7 +686,7 @@ class Presentation {
     final relsBuilder = XmlBuilder();
     relsBuilder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     relsBuilder.element(
       'Relationships',
@@ -755,7 +765,7 @@ class Presentation {
     final pRelsBuilder = XmlBuilder();
     pRelsBuilder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     pRelsBuilder.element(
       'Relationships',
@@ -940,7 +950,7 @@ class Presentation {
     final pBuilder = XmlBuilder();
     pBuilder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     pBuilder.element(
       'p:presentation',
@@ -1135,7 +1145,7 @@ class Presentation {
       final caBuilder = XmlBuilder();
       caBuilder.processing(
         'xml',
-        'version="1.0" encoding="UTF-8" standalone="yes"',
+        'version="1.0" encoding="UTF-8" ',
       );
       caBuilder.element(
         'p:cmAuthorLst',
@@ -1167,15 +1177,15 @@ class Presentation {
     // 5. Minimal Theme, Slide Master, Slide Layout (Boilerplate)
     if (!await _package.hasPart('ppt/theme/theme1.xml')) {
       _log.fine('Generating default theme');
-      await _writeTheme();
+      await generateTheme(_package);
     }
     if (!await _package.hasPart('ppt/slideMasters/slideMaster1.xml')) {
       _log.fine('Generating default slide master');
-      await _writeSlideMaster();
+      await generateSlideMaster(_package);
     }
     if (!await _package.hasPart('ppt/slideLayouts/slideLayout1.xml')) {
       _log.fine('Generating default slide layout');
-      await _writeSlideLayout();
+      await generateSlideLayout(_package);
     }
 
     // 6. Media Copying and Relationship Mapping
@@ -1293,7 +1303,6 @@ class Presentation {
     }
 
     // 7. Slides
-    int globalRelIdCounter = 2; // Start after rId1 (layout), increment globally
     for (var i = 0; i < _slides.length; i++) {
       await Future.delayed(Duration.zero); // Yield to UI thread
       final slide = _slides[i];
@@ -1304,7 +1313,7 @@ class Presentation {
       final slideRelsXml = XmlBuilder();
       slideRelsXml.processing(
         'xml',
-        'version="1.0" encoding="UTF-8" standalone="yes"',
+        'version="1.0" encoding="UTF-8" ',
       );
       final imageRelIds = <String, String>{}; // originalPath -> rId
 
@@ -1339,17 +1348,12 @@ class Presentation {
             },
           );
 
-          // Fix for MacOS Preview: Use globally unique rIds for ALL content relationships (media, links, etc).
-          // preventing cache collisions.
-          // Layout uses rId1 (fixed). Everything else uses a monotonic global counter starting at 2.
-
-          // int relIdCounter = 2; // Removed local counter
+          int relIdCounter = 2; // Local counter for each slide
 
           final referencedPaths = slide.getAllReferencedMediaPaths();
           for (final path in referencedPaths) {
             if (mediaMapping.containsKey(path)) {
-              // Always generate a new unique global ID
-              final rId = 'rId${globalRelIdCounter++}';
+              final rId = 'rId${relIdCounter++}';
               imageRelIds[path] = rId;
 
               // Detect type (image vs video) roughly by extension
@@ -1370,9 +1374,8 @@ class Presentation {
 
           final referencedLinks = slide.getAllReferencedHyperlinks();
           for (final link in referencedLinks) {
-            final rId = 'rId$globalRelIdCounter';
+            final rId = 'rId${relIdCounter++}';
             imageRelIds[link] = rId;
-            globalRelIdCounter++;
 
             if (link.startsWith('#slide')) {
               // Internal slide link: #slide2 -> #257 (assuming slide1 is 256)
@@ -1412,7 +1415,7 @@ class Presentation {
             slideRelsXml.element(
               'Relationship',
               nest: () {
-                slideRelsXml.attribute('Id', 'rId$globalRelIdCounter');
+                slideRelsXml.attribute('Id', 'rId${relIdCounter++}');
                 slideRelsXml.attribute(
                   'Type',
                   'http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide',
@@ -1423,14 +1426,13 @@ class Presentation {
                 );
               },
             );
-            globalRelIdCounter++;
           }
 
           if (slide.comments.isNotEmpty) {
             slideRelsXml.element(
               'Relationship',
               nest: () {
-                slideRelsXml.attribute('Id', 'rId$globalRelIdCounter');
+                slideRelsXml.attribute('Id', 'rId${relIdCounter++}');
                 slideRelsXml.attribute(
                   'Type',
                   'http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments',
@@ -1441,7 +1443,6 @@ class Presentation {
                 );
               },
             );
-            globalRelIdCounter++;
           }
         },
       );
@@ -1455,7 +1456,7 @@ class Presentation {
         final cBuilder = XmlBuilder();
         cBuilder.processing(
           'xml',
-          'version="1.0" encoding="UTF-8" standalone="yes"',
+          'version="1.0" encoding="UTF-8" ',
         );
         cBuilder.element(
           'p:cmLst',
@@ -1508,7 +1509,7 @@ class Presentation {
       final sBuilder = XmlBuilder();
       sBuilder.processing(
         'xml',
-        'version="1.0" encoding="UTF-8" standalone="yes"',
+        'version="1.0" encoding="UTF-8" ',
       );
       slide.build(
         sBuilder,
@@ -1539,1328 +1540,16 @@ class Presentation {
     _log.info('Presentation closed successfully');
   }
 
-  Future<void> _writeTheme() async {
-    // Minimal theme implementation (copied/adapted from example)
-    final theme = await _package.createPart('ppt/theme/theme1.xml');
-    final tBuilder = XmlBuilder();
-    tBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    tBuilder.element(
-      'a:theme',
-      namespaces: {
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-      },
-      nest: () {
-        tBuilder.attribute('name', 'Office Theme');
-        tBuilder.element(
-          'a:themeElements',
-          nest: () {
-            tBuilder.element(
-              'a:clrScheme',
-              nest: () {
-                tBuilder.attribute('name', 'Office');
-                _addThemeColor(tBuilder, 'dk1', 'windowText', '000000');
-                _addThemeColor(tBuilder, 'lt1', 'window', 'FFFFFF');
-                _addThemeColor(tBuilder, 'dk2', '1F497D', null);
-                _addThemeColor(tBuilder, 'lt2', 'EEECE1', null);
-                _addThemeColor(tBuilder, 'accent1', '4F81BD', null);
-                _addThemeColor(tBuilder, 'accent2', 'C0504D', null);
-                _addThemeColor(tBuilder, 'accent3', '9BBB59', null);
-                _addThemeColor(tBuilder, 'accent4', '8064A2', null);
-                _addThemeColor(tBuilder, 'accent5', '4BACC6', null);
-                _addThemeColor(tBuilder, 'accent6', 'F79646', null);
-                _addThemeColor(tBuilder, 'hlink', '0000FF', null);
-                _addThemeColor(tBuilder, 'folHlink', '800080', null);
-              },
-            );
-            tBuilder.element(
-              'a:fontScheme',
-              nest: () {
-                tBuilder.attribute('name', 'Office');
-                tBuilder.element(
-                  'a:majorFont',
-                  nest: () {
-                    tBuilder.element(
-                      'a:latin',
-                      nest: () => tBuilder.attribute('typeface', 'Calibri'),
-                    );
-                    tBuilder.element(
-                      'a:ea',
-                      nest: () => tBuilder.attribute('typeface', ''),
-                    );
-                    tBuilder.element(
-                      'a:cs',
-                      nest: () => tBuilder.attribute('typeface', ''),
-                    );
-                  },
-                );
-                tBuilder.element(
-                  'a:minorFont',
-                  nest: () {
-                    tBuilder.element(
-                      'a:latin',
-                      nest: () => tBuilder.attribute('typeface', 'Calibri'),
-                    );
-                    tBuilder.element(
-                      'a:ea',
-                      nest: () => tBuilder.attribute('typeface', ''),
-                    );
-                    tBuilder.element(
-                      'a:cs',
-                      nest: () => tBuilder.attribute('typeface', ''),
-                    );
-                  },
-                );
-              },
-            );
-            tBuilder.element(
-              'a:fmtScheme',
-              nest: () {
-                tBuilder.attribute('name', 'Office');
-                tBuilder.element(
-                  'a:fillStyleLst',
-                  nest: () {
-                    tBuilder.element(
-                      'a:solidFill',
-                      nest: () {
-                        tBuilder.element(
-                          'a:schemeClr',
-                          nest: () => tBuilder.attribute('val', 'phClr'),
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:gradFill',
-                      nest: () {
-                        tBuilder.attribute('rotWithShape', '1');
-                        tBuilder.element(
-                          'a:gsLst',
-                          nest: () {
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '0');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '110000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '105000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '67000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '50000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '105000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '103000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '73000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '100000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '105000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '109000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '81000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:lin',
-                          nest: () {
-                            tBuilder.attribute('ang', '5400000');
-                            tBuilder.attribute('scaled', '0');
-                          },
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:gradFill',
-                      nest: () {
-                        tBuilder.attribute('rotWithShape', '1');
-                        tBuilder.element(
-                          'a:gsLst',
-                          nest: () {
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '0');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '103000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '102000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '94000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '50000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '110000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '100000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:shade',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '100000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '100000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '99000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '120000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:shade',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '78000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:lin',
-                          nest: () {
-                            tBuilder.attribute('ang', '5400000');
-                            tBuilder.attribute('scaled', '0');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-                tBuilder.element(
-                  'a:lnStyleLst',
-                  nest: () {
-                    tBuilder.element(
-                      'a:ln',
-                      nest: () {
-                        tBuilder.attribute('w', '6350');
-                        tBuilder.attribute('cap', 'flat');
-                        tBuilder.attribute('cmpd', 'sng');
-                        tBuilder.attribute('algn', 'ctr');
-                        tBuilder.element(
-                          'a:solidFill',
-                          nest: () {
-                            tBuilder.element(
-                              'a:schemeClr',
-                              nest: () {
-                                tBuilder.attribute('val', 'phClr');
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:prstDash',
-                          nest: () {
-                            tBuilder.attribute('val', 'solid');
-                          },
-                        );
-                        tBuilder.element(
-                          'a:miter',
-                          nest: () {
-                            tBuilder.attribute('lim', '800000');
-                          },
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:ln',
-                      nest: () {
-                        tBuilder.attribute('w', '12700');
-                        tBuilder.attribute('cap', 'flat');
-                        tBuilder.attribute('cmpd', 'sng');
-                        tBuilder.attribute('algn', 'ctr');
-                        tBuilder.element(
-                          'a:solidFill',
-                          nest: () {
-                            tBuilder.element(
-                              'a:schemeClr',
-                              nest: () {
-                                tBuilder.attribute('val', 'phClr');
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:prstDash',
-                          nest: () {
-                            tBuilder.attribute('val', 'solid');
-                          },
-                        );
-                        tBuilder.element(
-                          'a:miter',
-                          nest: () {
-                            tBuilder.attribute('lim', '800000');
-                          },
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:ln',
-                      nest: () {
-                        tBuilder.attribute('w', '19050');
-                        tBuilder.attribute('cap', 'flat');
-                        tBuilder.attribute('cmpd', 'sng');
-                        tBuilder.attribute('algn', 'ctr');
-                        tBuilder.element(
-                          'a:solidFill',
-                          nest: () {
-                            tBuilder.element(
-                              'a:schemeClr',
-                              nest: () {
-                                tBuilder.attribute('val', 'phClr');
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:prstDash',
-                          nest: () {
-                            tBuilder.attribute('val', 'solid');
-                          },
-                        );
-                        tBuilder.element(
-                          'a:miter',
-                          nest: () {
-                            tBuilder.attribute('lim', '800000');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-                tBuilder.element(
-                  'a:effectStyleLst',
-                  nest: () {
-                    tBuilder.element(
-                      'a:effectStyle',
-                      nest: () {
-                        tBuilder.element('a:effectLst');
-                      },
-                    );
-                    tBuilder.element(
-                      'a:effectStyle',
-                      nest: () {
-                        tBuilder.element('a:effectLst');
-                      },
-                    );
-                    tBuilder.element(
-                      'a:effectStyle',
-                      nest: () {
-                        tBuilder.element('a:effectLst');
-                      },
-                    );
-                  },
-                );
-                tBuilder.element(
-                  'a:bgFillStyleLst',
-                  nest: () {
-                    tBuilder.element(
-                      'a:solidFill',
-                      nest: () {
-                        tBuilder.element(
-                          'a:schemeClr',
-                          nest: () {
-                            tBuilder.attribute('val', 'phClr');
-                          },
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:solidFill',
-                      nest: () {
-                        tBuilder.element(
-                          'a:schemeClr',
-                          nest: () {
-                            tBuilder.attribute('val', 'phClr');
-                            tBuilder.element(
-                              'a:tint',
-                              nest: () => tBuilder.attribute('val', '95000'),
-                            );
-                            tBuilder.element(
-                              'a:satMod',
-                              nest: () => tBuilder.attribute('val', '170000'),
-                            );
-                          },
-                        );
-                      },
-                    );
-                    tBuilder.element(
-                      'a:gradFill',
-                      nest: () {
-                        tBuilder.attribute('rotWithShape', '1');
-                        tBuilder.element(
-                          'a:gsLst',
-                          nest: () {
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '0');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '93000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '150000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:shade',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '98000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '102000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '50000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:tint',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '98000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '130000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:shade',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '90000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:lumMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '103000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                            tBuilder.element(
-                              'a:gs',
-                              nest: () {
-                                tBuilder.attribute('pos', '100000');
-                                tBuilder.element(
-                                  'a:schemeClr',
-                                  nest: () {
-                                    tBuilder.attribute('val', 'phClr');
-                                    tBuilder.element(
-                                      'a:shade',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '63000'),
-                                    );
-                                    tBuilder.element(
-                                      'a:satMod',
-                                      nest: () =>
-                                          tBuilder.attribute('val', '120000'),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
-                        );
-                        tBuilder.element(
-                          'a:lin',
-                          nest: () {
-                            tBuilder.attribute('ang', '5400000');
-                            tBuilder.attribute('scaled', '0');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            );
-          },
-        );
-      },
-    );
-    theme.write(tBuilder.buildDocument().toXmlString());
-    await theme.close();
-  }
 
-  void _addThemeColor(XmlBuilder b, String name, String val, String? lastClr) {
-    b.element(
-      'a:$name',
-      nest: () {
-        if (lastClr != null) {
-          b.element(
-            'a:sysClr',
-            nest: () {
-              b.attribute('val', val);
-              b.attribute('lastClr', lastClr);
-            },
-          );
-        } else {
-          b.element(
-            'a:srgbClr',
-            nest: () {
-              b.attribute('val', val);
-            },
-          );
-        }
-      },
-    );
-  }
 
-  Future<void> _writeSlideMaster() async {
-    final master = await _package.createPart(
-      'ppt/slideMasters/slideMaster1.xml',
-    );
-    final mBuilder = XmlBuilder();
-    mBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    mBuilder.element(
-      'p:sldMaster',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        mBuilder.element(
-          'p:cSld',
-          nest: () {
-            mBuilder.element(
-              'p:bg',
-              nest: () {
-                mBuilder.element(
-                  'p:bgPr',
-                  nest: () {
-                    mBuilder.element(
-                      'a:solidFill',
-                      nest: () {
-                        mBuilder.element(
-                          'a:schemeClr',
-                          nest: () => mBuilder.attribute('val', 'lt1'),
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            );
-            mBuilder.element(
-              'p:spTree',
-              nest: () {
-                mBuilder.element(
-                  'p:nvGrpSpPr',
-                  nest: () {
-                    mBuilder.element(
-                      'p:cNvPr',
-                      nest: () {
-                        mBuilder.attribute('id', '1');
-                        mBuilder.attribute('name', '');
-                      },
-                    );
-                    mBuilder.element('p:cNvGrpSpPr');
-                    mBuilder.element('p:nvPr');
-                  },
-                );
-                mBuilder.element('p:grpSpPr');
-              },
-            );
-          },
-        );
-        mBuilder.element(
-          'p:clrMap',
-          nest: () {
-            mBuilder.attribute('bg1', 'lt1');
-            mBuilder.attribute('tx1', 'dk1');
-            mBuilder.attribute('bg2', 'lt2');
-            mBuilder.attribute('tx2', 'dk2');
-            mBuilder.attribute('accent1', 'accent1');
-            mBuilder.attribute('accent2', 'accent2');
-            mBuilder.attribute('accent3', 'accent3');
-            mBuilder.attribute('accent4', 'accent4');
-            mBuilder.attribute('accent5', 'accent5');
-            mBuilder.attribute('accent6', 'accent6');
-            mBuilder.attribute('hlink', 'hlink');
-            mBuilder.attribute('folHlink', 'folHlink');
-          },
-        );
-        mBuilder.element(
-          'p:sldLayoutIdLst',
-          nest: () {
-            mBuilder.element(
-              'p:sldLayoutId',
-              nest: () {
-                mBuilder.attribute('id', '2147483649');
-                mBuilder.attribute('r:id', 'rId1');
-              },
-            );
-          },
-        );
-      },
-    );
-    master.write(mBuilder.buildDocument().toXmlString());
-    await master.close();
 
-    // Master Rels
-    final mRels = await _package.createPart(
-      'ppt/slideMasters/_rels/slideMaster1.xml.rels',
-    );
-    final mRelsBuilder = XmlBuilder();
-    mRelsBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    mRelsBuilder.element(
-      'Relationships',
-      namespaces: {
-        'http://schemas.openxmlformats.org/package/2006/relationships': '',
-      },
-      nest: () {
-        mRelsBuilder.element(
-          'Relationship',
-          nest: () {
-            mRelsBuilder.attribute('Id', 'rId1');
-            mRelsBuilder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout',
-            );
-            mRelsBuilder.attribute(
-              'Target',
-              '../slideLayouts/slideLayout1.xml',
-            );
-          },
-        );
-        mRelsBuilder.element(
-          'Relationship',
-          nest: () {
-            mRelsBuilder.attribute('Id', 'rId2');
-            mRelsBuilder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme',
-            );
-            mRelsBuilder.attribute('Target', '../theme/theme1.xml');
-          },
-        );
-      },
-    );
-    mRels.write(mRelsBuilder.buildDocument().toXmlString());
-    await mRels.close();
-  }
 
-  Future<void> _writeSlideLayout() async {
-    final layout = await _package.createPart(
-      'ppt/slideLayouts/slideLayout1.xml',
-    );
-    final lBuilder = XmlBuilder();
-    lBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    lBuilder.element(
-      'p:sldLayout',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        lBuilder.element(
-          'p:cSld',
-          nest: () {
-            lBuilder.element(
-              'p:spTree',
-              nest: () {
-                lBuilder.element(
-                  'p:nvGrpSpPr',
-                  nest: () {
-                    lBuilder.element(
-                      'p:cNvPr',
-                      nest: () {
-                        lBuilder.attribute('id', '1');
-                        lBuilder.attribute('name', '');
-                      },
-                    );
-                    lBuilder.element('p:cNvGrpSpPr');
-                    lBuilder.element('p:nvPr');
-                  },
-                );
-                lBuilder.element('p:grpSpPr');
-              },
-            );
-          },
-        );
-      },
-    );
-    layout.write(lBuilder.buildDocument().toXmlString());
-    await layout.close();
 
-    // Layout Rels
-    final lRels = await _package.createPart(
-      'ppt/slideLayouts/_rels/slideLayout1.xml.rels',
-    );
-    final lRelsBuilder = XmlBuilder();
-    lRelsBuilder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    lRelsBuilder.element(
-      'Relationships',
-      namespaces: {
-        'http://schemas.openxmlformats.org/package/2006/relationships': '',
-      },
-      nest: () {
-        lRelsBuilder.element(
-          'Relationship',
-          nest: () {
-            lRelsBuilder.attribute('Id', 'rId1');
-            lRelsBuilder.attribute(
-              'Type',
-              'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster',
-            );
-            lRelsBuilder.attribute(
-              'Target',
-              '../slideMasters/slideMaster1.xml',
-            );
-          },
-        );
-      },
-    );
-    lRels.write(lRelsBuilder.buildDocument().toXmlString());
-    await lRels.close();
-  }
 
-  Future<void> _writeCoreProps() async {
-    final core = await _package.createPart('docProps/core.xml');
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'cp:coreProperties',
-      namespaces: {
-        'http://schemas.openxmlformats.org/package/2006/metadata/core-properties':
-            'cp',
-        'http://purl.org/dc/elements/1.1/': 'dc',
-        'http://purl.org/dc/terms/': 'dcterms',
-        'http://purl.org/dc/dcmitype/': 'dcmitype',
-        'http://www.w3.org/2001/XMLSchema-instance': 'xsi',
-      },
-      nest: () {
-        builder.element('dc:title', nest: 'Presentation');
-        builder.element('dc:creator', nest: 'Dart OpenXML');
-        builder.element('cp:lastModifiedBy', nest: 'Dart OpenXML');
-        builder.element('cp:revision', nest: '1');
-        final now = DateTime.now().toIso8601String();
-        builder.element(
-          'dcterms:created',
-          nest: () {
-            builder.attribute('xsi:type', 'dcterms:W3CDTF');
-            builder.text(now);
-          },
-        );
-        builder.element(
-          'dcterms:modified',
-          nest: () {
-            builder.attribute('xsi:type', 'dcterms:W3CDTF');
-            builder.text(now);
-          },
-        );
-      },
-    );
-    core.write(builder.buildDocument().toXmlString());
-    await core.close();
-  }
 
-  Future<void> _writeAppProps() async {
-    final app = await _package.createPart('docProps/app.xml');
-    // Minimal app.xml as requested by user to fix QuickLook
-    const xml =
-        '<?xml version="1.0" encoding="UTF-8"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"/>';
-    app.add(xml.codeUnits);
-    await app.close();
-  }
 
-  Future<void> _writePresProps() async {
-    final presProps = await _package.createPart('ppt/presProps.xml');
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'p:presentationPr',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        // Default empty props are often fine, but we can add some basics
-        // builder.element('p:showPr', nest: () {
-        //   builder.element('p:loop', nest: () {
-        //      builder.attribute('val', '0');
-        //   });
-        // });
-      },
-    );
-    presProps.write(builder.buildDocument().toXmlString());
-    await presProps.close();
-  }
 
-  Future<void> _writeViewProps() async {
-    final viewProps = await _package.createPart('ppt/viewProps.xml');
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'p:viewPr',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        builder.element(
-          'p:normalViewPr',
-          nest: () {
-            builder.element(
-              'p:restoredLeft',
-              nest: () {
-                builder.attribute('sz', '15620');
-                builder.attribute('autoAdjust', '0');
-              },
-            );
-            builder.element(
-              'p:restoredTop',
-              nest: () {
-                builder.attribute('sz', '94660');
-                builder.attribute('autoAdjust', '0');
-              },
-            );
-          },
-        );
-        builder.element(
-          'p:slideViewPr',
-          nest: () {
-            builder.element(
-              'p:cSldViewPr',
-              nest: () {
-                builder.element(
-                  'p:cViewPr',
-                  nest: () {
-                    builder.attribute('varScale', '1');
-                    builder.element(
-                      'p:scale',
-                      nest: () {
-                        builder.element(
-                          'a:sx',
-                          nest: () {
-                            builder.attribute('n', '100');
-                            builder.attribute('d', '100');
-                          },
-                        );
-                        builder.element(
-                          'a:sy',
-                          nest: () {
-                            builder.attribute('n', '100');
-                            builder.attribute('d', '100');
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:origin',
-                      nest: () {
-                        builder.attribute('x', '0');
-                        builder.attribute('y', '0');
-                      },
-                    );
-                  },
-                );
-                builder.element('p:guideLst');
-              },
-            );
-          },
-        );
-        builder.element(
-          'p:notesTextViewPr',
-          nest: () {
-            builder.element(
-              'p:cViewPr',
-              nest: () {
-                builder.element(
-                  'p:scale',
-                  nest: () {
-                    builder.element(
-                      'a:sx',
-                      nest: () {
-                        builder.attribute('n', '100');
-                        builder.attribute('d', '100');
-                      },
-                    );
-                    builder.element(
-                      'a:sy',
-                      nest: () {
-                        builder.attribute('n', '100');
-                        builder.attribute('d', '100');
-                      },
-                    );
-                  },
-                );
-                builder.element(
-                  'p:origin',
-                  nest: () {
-                    builder.attribute('x', '0');
-                    builder.attribute('y', '0');
-                  },
-                );
-              },
-            );
-          },
-        );
-        builder.element(
-          'p:gridSpacing',
-          nest: () {
-            builder.attribute('cx', '72008');
-            builder.attribute('cy', '72008');
-          },
-        );
-      },
-    );
-    viewProps.write(builder.buildDocument().toXmlString());
-    await viewProps.close();
-  }
 
-  Future<void> _writeTableStyles() async {
-    final tableStyles = await _package.createPart('ppt/tableStyles.xml');
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'a:tblStyleLst',
-      namespaces: {
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-      },
-      nest: () {
-        builder.attribute('def', '{5C22544A-7EE6-4342-B048-85BDC9FD1C3A}');
-      },
-    );
-    tableStyles.write(builder.buildDocument().toXmlString());
-    await tableStyles.close();
-  }
-
-  Future<void> _writeNotesMaster() async {
-    final notesMaster = await _package.createPart(
-      'ppt/notesMasters/notesMaster1.xml',
-    );
-    final builder = XmlBuilder();
-    builder.processing(
-      'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
-    );
-    builder.element(
-      'p:notesMaster',
-      namespaces: {
-        'http://schemas.openxmlformats.org/presentationml/2006/main': 'p',
-        'http://schemas.openxmlformats.org/drawingml/2006/main': 'a',
-        'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
-            'r',
-      },
-      nest: () {
-        builder.element(
-          'p:cSld',
-          nest: () {
-            builder.element(
-              'p:spTree',
-              nest: () {
-                builder.element(
-                  'p:nvGrpSpPr',
-                  nest: () {
-                    builder.element(
-                      'p:cNvPr',
-                      nest: () {
-                        builder.attribute('id', '1');
-                        builder.attribute('name', '');
-                      },
-                    );
-                    builder.element('p:cNvGrpSpPr');
-                    builder.element('p:nvPr');
-                  },
-                );
-                builder.element(
-                  'p:grpSpPr',
-                  nest: () {
-                    builder.element(
-                      'a:xfrm',
-                      nest: () {
-                        builder.element(
-                          'a:off',
-                          nest: () {
-                            builder.attribute('x', '0');
-                            builder.attribute('y', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:ext',
-                          nest: () {
-                            builder.attribute('cx', '0');
-                            builder.attribute('cy', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:chOff',
-                          nest: () {
-                            builder.attribute('x', '0');
-                            builder.attribute('y', '0');
-                          },
-                        );
-                        builder.element(
-                          'a:chExt',
-                          nest: () {
-                            builder.attribute('cx', '0');
-                            builder.attribute('cy', '0');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-                // Slide Image Placeholder
-                builder.element(
-                  'p:sp',
-                  nest: () {
-                    builder.element(
-                      'p:nvSpPr',
-                      nest: () {
-                        builder.element(
-                          'p:cNvPr',
-                          nest: () {
-                            builder.attribute('id', '2');
-                            builder.attribute(
-                              'name',
-                              'Slide Image Placeholder',
-                            );
-                          },
-                        );
-                        builder.element(
-                          'p:cNvSpPr',
-                          nest: () {
-                            builder.element(
-                              'a:spLocks',
-                              nest: () => builder.attribute('noGrp', '1'),
-                            );
-                          },
-                        );
-                        builder.element(
-                          'p:nvPr',
-                          nest: () {
-                            builder.element(
-                              'p:ph',
-                              nest: () => builder.attribute('type', 'sldImg'),
-                            );
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:spPr',
-                      nest: () {
-                        builder.element(
-                          'a:xfrm',
-                          nest: () {
-                            builder.element(
-                              'a:off',
-                              nest: () {
-                                builder.attribute('x', '1143000');
-                                builder.attribute('y', '685800');
-                              },
-                            );
-                            builder.element(
-                              'a:ext',
-                              nest: () {
-                                builder.attribute('cx', '4572000');
-                                builder.attribute('cy', '3429000');
-                              },
-                            );
-                          },
-                        );
-                        builder.element(
-                          'a:prstGeom',
-                          nest: () {
-                            builder.attribute('prst', 'rect');
-                            builder.element('a:avLst');
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:txBody',
-                      nest: () {
-                        builder.element('a:bodyPr');
-                        builder.element('a:lstStyle');
-                        builder.element(
-                          'a:p',
-                          nest: () => builder.element('a:pPr'),
-                        );
-                      },
-                    );
-                  },
-                );
-                // Body placeholder for notes
-                builder.element(
-                  'p:sp',
-                  nest: () {
-                    builder.element(
-                      'p:nvSpPr',
-                      nest: () {
-                        builder.element(
-                          'p:cNvPr',
-                          nest: () {
-                            builder.attribute('id', '3');
-                            builder.attribute('name', 'Notes Placeholder 3');
-                          },
-                        );
-                        builder.element(
-                          'p:cNvSpPr',
-                          nest: () {
-                            builder.element(
-                              'a:spLocks',
-                              nest: () => builder.attribute('noGrp', '1'),
-                            );
-                          },
-                        );
-                        builder.element(
-                          'p:nvPr',
-                          nest: () {
-                            builder.element(
-                              'p:ph',
-                              nest: () {
-                                builder.attribute('type', 'body');
-                                builder.attribute('idx', '1');
-                              },
-                            );
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:spPr',
-                      nest: () {
-                        builder.element(
-                          'a:xfrm',
-                          nest: () {
-                            builder.element(
-                              'a:off',
-                              nest: () {
-                                builder.attribute('x', '685800');
-                                builder.attribute('y', '4343400');
-                              },
-                            );
-                            builder.element(
-                              'a:ext',
-                              nest: () {
-                                builder.attribute('cx', '5486400');
-                                builder.attribute('cy', '4114800');
-                              },
-                            );
-                          },
-                        );
-                        builder.element(
-                          'a:prstGeom',
-                          nest: () {
-                            builder.attribute('prst', 'rect');
-                            builder.element('a:avLst');
-                          },
-                        );
-                      },
-                    );
-                    builder.element(
-                      'p:txBody',
-                      nest: () {
-                        builder.element('a:bodyPr');
-                        builder.element('a:lstStyle');
-                        builder.element(
-                          'a:p',
-                          nest: () {
-                            builder.element('a:pPr');
-                          },
-                        );
-                      },
-                    );
-                  },
-                );
-              },
-            );
-          },
-        );
-        builder.element(
-          'p:clrMap',
-          nest: () {
-            builder.attribute('bg1', 'lt1');
-            builder.attribute('tx1', 'dk1');
-            builder.attribute('bg2', 'lt2');
-            builder.attribute('tx2', 'dk2');
-            builder.attribute('accent1', 'accent1');
-            builder.attribute('accent2', 'accent2');
-            builder.attribute('accent3', 'accent3');
-            builder.attribute('accent4', 'accent4');
-            builder.attribute('accent5', 'accent5');
-            builder.attribute('accent6', 'accent6');
-            builder.attribute('hlink', 'hlink');
-            builder.attribute('folHlink', 'folHlink');
-          },
-        );
-        builder.element(
-          'p:notesStyle',
-          nest: () {
-            builder.element(
-              'a:lvl1pPr',
-              nest: () {
-                builder.attribute('algn', 'l');
-                builder.element(
-                  'a:defRPr',
-                  nest: () => builder.attribute('sz', '1200'),
-                );
-              },
-            );
-          },
-        );
-      },
-    );
-    notesMaster.write(builder.buildDocument().toXmlString());
-    await notesMaster.close();
-  }
 
   Future<void> _writeNotesSlide(int index, String notes) async {
     final notesSlide = await _package.createPart(
@@ -2869,7 +1558,7 @@ class Presentation {
     final builder = XmlBuilder();
     builder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     builder.element(
       'p:notes',
@@ -3066,7 +1755,7 @@ class Presentation {
     final builder = XmlBuilder();
     builder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     builder.element(
       'Relationships',
@@ -3109,7 +1798,7 @@ class Presentation {
     final builder = XmlBuilder();
     builder.processing(
       'xml',
-      'version="1.0" encoding="UTF-8" standalone="yes"',
+      'version="1.0" encoding="UTF-8" ',
     );
     builder.element(
       'Relationships',

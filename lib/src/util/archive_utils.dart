@@ -16,20 +16,17 @@ class ZipPackageWriter {
   Future<void> addFile(File file, String filename) async {
     final localHeaderOffset = _bytesWritten;
 
-    // 1. Calculate CRC / Size (Read pass 1)
+    // 1. Read file and calculate CRC
+    final bytes = await file.readAsBytes();
     final stat = await file.stat();
     final lastMod = stat.modified;
-    int uncompressedSize = 0;
-    int crc = 0;
+    final uncompressedSize = bytes.length;
+    final crc = getCrc32(bytes);
 
-    // For STORE method
-    await for (final chunk in file.openRead()) {
-      uncompressedSize += chunk.length;
-      crc = getCrc32(chunk, crc);
-    }
-
-    const compressionMethod = 0; // STORE
-    final compressedSize = uncompressedSize;
+    // Compress
+    final compressedBytes = Deflate(bytes).getBytes();
+    final compressedSize = compressedBytes.length;
+    const compressionMethod = 8; // DEFLATE
 
     // 2. Write Local Header
     final filenameBytes = utf8.encode(filename);
@@ -47,10 +44,8 @@ class ZipPackageWriter {
     _write16(0); // Extra field len
     _writeBytes(filenameBytes);
 
-    // 3. Write Data (Read pass 2)
-    await for (final chunk in file.openRead()) {
-      _writeBytes(chunk);
-    }
+    // 3. Write Data
+    _writeBytes(compressedBytes);
 
     _entries.add(
       _ZipEntry(

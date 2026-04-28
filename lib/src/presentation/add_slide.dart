@@ -41,7 +41,7 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   final destSlide = fs.file(p.join(slidesDir.path, dest));
   final destRels = fs.file(p.join(relsDir.path, '$dest.rels'));
 
-  const slideXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  const slideXml = '''<?xml version="1.0" encoding="UTF-8" ?>
 <p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
   <p:cSld>
     <p:spTree>
@@ -69,7 +69,7 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   destSlide.writeAsStringSync(slideXml);
 
   relsDir.createSync(recursive: true);
-  final relsXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  final relsXml = '''<?xml version="1.0" encoding="UTF-8" ?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/$layoutFile"/>
 </Relationships>''';
