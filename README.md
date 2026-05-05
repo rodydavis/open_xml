@@ -179,13 +179,38 @@ Utility methods are available to integrate with common data sources:
 *   `xlsx_json_example.dart`: Convert JSON lists to rows.
 *   `xlsx_sqlite_example.dart`: Query a SQLite database and stream results directly to an Excel sheet.
 
+## AI Agent Skills
+
+The `open_xml` package includes pre-generated [AI Agent Skills](skills) designed to give LLMs and AI coding assistants exhaustive context, guides, and examples.
+These skills are grouped by functionality:
+* `open-xml-package`: Comprehensive overview of the package, including links to all guides.
+* `open-xml-docx`: Specific skill containing all Word Document examples and docs.
+* `open-xml-xlsx`: Specific skill containing all Spreadsheet examples and docs.
+* `open-xml-pptx`: Specific skill containing all Presentation examples and docs.
+
+You can point your agent to the `skills/` directory to instantly load full context on how to write code for `open_xml`.
+
+Or install with [skills.sh](https://skills.sh):
+
+```bash
+npx skills add rodydavis/open_xml
+```
+
+## Documentation
+
+Detailed guides and API overviews are available in the [docs/](docs) directory:
+* [Core Concepts](docs/open_xml_core.md)
+* [Word Documents (.docx)](docs/open_xml_docx.md)
+* [Spreadsheets (.xlsx)](docs/open_xml_xlsx.md)
+* [Presentations (.pptx)](docs/open_xml_pptx.md)
+
 ## Examples
 
-Check the `examples/` directory for detailed recipes:
+We provide heavily-documented examples for each file type in the [docs/examples/](docs/examples) directory:
 
-*   [**Word Examples**](examples/docx): Images, Comments, Markdown import/export.
-*   [**Excel Examples**](examples/xlsx): SQLite export, JSON export, Internal links.
-*   [**PowerPoint Examples**](examples/pptx): Images, Backgrounds, Markdown import, Media parsing.
+*   [**Word Examples**](docs/examples/docx): Images, Comments, Markdown import/export.
+*   [**Excel Examples**](docs/examples/xlsx): SQLite export, JSON export, Internal links.
+*   [**PowerPoint Examples**](docs/examples/pptx): Images, Backgrounds, Markdown import, Media parsing.
 
 To run examples:
 

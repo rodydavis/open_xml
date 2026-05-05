@@ -14,7 +14,7 @@ class Emitter {
 
   Emitter(this.resolver);
 
-  Future<void> generate(String outputDir) async {
+  Future<void> generate(String outputDir, {String testDir = 'test/generated'}) async {
     print('Generating Dart code to $outputDir...');
 
     // Group types by library folder (e.g. wml, sml)
@@ -28,6 +28,7 @@ class Emitter {
     for (final folder in typesByFolder.keys) {
       await _generateLibrary(outputDir, folder, typesByFolder[folder]!);
       await _generateBuilderLibrary(outputDir, folder, typesByFolder[folder]!);
+      await _generateTestLibrary(testDir, folder, typesByFolder[folder]!);
     }
   }
 
@@ -136,6 +137,164 @@ class Emitter {
       print('Error generating builder for $folderName: $e\n$stack');
       rethrow;
     }
+  }
+
+  Future<void> _generateTestLibrary(
+    String outputDir,
+    String folderName,
+    List<SemanticType> types,
+  ) async {
+    try {
+      final libDir = Directory(outputDir);
+      if (!libDir.existsSync()) await libDir.create(recursive: true);
+
+      final library = Library((b) {
+        b.directives.add(Directive.import('package:test/test.dart'));
+        b.directives.add(Directive.import('package:xml/xml.dart'));
+        b.directives.add(
+          Directive.import('package:open_xml/src/$folderName/$folderName.g.dart'),
+        );
+        b.directives.add(
+          Directive.import('package:open_xml/src/$folderName/${folderName}_builder.g.dart'),
+        );
+        
+        // Import all others just in case enum values or types from other namespaces are needed
+        b.directives.add(Directive.import('package:open_xml/src/wml/wml.g.dart'));
+        b.directives.add(Directive.import('package:open_xml/src/sml/sml.g.dart'));
+        b.directives.add(Directive.import('package:open_xml/src/pml/pml.g.dart'));
+        b.directives.add(Directive.import('package:open_xml/src/dml/dml.g.dart'));
+        b.directives.add(Directive.import('package:open_xml/src/opc/opc.g.dart'));
+        b.directives.add(Directive.import('package:open_xml/src/shared/shared.g.dart'));
+
+        b.body.add(Method((m) {
+          m.name = 'main';
+          m.returns = refer('void');
+          
+          final bodyBuffer = StringBuffer();
+          bodyBuffer.writeln("group('$folderName generated tests', () {");
+          
+          for (final type in types) {
+            if (type is ComplexType) {
+              _emitTypeTest(bodyBuffer, type);
+            }
+          }
+          
+          bodyBuffer.writeln("});");
+          m.body = Code(bodyBuffer.toString());
+        }));
+      });
+
+      var source = library
+          .accept(DartEmitter(allocator: Allocator.simplePrefixing()))
+          .toString();
+      source =
+          '// ignore_for_file: camel_case_types, constant_identifier_names, non_constant_identifier_names, camel_case_extensions, unnecessary_this, curly_braces_in_flow_control_structures, prefer_null_aware_operators, unnecessary_non_null_assertion, unnecessary_null_comparison, unused_import, duplicate_import, annotate_overrides, unused_local_variable\n$source';
+
+      final content = _formatter.format(source);
+      final file = File(p.join(libDir.path, '${folderName}_test.dart'));
+      await file.writeAsString(content);
+      print('Generated tests: ${file.path}');
+    } catch (e, stack) {
+      print('Error generating tests for $folderName: $e\n$stack');
+      rethrow;
+    }
+  }
+
+  void _emitTypeTest(StringBuffer bodyBuffer, ComplexType type) {
+    final namespaces = <String>{type.namespaceUri};
+    for (final attr in type.attributes) {
+      if (attr.namespace.isNotEmpty) namespaces.add(attr.namespace);
+    }
+
+    bodyBuffer.writeln("test('Test ${type.name} with empty node', () {");
+    bodyBuffer.writeln("  final builder = XmlBuilder();");
+    bodyBuffer.writeln("  builder.element('root', nest: () {");
+    int i = 0;
+    for (final ns in namespaces) {
+      bodyBuffer.writeln("    builder.namespace('$ns', 'ns$i');");
+      i++;
+    }
+    bodyBuffer.writeln("    builder.element('dummy', namespace: '${type.namespaceUri}');");
+    bodyBuffer.writeln("  });");
+    bodyBuffer.writeln("  final node = builder.buildDocument().rootElement.children.first as XmlElement;");
+    bodyBuffer.writeln("  final instance = ${type.name}(node);");
+    bodyBuffer.writeln("  final errors = instance.validate();");
+    bodyBuffer.writeln("  expect(errors, isA<List<String>>());");
+    
+    final generatedMembers = <String>{};
+    for (final attr in type.attributes) {
+      final name = _sanitizeMemberName(attr.name);
+      if (generatedMembers.add(name)) {
+        bodyBuffer.writeln("  try { final v_$name = instance.$name; } catch (e) {}");
+      }
+    }
+    for (final child in type.children) {
+      final name = _sanitizeMemberName(child.name);
+      if (generatedMembers.add(name)) {
+        bodyBuffer.writeln("  try { final c_$name = instance.$name; } catch (e) {}");
+      }
+    }
+    bodyBuffer.writeln("});");
+
+    bodyBuffer.writeln("test('Test ${type.name} with populated node', () {");
+    bodyBuffer.writeln("  final builder = XmlBuilder();");
+    bodyBuffer.writeln("  builder.element('root', nest: () {");
+    i = 0;
+    for (final ns in namespaces) {
+      bodyBuffer.writeln("    builder.namespace('$ns', 'ns$i');");
+      i++;
+    }
+    final methodName = type.name.toLowerCase();
+    
+    final builderArgs = <String>[];
+    for (final attr in type.attributes) {
+      final name = _sanitizeMemberName(attr.name);
+      final val = _getDummyValueFor(attr.type);
+      if (val != null) {
+        builderArgs.add("$name: $val");
+      }
+    }
+    
+    if (builderArgs.isNotEmpty) {
+      bodyBuffer.writeln("    builder.$methodName(tagName: 'dummy', namespace: '${type.namespaceUri}', ${builderArgs.join(', ')});");
+    } else {
+      bodyBuffer.writeln("    builder.$methodName(tagName: 'dummy', namespace: '${type.namespaceUri}');");
+    }
+    bodyBuffer.writeln("  });");
+    bodyBuffer.writeln("  final node = builder.buildDocument().rootElement.children.first as XmlElement;");
+    bodyBuffer.writeln("  final instance = ${type.name}(node);");
+    bodyBuffer.writeln("  final errors = instance.validate();");
+    bodyBuffer.writeln("  expect(errors, isA<List<String>>());");
+    
+    final generatedMembersPopulated = <String>{};
+    for (final attr in type.attributes) {
+      final name = _sanitizeMemberName(attr.name);
+      if (generatedMembersPopulated.add(name)) {
+        bodyBuffer.writeln("  try { final v_$name = instance.$name; } catch (e) {}");
+      }
+    }
+    for (final child in type.children) {
+      final name = _sanitizeMemberName(child.name);
+      if (generatedMembersPopulated.add(name)) {
+        bodyBuffer.writeln("  try { final c_$name = instance.$name; } catch (e) {}");
+      }
+    }
+    bodyBuffer.writeln("});");
+  }
+
+  String? _getDummyValueFor(SemanticType type) {
+    if (type is SimpleType) {
+      if (type.isEnum) {
+        return '${type.name}.values.first';
+      }
+      final base = type.baseType;
+      if (base == 'string') return "'test'";
+      if (['int', 'integer', 'long', 'short', 'byte', 'unsignedInt', 'unsignedLong', 'unsignedShort', 'unsignedByte'].contains(base)) return "1";
+      if (['decimal', 'float', 'double'].contains(base)) return "1.0";
+      if (base == 'boolean') return "true";
+      return "'test'";
+    }
+    return null; 
   }
 
   void _emitComplexType(LibraryBuilder b, ComplexType type) {

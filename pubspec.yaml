@@ -1,6 +1,6 @@
 name: open_xml
 description: Open XML (OOXML) formatted documents.
-version: 0.2.0
+version: 0.3.0
 homepage: https://github.com/rodydavis/open_xml
 repository: https://github.com/rodydavis/open_xml
 issue_tracker: https://github.com/rodydavis/open_xml/issues
@@ -23,4 +23,7 @@ dependencies:
 
 dev_dependencies:
   lints: ^6.0.0
+  markdown: ^7.3.1
+  sqlite3: ^3.3.1
   test: ^1.25.6
+  uuid: ^4.5.3
