@@ -10,7 +10,7 @@ concurrency:
 
 env:
   REGISTRY: git.rodydavis.dev
-  CUSTOM_SUBDOMAIN: ""
+
 
 jobs:
   build-and-deploy:
@@ -53,14 +53,4 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ gitea.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Deploy to Coolify via Middleware
-        run: |
-          curl --fail-with-body --request POST 'https://sync-middleware.rodydavis.dev/deploy' \
-            --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}' \
-            --header 'Content-Type: application/json' \
-            --data '{
-              "repo": "${{ gitea.repository }}",
-              "subdomain": "${{ env.CUSTOM_SUBDOMAIN }}"
-            }'
 
