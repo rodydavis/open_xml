@@ -1,0 +1,10 @@
+# Site Configuration
+titleBase: OpenXML Docs
+favicon: favicon.ico
+
+# Social media links
+social:
+  - name: Github
+    url: https://github.com/rodydavis/open_xml
+  - name: Website
+    url: https://rodydavis.dev

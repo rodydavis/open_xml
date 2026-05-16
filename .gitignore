@@ -1,16 +1,55 @@
-# https://dart.dev/guides/libraries/private-files
-# Created by `dart pub`
+# ==========================================
+# 🌌 Federated Workspaces - Ultimate Ignores
+# ==========================================
+
+# --- System & Editor Files ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Bazel Convenience Symlinks & Outputs ---
+bazel-*
+bazel_out/
+
+# --- C/C++ Outputs ---
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.out
+*.exe
+
+# --- Go Outputs ---
+*.test
+*.prof
+__debug_bin
+MODULE.bazel.lock
+
+# --- Node / JavaScript / pnpm ---
+node_modules/
+.npm/
+.pnpm-store/
+.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Dart / Flutter ---
 .dart_tool/
-
-# Avoid committing pubspec.lock for library packages; see
-# https://dart.dev/guides/libraries/private-files#pubspeclock.
-pubspec.lock
-
-examples/out/
-out/
-build/
-tool/schemas/
-third_party/validator/examples_out/
-third_party/pptx/
-third_party/docx/
-third_party/xlsx/
+.packages
+.pub-cache/
+.pub/
+/build/
+*.flutter-plugins
+*.flutter-plugins-dependencies
