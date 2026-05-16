@@ -3,18 +3,13 @@ import 'package:archive/archive.dart';
 import 'package:file/file.dart';
 import 'package:file/local.dart';
 import 'package:path/path.dart' as p;
-import 'validate.dart';
+import 'package:open_xml/src/validate/validate.dart';
 
 /// Command line tool to validate Office document XML files.
-/// Note: XSD Schema validation is not fully supported natively in Dart.
-/// This script provides basic checks.
-///
-/// Usage:
-///     dart validate_cli.dart `<path>` [--original <original_file>] [--auto-repair] [--author NAME]
 void main(List<String> args) {
   if (args.isEmpty) {
     print(
-      'Usage: dart validate_cli.dart `<path>` [--original <original_file>] [--auto-repair] [--author NAME]',
+      'Usage: dart run open_xml:validate <path> [--original <original_file>] [--auto-repair] [--author NAME]',
     );
     exit(1);
   }

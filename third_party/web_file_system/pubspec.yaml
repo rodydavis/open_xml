@@ -1,0 +1,16 @@
+name: web_file_system
+description: A high-performance, asynchronous file system for the web using IDB and OPFS.
+version: 0.0.1
+environment:
+  sdk: ^3.10.0
+
+dependencies:
+  file: ^7.0.0
+  path: ^1.9.0
+  web: ^1.1.1
+  uuid: ^4.0.0
+  mime: ^1.0.0
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.25.0

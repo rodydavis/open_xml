@@ -6,7 +6,6 @@
 
 import 'package:jaspr/client.dart';
 
-import 'package:doc_site/components/clicker.dart' deferred as _clicker;
 import 'package:jaspr_content/components/_internal/code_block_copy_button.dart'
     deferred as _code_block_copy_button;
 import 'package:jaspr_content/components/_internal/zoomable_image.dart'
@@ -36,10 +35,6 @@ import 'package:jaspr_content/components/theme_toggle.dart'
 /// ```
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
-    'clicker': ClientLoader(
-      (p) => _clicker.Clicker(),
-      loader: _clicker.loadLibrary,
-    ),
     'jaspr_content:code_block_copy_button': ClientLoader(
       (p) => _code_block_copy_button.CodeBlockCopyButton(),
       loader: _code_block_copy_button.loadLibrary,

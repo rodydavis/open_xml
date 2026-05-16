@@ -1,52 +1,30 @@
-import 'dart:io';
-import 'package:path/path.dart' as p;
 import 'package:xml/xml.dart';
 
-/// Merge adjacent runs with identical formatting in DOCX.
-///
-/// Merges adjacent <w:r> elements that have identical <w:rPr> properties.
-/// Works on runs in paragraphs and inside tracked changes (<w:ins>, <w:del>).
-///
-/// Also:
-/// - Removes rsid attributes from runs (revision metadata that doesn't affect rendering)
-/// - Removes proofErr elements (spell/grammar markers that block merging)
-/// Merges adjacent runs in DOCX files with identical formatting.
+/// Merges adjacent runs in a DOCX document XML represented as an [XmlDocument].
 ///
 /// Looks for `<w:r>` elements inside `<w:p>` or `<w:ins>` and `<w:del>`
 /// and combines them if their `<w:rPr>` properties match exactly.
-/// Returns a tuple containing the number of merged runs and a status message.
-(int, String) mergeRuns(String inputDir) {
-  final docXml = File(p.join(inputDir, 'word', 'document.xml'));
+/// Returns the number of merged runs.
+int mergeRuns(XmlDocument document) {
+  final root = document.rootElement;
 
-  if (!docXml.existsSync()) {
-    return (0, 'Error: ${docXml.path} not found');
+  _removeElements(root, 'proofErr');
+  _stripRunRsidAttrs(root);
+
+  final runs = _findElements(root, 'r');
+  final containers = <XmlNode>{};
+  for (var run in runs) {
+    if (run.parent != null) {
+      containers.add(run.parent!);
+    }
   }
 
-  try {
-    final document = XmlDocument.parse(docXml.readAsStringSync());
-    final root = document.rootElement;
-
-    _removeElements(root, 'proofErr');
-    _stripRunRsidAttrs(root);
-
-    final runs = _findElements(root, 'r');
-    final containers = <XmlNode>{};
-    for (var run in runs) {
-      if (run.parent != null) {
-        containers.add(run.parent!);
-      }
-    }
-
-    int mergeCount = 0;
-    for (var container in containers) {
-      mergeCount += _mergeRunsIn(container);
-    }
-
-    docXml.writeAsStringSync(document.toXmlString(pretty: false));
-    return (mergeCount, 'Merged $mergeCount runs');
-  } catch (e) {
-    return (0, 'Error: $e');
+  int mergeCount = 0;
+  for (var container in containers) {
+    mergeCount += _mergeRunsIn(container);
   }
+
+  return mergeCount;
 }
 
 List<XmlElement> _findElements(XmlElement root, String tag) {

@@ -1,5 +1,4 @@
 import 'package:file/file.dart';
-import 'package:file/local.dart';
 import 'package:logging/logging.dart';
 
 import 'package:open_xml/src/validate/validate.dart';
@@ -7,8 +6,7 @@ import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/shared/comment.dart';
 import 'package:open_xml/src/wml/wml_builder.g.dart';
 import 'package:open_xml/src/word/paragraph.dart';
-import 'package:open_xml/src/word/helpers/simplify_redlines.dart'
-    as simplify_redlines;
+import 'package:open_xml/src/word/helpers/simplify_redlines.dart' as simplify_redlines;
 import 'package:open_xml/src/word/helpers/merge_runs.dart' as merge_runs;
 import 'package:open_xml/src/word/comment.dart' as office_comment;
 import 'package:xml/xml.dart';
@@ -18,6 +16,24 @@ class WordDocument {
   final List<Paragraph> _paragraphs = [];
   final List<Comment> _comments = [];
   final _log = Logger('WordDocument');
+
+  WordDocument._(this._package);
+
+  /// Creates a new, blank Word Document.
+  static Future<WordDocument> create(FileSystem fs) async {
+    final package = await OoxmlPackage.create(fs);
+    return WordDocument._(package);
+  }
+
+  /// Opens an existing Word Document.
+  static Future<WordDocument> open(File file, {FileSystem? fs}) async {
+    final package = await OoxmlPackage.open(file, fs: fs);
+    final doc = WordDocument._(package);
+    await doc._parse();
+    return doc;
+  }
+
+  /// Paragraphs in the document.
   List<Paragraph> get paragraphs => _paragraphs;
 
   /// Returns the plain text content of the document.
@@ -25,25 +41,37 @@ class WordDocument {
   /// Paragraphs are separated by newlines.
   String get text => _paragraphs.map((p) => p.text).join('\n');
 
-  WordDocument._(this._package);
+  /// Adds a paragraph to the document.
+  void addParagraph(Paragraph paragraph) {
+    _paragraphs.add(paragraph);
+  }
 
-  /// Creates a new empty Word document.
-  static Future<WordDocument> create(FileSystem fs) async {
-    final package = await OoxmlPackage.create(fs);
-    return WordDocument._(package);
+  /// Comments in the document.
+  List<Comment> get comments => _comments;
+
+  /// Adds a comment to the document.
+  ///
+  /// Returns the created [Comment] object, which can be attached to a [Paragraph].
+  Comment addComment(
+    String text, {
+    String author = 'Author',
+    String? initials,
+    DateTime? date,
+  }) {
+    final comment = Comment(
+      id: _comments.length + 1,
+      text: text,
+      author: author,
+      initials: initials,
+      date: date,
+    );
+    _comments.add(comment);
+    return comment;
   }
 
   Future<void> close() async {
     await _package.close();
     _log.info('Document closed successfully');
-  }
-
-  /// Opens an existing Word document.
-  static Future<WordDocument> open(File file) async {
-    final package = await OoxmlPackage.open(file);
-    final doc = WordDocument._(package);
-    await doc._parse();
-    return doc;
   }
 
   Future<void> _parse() async {
@@ -63,7 +91,7 @@ class WordDocument {
     }
   }
 
-  /// Validates the document based on the current internal state.
+  /// Validates the document files.
   (bool, List<String>) validate() {
     return validateDirectory(_package.directory);
   }
@@ -75,7 +103,20 @@ class WordDocument {
   /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
   (int, String) simplifyRedlines() {
-    return simplify_redlines.simplifyRedlines(_package.directory.path);
+    final docXml = _package.directory.fileSystem.file(
+      _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
+    );
+    if (!docXml.existsSync()) {
+      return (0, 'Error: ${docXml.path} not found');
+    }
+    try {
+      final document = XmlDocument.parse(docXml.readAsStringSync());
+      final count = simplify_redlines.simplifyRedlines(document);
+      docXml.writeAsStringSync(document.toXmlString(pretty: false));
+      return (count, 'Simplified $count tracked changes');
+    } catch (e) {
+      return (0, 'Error: $e');
+    }
   }
 
   /// Merges adjacent runs in the document with identical formatting.
@@ -85,7 +126,20 @@ class WordDocument {
   /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
   (int, String) mergeRuns() {
-    return merge_runs.mergeRuns(_package.directory.path);
+    final docXml = _package.directory.fileSystem.file(
+      _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
+    );
+    if (!docXml.existsSync()) {
+      return (0, 'Error: ${docXml.path} not found');
+    }
+    try {
+      final document = XmlDocument.parse(docXml.readAsStringSync());
+      final count = merge_runs.mergeRuns(document);
+      docXml.writeAsStringSync(document.toXmlString(pretty: false));
+      return (count, 'Merged $count runs');
+    } catch (e) {
+      return (0, 'Error: $e');
+    }
   }
 
   /// Injects a new comment or reply directly into the unpacked document XML.
@@ -109,31 +163,6 @@ class WordDocument {
       initials: initials,
       parentId: parentId,
     );
-  }
-
-  /// Adds a paragraph to the document.
-  void addParagraph(Paragraph paragraph) {
-    _paragraphs.add(paragraph);
-  }
-
-  /// Adds a comment to the document.
-  ///
-  /// Returns the created [Comment] object, which can be attached to a [Paragraph].
-  Comment addComment(
-    String text, {
-    String author = 'Author',
-    String? initials,
-    DateTime? date,
-  }) {
-    final comment = Comment(
-      id: _comments.length + 1,
-      text: text,
-      author: author,
-      initials: initials,
-      date: date,
-    );
-    _comments.add(comment);
-    return comment;
   }
 
   /// Saves the document to the specified [outputFile].
@@ -172,7 +201,7 @@ class WordDocument {
               // Remote image logic similar to Presentation if we support it.
               // For now, let's treat as unsupported or Todo.
             } else {
-              final file = const LocalFileSystem().file(element.path);
+              final file = outputFile.fileSystem.file(element.path);
               if (file.existsSync()) {
                 final bytes = await file.readAsBytes();
                 final part = await _package.createPart(targetPath);

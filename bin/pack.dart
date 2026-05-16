@@ -4,13 +4,6 @@ import 'package:path/path.dart' as p;
 import 'package:xml/xml.dart';
 
 /// Pack a directory into a DOCX, PPTX, or XLSX file.
-///
-/// Condenses XML formatting and creates the Office file.
-/// Note: XSD Schema validation is not fully supported natively in Dart
-/// without external tools, so validation is basic.
-///
-/// Usage:
-///     dart pack.dart <input_directory> <output_file>
 (int?, String) pack(String inputDirectory, String outputFile) {
   final inputDir = Directory(inputDirectory);
   final outputPath = File(outputFile);
@@ -49,7 +42,6 @@ import 'package:xml/xml.dart';
     for (var entity in tempContentDir.listSync(recursive: true)) {
       if (entity is File) {
         final relativePath = p.relative(entity.path, from: tempContentDir.path);
-        // Ensure forward slashes for zip internal paths
         final zipPath = relativePath.replaceAll('\\', '/');
         final bytes = entity.readAsBytesSync();
         archive.addFile(ArchiveFile(zipPath, bytes.length, bytes));
@@ -113,10 +105,9 @@ void _condenseXml(File xmlFile) {
   }
 }
 
-/// Command-line entry point for packing a directory.
 void main(List<String> args) {
   if (args.length < 2) {
-    print('Usage: dart pack.dart <input_directory> <output_file>');
+    print('Usage: dart run open_xml:pack <input_directory> <output_file>');
     exit(1);
   }
 

@@ -9,7 +9,7 @@ echo "-----------------------------------"
 if [ -d "out" ]; then
   find out -type f \( -name "*.docx" -o -name "*.pptx" -o -name "*.xlsx" \) | while read file; do
     echo "Validating $file..."
-    dart ../lib/src/validate/validate_cli.dart "$file"
+    dart ../bin/validate.dart "$file"
     if [ $? -eq 0 ]; then
       echo "✅ $file validated successfully"
     else

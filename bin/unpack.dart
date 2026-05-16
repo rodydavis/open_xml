@@ -3,8 +3,8 @@ import 'package:archive/archive_io.dart';
 import 'package:path/path.dart' as p;
 import 'package:xml/xml.dart';
 
-import '../word/helpers/merge_runs.dart';
-import '../word/helpers/simplify_redlines.dart';
+import 'package:open_xml/src/word/helpers/merge_runs.dart';
+import 'package:open_xml/src/word/helpers/simplify_redlines.dart';
 
 /// Mapping of typographic quotes to XML character entities.
 const Map<String, String> _smartQuoteReplacements = {
@@ -15,10 +15,6 @@ const Map<String, String> _smartQuoteReplacements = {
 };
 
 /// Unpack Office files (DOCX, PPTX, XLSX) for editing.
-///
-/// Extracts the ZIP archive, pretty-prints XML files, and optionally:
-/// - Merges adjacent runs with identical formatting (DOCX only)
-/// - Simplifies adjacent tracked changes from same author (DOCX only)
 (int?, String) unpack(
   String inputFile,
   String outputDirectory, {
@@ -63,16 +59,26 @@ const Map<String, String> _smartQuoteReplacements = {
     String message = 'Unpacked $inputFile (${xmlFiles.length} XML files)';
 
     if (suffix == '.docx') {
-      if (simplifyRedlinesOpt) {
-        final res = simplifyRedlines(outputPath.path);
-        final simplifyCount = res.$1;
-        message += ', simplified $simplifyCount tracked changes';
-      }
+      final docXmlFile = File(p.join(outputPath.path, 'word', 'document.xml'));
+      if (docXmlFile.existsSync()) {
+        try {
+          final docXmlString = docXmlFile.readAsStringSync();
+          final document = XmlDocument.parse(docXmlString);
 
-      if (mergeRunsOpt) {
-        final res = mergeRuns(outputPath.path);
-        final mergeCount = res.$1;
-        message += ', merged $mergeCount runs';
+          if (simplifyRedlinesOpt) {
+            final simplifyCount = simplifyRedlines(document);
+            message += ', simplified $simplifyCount tracked changes';
+          }
+
+          if (mergeRunsOpt) {
+            final mergeCount = mergeRuns(document);
+            message += ', merged $mergeCount runs';
+          }
+
+          docXmlFile.writeAsStringSync(document.toXmlString(pretty: false));
+        } catch (e) {
+          message += ' (Failed to simplify/merge runs: $e)';
+        }
       }
     }
 
@@ -95,7 +101,7 @@ void _prettyPrintXml(File xmlFile) {
     final document = XmlDocument.parse(content);
     xmlFile.writeAsStringSync(document.toXmlString(pretty: true, indent: '  '));
   } catch (_) {
-    // Ignore parse errors, file might not be standard XML
+    // Ignore parse errors
   }
 }
 
@@ -111,11 +117,10 @@ void _escapeSmartQuotes(File xmlFile) {
   }
 }
 
-/// Command-line entry point for unpacking an Office file.
 void main(List<String> args) {
   if (args.length < 2) {
     print(
-      'Usage: dart unpack.dart <input_file> <output_directory> [--merge-runs false] [--simplify-redlines false]',
+      'Usage: dart run open_xml:unpack <input_file> <output_directory> [--merge-runs false] [--simplify-redlines false]',
     );
     exit(1);
   }

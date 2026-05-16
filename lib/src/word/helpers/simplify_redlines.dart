@@ -1,43 +1,27 @@
-import 'dart:io';
-import 'package:archive/archive_io.dart';
-import 'package:path/path.dart' as p;
 import 'package:xml/xml.dart';
 
 /// XML Namespace for WordprocessingML.
 const String wordNs =
     'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 
-/// Simplify tracked changes by merging adjacent w:ins or w:del elements.
+/// Simplify tracked changes in a DOCX document XML represented as an [XmlDocument].
 ///
 /// Merges adjacent <w:ins> elements from the same author into a single element.
-/// Same for <w:del> elements. This makes heavily-redlined documents easier to
-/// work with by reducing the number of tracked change wrappers.
-(int, String) simplifyRedlines(String inputDir) {
-  final docXml = File(p.join(inputDir, 'word', 'document.xml'));
+/// Same for <w:del> elements. Returns the number of simplified tracked changes.
+int simplifyRedlines(XmlDocument document) {
+  final root = document.rootElement;
 
-  if (!docXml.existsSync()) {
-    return (0, 'Error: ${docXml.path} not found');
+  int mergeCount = 0;
+  final containers = <XmlElement>[];
+  containers.addAll(_findElements(root, 'p'));
+  containers.addAll(_findElements(root, 'tc'));
+
+  for (var container in containers) {
+    mergeCount += _mergeTrackedChangesIn(container, 'ins');
+    mergeCount += _mergeTrackedChangesIn(container, 'del');
   }
 
-  try {
-    final document = XmlDocument.parse(docXml.readAsStringSync());
-    final root = document.rootElement;
-
-    int mergeCount = 0;
-    final containers = <XmlElement>[];
-    containers.addAll(_findElements(root, 'p'));
-    containers.addAll(_findElements(root, 'tc'));
-
-    for (var container in containers) {
-      mergeCount += _mergeTrackedChangesIn(container, 'ins');
-      mergeCount += _mergeTrackedChangesIn(container, 'del');
-    }
-
-    docXml.writeAsStringSync(document.toXmlString(pretty: false));
-    return (mergeCount, 'Simplified $mergeCount tracked changes');
-  } catch (e) {
-    return (0, 'Error: $e');
-  }
+  return mergeCount;
 }
 
 int _mergeTrackedChangesIn(XmlElement container, String tag) {
@@ -133,81 +117,38 @@ List<XmlElement> _findElements(XmlElement root, String tag) {
   return results;
 }
 
-/// Scans the `document.xml` for all tracked changes and returns a map of authors to their change counts.
-Map<String, int> getTrackedChangeAuthors(String docXmlPath) {
-  final file = File(docXmlPath);
-  if (!file.existsSync()) {
-    return {};
-  }
-
-  try {
-    final document = XmlDocument.parse(file.readAsStringSync());
-    final root = document.rootElement;
-
-    final authors = <String, int>{};
-    for (String tag in ['ins', 'del']) {
-      final elements = root.findAllElements(tag, namespace: wordNs);
-      for (var elem in elements) {
-        final author = elem.getAttribute('author', namespace: wordNs);
-        if (author != null) {
-          authors[author] = (authors[author] ?? 0) + 1;
-        }
+/// Scans the document XML for all tracked changes and returns a map of authors to their change counts.
+Map<String, int> getTrackedChangeAuthors(XmlDocument document) {
+  final root = document.rootElement;
+  final authors = <String, int>{};
+  for (String tag in ['ins', 'del']) {
+    final elements = root.findAllElements(tag, namespace: wordNs);
+    for (var elem in elements) {
+      final author = elem.getAttribute('author', namespace: wordNs);
+      if (author != null) {
+        authors[author] = (authors[author] ?? 0) + 1;
       }
     }
-
-    return authors;
-  } catch (e) {
-    return {};
   }
+  return authors;
 }
 
-Map<String, int> _getAuthorsFromDocx(String docxPath) {
-  try {
-    final bytes = File(docxPath).readAsBytesSync();
-    final archive = ZipDecoder().decodeBytes(bytes);
-
-    final docFile = archive.findFile('word/document.xml');
-    if (docFile == null) {
-      return {};
-    }
-
-    final content = String.fromCharCodes(docFile.content as List<int>);
-    final document = XmlDocument.parse(content);
-    final root = document.rootElement;
-
-    final authors = <String, int>{};
-    for (String tag in ['ins', 'del']) {
-      final elements = root.findAllElements(tag, namespace: wordNs);
-      for (var elem in elements) {
-        final author = elem.getAttribute('author', namespace: wordNs);
-        if (author != null) {
-          authors[author] = (authors[author] ?? 0) + 1;
-        }
-      }
-    }
-    return authors;
-  } catch (e) {
-    return {};
-  }
-}
-
-/// Infers the author of the most recent tracked changes by comparing the current unpacked
-/// XML directory with the original packed `.docx` file.
+/// Infers the author of the most recent tracked changes by comparing the current modified XML
+/// with the original XML document.
 ///
 /// Returns the name of the author who has the highest difference in change count.
 String inferAuthor(
-  String modifiedDir,
-  String originalDocx, {
+  XmlDocument modifiedDoc,
+  XmlDocument originalDoc, {
   String defaultAuthor = "OpenXML",
 }) {
-  final modifiedXml = p.join(modifiedDir, 'word', 'document.xml');
-  final modifiedAuthors = getTrackedChangeAuthors(modifiedXml);
+  final modifiedAuthors = getTrackedChangeAuthors(modifiedDoc);
 
   if (modifiedAuthors.isEmpty) {
     return defaultAuthor;
   }
 
-  final originalAuthors = _getAuthorsFromDocx(originalDocx);
+  final originalAuthors = getTrackedChangeAuthors(originalDoc);
 
   final newChanges = <String, int>{};
   for (var entry in modifiedAuthors.entries) {
