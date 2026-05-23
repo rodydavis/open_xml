@@ -1,11 +1,22 @@
 version: 2
-enable-beta-ecosystems: true
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/examples/pubspec.yaml"
+  - package-ecosystem: "pub"
+    directory: "/"
     schedule:
-      interval: "daily"
-  - package-ecosystem: "github-actions"
-    directory: "/open_xml/pubspec.yaml"
+      interval: "weekly"
+  - package-ecosystem: "pub"
+    directory: "/third_party/web_file_system"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+  - package-ecosystem: "pub"
+    directory: "/third_party/web_file_system/example"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pub"
+    directory: "/examples"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pub"
+    directory: "/doc_site"
+    schedule:
+      interval: "weekly"
