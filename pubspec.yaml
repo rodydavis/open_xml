@@ -9,7 +9,7 @@ environment:
   sdk: ^3.10.0
 
 dependencies:
-  xml: ^6.6.1
+  xml: ">=6.6.1 <8.0.0"
   path: ^1.9.1
   args: ^2.7.0
   code_builder: ^4.11.0
