@@ -7,7 +7,7 @@ environment:
 dependencies:
   open_xml:
     path: ../
-  sqlite3: ^2.0.0
+  sqlite3: ^3.3.2
   markdown: ^7.1.1
   path: ^1.9.1
   file: ^7.0.1
