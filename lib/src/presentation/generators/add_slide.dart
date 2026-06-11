@@ -3,7 +3,7 @@ import 'package:path/path.dart' as p;
 
 /// Add a new slide to an unpacked PPTX directory.
 ///
-/// Usage: dart add_slide.dart <unpacked_dir> <source>
+/// Usage: dart add_slide.dart `<unpacked_dir>` `<source>`
 
 Future<int> _getNextSlideNumber(Directory slidesDir) async {
   int maxNum = 0;

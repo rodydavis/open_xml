@@ -298,7 +298,7 @@ class Presentation {
       final idx = element.placeholderIdx ?? '';
 
       // Try exact match
-      var rect = placeholders['${type}_${idx}'];
+      var rect = placeholders['${type}_$idx'];
       // Try just type match if idx doesn't match
       rect ??= placeholders['${type}_'];
       // Try just idx match

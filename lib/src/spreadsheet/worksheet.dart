@@ -5,12 +5,12 @@ import 'package:open_xml/src/shared/comment.dart';
 import 'row.dart';
 import 'shared_strings.dart';
 
-class _SheetComment {
+class SheetComment {
   final int row;
   final int col;
   final Comment comment;
 
-  _SheetComment(this.row, this.col, this.comment);
+  SheetComment(this.row, this.col, this.comment);
 
   String get cellRef {
     String colLetter = '';
@@ -28,11 +28,11 @@ class Worksheet {
   final String name;
   final int id;
   final List<Row> _rows = [];
-  final List<_SheetComment> _comments = [];
+  final List<SheetComment> _comments = [];
 
   List<Row> get rows => _rows;
   List<SpreadsheetHyperlink> get hyperlinks => _hyperlinks;
-  List<_SheetComment> get comments => List.unmodifiable(_comments);
+  List<SheetComment> get comments => List.unmodifiable(_comments);
 
   Worksheet(this.name, this.id);
 
@@ -81,7 +81,7 @@ class Worksheet {
     String? initials,
   }) {
     _comments.add(
-      _SheetComment(
+      SheetComment(
         row,
         col,
         Comment(

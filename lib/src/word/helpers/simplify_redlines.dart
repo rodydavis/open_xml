@@ -6,8 +6,8 @@ const String wordNs =
 
 /// Simplify tracked changes in a DOCX document XML represented as an [XmlDocument].
 ///
-/// Merges adjacent <w:ins> elements from the same author into a single element.
-/// Same for <w:del> elements. Returns the number of simplified tracked changes.
+/// Merges adjacent `<w:ins>` elements from the same author into a single element.
+/// Same for `<w:del>` elements. Returns the number of simplified tracked changes.
 int simplifyRedlines(XmlDocument document) {
   final root = document.rootElement;
 

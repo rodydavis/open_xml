@@ -6,7 +6,7 @@ import 'package:path/path.dart' as p;
 import 'package:open_xml/src/validate/validate.dart';
 
 /// Command line tool to validate Office document XML files.
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
   if (args.isEmpty) {
     print(
       'Usage: dart run open_xml:validate <path> [--original <original_file>] [--auto-repair] [--author NAME]',
@@ -71,7 +71,7 @@ void main(List<String> args) {
     targetDir = path as Directory;
   }
 
-  final (success, messages) = validateDirectory(
+  final (success, messages) = await validateDirectory(
     targetDir,
     autoRepair: autoRepair,
     author: author,
