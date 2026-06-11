@@ -66,8 +66,8 @@ String _encodeSmartQuotes(String text) {
       .replaceAll('\u2019', '&#x2019;');
 }
 
-void _appendXml(File xmlFile, String rootTag, String content) {
-  final document = XmlDocument.parse(xmlFile.readAsStringSync());
+Future<void> _appendXml(File xmlFile, String rootTag, String content) async {
+  final document = XmlDocument.parse(await xmlFile.readAsString());
   final root = document.findAllElements(rootTag).first;
 
   final nsAttrs = _ns.entries
@@ -81,13 +81,13 @@ void _appendXml(File xmlFile, String rootTag, String content) {
     }
   }
 
-  xmlFile.writeAsStringSync(
+  await xmlFile.writeAsString(
     _encodeSmartQuotes(document.toXmlString(pretty: false)),
   );
 }
 
-String? _findParaId(File commentsFile, int commentId) {
-  final document = XmlDocument.parse(commentsFile.readAsStringSync());
+Future<String?> _findParaId(File commentsFile, int commentId) async {
+  final document = XmlDocument.parse(await commentsFile.readAsString());
   for (var c in document.findAllElements('comment', namespace: _ns['w'])) {
     if (c.getAttribute('id', namespace: _ns['w']) == commentId.toString()) {
       for (var p in c.findAllElements('p', namespace: _ns['w'])) {
@@ -101,8 +101,8 @@ String? _findParaId(File commentsFile, int commentId) {
   return null;
 }
 
-int _getNextRid(File relsFile) {
-  final document = XmlDocument.parse(relsFile.readAsStringSync());
+Future<int> _getNextRid(File relsFile) async {
+  final document = XmlDocument.parse(await relsFile.readAsString());
   int maxRid = 0;
   for (var rel in document.findAllElements('Relationship')) {
     final rid = rel.getAttribute('Id');
@@ -116,8 +116,8 @@ int _getNextRid(File relsFile) {
   return maxRid + 1;
 }
 
-bool _hasRelationship(File relsFile, String target) {
-  final document = XmlDocument.parse(relsFile.readAsStringSync());
+Future<bool> _hasRelationship(File relsFile, String target) async {
+  final document = XmlDocument.parse(await relsFile.readAsString());
   for (var rel in document.findAllElements('Relationship')) {
     if (rel.getAttribute('Target') == target) {
       return true;
@@ -126,8 +126,8 @@ bool _hasRelationship(File relsFile, String target) {
   return false;
 }
 
-bool _hasContentType(File ctFile, String partName) {
-  final document = XmlDocument.parse(ctFile.readAsStringSync());
+Future<bool> _hasContentType(File ctFile, String partName) async {
+  final document = XmlDocument.parse(await ctFile.readAsString());
   for (var override in document.findAllElements('Override')) {
     if (override.getAttribute('PartName') == partName) {
       return true;
@@ -136,17 +136,17 @@ bool _hasContentType(File ctFile, String partName) {
   return false;
 }
 
-void _ensureCommentRelationships(Directory unpackedDir) {
+Future<void> _ensureCommentRelationships(Directory unpackedDir) async {
   final fs = unpackedDir.fileSystem;
   final relsFile = fs.file(
     p.join(unpackedDir.path, 'word', '_rels', 'document.xml.rels'),
   );
-  if (!relsFile.existsSync()) return;
-  if (_hasRelationship(relsFile, 'comments.xml')) return;
+  if (!await relsFile.exists()) return;
+  if (await _hasRelationship(relsFile, 'comments.xml')) return;
 
-  final document = XmlDocument.parse(relsFile.readAsStringSync());
+  final document = XmlDocument.parse(await relsFile.readAsString());
   final root = document.rootElement;
-  int nextRid = _getNextRid(relsFile);
+  int nextRid = await _getNextRid(relsFile);
 
   final rels = [
     (
@@ -176,16 +176,16 @@ void _ensureCommentRelationships(Directory unpackedDir) {
     nextRid++;
   }
 
-  relsFile.writeAsStringSync(document.toXmlString(pretty: false));
+  await relsFile.writeAsString(document.toXmlString(pretty: false));
 }
 
-void _ensureCommentContentTypes(Directory unpackedDir) {
+Future<void> _ensureCommentContentTypes(Directory unpackedDir) async {
   final fs = unpackedDir.fileSystem;
   final ctFile = fs.file(p.join(unpackedDir.path, '[Content_Types].xml'));
-  if (!ctFile.existsSync()) return;
-  if (_hasContentType(ctFile, '/word/comments.xml')) return;
+  if (!await ctFile.exists()) return;
+  if (await _hasContentType(ctFile, '/word/comments.xml')) return;
 
-  final document = XmlDocument.parse(ctFile.readAsStringSync());
+  final document = XmlDocument.parse(await ctFile.readAsString());
   final root = document.rootElement;
 
   final overrides = [
@@ -214,7 +214,7 @@ void _ensureCommentContentTypes(Directory unpackedDir) {
     root.children.add(override);
   }
 
-  ctFile.writeAsStringSync(document.toXmlString(pretty: false));
+  await ctFile.writeAsString(document.toXmlString(pretty: false));
 }
 
 /// Injects a new comment or reply into the unpacked document structure.
@@ -222,17 +222,17 @@ void _ensureCommentContentTypes(Directory unpackedDir) {
 /// Manages the required modifications to `comments.xml`, `commentsIds.xml`,
 /// `commentsExtended.xml`, and `commentsExtensible.xml`. Returns a tuple with
 /// the assigned paraId and a status message.
-(String, String) addComment({
+Future<(String, String)> addComment({
   required Directory unpackedDir,
   required int commentId,
   required String text,
   String author = 'OpenXML',
   String initials = 'C',
   int? parentId,
-}) {
+}) async {
   final fs = unpackedDir.fileSystem;
   final word = fs.directory(p.join(unpackedDir.path, 'word'));
-  if (!word.existsSync()) {
+  if (!await word.exists()) {
     return ('', 'Error: ${word.path} not found');
   }
 
@@ -241,10 +241,10 @@ void _ensureCommentContentTypes(Directory unpackedDir) {
   final ts = '${DateTime.now().toUtc().toIso8601String().split('.').first}Z';
 
   final comments = fs.file(p.join(word.path, 'comments.xml'));
-  if (!comments.existsSync()) {
-    comments.writeAsStringSync(_commentsXmlTemplate);
-    _ensureCommentRelationships(unpackedDir);
-    _ensureCommentContentTypes(unpackedDir);
+  if (!await comments.exists()) {
+    await comments.writeAsString(_commentsXmlTemplate);
+    await _ensureCommentRelationships(unpackedDir);
+    await _ensureCommentContentTypes(unpackedDir);
   }
 
   final commentXmlReplaced = _commentXmlTemplate
@@ -255,24 +255,24 @@ void _ensureCommentContentTypes(Directory unpackedDir) {
       .replaceAll('{para_id}', paraId)
       .replaceAll('{text}', text);
 
-  _appendXml(comments, 'w:comments', commentXmlReplaced);
+  await _appendXml(comments, 'w:comments', commentXmlReplaced);
 
   final ext = fs.file(p.join(word.path, 'commentsExtended.xml'));
-  if (!ext.existsSync()) {
-    ext.writeAsStringSync(_commentsExtendedXmlTemplate);
+  if (!await ext.exists()) {
+    await ext.writeAsString(_commentsExtendedXmlTemplate);
   }
   if (parentId != null) {
-    final parentPara = _findParaId(comments, parentId);
+    final parentPara = await _findParaId(comments, parentId);
     if (parentPara == null) {
       return ('', 'Error: Parent comment $parentId not found');
     }
-    _appendXml(
+    await _appendXml(
       ext,
       'w15:commentsEx',
       '<w15:commentEx w15:paraId="$paraId" w15:paraIdParent="$parentPara" w15:done="0"/>',
     );
   } else {
-    _appendXml(
+    await _appendXml(
       ext,
       'w15:commentsEx',
       '<w15:commentEx w15:paraId="$paraId" w15:done="0"/>',
@@ -280,20 +280,20 @@ void _ensureCommentContentTypes(Directory unpackedDir) {
   }
 
   final ids = fs.file(p.join(word.path, 'commentsIds.xml'));
-  if (!ids.existsSync()) {
-    ids.writeAsStringSync(_commentsIdsXmlTemplate);
+  if (!await ids.exists()) {
+    await ids.writeAsString(_commentsIdsXmlTemplate);
   }
-  _appendXml(
+  await _appendXml(
     ids,
     'w16cid:commentsIds',
     '<w16cid:commentId w16cid:paraId="$paraId" w16cid:durableId="$durableId"/>',
   );
 
   final extensible = fs.file(p.join(word.path, 'commentsExtensible.xml'));
-  if (!extensible.existsSync()) {
-    extensible.writeAsStringSync(_commentsExtensibleXmlTemplate);
+  if (!await extensible.exists()) {
+    await extensible.writeAsString(_commentsExtensibleXmlTemplate);
   }
-  _appendXml(
+  await _appendXml(
     extensible,
     'w16cex:commentsExtensible',
     '<w16cex:commentExtensible w16cex:durableId="$durableId" w16cex:dateUtc="$ts"/>',

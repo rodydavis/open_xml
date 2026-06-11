@@ -98,16 +98,16 @@ class Presentation {
   ///
   /// Returns a list of the relative paths for all removed files.
   /// NOTE: This operates on the underlying raw XML inside the package directory.
-  List<String> cleanUnusedFiles() {
-    return clean.cleanUnusedFiles(_package.directory);
+  Future<List<String>> cleanUnusedFiles() async {
+    return await clean.cleanUnusedFiles(_package.directory);
   }
 
   /// Adds a new slide to the presentation.
   ///
   /// [source] can be a slide to duplicate (e.g., 'slide2.xml') or a layout to use (e.g., 'slideLayout2.xml').
   /// NOTE: This operates on the underlying raw XML inside the package directory.
-  void addSlideFromSource(String source) {
-    add_slide.addSlide(_package.directory, source);
+  Future<void> addSlideFromSource(String source) async {
+    await add_slide.addSlide(_package.directory, source);
   }
 
   int _slideWidth = 9144000;
@@ -324,8 +324,8 @@ class Presentation {
   }
 
   /// Validates the presentation based on the current internal state.
-  (bool, List<String>) validate() {
-    return validateDirectory(_package.directory);
+  Future<(bool, List<String>)> validate() async {
+    return await validateDirectory(_package.directory);
   }
 
   /// Adds a slide to the presentation.
@@ -1605,7 +1605,7 @@ class Presentation {
 
     await _package.save(outputFile);
 
-    final (isValid, messages) = validate();
+    final (isValid, messages) = await validate();
     if (!isValid) {
       _log.warning('Validation failed:');
       for (final msg in messages) {

@@ -105,8 +105,8 @@ class Workbook {
   }
 
   /// Validates the workbook based on the current internal state.
-  (bool, List<String>) validate() {
-    return validateDirectory(_package.directory);
+  Future<(bool, List<String>)> validate() async {
+    return await validateDirectory(_package.directory);
   }
 
   /// Adds a worksheet to the workbook.
@@ -600,7 +600,7 @@ class Workbook {
 
     await _package.save(outputFile);
 
-    final (isValid, messages) = validate();
+    final (isValid, messages) = await validate();
     if (!isValid) {
       _log.warning('Validation failed:');
       for (final msg in messages) {

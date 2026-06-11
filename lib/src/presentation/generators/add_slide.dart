@@ -5,12 +5,12 @@ import 'package:path/path.dart' as p;
 ///
 /// Usage: dart add_slide.dart <unpacked_dir> <source>
 
-int _getNextSlideNumber(Directory slidesDir) {
+Future<int> _getNextSlideNumber(Directory slidesDir) async {
   int maxNum = 0;
   final regExp = RegExp(r'^slide(\d+)\.xml$');
 
-  if (slidesDir.existsSync()) {
-    for (var entity in slidesDir.listSync()) {
+  if (await slidesDir.exists()) {
+    await for (var entity in slidesDir.list()) {
       if (entity is File) {
         final match = regExp.firstMatch(p.basename(entity.path));
         if (match != null) {
@@ -25,7 +25,7 @@ int _getNextSlideNumber(Directory slidesDir) {
   return maxNum > 0 ? maxNum + 1 : 1;
 }
 
-void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
+Future<void> _createSlideFromLayout(Directory unpackedDir, String layoutFile) async {
   final fs = unpackedDir.fileSystem;
   final slidesDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides'));
   final relsDir = fs.directory(p.join(slidesDir.path, '_rels'));
@@ -34,11 +34,11 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   );
 
   final layoutPath = fs.file(p.join(layoutsDir.path, layoutFile));
-  if (!layoutPath.existsSync()) {
+  if (!await layoutPath.exists()) {
     throw Exception('Error: ${layoutPath.path} not found');
   }
 
-  final nextNum = _getNextSlideNumber(slidesDir);
+  final nextNum = await _getNextSlideNumber(slidesDir);
   final dest = 'slide$nextNum.xml';
   final destSlide = fs.file(p.join(slidesDir.path, dest));
   final destRels = fs.file(p.join(relsDir.path, '$dest.rels'));
@@ -67,20 +67,20 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   </p:clrMapOvr>
 </p:sld>''';
 
-  slidesDir.createSync(recursive: true);
-  destSlide.writeAsStringSync(slideXml);
+  await slidesDir.create(recursive: true);
+  await destSlide.writeAsString(slideXml);
 
-  relsDir.createSync(recursive: true);
+  await relsDir.create(recursive: true);
   final relsXml =
       '''<?xml version="1.0" encoding="UTF-8" ?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/$layoutFile"/>
 </Relationships>''';
-  destRels.writeAsStringSync(relsXml);
+  await destRels.writeAsString(relsXml);
 
-  _addToContentTypes(unpackedDir, dest);
-  final rid = _addToPresentationRels(unpackedDir, dest);
-  final nextSlideId = _getNextSlideId(unpackedDir);
+  await _addToContentTypes(unpackedDir, dest);
+  final rid = await _addToPresentationRels(unpackedDir, dest);
+  final nextSlideId = await _getNextSlideId(unpackedDir);
 
   print('Created $dest from $layoutFile');
   print(
@@ -88,39 +88,39 @@ void _createSlideFromLayout(Directory unpackedDir, String layoutFile) {
   );
 }
 
-void _duplicateSlide(Directory unpackedDir, String source) {
+Future<void> _duplicateSlide(Directory unpackedDir, String source) async {
   final fs = unpackedDir.fileSystem;
   final slidesDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides'));
   final relsDir = fs.directory(p.join(slidesDir.path, '_rels'));
 
   final sourceSlide = fs.file(p.join(slidesDir.path, source));
 
-  if (!sourceSlide.existsSync()) {
+  if (!await sourceSlide.exists()) {
     throw Exception('Error: ${sourceSlide.path} not found');
   }
 
-  final nextNum = _getNextSlideNumber(slidesDir);
+  final nextNum = await _getNextSlideNumber(slidesDir);
   final dest = 'slide$nextNum.xml';
   final destSlide = fs.file(p.join(slidesDir.path, dest));
 
   final sourceRels = fs.file(p.join(relsDir.path, '$source.rels'));
   final destRels = fs.file(p.join(relsDir.path, '$dest.rels'));
 
-  sourceSlide.copySync(destSlide.path);
+  await sourceSlide.copy(destSlide.path);
 
-  if (sourceRels.existsSync()) {
-    sourceRels.copySync(destRels.path);
-    String relsContent = destRels.readAsStringSync();
+  if (await sourceRels.exists()) {
+    await sourceRels.copy(destRels.path);
+    String relsContent = await destRels.readAsString();
     relsContent = relsContent.replaceAll(
       RegExp(r'\s*<Relationship[^>]*Type="[^"]*notesSlide"[^>]*/>\s*'),
       '\n',
     );
-    destRels.writeAsStringSync(relsContent);
+    await destRels.writeAsString(relsContent);
   }
 
-  _addToContentTypes(unpackedDir, dest);
-  final rid = _addToPresentationRels(unpackedDir, dest);
-  final nextSlideId = _getNextSlideId(unpackedDir);
+  await _addToContentTypes(unpackedDir, dest);
+  final rid = await _addToPresentationRels(unpackedDir, dest);
+  final nextSlideId = await _getNextSlideId(unpackedDir);
 
   print('Created $dest from $source');
   print(
@@ -128,14 +128,14 @@ void _duplicateSlide(Directory unpackedDir, String source) {
   );
 }
 
-void _addToContentTypes(Directory unpackedDir, String dest) {
+Future<void> _addToContentTypes(Directory unpackedDir, String dest) async {
   final fs = unpackedDir.fileSystem;
   final contentTypesPath = fs.file(
     p.join(unpackedDir.path, '[Content_Types].xml'),
   );
-  if (!contentTypesPath.existsSync()) return;
+  if (!await contentTypesPath.exists()) return;
 
-  String contentTypes = contentTypesPath.readAsStringSync();
+  String contentTypes = await contentTypesPath.readAsString();
   final newOverride =
       '<Override PartName="/ppt/slides/$dest" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>';
 
@@ -144,18 +144,18 @@ void _addToContentTypes(Directory unpackedDir, String dest) {
       '</Types>',
       '  $newOverride\n</Types>',
     );
-    contentTypesPath.writeAsStringSync(contentTypes);
+    await contentTypesPath.writeAsString(contentTypes);
   }
 }
 
-String _addToPresentationRels(Directory unpackedDir, String dest) {
+Future<String> _addToPresentationRels(Directory unpackedDir, String dest) async {
   final fs = unpackedDir.fileSystem;
   final presRelsPath = fs.file(
     p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'),
   );
-  if (!presRelsPath.existsSync()) return 'rId1';
+  if (!await presRelsPath.exists()) return 'rId1';
 
-  String presRels = presRelsPath.readAsStringSync();
+  String presRels = await presRelsPath.readAsString();
   final rids = RegExp(
     r'Id="rId(\d+)"',
   ).allMatches(presRels).map((m) => int.parse(m.group(1)!)).toList();
@@ -170,18 +170,18 @@ String _addToPresentationRels(Directory unpackedDir, String dest) {
       '</Relationships>',
       '  $newRel\n</Relationships>',
     );
-    presRelsPath.writeAsStringSync(presRels);
+    await presRelsPath.writeAsString(presRels);
   }
 
   return rid;
 }
 
-int _getNextSlideId(Directory unpackedDir) {
+Future<int> _getNextSlideId(Directory unpackedDir) async {
   final fs = unpackedDir.fileSystem;
   final presPath = fs.file(p.join(unpackedDir.path, 'ppt', 'presentation.xml'));
-  if (!presPath.existsSync()) return 256;
+  if (!await presPath.exists()) return 256;
 
-  final presContent = presPath.readAsStringSync();
+  final presContent = await presPath.readAsString();
   final slideIds = RegExp(
     r'<p:sldId[^>]*id="(\d+)"',
   ).allMatches(presContent).map((m) => int.parse(m.group(1)!)).toList();
@@ -198,12 +198,12 @@ int _getNextSlideId(Directory unpackedDir) {
 /// Adds a new slide to the presentation.
 ///
 /// [source] can be a slide to duplicate (e.g., 'slide2.xml') or a layout to use (e.g., 'slideLayout2.xml').
-void addSlide(Directory unpackedDir, String source) {
+Future<void> addSlide(Directory unpackedDir, String source) async {
   final (sourceType, layoutFile) = _parseSource(source);
 
   if (sourceType == 'layout' && layoutFile != null) {
-    _createSlideFromLayout(unpackedDir, layoutFile);
+    await _createSlideFromLayout(unpackedDir, layoutFile);
   } else {
-    _duplicateSlide(unpackedDir, source);
+    await _duplicateSlide(unpackedDir, source);
   }
 }

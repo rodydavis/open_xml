@@ -6,19 +6,19 @@ import 'package:open_xml/src/pml/pml.g.dart';
 import 'package:open_xml/src/opc/opc.g.dart';
 
 /// Validates an Office document directory using generated XSD validators.
-(bool, List<String>) validateDirectory(
+Future<(bool, List<String>)> validateDirectory(
   Directory directory, {
   bool autoRepair = false,
   String author = 'OpenXML',
-}) {
+}) async {
   final messages = <String>[];
   bool isValid = true;
 
   messages.add('Full XSD validation running for directory...');
 
-  void validateXmlFile(File file) {
+  Future<void> validateXmlFile(File file) async {
     try {
-      final doc = XmlDocument.parse(file.readAsStringSync());
+      final doc = XmlDocument.parse(await file.readAsString());
       final root = doc.rootElement;
       List<String> errors = [];
 
@@ -52,18 +52,18 @@ import 'package:open_xml/src/opc/opc.g.dart';
     }
   }
 
-  void scanDirectory(Directory dir) {
-    for (final entity in dir.listSync()) {
+  Future<void> scanDirectory(Directory dir) async {
+    await for (final entity in dir.list()) {
       if (entity is Directory) {
-        scanDirectory(entity);
+        await scanDirectory(entity);
       } else if (entity is File &&
           (entity.path.endsWith('.xml') || entity.path.endsWith('.rels'))) {
-        validateXmlFile(entity);
+        await validateXmlFile(entity);
       }
     }
   }
 
-  scanDirectory(directory);
+  await scanDirectory(directory);
 
   if (isValid) {
     messages.add('All validations PASSED!');

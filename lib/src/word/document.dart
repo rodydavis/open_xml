@@ -92,8 +92,8 @@ class WordDocument {
   }
 
   /// Validates the document files.
-  (bool, List<String>) validate() {
-    return validateDirectory(_package.directory);
+  Future<(bool, List<String>)> validate() async {
+    return await validateDirectory(_package.directory);
   }
 
   /// Simplifies tracked changes in the document by merging adjacent redlines.
@@ -102,17 +102,17 @@ class WordDocument {
   /// Any changes made to the high-level API ([paragraphs], etc.) before calling
   /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
-  (int, String) simplifyRedlines() {
+  Future<(int, String)> simplifyRedlines() async {
     final docXml = _package.directory.fileSystem.file(
       _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
     );
-    if (!docXml.existsSync()) {
+    if (!await docXml.exists()) {
       return (0, 'Error: ${docXml.path} not found');
     }
     try {
-      final document = XmlDocument.parse(docXml.readAsStringSync());
+      final document = XmlDocument.parse(await docXml.readAsString());
       final count = simplify_redlines.simplifyRedlines(document);
-      docXml.writeAsStringSync(document.toXmlString(pretty: false));
+      await docXml.writeAsString(document.toXmlString(pretty: false));
       return (count, 'Simplified $count tracked changes');
     } catch (e) {
       return (0, 'Error: $e');
@@ -125,17 +125,17 @@ class WordDocument {
   /// Any changes made to the high-level API ([paragraphs], etc.) before calling
   /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
-  (int, String) mergeRuns() {
+  Future<(int, String)> mergeRuns() async {
     final docXml = _package.directory.fileSystem.file(
       _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
     );
-    if (!docXml.existsSync()) {
+    if (!await docXml.exists()) {
       return (0, 'Error: ${docXml.path} not found');
     }
     try {
-      final document = XmlDocument.parse(docXml.readAsStringSync());
+      final document = XmlDocument.parse(await docXml.readAsString());
       final count = merge_runs.mergeRuns(document);
-      docXml.writeAsStringSync(document.toXmlString(pretty: false));
+      await docXml.writeAsString(document.toXmlString(pretty: false));
       return (count, 'Merged $count runs');
     } catch (e) {
       return (0, 'Error: $e');
@@ -148,14 +148,14 @@ class WordDocument {
   /// Any changes made to the high-level API ([paragraphs], etc.) before calling
   /// this method without calling [save] will not be reflected, and any changes
   /// made by this method will be overwritten if [save] is called later.
-  (String, String) injectComment({
+  Future<(String, String)> injectComment({
     required int commentId,
     required String text,
     String author = 'OpenXML',
     String initials = 'C',
     int? parentId,
-  }) {
-    return office_comment.addComment(
+  }) async {
+    return await office_comment.addComment(
       unpackedDir: _package.directory,
       commentId: commentId,
       text: text,
@@ -202,7 +202,7 @@ class WordDocument {
               // For now, let's treat as unsupported or Todo.
             } else {
               final file = outputFile.fileSystem.file(element.path);
-              if (file.existsSync()) {
+              if (await file.exists()) {
                 final bytes = await file.readAsBytes();
                 final part = await _package.createPart(targetPath);
                 part.add(bytes);
@@ -569,7 +569,7 @@ class WordDocument {
 
     await _package.save(outputFile);
 
-    final (isValid, messages) = validate();
+    final (isValid, messages) = await validate();
     if (!isValid) {
       _log.warning('Validation failed:');
       for (final msg in messages) {

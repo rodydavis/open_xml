@@ -1,3 +1,8 @@
+## 0.3.1
+
+- Migrate synchronous `pkg:file` operations to asynchronous ones to support web export in `WebFileSystem`
+- Fix "Unsupported operation: Sync list not supported" error on web platform
+
 ## 0.3.0
 
 - Migrate file system dependencies from `dart:io` to `pkg:file` for cross-platform compatibility (Web/Flutter)
