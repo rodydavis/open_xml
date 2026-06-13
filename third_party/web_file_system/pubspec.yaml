@@ -9,7 +9,7 @@ dependencies:
   path: ^1.9.0
   web: ^1.1.1
   uuid: ^4.0.0
-  mime: ^1.0.0
+  mime: ^2.0.0
 
 dev_dependencies:
   lints: ^3.0.0
