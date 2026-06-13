@@ -29,7 +29,7 @@ jobs:
           sdk: stable
 
       - name: Set up Bazel Environment
-        uses: rodydavis/shared-actions/setup-bazel@main
+        uses: https://git.rodydavis.dev/rodydavis/shared-actions/setup-bazel@main
 
       - name: Verify Hermetic Bazel Build
         run: bazel build //...
