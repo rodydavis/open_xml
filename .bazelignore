@@ -1,0 +1,10 @@
+# Generated and managed by Antigravity
+.dart_tool
+.gitea
+.github
+doc_site/.dart_tool
+doc_site/build
+examples/.dart_tool
+third_party/web_file_system/.dart_tool
+third_party/web_file_system/example/.dart_tool
+third_party/web_file_system/example/build
