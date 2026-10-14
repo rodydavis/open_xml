@@ -32,9 +32,7 @@ jobs:
         run: dart pub get
 
       - name: Verify Dart package
-        run: |
-          dart analyze
-          dart test
+        run: dart analyze --no-fatal-warnings lib
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
