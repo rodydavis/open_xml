@@ -13,7 +13,7 @@ RUN dart pub get
 # Navigate to doc_site and build it
 WORKDIR /app/doc_site
 RUN dart pub get
-RUN dart pub global activate jaspr_cli
+RUN dart pub global activate jaspr_cli 0.23.1
 RUN dart pub global run jaspr_cli:jaspr build
 
 # Stage 2: Serve the static site using Nginx
