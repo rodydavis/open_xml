@@ -28,11 +28,13 @@ jobs:
         with:
           sdk: stable
 
-      - name: Set up Bazel Environment
-        uses: https://git.rodydavis.dev/rodydavis/shared-actions/setup-bazel@main
+      - name: Install dependencies
+        run: dart pub get
 
-      - name: Verify Hermetic Bazel Build
-        run: bazel build //...
+      - name: Verify Dart package
+        run: |
+          dart analyze
+          dart test
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
