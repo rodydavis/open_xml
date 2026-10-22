@@ -103,5 +103,28 @@ void main() {
       final xml = builder.buildDocument().toXmlString();
       expect(xml, contains('<a:srcRect l="25000" r="25000"/>'));
     });
+
+    test('addTextBox generates anchor, algn, and latin typeface in XML', () {
+      final slide = Slide(1);
+      slide.addTextBox(
+        text: 'End of Verse 1',
+        align: 'r',
+        verticalAlign: 'ctr',
+        fontFamily: 'Inter',
+        color: 'FFFFFF',
+      );
+
+      final builder = XmlBuilder();
+      slide.build(
+        builder,
+        slideWidth: 9144000,
+        slideHeight: 5143500,
+      );
+
+      final xml = builder.buildDocument().toXmlString();
+      expect(xml, contains('anchor="ctr"'));
+      expect(xml, contains('<a:pPr algn="r"/>'));
+      expect(xml, contains('<a:latin typeface="Inter"/>'));
+    });
   });
 }

@@ -374,6 +374,9 @@ class Slide {
     bool isBold = false,
     bool isItalic = false,
     String? color,
+    String? align,
+    String? verticalAlign,
+    String? fontFamily,
   }) {
     _elements.add(
       SlideTextBox(
@@ -386,6 +389,9 @@ class Slide {
         isBold: isBold,
         isItalic: isItalic,
         color: color,
+        align: align,
+        verticalAlign: verticalAlign,
+        fontFamily: fontFamily,
       ),
     );
   }

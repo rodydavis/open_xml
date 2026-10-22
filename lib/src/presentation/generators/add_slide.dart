@@ -25,7 +25,10 @@ Future<int> _getNextSlideNumber(Directory slidesDir) async {
   return maxNum > 0 ? maxNum + 1 : 1;
 }
 
-Future<void> _createSlideFromLayout(Directory unpackedDir, String layoutFile) async {
+Future<void> _createSlideFromLayout(
+  Directory unpackedDir,
+  String layoutFile,
+) async {
   final fs = unpackedDir.fileSystem;
   final slidesDir = fs.directory(p.join(unpackedDir.path, 'ppt', 'slides'));
   final relsDir = fs.directory(p.join(slidesDir.path, '_rels'));
@@ -148,7 +151,10 @@ Future<void> _addToContentTypes(Directory unpackedDir, String dest) async {
   }
 }
 
-Future<String> _addToPresentationRels(Directory unpackedDir, String dest) async {
+Future<String> _addToPresentationRels(
+  Directory unpackedDir,
+  String dest,
+) async {
   final fs = unpackedDir.fileSystem;
   final presRelsPath = fs.file(
     p.join(unpackedDir.path, 'ppt', '_rels', 'presentation.xml.rels'),

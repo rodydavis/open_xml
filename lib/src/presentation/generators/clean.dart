@@ -287,7 +287,10 @@ Future<List<String>> _removeOrphanedFiles(
   return removed;
 }
 
-Future<void> _updateContentTypes(Directory unpackedDir, List<String> removedFiles) async {
+Future<void> _updateContentTypes(
+  Directory unpackedDir,
+  List<String> removedFiles,
+) async {
   final fs = unpackedDir.fileSystem;
   final ctPath = fs.file(p.join(unpackedDir.path, '[Content_Types].xml'));
   if (!await ctPath.exists()) return;

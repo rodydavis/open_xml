@@ -37,6 +37,9 @@ class SlideImage extends SlideElement {
 /// Represents a text box on a slide.
 class SlideTextBox extends SlideElement {
   final List<TextRun> runs = [];
+  String? align; // 'ctr', 'r', 'l'
+  String? verticalAlign; // 'ctr', 't', 'b'
+  String? fontFamily;
 
   SlideTextBox({
     String text = '',
@@ -48,6 +51,9 @@ class SlideTextBox extends SlideElement {
     bool isBold = false,
     bool isItalic = false,
     String? color,
+    this.align,
+    this.verticalAlign,
+    this.fontFamily,
     super.placeholderType,
     super.placeholderIdx,
   }) {
@@ -59,6 +65,7 @@ class SlideTextBox extends SlideElement {
           isBold: isBold,
           isItalic: isItalic,
           color: color,
+          fontFamily: fontFamily,
         ),
       );
     }
@@ -76,6 +83,7 @@ class TextRun {
   final bool isItalic;
   final String? color;
   final String? url;
+  final String? fontFamily;
 
   TextRun({
     required this.text,
@@ -84,6 +92,7 @@ class TextRun {
     this.isItalic = false,
     this.color,
     this.url,
+    this.fontFamily,
   });
 }
 

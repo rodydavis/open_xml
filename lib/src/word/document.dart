@@ -6,7 +6,8 @@ import 'package:open_xml/src/package/package.dart';
 import 'package:open_xml/src/shared/comment.dart';
 import 'package:open_xml/src/wml/wml_builder.g.dart';
 import 'package:open_xml/src/word/paragraph.dart';
-import 'package:open_xml/src/word/helpers/simplify_redlines.dart' as simplify_redlines;
+import 'package:open_xml/src/word/helpers/simplify_redlines.dart'
+    as simplify_redlines;
 import 'package:open_xml/src/word/helpers/merge_runs.dart' as merge_runs;
 import 'package:open_xml/src/word/comment.dart' as office_comment;
 import 'package:xml/xml.dart';
@@ -104,7 +105,11 @@ class WordDocument {
   /// made by this method will be overwritten if [save] is called later.
   Future<(int, String)> simplifyRedlines() async {
     final docXml = _package.directory.fileSystem.file(
-      _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
+      _package.directory.fileSystem.path.join(
+        _package.directory.path,
+        'word',
+        'document.xml',
+      ),
     );
     if (!await docXml.exists()) {
       return (0, 'Error: ${docXml.path} not found');
@@ -127,7 +132,11 @@ class WordDocument {
   /// made by this method will be overwritten if [save] is called later.
   Future<(int, String)> mergeRuns() async {
     final docXml = _package.directory.fileSystem.file(
-      _package.directory.fileSystem.path.join(_package.directory.path, 'word', 'document.xml'),
+      _package.directory.fileSystem.path.join(
+        _package.directory.path,
+        'word',
+        'document.xml',
+      ),
     );
     if (!await docXml.exists()) {
       return (0, 'Error: ${docXml.path} not found');

@@ -200,7 +200,7 @@ void buildTextBox(
           b.element(
             'a:bodyPr',
             nest: () {
-              b.attribute('anchor', 't');
+              b.attribute('anchor', textBox.verticalAlign ?? 't');
               b.element(
                 'a:normAutofit',
                 nest: () {
@@ -229,7 +229,16 @@ void buildTextBox(
           b.element(
             'a:p',
             nest: () {
-              b.element('a:pPr');
+              if (textBox.align != null) {
+                b.element(
+                  'a:pPr',
+                  nest: () {
+                    b.attribute('algn', textBox.align!);
+                  },
+                );
+              } else {
+                b.element('a:pPr');
+              }
               for (final run in textBox.runs) {
                 b.element(
                   'a:r',
@@ -239,7 +248,8 @@ void buildTextBox(
                         run.isBold ||
                         run.isItalic ||
                         run.color != null ||
-                        run.url != null;
+                        run.url != null ||
+                        (run.fontFamily != null && run.fontFamily!.isNotEmpty);
                     if (hasStyles) {
                       b.element(
                         'a:rPr',
@@ -263,26 +273,35 @@ void buildTextBox(
                               },
                             );
                           }
+                          if (run.fontFamily != null &&
+                              run.fontFamily!.isNotEmpty) {
+                            b.element(
+                              'a:latin',
+                              nest: () {
+                                b.attribute('typeface', run.fontFamily!);
+                              },
+                            );
+                          }
                           if (run.url != null && relIds != null) {
                             final rId = relIds[run.url];
                             if (rId != null) {
                               b.element(
                                 'a:hlinkClick',
                                 nest: () {
-                                  b.attribute('r:id', rId);
-                                  if (run.url!.startsWith('#slide')) {
-                                    b.attribute(
-                                      'action',
-                                      'ppaction://hlinksldjump',
-                                    );
-                                  }
-                                },
-                              );
+                                    b.attribute('r:id', rId);
+                                    if (run.url!.startsWith('#slide')) {
+                                      b.attribute(
+                                        'action',
+                                        'ppaction://hlinksldjump',
+                                      );
+                                    }
+                                  },
+                                );
+                              }
                             }
-                          }
-                        },
-                      );
-                    }
+                          },
+                        );
+                      }
                     b.element('a:t', nest: () => b.text(run.text));
                   },
                 );
