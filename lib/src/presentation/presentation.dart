@@ -113,6 +113,9 @@ class Presentation {
   int _slideWidth = 9144000;
   int _slideHeight = 6858000;
 
+  /// The document title written to `docProps/core.xml` (`<dc:title>`).
+  String title = 'Presentation';
+
   int get slideWidth => _slideWidth;
   int get slideHeight => _slideHeight;
 
@@ -334,8 +337,10 @@ class Presentation {
     final slide = Slide(_slides.length + 1);
     _slides.add(slide);
     if (layout != null) {
-      // Resolve name to filename if possible
-      final filename = _layoutNames[layout] ?? layout;
+      // Resolve name to filename if possible (including XML-escaped '&amp;' variants)
+      final normalized = layout.replaceAll('&amp;', '&');
+      final filename =
+          _layoutNames[layout] ?? _layoutNames[normalized] ?? layout;
       _slideLayouts[_slides.length - 1] = filename;
     }
     return slide;
@@ -349,17 +354,43 @@ class Presentation {
   /// Saves the presentation to the specified [outputFile].
   Future<void> save(File outputFile, {http.Client? httpClient}) async {
     _log.info('Saving presentation to ${outputFile.path}');
-    // Generate missing boilerplate files
-    await generateCoreProps(_package);
-    await generateAppProps(_package);
+    final notesCount = _slides.where((s) => s.notes != null).length;
+    await generateCoreProps(
+      _package,
+      title: title.isEmpty ? 'Presentation' : title,
+    );
+    await generateAppProps(
+      _package,
+      slides: _slides.length,
+      notes: notesCount,
+      presentationFormat:
+          (_slideWidth == 12192000 && _slideHeight == 6858000) ||
+              (_slideWidth == 9144000 && _slideHeight == 5143500)
+          ? 'On-screen Show (16:9)'
+          : 'On-screen Show (4:3)',
+    );
     await generatePresProps(_package);
     await generateViewProps(_package);
     await generateTableStyles(_package);
 
-    final hasNotes = _slides.any((s) => s.notes != null);
+    final hasNotes = notesCount > 0;
     if (hasNotes) {
       await generateNotesMaster(_package);
       await generateNotesMasterRelationships(_package);
+    }
+
+    // Ensure minimal Theme, Slide Master, Slide Layout boilerplate exist
+    if (!await _package.hasPart('ppt/theme/theme1.xml')) {
+      _log.fine('Generating default theme');
+      await generateTheme(_package);
+    }
+    if (!await _package.hasPart('ppt/slideMasters/slideMaster1.xml')) {
+      _log.fine('Generating default slide master');
+      await generateSlideMaster(_package);
+    }
+    if (!await _package.hasPart('ppt/slideLayouts/slideLayout1.xml')) {
+      _log.fine('Generating default slide layout');
+      await generateSlideLayout(_package);
     }
 
     // Pre-check for existence of optional parts to avoid async in builder
@@ -378,6 +409,10 @@ class Presentation {
     );
     final notesSlides = await _package.listParts('ppt/notesSlides');
     final startThemeFiles = await _package.listParts('ppt/theme');
+    final existingLayouts = (await _package.listParts('ppt/slideLayouts'))
+        .where((p) => p.endsWith('.xml'))
+        .map((p) => p.split('/').last)
+        .toSet();
 
     // Calculate generated comments and authors
     final slidesWithComments = _slides
@@ -402,10 +437,135 @@ class Presentation {
       }
     }
 
-    // Collect media paths for Content Types
-    final globalMediaPaths = <String>{};
-    for (final slide in _slides) {
-      globalMediaPaths.addAll(slide.getAllReferencedMediaPaths());
+    // Resolve and copy media files first so [Content_Types].xml uses actual file extensions
+    // mediaPath -> (extension, bytes)
+    final mediaData = <String, ({String ext, Uint8List bytes})>{};
+    // mediaPath -> (width, height)
+    final imageDimensions = <String, ({int width, int height})>{};
+    final client = httpClient ?? http.Client();
+    final internalClient = httpClient == null;
+    final validExtPattern = RegExp(r'^[a-z0-9]+$');
+
+    try {
+      for (var i = 0; i < _slides.length; i++) {
+        await Future.delayed(Duration.zero); // Yield to UI thread
+        final slide = _slides[i];
+        final referencedPaths = slide.getAllReferencedMediaPaths();
+        _log.finer(
+          'Processing media for slide ${i + 1}: ${referencedPaths.length} items',
+        );
+
+        for (final path in referencedPaths) {
+          _log.finer('Processing media path: $path');
+          if (mediaData.containsKey(path)) {
+            _log.finer('Path already in mediaData: $path');
+            continue;
+          }
+
+          Uint8List bytes;
+          String extension;
+
+          if (path.startsWith('http://') || path.startsWith('https://')) {
+            // Remote fetch
+            _log.finer('Fetching remote media: $path');
+            try {
+              final response = await client.get(Uri.parse(path));
+              if (response.statusCode == 200) {
+                bytes = response.bodyBytes;
+                // Try to detect extension from bytes or URL basename
+                extension = MediaUtils.detectExtension(bytes);
+                if (extension == 'bin') {
+                  final uri = Uri.parse(path);
+                  final lastSeg = uri.pathSegments.lastOrNull ?? '';
+                  if (lastSeg.contains('.')) {
+                    final candidate = lastSeg.split('.').last.toLowerCase();
+                    if (validExtPattern.hasMatch(candidate)) {
+                      extension = candidate;
+                    }
+                  }
+                }
+              } else {
+                _log.warning(
+                  'Failed to fetch media: $path (${response.statusCode})',
+                );
+                continue;
+              }
+            } catch (e) {
+              _log.severe('Error fetching media: $path', e);
+              continue;
+            }
+          } else {
+            // Local file
+            _log.finer('Reading local file: $path');
+            final file = _package.fileSystem.file(path);
+            try {
+              if (await file.exists()) {
+                bytes = await file.readAsBytes();
+                final basename = path.split('/').last.split(r'\').last;
+                final fallbackExt = basename.contains('.')
+                    ? basename.split('.').last.toLowerCase()
+                    : 'bin';
+                extension = validExtPattern.hasMatch(fallbackExt)
+                    ? fallbackExt
+                    : 'bin';
+                // Verify with magic numbers
+                final detected = MediaUtils.detectExtension(bytes);
+                if (detected != 'bin') extension = detected;
+              } else {
+                _log.severe('Media file not found (exists=false): $path');
+                continue;
+              }
+            } catch (e, st) {
+              _log.severe('Error reading local file: $path', e, st);
+              rethrow;
+            }
+          }
+          mediaData[path] = (ext: extension, bytes: bytes);
+
+          // Calculate dimensions for images
+          if (extension == 'png' || extension == 'jpg' || extension == 'jpeg') {
+            final dims = MediaUtils.getImageDimensions(bytes);
+            if (dims != null) {
+              imageDimensions[path] = dims;
+            }
+          }
+        }
+      }
+    } finally {
+      if (internalClient) {
+        client.close();
+      }
+    }
+
+    // Save media files to package and build mapping
+    // originalPath -> targetRelativePath
+    final mediaMapping = <String, String>{};
+    int mediaCounter = 1;
+    for (final path in mediaData.keys) {
+      final info = mediaData[path]!;
+      final targetName = 'media${mediaCounter++}.${info.ext}';
+      final targetPath = 'ppt/media/$targetName';
+
+      final part = await _package.createPart(targetPath);
+      part.add(info.bytes);
+      await part.close();
+
+      // Construct relative path from slide.xml (in ppt/slides/) to media (in ppt/media/)
+      mediaMapping[path] = '../media/$targetName';
+    }
+
+    // Collect valid extensions of all media files in the package
+    final mediaExtensions = <String>{
+      for (final info in mediaData.values) info.ext.toLowerCase(),
+    };
+    for (final mediaPart in await _package.listParts('ppt/media')) {
+      final basename = mediaPart.split('/').last;
+      if (basename.contains('.')) {
+        final ext = basename.split('.').last.toLowerCase();
+        if (validExtPattern.hasMatch(ext)) {
+          mediaExtensions.add(ext);
+        }
+      }
     }
 
     // 1. [Content_Types].xml
@@ -492,7 +652,7 @@ class Presentation {
             ctBuilder.attribute('ContentType', 'application/movie');
           },
         );
-        // Add extensions for any media files we just added that might not be default
+        // Add extensions for any media files in the package that are not already default
         final defaultExtensions = {
           'png',
           'jpeg',
@@ -505,15 +665,14 @@ class Presentation {
           'xml',
           'rels',
         };
-        for (final path in globalMediaPaths) {
-          final ext = path.split('.').last.toLowerCase();
-          if (!defaultExtensions.contains(ext)) {
+        for (final ext in mediaExtensions) {
+          if (!defaultExtensions.contains(ext) &&
+              validExtPattern.hasMatch(ext)) {
             defaultExtensions.add(ext);
             ctBuilder.element(
               'Default',
               nest: () {
                 ctBuilder.attribute('Extension', ext);
-                // Simple fallback content type mapping
                 String contentType = 'application/octet-stream';
                 if (ext == 'svg') {
                   contentType = 'image/svg+xml';
@@ -1264,135 +1423,7 @@ class Presentation {
       await caPart.close();
     }
 
-    // 5. Minimal Theme, Slide Master, Slide Layout (Boilerplate)
-    if (!await _package.hasPart('ppt/theme/theme1.xml')) {
-      _log.fine('Generating default theme');
-      await generateTheme(_package);
-    }
-    if (!await _package.hasPart('ppt/slideMasters/slideMaster1.xml')) {
-      _log.fine('Generating default slide master');
-      await generateSlideMaster(_package);
-    }
-    if (!await _package.hasPart('ppt/slideLayouts/slideLayout1.xml')) {
-      _log.fine('Generating default slide layout');
-      await generateSlideLayout(_package);
-    }
-
-    // 6. Media Copying and Relationship Mapping
-    // Collect all unique media from all slides
-    // mediaPath -> (extension, bytes)
-    final mediaData = <String, ({String ext, Uint8List bytes})>{};
-    // mediaPath -> (width, height)
-    final imageDimensions = <String, ({int width, int height})>{};
-    final client = httpClient ?? http.Client();
-    bool internalClient = httpClient == null;
-
-    try {
-      for (var i = 0; i < _slides.length; i++) {
-        await Future.delayed(Duration.zero); // Yield to UI thread
-        final slide = _slides[i];
-        final referencedPaths = slide.getAllReferencedMediaPaths();
-        _log.finer(
-          'Processing media for slide ${i + 1}: ${referencedPaths.length} items',
-        );
-
-        for (final path in referencedPaths) {
-          _log.info('DEBUG: Processing media path: $path');
-          if (mediaData.containsKey(path)) {
-            _log.info('DEBUG: Path already in mediaData: $path');
-            continue;
-          }
-
-          Uint8List bytes;
-          String extension;
-
-          if (path.startsWith('http://') || path.startsWith('https://')) {
-            // Remote fetch
-            _log.finer('Fetching remote media: $path');
-            try {
-              final response = await client.get(Uri.parse(path));
-              if (response.statusCode == 200) {
-                bytes = response.bodyBytes;
-                // Try to detect extension from bytes or URL
-                extension = MediaUtils.detectExtension(bytes);
-                if (extension == 'bin') {
-                  // Fallback to URL extension
-                  final uri = Uri.parse(path);
-                  if (uri.path.contains('.')) {
-                    extension = uri.path.split('.').last;
-                  }
-                }
-              } else {
-                _log.warning(
-                  'Failed to fetch media: $path (${response.statusCode})',
-                );
-                print('Failed to fetch media: $path (${response.statusCode})');
-                continue;
-              }
-            } catch (e) {
-              _log.severe('Error fetching media: $path', e);
-              print('Error fetching media: $path ($e)');
-              continue;
-            }
-          } else {
-            // Local file
-            _log.info('DEBUG: Reading local file: $path');
-            final file = _package.fileSystem.file(path);
-            try {
-              if (await file.exists()) {
-                bytes = await file.readAsBytes();
-                extension = path.contains('.') ? path.split('.').last : 'bin';
-                // Optional: verify with magic numbers
-                final detected = MediaUtils.detectExtension(bytes);
-                if (detected != 'bin') extension = detected;
-              } else {
-                _log.severe(
-                  'DEBUG: Media file not found (exists=false): $path',
-                );
-                print('Media file not found: $path');
-                continue;
-              }
-            } catch (e, st) {
-              _log.severe('DEBUG: Error reading local file: $path', e, st);
-              rethrow;
-            }
-          }
-          mediaData[path] = (ext: extension, bytes: bytes);
-
-          // Calculate dimensions for images
-          if (extension == 'png' || extension == 'jpg' || extension == 'jpeg') {
-            final dims = MediaUtils.getImageDimensions(bytes);
-            if (dims != null) {
-              imageDimensions[path] = dims;
-            }
-          }
-        }
-      }
-    } finally {
-      if (internalClient) {
-        client.close();
-      }
-    }
-
-    // Save media files to package and build mapping
-    // originalPath -> targetRelativePath
-    final mediaMapping = <String, String>{};
-    int mediaCounter = 1;
-    for (final path in mediaData.keys) {
-      final info = mediaData[path]!;
-      final targetName = 'media${mediaCounter++}.${info.ext}';
-      final targetPath = 'ppt/media/$targetName';
-
-      final part = await _package.createPart(targetPath);
-      part.add(info.bytes);
-      await part.close();
-
-      // Construct relative path from slide.xml (in ppt/slides/) to media (in ppt/media/)
-      // Relative path is ../media/filename
-      mediaMapping[path] = '../media/$targetName';
-    }
-
-    // 7. Slides
+    // 6. Slides
     for (var i = 0; i < _slides.length; i++) {
       await Future.delayed(Duration.zero); // Yield to UI thread
       final slide = _slides[i];
@@ -1420,12 +1451,19 @@ class Presentation {
                 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout',
               );
 
-              // Resolve layout filename
+              // Resolve layout filename and verify it exists in ppt/slideLayouts
               String layoutFilename = 'slideLayout1.xml';
               if (_slideLayouts.containsKey(i)) {
-                layoutFilename = _slideLayouts[i]!;
-                // Ensure it end with .xml just in case
-                if (!layoutFilename.endsWith('.xml')) layoutFilename += '.xml';
+                var candidate = _slideLayouts[i]!;
+                final normalized = candidate.replaceAll('&amp;', '&');
+                candidate =
+                    _layoutNames[candidate] ??
+                    _layoutNames[normalized] ??
+                    candidate;
+                if (!candidate.endsWith('.xml')) candidate += '.xml';
+                if (existingLayouts.contains(candidate)) {
+                  layoutFilename = candidate;
+                }
               }
 
               slideRelsXml.attribute(

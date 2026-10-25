@@ -1,3 +1,9 @@
+## 0.3.2
+
+- Fix PowerPoint on Windows "needs to repair" errors by emitting valid OOXML in `slideLayout1.xml` (`<a:xfrm>` in `<p:grpSpPr>`, `type="blank" preserve="1"`, `<p:clrMapOvr>`), `slideMaster1.xml` (`<a:effectLst/>` in `<p:bgPr>`, remove macOS-proprietary `ma14:wrappingTextBoxFlag`), slide backgrounds (`<a:effectLst/>` in `<p:bgPr>`), `docProps/core.xml` (W3CDTF UTC timestamps), and `docProps/app.xml` (PowerPoint extended properties)
+- Expand `validateDirectory` to validate slides, slide layouts, slide masters, notes, themes, table styles, core properties, and PresentationML structural invariants
+- Add `align`, `verticalAlign`, and `fontFamily` support to `Slide.addTextBox`
+
 ## 0.3.1
 
 - Migrate synchronous `pkg:file` operations to asynchronous ones to support web export in `WebFileSystem`

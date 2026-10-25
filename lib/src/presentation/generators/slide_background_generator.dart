@@ -10,6 +10,11 @@ void buildSlideBackground(
   int? slideHeight,
   Map<String, ({int width, int height})>? imageDimensions,
 }) {
+  if (background is ImageBackground &&
+      imageRelIds?[background.imagePath] == null) {
+    return;
+  }
+
   b.element(
     'p:bg',
     nest: () {
@@ -179,6 +184,7 @@ void buildSlideBackground(
               );
             }
           }
+          b.element('a:effectLst');
         },
       );
     },

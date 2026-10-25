@@ -14,3 +14,4 @@ export 'src/spreadsheet/row.dart';
 export 'src/presentation/presentation.dart';
 export 'src/presentation/slide.dart';
 export 'src/shared/comment.dart';
+export 'src/validate/validate.dart';

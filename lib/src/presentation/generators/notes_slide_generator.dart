@@ -37,12 +37,7 @@ Future<void> generateNotesSlide(
                     },
                   );
                   builder.element('p:cNvGrpSpPr');
-                  builder.element(
-                    'p:nvPr',
-                    nest: () {
-                      builder.element('p:ph');
-                    },
-                  );
+                  builder.element('p:nvPr');
                 },
               );
               builder.element(

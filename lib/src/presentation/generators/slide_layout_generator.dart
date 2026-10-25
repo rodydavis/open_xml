@@ -4,7 +4,7 @@ import 'package:xml/xml.dart';
 Future<void> generateSlideLayout(OoxmlPackage package) async {
   final layout = await package.createPart('ppt/slideLayouts/slideLayout1.xml');
   final lBuilder = XmlBuilder();
-  lBuilder.processing('xml', 'version="1.0" encoding="UTF-8" ');
+  lBuilder.processing('xml', 'version="1.0" encoding="UTF-8" standalone="yes"');
   lBuilder.element(
     'p:sldLayout',
     namespaces: {
@@ -13,9 +13,11 @@ Future<void> generateSlideLayout(OoxmlPackage package) async {
       'http://schemas.openxmlformats.org/officeDocument/2006/relationships':
           'r',
     },
+    attributes: {'type': 'blank', 'preserve': '1'},
     nest: () {
       lBuilder.element(
         'p:cSld',
+        attributes: {'name': 'Blank'},
         nest: () {
           lBuilder.element(
             'p:spTree',
@@ -34,9 +36,37 @@ Future<void> generateSlideLayout(OoxmlPackage package) async {
                   lBuilder.element('p:nvPr');
                 },
               );
-              lBuilder.element('p:grpSpPr');
+              lBuilder.element(
+                'p:grpSpPr',
+                nest: () {
+                  lBuilder.element(
+                    'a:xfrm',
+                    nest: () {
+                      lBuilder.element('a:off', attributes: {'x': '0', 'y': '0'});
+                      lBuilder.element(
+                        'a:ext',
+                        attributes: {'cx': '0', 'cy': '0'},
+                      );
+                      lBuilder.element(
+                        'a:chOff',
+                        attributes: {'x': '0', 'y': '0'},
+                      );
+                      lBuilder.element(
+                        'a:chExt',
+                        attributes: {'cx': '0', 'cy': '0'},
+                      );
+                    },
+                  );
+                },
+              );
             },
           );
+        },
+      );
+      lBuilder.element(
+        'p:clrMapOvr',
+        nest: () {
+          lBuilder.element('a:masterClrMapping');
         },
       );
     },

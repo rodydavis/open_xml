@@ -113,7 +113,9 @@ class OoxmlPackage {
     final files = <String>[];
     await for (final entity in dir.list(recursive: true)) {
       if (entity is File) {
-        files.add(p.relative(entity.path, from: _tempDir.path));
+        files.add(
+          p.relative(entity.path, from: _tempDir.path).replaceAll(r'\', '/'),
+        );
       }
     }
     return files;
@@ -135,17 +137,17 @@ class OoxmlPackage {
     await for (final entity in dir.list(recursive: false)) {
       await Future.delayed(Duration.zero);
       final name = p.basename(entity.path);
-      print('DEBUG: Visiting $name in $relativePath');
+      _log.finer('Visiting $name in $relativePath');
       // Skip .DS_Store
       if (name == '.DS_Store') continue;
 
       final nextPath = relativePath.isEmpty ? name : '$relativePath/$name';
 
       if (entity is File) {
-        print('DEBUG: Adding file $nextPath');
+        _log.finer('Adding file $nextPath');
         await writer.addFile(entity, nextPath);
       } else if (entity is Directory) {
-        print('DEBUG: Recursing into $nextPath');
+        _log.finer('Recursing into $nextPath');
         await _addRecursively(writer, entity, nextPath);
       }
     }
